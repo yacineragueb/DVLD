@@ -74,13 +74,35 @@ namespace DVLDBusinessLayer
 
         private bool _AddNewPerson()
         {
-            this.ID = clsPersonDataAccess.AddNewPerson(this.NationalNo, this.FirstName, this.SecondName, this.Gender, this.ThirdName, this.LastName, this.DateOfBirth, this.Address, this.Phone, this.Email, this.NationalityCountryID, this.ImagePath);
+            this.ID = clsPersonDataAccess.AddNewPerson(this.NationalNo, this.FirstName, this.SecondName, (int)this.Gender, this.ThirdName, this.LastName, this.DateOfBirth, this.Address, this.Phone, this.Email, this.NationalityCountryID, this.ImagePath);
             return (this.ID != -1);
         }
 
         private bool _UpdatePerson()
         {
+            return clsPersonDataAccess.UpdatePerson(this.ID, this.NationalNo, this.FirstName, this.SecondName, (int)this.Gender, this.ThirdName, this.LastName, this.DateOfBirth, this.Address, this.Phone, this.Email, this.NationalityCountryID, this.ImagePath);
+        }
 
+        public static clsPerson Find(int ID)
+        {
+            string NationalNo = "";
+            string FirstName = "";
+            string SecondName = "";
+            string ThirdName = "";
+            string LastName = "";
+            DateTime DateOfBirth = DateTime.Now;
+            int Gender = (int)enGender.Male;
+            string Address = "";
+            string Phone = "";
+            string Email = "";
+            int NationalityCountryID = -1;
+            string ImagePath = "";
+
+            if (clsPersonDataAccess.GetPersonInfoById(ID, ref NationalNo, ref FirstName, ref SecondName, ref Gender, ref ThirdName, ref LastName, ref DateOfBirth, ref Address, ref Phone, ref Email, ref NationalityCountryID, ref ImagePath))
+
+                return new clsPerson();
+            else
+                return null;
         }
 
         public bool Save()
@@ -101,6 +123,21 @@ namespace DVLDBusinessLayer
             }
 
             return false;
+        }
+
+        public static DataTable GetAllPeople()
+        {
+            return clsPersonDataAccess.GetAllPeople();
+        }
+
+        public static bool DeletePerson(int ID)
+        {
+            return clsPersonDataAccess.DeletePerson(ID);
+        }
+
+        public static bool IsPersonExistByID(int ID)
+        {
+            return clsPersonDataAccess.IsPersonExist(ID);
         }
 
     }

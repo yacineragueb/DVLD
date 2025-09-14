@@ -73,16 +73,6 @@ namespace DVLD_project.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap application_form2561 {
-            get {
-                object obj = ResourceManager.GetObject("application-form2561", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap drivers {
             get {
                 object obj = ResourceManager.GetObject("drivers", resourceCulture);

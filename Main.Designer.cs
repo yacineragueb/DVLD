@@ -66,6 +66,7 @@
             this.peopleToolStripMenuItem.Name = "peopleToolStripMenuItem";
             this.peopleToolStripMenuItem.Size = new System.Drawing.Size(135, 54);
             this.peopleToolStripMenuItem.Text = "People";
+            this.peopleToolStripMenuItem.Click += new System.EventHandler(this.peopleToolStripMenuItem_Click);
             // 
             // driversToolStripMenuItem
             // 
@@ -88,7 +89,7 @@
             this.settingsToolStripMenuItem.Size = new System.Drawing.Size(145, 54);
             this.settingsToolStripMenuItem.Text = "Settings";
             // 
-            // Form1
+            // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 30F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -98,8 +99,10 @@
             this.Font = new System.Drawing.Font("Poppins", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MainMenuStrip = this.menuStrip1;
             this.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.Name = "Form1";
-            this.Text = "s";
+            this.Name = "Main";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Main";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);

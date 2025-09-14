@@ -7,22 +7,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using DVLDBusinessLayer;
 
 namespace DVLD_project
 {
-    public partial class Main : Form
+    public partial class ManagePeopleForm : Form
     {
-        public Main()
+        public ManagePeopleForm()
         {
             InitializeComponent();
         }
 
-        ManagePeopleForm managePeopleForm = new ManagePeopleForm();
-
-        private void peopleToolStripMenuItem_Click(object sender, EventArgs e)
+        private void btnClose_Click(object sender, EventArgs e)
         {
-            managePeopleForm.ShowDialog();
+            this.Close();
         }
     }
 }
