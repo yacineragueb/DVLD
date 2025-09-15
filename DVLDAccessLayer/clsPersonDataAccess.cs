@@ -30,7 +30,7 @@ namespace DVLDAccessLayer
                                 SecondName = (string)reader["SecondName"];
                                 ThirdName = (string)reader["ThirdName"];
                                 LastName = (string)reader["LastName"];
-                                Gender = (int)reader["Gendor"];
+                                Gender = Convert.ToInt16(reader["Gendor"]);
                                 DateOfBirth = (DateTime)reader["DateOfBirth"];
                                 Address = (string)reader["Address"];
                                 Phone = (string)reader["Phone"];
@@ -40,7 +40,6 @@ namespace DVLDAccessLayer
                                 if (reader["ImagePath"] != DBNull.Value)
                                 {
                                     ImagePath = (string)reader["ImagePath"];
-
                                 }
                                 else
                                 {

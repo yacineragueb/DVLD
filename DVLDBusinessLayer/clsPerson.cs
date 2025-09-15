@@ -61,12 +61,12 @@ namespace DVLDBusinessLayer
             this.SecondName = SecondName;
             this.ThirdName = ThirdName;
             this.LastName = LastName;
-            this.DateOfBirth = DateTime.Now;
+            this.DateOfBirth = DateOfBirth;
             this.Gender = (enGender)Gender;
             this.Address = Address;
             this.Phone = Phone;
             this.Email = Email;
-            this.NationalityCountryID = -1;
+            this.NationalityCountryID = NationalityCountryID;
             this.ImagePath = ImagePath;
 
             _Mode = enMode.Update;
@@ -100,7 +100,7 @@ namespace DVLDBusinessLayer
 
             if (clsPersonDataAccess.GetPersonInfoById(ID, ref NationalNo, ref FirstName, ref SecondName, ref Gender, ref ThirdName, ref LastName, ref DateOfBirth, ref Address, ref Phone, ref Email, ref NationalityCountryID, ref ImagePath))
 
-                return new clsPerson();
+                return new clsPerson(ID, NationalNo, FirstName, SecondName, Gender, ThirdName, LastName, DateOfBirth, Address, Phone, Email, NationalityCountryID, ImagePath);
             else
                 return null;
         }
