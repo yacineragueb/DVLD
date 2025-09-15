@@ -27,7 +27,13 @@ namespace DVLD_project
 
         private void ShowPersonDetails_Load(object sender, EventArgs e)
         {
-            personDetails1.LoadData(_PersonID);
+            if (clsPerson.IsPersonExistByID(_PersonID)) {
+                personDetails1.LoadData(_PersonID);
+            } else
+            {
+                this.Close();
+            }
+            
         }
     }
 }

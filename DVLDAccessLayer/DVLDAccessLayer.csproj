@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="clsPersonDataAccess.cs" />
+    <Compile Include="CountryData.cs" />
     <Compile Include="DVLDAcessLayerSettings.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

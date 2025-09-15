@@ -16,6 +16,7 @@ namespace DVLD_project
         void LoadData()
         {
             dgvPeopleTable.DataSource = clsPerson.GetAllPeople();
+            lblRecords.Text = dgvPeopleTable.Rows.Count.ToString();
         }
 
         void ShowPersonDetails()
