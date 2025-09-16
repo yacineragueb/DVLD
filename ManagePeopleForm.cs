@@ -75,13 +75,13 @@ namespace DVLD_project
                 if(clsPerson.DeletePerson((int)dgvPeopleTable.CurrentRow.Cells[0].Value))
                 {
                     MessageBox.Show("User Deleted Successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                } else
+                    _RefreshContactsList();
+                }
+                else
                 {
-                    MessageBox.Show("Faild to delete this Person.", "Faild", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Faild to delete this person because it has a data linked with it.", "Faild", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-
-            _RefreshContactsList();
         }
 
         private void sendEmailToolStripMenuItem_Click(object sender, EventArgs e)

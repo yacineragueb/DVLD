@@ -58,5 +58,11 @@ namespace DVLD_project
                 return;
             }
         }
+
+        private void LlblEditPerson_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            AddEditPerson addEditPersonForm = new AddEditPerson(_Person.ID);
+            addEditPersonForm.ShowDialog();
+        }
     }
 }

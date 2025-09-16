@@ -249,5 +249,34 @@ namespace DVLDAccessLayer
             return IsFound;
         }
 
+        public static bool IsPersonExist(string NationalNo)
+        {
+            bool IsFound = false;
+            using (SqlConnection connection = new SqlConnection(clsDVLDAcessLayerSettings.connectionString))
+            {
+                string query = "SELECT Found = 1 FROM People WHERE NationalNo = @NationalNo";
+
+                using (SqlCommand cmd = new SqlCommand(query, connection))
+                {
+                    cmd.Parameters.AddWithValue("@NationalNo", NationalNo);
+
+                    try
+                    {
+                        connection.Open();
+                        object result = cmd.ExecuteScalar();
+                        IsFound = result != null;
+                    }
+                    catch (Exception ex)
+                    {
+                        // Console.WriteLine("Error: " + ex.Message);
+                        IsFound = false;
+                    }
+                }
+            }
+
+            return IsFound;
+        }
+
+
     }
 }

@@ -9,8 +9,10 @@ using System.Diagnostics.Contracts;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Net.Mail;
 using System.Security.Cryptography;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -60,7 +62,7 @@ namespace DVLD_project
         {
             _FillCountriesInComoboBox();
             dtpDateOfBirth.MaxDate = DateTime.Now.AddYears(-18);
-            cbCountry.SelectedIndex = 0;
+            cbCountry.SelectedIndex = 2;
 
             if(Mode == enMode.AddNew)
             {
@@ -255,7 +257,7 @@ namespace DVLD_project
             
         }
 
-        void ValidateRequiring(TextBox TxtBox, string TxtBoxName, CancelEventArgs e)
+        private void ValidateRequiring(TextBox TxtBox, string TxtBoxName, CancelEventArgs e)
         {
             if (string.IsNullOrWhiteSpace(TxtBox.Text))
             {
@@ -274,6 +276,48 @@ namespace DVLD_project
         {
             TextBox txtBox = (TextBox)sender;
             ValidateRequiring(txtBox, txtBox.Tag.ToString(), e);
+        }
+
+        private void txtbNationalNo_TextChanged(object sender, EventArgs e)
+        {
+            if(clsPerson.IsPersonExistByNationalNo(txtbNationalNo.Text) && Mode == enMode.AddNew)
+            {
+                errorProvider1.SetError(txtbNationalNo, "This National No is aleardy exists");
+                txtbNationalNo.Focus();
+            } else
+            {
+                errorProvider1.SetError(txtbNationalNo, "");
+            }
+        }
+
+        private void txtbEmail_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                var add = new MailAddress(txtbEmail.Text);
+                errorProvider1.SetError(txtbEmail, "");
+            }
+            catch (Exception ex)
+            {
+                errorProvider1.SetError(txtbEmail, "Enter a valide email");
+                txtbEmail.Focus();
+            }
+        }
+
+        private void AllowDigitsOnly_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if(!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void AllowLettersOnly_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsLetter(e.KeyChar))
+            {
+                e.Handled = true;
+            }
         }
     }
 }

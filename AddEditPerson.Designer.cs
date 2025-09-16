@@ -201,6 +201,8 @@
             this.txtbAddress.Name = "txtbAddress";
             this.txtbAddress.Size = new System.Drawing.Size(592, 100);
             this.txtbAddress.TabIndex = 11;
+            this.txtbAddress.Tag = "Address";
+            this.txtbAddress.Validating += new System.ComponentModel.CancelEventHandler(this.TextBox_Validating);
             // 
             // pictureBox4
             // 
@@ -270,6 +272,9 @@
             this.txtbPhone.Name = "txtbPhone";
             this.txtbPhone.Size = new System.Drawing.Size(180, 33);
             this.txtbPhone.TabIndex = 8;
+            this.txtbPhone.Tag = "Phone number";
+            this.txtbPhone.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.AllowDigitsOnly_KeyPress);
+            this.txtbPhone.Validating += new System.ComponentModel.CancelEventHandler(this.TextBox_Validating);
             // 
             // pictureBox8
             // 
@@ -370,6 +375,9 @@
             this.txtbEmail.Name = "txtbEmail";
             this.txtbEmail.Size = new System.Drawing.Size(180, 33);
             this.txtbEmail.TabIndex = 9;
+            this.txtbEmail.Tag = "Email";
+            this.txtbEmail.TextChanged += new System.EventHandler(this.txtbEmail_TextChanged);
+            this.txtbEmail.Validating += new System.ComponentModel.CancelEventHandler(this.TextBox_Validating);
             // 
             // txtbNationalNo
             // 
@@ -377,6 +385,9 @@
             this.txtbNationalNo.Name = "txtbNationalNo";
             this.txtbNationalNo.Size = new System.Drawing.Size(180, 33);
             this.txtbNationalNo.TabIndex = 4;
+            this.txtbNationalNo.Tag = "National No";
+            this.txtbNationalNo.TextChanged += new System.EventHandler(this.txtbNationalNo_TextChanged);
+            this.txtbNationalNo.Validating += new System.ComponentModel.CancelEventHandler(this.TextBox_Validating);
             // 
             // pictureBox2
             // 
@@ -439,6 +450,7 @@
             this.txtbLastName.Size = new System.Drawing.Size(180, 33);
             this.txtbLastName.TabIndex = 3;
             this.txtbLastName.Tag = "Last Name";
+            this.txtbLastName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.AllowLettersOnly_KeyPress);
             this.txtbLastName.Validating += new System.ComponentModel.CancelEventHandler(this.TextBox_Validating);
             // 
             // txtbThirdName
@@ -448,6 +460,7 @@
             this.txtbThirdName.Size = new System.Drawing.Size(180, 33);
             this.txtbThirdName.TabIndex = 2;
             this.txtbThirdName.Tag = "Third Name";
+            this.txtbThirdName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.AllowLettersOnly_KeyPress);
             this.txtbThirdName.Validating += new System.ComponentModel.CancelEventHandler(this.TextBox_Validating);
             // 
             // txtbSecondName
@@ -457,6 +470,7 @@
             this.txtbSecondName.Size = new System.Drawing.Size(180, 33);
             this.txtbSecondName.TabIndex = 1;
             this.txtbSecondName.Tag = "Second Name";
+            this.txtbSecondName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.AllowLettersOnly_KeyPress);
             this.txtbSecondName.Validating += new System.ComponentModel.CancelEventHandler(this.TextBox_Validating);
             // 
             // txtbFirstName
@@ -466,6 +480,7 @@
             this.txtbFirstName.Size = new System.Drawing.Size(180, 33);
             this.txtbFirstName.TabIndex = 0;
             this.txtbFirstName.Tag = "First Name";
+            this.txtbFirstName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.AllowLettersOnly_KeyPress);
             this.txtbFirstName.Validating += new System.ComponentModel.CancelEventHandler(this.TextBox_Validating);
             // 
             // label5
