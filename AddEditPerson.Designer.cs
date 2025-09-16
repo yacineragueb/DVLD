@@ -28,21 +28,34 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.lblTitle = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.lblPersonID = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.LlblRemoveImage = new System.Windows.Forms.LinkLabel();
+            this.LlblSetImage = new System.Windows.Forms.LinkLabel();
+            this.pbPersonImage = new System.Windows.Forms.PictureBox();
+            this.txtbAddress = new System.Windows.Forms.TextBox();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.label13 = new System.Windows.Forms.Label();
             this.rbtnFemale = new System.Windows.Forms.RadioButton();
             this.rbtnMale = new System.Windows.Forms.RadioButton();
             this.cbCountry = new System.Windows.Forms.ComboBox();
             this.dtpDateOfBirth = new System.Windows.Forms.DateTimePicker();
             this.txtbPhone = new System.Windows.Forms.TextBox();
+            this.pictureBox8 = new System.Windows.Forms.PictureBox();
+            this.pictureBox7 = new System.Windows.Forms.PictureBox();
+            this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.label12 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
+            this.pictureBox5 = new System.Windows.Forms.PictureBox();
+            this.pbGender = new System.Windows.Forms.PictureBox();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.txtbEmail = new System.Windows.Forms.TextBox();
             this.txtbNationalNo = new System.Windows.Forms.TextBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -55,22 +68,11 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.txtbAddress = new System.Windows.Forms.TextBox();
-            this.LlblSetImage = new System.Windows.Forms.LinkLabel();
-            this.LlblRemoveImage = new System.Windows.Forms.LinkLabel();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
-            this.pbPersonImage = new System.Windows.Forms.PictureBox();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.pictureBox8 = new System.Windows.Forms.PictureBox();
-            this.pictureBox7 = new System.Windows.Forms.PictureBox();
-            this.pictureBox6 = new System.Windows.Forms.PictureBox();
-            this.pictureBox5 = new System.Windows.Forms.PictureBox();
-            this.pbGender = new System.Windows.Forms.PictureBox();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbPersonImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -82,6 +84,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // lblTitle
@@ -158,6 +161,57 @@
             this.panel1.Size = new System.Drawing.Size(1043, 393);
             this.panel1.TabIndex = 4;
             // 
+            // LlblRemoveImage
+            // 
+            this.LlblRemoveImage.AutoSize = true;
+            this.LlblRemoveImage.Location = new System.Drawing.Point(832, 322);
+            this.LlblRemoveImage.Name = "LlblRemoveImage";
+            this.LlblRemoveImage.Size = new System.Drawing.Size(144, 30);
+            this.LlblRemoveImage.TabIndex = 38;
+            this.LlblRemoveImage.TabStop = true;
+            this.LlblRemoveImage.Text = "Remove Image";
+            this.LlblRemoveImage.Visible = false;
+            this.LlblRemoveImage.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LlblRemoveImage_LinkClicked);
+            // 
+            // LlblSetImage
+            // 
+            this.LlblSetImage.AutoSize = true;
+            this.LlblSetImage.Location = new System.Drawing.Point(854, 292);
+            this.LlblSetImage.Name = "LlblSetImage";
+            this.LlblSetImage.Size = new System.Drawing.Size(100, 30);
+            this.LlblSetImage.TabIndex = 12;
+            this.LlblSetImage.TabStop = true;
+            this.LlblSetImage.Text = "Set Image";
+            this.LlblSetImage.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LlblSetImage_LinkClicked);
+            // 
+            // pbPersonImage
+            // 
+            this.pbPersonImage.Image = global::DVLD_project.Properties.Resources.MalePerson;
+            this.pbPersonImage.Location = new System.Drawing.Point(814, 106);
+            this.pbPersonImage.Name = "pbPersonImage";
+            this.pbPersonImage.Size = new System.Drawing.Size(180, 167);
+            this.pbPersonImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbPersonImage.TabIndex = 36;
+            this.pbPersonImage.TabStop = false;
+            // 
+            // txtbAddress
+            // 
+            this.txtbAddress.Location = new System.Drawing.Point(196, 273);
+            this.txtbAddress.Multiline = true;
+            this.txtbAddress.Name = "txtbAddress";
+            this.txtbAddress.Size = new System.Drawing.Size(592, 100);
+            this.txtbAddress.TabIndex = 11;
+            // 
+            // pictureBox4
+            // 
+            this.pictureBox4.Image = global::DVLD_project.Properties.Resources.Address;
+            this.pictureBox4.Location = new System.Drawing.Point(146, 276);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(32, 30);
+            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox4.TabIndex = 34;
+            this.pictureBox4.TabStop = false;
+            // 
             // label13
             // 
             this.label13.AutoSize = true;
@@ -217,6 +271,36 @@
             this.txtbPhone.Size = new System.Drawing.Size(180, 33);
             this.txtbPhone.TabIndex = 8;
             // 
+            // pictureBox8
+            // 
+            this.pictureBox8.Image = global::DVLD_project.Properties.Resources.Country;
+            this.pictureBox8.Location = new System.Drawing.Point(558, 218);
+            this.pictureBox8.Name = "pictureBox8";
+            this.pictureBox8.Size = new System.Drawing.Size(32, 30);
+            this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox8.TabIndex = 27;
+            this.pictureBox8.TabStop = false;
+            // 
+            // pictureBox7
+            // 
+            this.pictureBox7.Image = global::DVLD_project.Properties.Resources.Phone;
+            this.pictureBox7.Location = new System.Drawing.Point(558, 160);
+            this.pictureBox7.Name = "pictureBox7";
+            this.pictureBox7.Size = new System.Drawing.Size(32, 30);
+            this.pictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox7.TabIndex = 26;
+            this.pictureBox7.TabStop = false;
+            // 
+            // pictureBox6
+            // 
+            this.pictureBox6.Image = global::DVLD_project.Properties.Resources.Date;
+            this.pictureBox6.Location = new System.Drawing.Point(558, 102);
+            this.pictureBox6.Name = "pictureBox6";
+            this.pictureBox6.Size = new System.Drawing.Size(32, 30);
+            this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox6.TabIndex = 25;
+            this.pictureBox6.TabStop = false;
+            // 
             // label12
             // 
             this.label12.AutoSize = true;
@@ -250,6 +334,36 @@
             this.label10.TabIndex = 22;
             this.label10.Text = "Date of Birth:";
             // 
+            // pictureBox5
+            // 
+            this.pictureBox5.Image = global::DVLD_project.Properties.Resources.Email;
+            this.pictureBox5.Location = new System.Drawing.Point(146, 218);
+            this.pictureBox5.Name = "pictureBox5";
+            this.pictureBox5.Size = new System.Drawing.Size(32, 30);
+            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox5.TabIndex = 21;
+            this.pictureBox5.TabStop = false;
+            // 
+            // pbGender
+            // 
+            this.pbGender.Image = global::DVLD_project.Properties.Resources.Male;
+            this.pbGender.Location = new System.Drawing.Point(146, 160);
+            this.pbGender.Name = "pbGender";
+            this.pbGender.Size = new System.Drawing.Size(32, 30);
+            this.pbGender.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbGender.TabIndex = 20;
+            this.pbGender.TabStop = false;
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Image = global::DVLD_project.Properties.Resources.Details;
+            this.pictureBox3.Location = new System.Drawing.Point(146, 102);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(32, 30);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox3.TabIndex = 19;
+            this.pictureBox3.TabStop = false;
+            // 
             // txtbEmail
             // 
             this.txtbEmail.Location = new System.Drawing.Point(196, 215);
@@ -263,6 +377,16 @@
             this.txtbNationalNo.Name = "txtbNationalNo";
             this.txtbNationalNo.Size = new System.Drawing.Size(180, 33);
             this.txtbNationalNo.TabIndex = 4;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::DVLD_project.Properties.Resources.User;
+            this.pictureBox2.Location = new System.Drawing.Point(146, 46);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(32, 30);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 5;
+            this.pictureBox2.TabStop = false;
             // 
             // label9
             // 
@@ -314,6 +438,8 @@
             this.txtbLastName.Name = "txtbLastName";
             this.txtbLastName.Size = new System.Drawing.Size(180, 33);
             this.txtbLastName.TabIndex = 3;
+            this.txtbLastName.Tag = "Last Name";
+            this.txtbLastName.Validating += new System.ComponentModel.CancelEventHandler(this.TextBox_Validating);
             // 
             // txtbThirdName
             // 
@@ -321,6 +447,8 @@
             this.txtbThirdName.Name = "txtbThirdName";
             this.txtbThirdName.Size = new System.Drawing.Size(180, 33);
             this.txtbThirdName.TabIndex = 2;
+            this.txtbThirdName.Tag = "Third Name";
+            this.txtbThirdName.Validating += new System.ComponentModel.CancelEventHandler(this.TextBox_Validating);
             // 
             // txtbSecondName
             // 
@@ -328,6 +456,8 @@
             this.txtbSecondName.Name = "txtbSecondName";
             this.txtbSecondName.Size = new System.Drawing.Size(180, 33);
             this.txtbSecondName.TabIndex = 1;
+            this.txtbSecondName.Tag = "Second Name";
+            this.txtbSecondName.Validating += new System.ComponentModel.CancelEventHandler(this.TextBox_Validating);
             // 
             // txtbFirstName
             // 
@@ -335,6 +465,8 @@
             this.txtbFirstName.Name = "txtbFirstName";
             this.txtbFirstName.Size = new System.Drawing.Size(180, 33);
             this.txtbFirstName.TabIndex = 0;
+            this.txtbFirstName.Tag = "First Name";
+            this.txtbFirstName.Validating += new System.ComponentModel.CancelEventHandler(this.TextBox_Validating);
             // 
             // label5
             // 
@@ -380,37 +512,6 @@
             this.label2.TabIndex = 5;
             this.label2.Text = "Name:";
             // 
-            // txtbAddress
-            // 
-            this.txtbAddress.Location = new System.Drawing.Point(196, 273);
-            this.txtbAddress.Multiline = true;
-            this.txtbAddress.Name = "txtbAddress";
-            this.txtbAddress.Size = new System.Drawing.Size(592, 100);
-            this.txtbAddress.TabIndex = 11;
-            // 
-            // LlblSetImage
-            // 
-            this.LlblSetImage.AutoSize = true;
-            this.LlblSetImage.Location = new System.Drawing.Point(854, 292);
-            this.LlblSetImage.Name = "LlblSetImage";
-            this.LlblSetImage.Size = new System.Drawing.Size(100, 30);
-            this.LlblSetImage.TabIndex = 12;
-            this.LlblSetImage.TabStop = true;
-            this.LlblSetImage.Text = "Set Image";
-            this.LlblSetImage.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LlblSetImage_LinkClicked);
-            // 
-            // LlblRemoveImage
-            // 
-            this.LlblRemoveImage.AutoSize = true;
-            this.LlblRemoveImage.Location = new System.Drawing.Point(832, 322);
-            this.LlblRemoveImage.Name = "LlblRemoveImage";
-            this.LlblRemoveImage.Size = new System.Drawing.Size(144, 30);
-            this.LlblRemoveImage.TabIndex = 38;
-            this.LlblRemoveImage.TabStop = true;
-            this.LlblRemoveImage.Text = "Remove Image";
-            this.LlblRemoveImage.Visible = false;
-            this.LlblRemoveImage.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LlblRemoveImage_LinkClicked);
-            // 
             // btnSave
             // 
             this.btnSave.BackColor = System.Drawing.Color.DodgerBlue;
@@ -437,96 +538,6 @@
             this.btnClose.UseVisualStyleBackColor = false;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
-            // pbPersonImage
-            // 
-            this.pbPersonImage.Image = global::DVLD_project.Properties.Resources.MalePerson;
-            this.pbPersonImage.Location = new System.Drawing.Point(814, 106);
-            this.pbPersonImage.Name = "pbPersonImage";
-            this.pbPersonImage.Size = new System.Drawing.Size(180, 167);
-            this.pbPersonImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbPersonImage.TabIndex = 36;
-            this.pbPersonImage.TabStop = false;
-            // 
-            // pictureBox4
-            // 
-            this.pictureBox4.Image = global::DVLD_project.Properties.Resources.Address;
-            this.pictureBox4.Location = new System.Drawing.Point(146, 276);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(32, 30);
-            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox4.TabIndex = 34;
-            this.pictureBox4.TabStop = false;
-            // 
-            // pictureBox8
-            // 
-            this.pictureBox8.Image = global::DVLD_project.Properties.Resources.Country;
-            this.pictureBox8.Location = new System.Drawing.Point(558, 218);
-            this.pictureBox8.Name = "pictureBox8";
-            this.pictureBox8.Size = new System.Drawing.Size(32, 30);
-            this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox8.TabIndex = 27;
-            this.pictureBox8.TabStop = false;
-            // 
-            // pictureBox7
-            // 
-            this.pictureBox7.Image = global::DVLD_project.Properties.Resources.Phone;
-            this.pictureBox7.Location = new System.Drawing.Point(558, 160);
-            this.pictureBox7.Name = "pictureBox7";
-            this.pictureBox7.Size = new System.Drawing.Size(32, 30);
-            this.pictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox7.TabIndex = 26;
-            this.pictureBox7.TabStop = false;
-            // 
-            // pictureBox6
-            // 
-            this.pictureBox6.Image = global::DVLD_project.Properties.Resources.Date;
-            this.pictureBox6.Location = new System.Drawing.Point(558, 102);
-            this.pictureBox6.Name = "pictureBox6";
-            this.pictureBox6.Size = new System.Drawing.Size(32, 30);
-            this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox6.TabIndex = 25;
-            this.pictureBox6.TabStop = false;
-            // 
-            // pictureBox5
-            // 
-            this.pictureBox5.Image = global::DVLD_project.Properties.Resources.Email;
-            this.pictureBox5.Location = new System.Drawing.Point(146, 218);
-            this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(32, 30);
-            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox5.TabIndex = 21;
-            this.pictureBox5.TabStop = false;
-            // 
-            // pbGender
-            // 
-            this.pbGender.Image = global::DVLD_project.Properties.Resources.Male;
-            this.pbGender.Location = new System.Drawing.Point(146, 160);
-            this.pbGender.Name = "pbGender";
-            this.pbGender.Size = new System.Drawing.Size(32, 30);
-            this.pbGender.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbGender.TabIndex = 20;
-            this.pbGender.TabStop = false;
-            // 
-            // pictureBox3
-            // 
-            this.pictureBox3.Image = global::DVLD_project.Properties.Resources.Details;
-            this.pictureBox3.Location = new System.Drawing.Point(146, 102);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(32, 30);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox3.TabIndex = 19;
-            this.pictureBox3.TabStop = false;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Image = global::DVLD_project.Properties.Resources.User;
-            this.pictureBox2.Location = new System.Drawing.Point(146, 46);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(32, 30);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 5;
-            this.pictureBox2.TabStop = false;
-            // 
             // pictureBox1
             // 
             this.pictureBox1.Image = global::DVLD_project.Properties.Resources.ID_Card;
@@ -540,6 +551,10 @@
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
+            // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
             // 
             // AddEditPerson
             // 
@@ -572,6 +587,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -622,5 +638,6 @@
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }

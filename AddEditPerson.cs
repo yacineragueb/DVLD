@@ -7,7 +7,9 @@ using System.ComponentModel;
 using System.Data;
 using System.Diagnostics.Contracts;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -24,6 +26,7 @@ namespace DVLD_project
         }
 
         enMode Mode = enMode.AddNew;
+        private string _newImagePath = null;
 
         int _PersonID;
         clsPerson _Person;
@@ -117,7 +120,44 @@ namespace DVLD_project
 
             LlblRemoveImage.Visible = (_Person.ImagePath != "");
 
-            cbCountry.SelectedIndex = cbCountry.FindString(clsCountry.Find(_Person.NationalityCountryID).ToString());
+            cbCountry.SelectedIndex = cbCountry.FindString(clsCountry.Find(_Person.NationalityCountryID).CountryName);
+        }
+
+        private void _ChangeImagePath()
+        {
+            if (!string.IsNullOrEmpty(_newImagePath))
+            {
+                if (!string.IsNullOrEmpty(_Person.ImagePath) && File.Exists(_Person.ImagePath))
+                {
+                    try
+                    {
+                        File.Delete(_Person.ImagePath);
+                    }
+                    catch (Exception ex)
+                    {
+                        return;
+                    }
+                }
+
+                string destinationFolder = @"D:\DVLD\Images";
+                if (!Directory.Exists(destinationFolder))
+                {
+                    Directory.CreateDirectory(destinationFolder);
+                }
+
+                string fileName = Guid.NewGuid().ToString() + Path.GetExtension(_newImagePath);
+                string destinationPath = Path.Combine(destinationFolder, fileName);
+
+                File.Copy(_newImagePath, destinationPath, true);
+
+                _Person.ImagePath = destinationPath;
+
+                _newImagePath = null;
+            }
+            else
+            {
+               _Person.ImagePath = string.Empty;
+            }
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -138,9 +178,10 @@ namespace DVLD_project
 
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                string selectedFilePath = openFileDialog1.FileName;
+                _newImagePath = openFileDialog1.FileName;
 
-                pbPersonImage.Load(selectedFilePath);
+                pbPersonImage.Load(_newImagePath);
+
                 LlblRemoveImage.Visible = true;
             }
         }
@@ -155,6 +196,7 @@ namespace DVLD_project
                 pbPersonImage.Image = Resources.FemalePerson;
             }
 
+            pbPersonImage.ImageLocation = null;
             LlblRemoveImage.Visible = false;
         }
 
@@ -182,13 +224,7 @@ namespace DVLD_project
             _Person.Phone = txtbPhone.Text;
             _Person.NationalityCountryID = CountryID;
 
-            if(pbPersonImage.Image == Resources.FemalePerson || pbPersonImage.Image == Resources.MalePerson || string.IsNullOrEmpty(pbPersonImage.ImageLocation))
-            {
-                _Person.ImagePath = string.Empty;
-            } else
-            {
-                _Person.ImagePath = pbPersonImage.ImageLocation;
-            }
+            _ChangeImagePath();
 
             if (_Person.Save())
                 MessageBox.Show("Data Saved Successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -203,13 +239,41 @@ namespace DVLD_project
         private void rbtnFemale_CheckedChanged(object sender, EventArgs e)
         {
             pbGender.Image = Resources.Female;
-            pbPersonImage.Image = Resources.FemalePerson;
+            if(string.IsNullOrEmpty(pbPersonImage.ImageLocation))
+            {
+                pbPersonImage.Image = Resources.FemalePerson;
+            }
         }
 
         private void rbtnMale_CheckedChanged(object sender, EventArgs e)
         {
             pbGender.Image = Resources.Male;
-            pbPersonImage.Image = Resources.MalePerson;
+            if (string.IsNullOrEmpty(pbPersonImage.ImageLocation))
+            {
+                pbPersonImage.Image = Resources.MalePerson;
+            }
+            
+        }
+
+        void ValidateRequiring(TextBox TxtBox, string TxtBoxName, CancelEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(TxtBox.Text))
+            {
+                e.Cancel = true;
+                TxtBox.Focus();
+                errorProvider1.SetError(TxtBox, TxtBoxName + " is Required");
+            }
+            else
+            {
+                e.Cancel = false;
+                errorProvider1.SetError(TxtBox, "");
+            }
+        }
+
+        private void TextBox_Validating(object sender, CancelEventArgs e)
+        {
+            TextBox txtBox = (TextBox)sender;
+            ValidateRequiring(txtBox, txtBox.Tag.ToString(), e);
         }
     }
 }

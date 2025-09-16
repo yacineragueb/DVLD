@@ -23,6 +23,14 @@ namespace DVLD_project
         {
             ShowPersonDetails Form = new ShowPersonDetails((int)dgvPeopleTable.CurrentRow.Cells[0].Value);
             Form.ShowDialog();
+            _RefreshContactsList();
+        }
+
+        void _AddEditPerson(int PersonID)
+        {
+            AddEditPerson addEditPersonForm = new AddEditPerson(PersonID);
+            addEditPersonForm.ShowDialog();
+            _RefreshContactsList();
         }
         public ManagePeopleForm()
         {
@@ -47,9 +55,43 @@ namespace DVLD_project
 
         private void btnAddPerson_Click(object sender, EventArgs e)
         {
-            AddEditPerson addEditPersonForm = new AddEditPerson(-1);
-            addEditPersonForm.ShowDialog();
+            _AddEditPerson(-1);
+        }
+
+        private void addNewPersonToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            _AddEditPerson(-1);
+        }
+
+        private void editToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            _AddEditPerson((int)dgvPeopleTable.CurrentRow.Cells[0].Value);
+        }
+
+        private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if(MessageBox.Show("Are you sure you want to delete this person?", "Delete Person", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+            {
+                if(clsPerson.DeletePerson((int)dgvPeopleTable.CurrentRow.Cells[0].Value))
+                {
+                    MessageBox.Show("User Deleted Successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                } else
+                {
+                    MessageBox.Show("Faild to delete this Person.", "Faild", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+
             _RefreshContactsList();
+        }
+
+        private void sendEmailToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("This is not implemented yet.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        }
+
+        private void callPhoneToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("This is not implemented yet.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
     }
 }
