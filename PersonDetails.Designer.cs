@@ -281,7 +281,7 @@
             // LlblEditPerson
             // 
             this.LlblEditPerson.AutoSize = true;
-            this.LlblEditPerson.Location = new System.Drawing.Point(630, 57);
+            this.LlblEditPerson.Location = new System.Drawing.Point(636, 57);
             this.LlblEditPerson.Name = "LlblEditPerson";
             this.LlblEditPerson.Size = new System.Drawing.Size(128, 26);
             this.LlblEditPerson.TabIndex = 10;
@@ -290,9 +290,10 @@
             // 
             // pbPersonImage
             // 
-            this.pbPersonImage.Location = new System.Drawing.Point(608, 97);
+            this.pbPersonImage.Location = new System.Drawing.Point(614, 97);
             this.pbPersonImage.Name = "pbPersonImage";
             this.pbPersonImage.Size = new System.Drawing.Size(173, 139);
+            this.pbPersonImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbPersonImage.TabIndex = 9;
             this.pbPersonImage.TabStop = false;
             // 

@@ -178,6 +178,7 @@
             this.rbtnFemale.TabIndex = 7;
             this.rbtnFemale.Text = "Female";
             this.rbtnFemale.UseVisualStyleBackColor = true;
+            this.rbtnFemale.CheckedChanged += new System.EventHandler(this.rbtnFemale_CheckedChanged);
             // 
             // rbtnMale
             // 
@@ -190,6 +191,7 @@
             this.rbtnMale.TabStop = true;
             this.rbtnMale.Text = "Male";
             this.rbtnMale.UseVisualStyleBackColor = true;
+            this.rbtnMale.CheckedChanged += new System.EventHandler(this.rbtnMale_CheckedChanged);
             // 
             // cbCountry
             // 

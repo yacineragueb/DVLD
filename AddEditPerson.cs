@@ -115,7 +115,7 @@ namespace DVLD_project
                 }
             }
 
-                LlblRemoveImage.Visible = (_Person.ImagePath != "");
+            LlblRemoveImage.Visible = (_Person.ImagePath != "");
 
             cbCountry.SelectedIndex = cbCountry.FindString(clsCountry.Find(_Person.NationalityCountryID).ToString());
         }
@@ -141,6 +141,7 @@ namespace DVLD_project
                 string selectedFilePath = openFileDialog1.FileName;
 
                 pbPersonImage.Load(selectedFilePath);
+                LlblRemoveImage.Visible = true;
             }
         }
 
@@ -181,15 +182,15 @@ namespace DVLD_project
             _Person.Phone = txtbPhone.Text;
             _Person.NationalityCountryID = CountryID;
 
-            if(pbPersonImage.Image != Resources.FemalePerson || pbPersonImage.Image != Resources.MalePerson)
+            if(pbPersonImage.Image == Resources.FemalePerson || pbPersonImage.Image == Resources.MalePerson || string.IsNullOrEmpty(pbPersonImage.ImageLocation))
             {
-                _Person.ImagePath = pbPersonImage.ImageLocation;
+                _Person.ImagePath = string.Empty;
             } else
             {
-                _Person.ImagePath = "";
+                _Person.ImagePath = pbPersonImage.ImageLocation;
             }
 
-            if(_Person.Save())
+            if (_Person.Save())
                 MessageBox.Show("Data Saved Successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
             else
                 MessageBox.Show("Error: Data Is not Saved Successfully.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -197,6 +198,18 @@ namespace DVLD_project
             Mode = enMode.Edit;
             lblTitle.Text = "Edit Person";
             lblPersonID.Text = _Person.ID.ToString();
+        }
+
+        private void rbtnFemale_CheckedChanged(object sender, EventArgs e)
+        {
+            pbGender.Image = Resources.Female;
+            pbPersonImage.Image = Resources.FemalePerson;
+        }
+
+        private void rbtnMale_CheckedChanged(object sender, EventArgs e)
+        {
+            pbGender.Image = Resources.Male;
+            pbPersonImage.Image = Resources.MalePerson;
         }
     }
 }
