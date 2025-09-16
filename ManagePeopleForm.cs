@@ -13,7 +13,7 @@ namespace DVLD_project
 {
     public partial class ManagePeopleForm : Form
     {
-        void LoadData()
+        private void _RefreshContactsList()
         {
             dgvPeopleTable.DataSource = clsPerson.GetAllPeople();
             lblRecords.Text = dgvPeopleTable.Rows.Count.ToString();
@@ -37,12 +37,19 @@ namespace DVLD_project
         private void ManagePeopleForm_Load(object sender, EventArgs e)
         {
             cbFilter.SelectedIndex = 0;
-            LoadData();
+            _RefreshContactsList();
         }
 
         private void showDetailsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ShowPersonDetails();
+        }
+
+        private void btnAddPerson_Click(object sender, EventArgs e)
+        {
+            AddEditPerson addEditPersonForm = new AddEditPerson(-1);
+            addEditPersonForm.ShowDialog();
+            _RefreshContactsList();
         }
     }
 }

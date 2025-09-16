@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddEditPerson.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddEditPerson.Designer.cs">
+      <DependentUpon>AddEditPerson.cs</DependentUpon>
+    </Compile>
     <Compile Include="ManagePeopleForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -72,6 +78,9 @@
     <Compile Include="ShowPersonDetails.Designer.cs">
       <DependentUpon>ShowPersonDetails.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="AddEditPerson.resx">
+      <DependentUpon>AddEditPerson.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ManagePeopleForm.resx">
       <DependentUpon>ManagePeopleForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -166,6 +175,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Female.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Save.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MalePerson.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FemalePerson.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
