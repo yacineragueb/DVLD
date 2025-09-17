@@ -49,6 +49,8 @@
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.btnAddPerson = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.txtbFilter = new System.Windows.Forms.TextBox();
+            this.dtpFilterByDate = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPeopleTable)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -81,6 +83,7 @@
             this.dgvPeopleTable.RowTemplate.Height = 24;
             this.dgvPeopleTable.Size = new System.Drawing.Size(1420, 377);
             this.dgvPeopleTable.TabIndex = 2;
+            this.dgvPeopleTable.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvPeopleTable_CellFormatting);
             // 
             // contextMenuStrip1
             // 
@@ -218,6 +221,7 @@
             this.cbFilter.Name = "cbFilter";
             this.cbFilter.Size = new System.Drawing.Size(182, 24);
             this.cbFilter.TabIndex = 7;
+            this.cbFilter.SelectedIndexChanged += new System.EventHandler(this.cbFilter_SelectedIndexChanged);
             // 
             // imageList1
             // 
@@ -246,11 +250,32 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
+            // txtbFilter
+            // 
+            this.txtbFilter.Location = new System.Drawing.Point(302, 208);
+            this.txtbFilter.Name = "txtbFilter";
+            this.txtbFilter.Size = new System.Drawing.Size(204, 22);
+            this.txtbFilter.TabIndex = 9;
+            this.txtbFilter.Visible = false;
+            this.txtbFilter.TextChanged += new System.EventHandler(this.txtbFilter_TextChanged);
+            this.txtbFilter.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Filter_KeyPress);
+            // 
+            // dtpFilterByDate
+            // 
+            this.dtpFilterByDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpFilterByDate.Location = new System.Drawing.Point(302, 208);
+            this.dtpFilterByDate.Name = "dtpFilterByDate";
+            this.dtpFilterByDate.Size = new System.Drawing.Size(204, 22);
+            this.dtpFilterByDate.TabIndex = 10;
+            this.dtpFilterByDate.Visible = false;
+            // 
             // ManagePeopleForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1448, 690);
+            this.Controls.Add(this.dtpFilterByDate);
+            this.Controls.Add(this.txtbFilter);
             this.Controls.Add(this.btnAddPerson);
             this.Controls.Add(this.cbFilter);
             this.Controls.Add(this.label3);
@@ -294,5 +319,7 @@
         private System.Windows.Forms.ToolStripMenuItem callPhoneToolStripMenuItem;
         private System.Windows.Forms.Button btnAddPerson;
         private System.Windows.Forms.ImageList imageList1;
+        private System.Windows.Forms.TextBox txtbFilter;
+        private System.Windows.Forms.DateTimePicker dtpFilterByDate;
     }
 }
