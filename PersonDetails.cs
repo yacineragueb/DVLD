@@ -27,7 +27,7 @@ namespace DVLD_project
             if (_Person != null)
             {
                 lblPersonID.Text = PersonID.ToString();
-                lblName.Text = $"{_Person.FirstName} {_Person.SecondName} {_Person.ThirdName} {_Person.LastName}";
+                lblName.Text = _Person.FullName();
                 lblAddress.Text = _Person.Address;
                 lblPhone.Text = _Person.Phone;
                 lblEmail.Text = _Person.Email;
@@ -39,10 +39,12 @@ namespace DVLD_project
                 {
                     case clsPerson.enGender.Male:
                         pbGender.Image = Resources.Male;
+                        pbPersonImage.Image = Resources.MalePerson;
                         lblGender.Text = "Male";
                         break;
                     case clsPerson.enGender.Female:
                         pbGender.Image = Resources.Female;
+                        pbPersonImage.Image = Resources.FemalePerson;
                         lblGender.Text = "Female";
                         break;
                 }
@@ -62,7 +64,13 @@ namespace DVLD_project
         private void LlblEditPerson_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             AddEditPerson addEditPersonForm = new AddEditPerson(_Person.ID);
+            addEditPersonForm.DataBack += AddEditPerson_DataBack; // Subscribe to the event
             addEditPersonForm.ShowDialog();
+        }
+
+        void AddEditPerson_DataBack(object sender, int PersonID)
+        {
+            LoadData(PersonID);
         }
     }
 }

@@ -48,6 +48,12 @@ namespace DVLD_project
             }
         }
 
+        // Declare a delegate
+        public delegate void DataBackEventHandler(object sender, int PersonID);
+
+        // Declare an event using the delegate
+        public event DataBackEventHandler DataBack;
+
         private void _FillCountriesInComoboBox()
         {
             DataTable table = clsCountry.GetAllCountries();
@@ -236,6 +242,9 @@ namespace DVLD_project
             Mode = enMode.Edit;
             lblTitle.Text = "Edit Person";
             lblPersonID.Text = _Person.ID.ToString();
+
+            // Trigger the event to send data back to PersonDetails
+            DataBack?.Invoke(this, _Person.ID);
         }
 
         private void rbtnFemale_CheckedChanged(object sender, EventArgs e)
