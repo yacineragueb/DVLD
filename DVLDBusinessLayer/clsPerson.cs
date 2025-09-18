@@ -75,6 +75,7 @@ namespace DVLDBusinessLayer
             this.Email = Email;
             this.NationalityCountryID = NationalityCountryID;
             this.ImagePath = ImagePath;
+            this.CountryInfo = clsCountry.Find(NationalityCountryID);
 
             _Mode = enMode.Update;
         }

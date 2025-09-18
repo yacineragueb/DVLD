@@ -11,10 +11,10 @@ using DVLDBusinessLayer;
 
 namespace DVLD_project
 {
-    public partial class ShowPersonDetails : Form
+    public partial class frmPersonDetails : Form
     {
         private int _PersonID;
-        public ShowPersonDetails(int PersonID)
+        public frmPersonDetails(int PersonID)
         {
             InitializeComponent();
             _PersonID = PersonID;

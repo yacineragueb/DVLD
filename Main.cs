@@ -18,7 +18,7 @@ namespace DVLD_project
             InitializeComponent();
         }
 
-        ManagePeopleForm managePeopleForm = new ManagePeopleForm();
+        frmListPeople managePeopleForm = new frmListPeople();
 
         private void peopleToolStripMenuItem_Click(object sender, EventArgs e)
         {

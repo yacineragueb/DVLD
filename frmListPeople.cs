@@ -12,7 +12,7 @@ using DVLDBusinessLayer;
 
 namespace DVLD_project
 {
-    public partial class ManagePeopleForm : Form
+    public partial class frmListPeople : Form
     {
 
         private void FormatDvgPeopleTable()
@@ -36,19 +36,19 @@ namespace DVLD_project
 
         void ShowPersonDetails()
         {
-            ShowPersonDetails Form = new ShowPersonDetails((int)dgvPeopleTable.CurrentRow.Cells[0].Value);
+            frmPersonDetails Form = new frmPersonDetails((int)dgvPeopleTable.CurrentRow.Cells[0].Value);
             Form.ShowDialog();
             _RefreshContactsList();
         }
 
         void _AddEditPerson(int PersonID)
         {
-            AddEditPerson addEditPersonForm = new AddEditPerson(PersonID);
+            frmAddEditPerson addEditPersonForm = new frmAddEditPerson(PersonID);
             addEditPersonForm.ShowDialog();
             _RefreshContactsList();
         }
 
-        public ManagePeopleForm()
+        public frmListPeople()
         {
             InitializeComponent();
         }

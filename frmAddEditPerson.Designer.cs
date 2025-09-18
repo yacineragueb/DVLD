@@ -1,6 +1,6 @@
 ﻿namespace DVLD_project
 {
-    partial class AddEditPerson
+    partial class frmAddEditPerson
     {
         /// <summary>
         /// Required designer variable.
@@ -571,10 +571,13 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
-            // AddEditPerson
+            // frmAddEditPerson
             // 
+            this.AcceptButton = this.btnSave;
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 30F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
+            this.CancelButton = this.btnClose;
             this.ClientSize = new System.Drawing.Size(1072, 638);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnSave);
@@ -586,7 +589,7 @@
             this.Font = new System.Drawing.Font("Poppins", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.Name = "AddEditPerson";
+            this.Name = "frmAddEditPerson";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Add Person";
             this.Load += new System.EventHandler(this.AddEditPerson_Load);

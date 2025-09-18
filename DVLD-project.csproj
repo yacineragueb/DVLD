@@ -46,17 +46,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AddEditPerson.cs">
+    <Compile Include="frmAddEditPerson.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AddEditPerson.Designer.cs">
-      <DependentUpon>AddEditPerson.cs</DependentUpon>
+    <Compile Include="frmAddEditPerson.Designer.cs">
+      <DependentUpon>frmAddEditPerson.cs</DependentUpon>
     </Compile>
-    <Compile Include="ManagePeopleForm.cs">
+    <Compile Include="frmListPeople.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ManagePeopleForm.Designer.cs">
-      <DependentUpon>ManagePeopleForm.cs</DependentUpon>
+    <Compile Include="frmListPeople.Designer.cs">
+      <DependentUpon>frmListPeople.cs</DependentUpon>
     </Compile>
     <Compile Include="Main.cs">
       <SubType>Form</SubType>
@@ -72,17 +72,17 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ShowPersonDetails.cs">
+    <Compile Include="frmPersonDetails.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ShowPersonDetails.Designer.cs">
-      <DependentUpon>ShowPersonDetails.cs</DependentUpon>
+    <Compile Include="frmPersonDetails.Designer.cs">
+      <DependentUpon>frmPersonDetails.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="AddEditPerson.resx">
-      <DependentUpon>AddEditPerson.cs</DependentUpon>
+    <EmbeddedResource Include="frmAddEditPerson.resx">
+      <DependentUpon>frmAddEditPerson.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ManagePeopleForm.resx">
-      <DependentUpon>ManagePeopleForm.cs</DependentUpon>
+    <EmbeddedResource Include="frmListPeople.resx">
+      <DependentUpon>frmListPeople.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
@@ -95,8 +95,8 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="ShowPersonDetails.resx">
-      <DependentUpon>ShowPersonDetails.cs</DependentUpon>
+    <EmbeddedResource Include="frmPersonDetails.resx">
+      <DependentUpon>frmPersonDetails.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

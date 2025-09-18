@@ -63,7 +63,7 @@ namespace DVLD_project
 
         private void LlblEditPerson_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            AddEditPerson addEditPersonForm = new AddEditPerson(_Person.ID);
+            frmAddEditPerson addEditPersonForm = new frmAddEditPerson(_Person.ID);
             addEditPersonForm.DataBack += AddEditPerson_DataBack; // Subscribe to the event
             addEditPersonForm.ShowDialog();
         }
