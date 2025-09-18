@@ -13,27 +13,21 @@ namespace DVLD_project
 {
     public partial class frmShowPersonDetails : Form
     {
-        private int _PersonID;
         public frmShowPersonDetails(int PersonID)
         {
             InitializeComponent();
-            _PersonID = PersonID;
+            ctrlPersonCardDetails.LoadData(PersonID);
+        }
+
+        public frmShowPersonDetails(string NationalNo)
+        {
+            InitializeComponent();
+            ctrlPersonCardDetails.LoadData(NationalNo);
         }
 
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
-        }
-
-        private void ShowPersonDetails_Load(object sender, EventArgs e)
-        {
-            if (clsPerson.IsPersonExistByID(_PersonID)) {
-                personDetails1.LoadData(_PersonID);
-            } else
-            {
-                this.Close();
-            }
-            
         }
     }
 }

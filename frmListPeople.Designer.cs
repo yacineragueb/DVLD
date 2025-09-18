@@ -50,7 +50,6 @@
             this.btnAddPerson = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.txtbFilter = new System.Windows.Forms.TextBox();
-            this.dtpFilterByDate = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPeopleTable)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -59,6 +58,7 @@
             // btnClose
             // 
             this.btnClose.BackColor = System.Drawing.Color.Red;
+            this.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnClose.Font = new System.Drawing.Font("Poppins Medium", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClose.ForeColor = System.Drawing.Color.White;
             this.btnClose.Location = new System.Drawing.Point(1298, 630);
@@ -74,6 +74,7 @@
             this.dgvPeopleTable.AllowUserToAddRows = false;
             this.dgvPeopleTable.AllowUserToDeleteRows = false;
             this.dgvPeopleTable.AllowUserToOrderColumns = true;
+            this.dgvPeopleTable.BackgroundColor = System.Drawing.Color.White;
             this.dgvPeopleTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvPeopleTable.ContextMenuStrip = this.contextMenuStrip1;
             this.dgvPeopleTable.Location = new System.Drawing.Point(16, 247);
@@ -83,7 +84,6 @@
             this.dgvPeopleTable.RowTemplate.Height = 24;
             this.dgvPeopleTable.Size = new System.Drawing.Size(1420, 377);
             this.dgvPeopleTable.TabIndex = 2;
-            this.dgvPeopleTable.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvPeopleTable_CellFormatting);
             // 
             // contextMenuStrip1
             // 
@@ -206,15 +206,14 @@
             this.cbFilter.FormattingEnabled = true;
             this.cbFilter.Items.AddRange(new object[] {
             "None",
-            "National No",
+            "Person ID",
+            "National No.",
             "First Name",
             "Second Name",
             "Third Name",
             "Last Name",
             "Gender",
-            "Date of Birth",
             "Phone",
-            "Address",
             "Email",
             "Nationality"});
             this.cbFilter.Location = new System.Drawing.Point(114, 207);
@@ -260,21 +259,13 @@
             this.txtbFilter.TextChanged += new System.EventHandler(this.txtbFilter_TextChanged);
             this.txtbFilter.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Filter_KeyPress);
             // 
-            // dtpFilterByDate
-            // 
-            this.dtpFilterByDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpFilterByDate.Location = new System.Drawing.Point(302, 208);
-            this.dtpFilterByDate.Name = "dtpFilterByDate";
-            this.dtpFilterByDate.Size = new System.Drawing.Size(204, 22);
-            this.dtpFilterByDate.TabIndex = 10;
-            this.dtpFilterByDate.Visible = false;
-            // 
-            // ManagePeopleForm
+            // frmListPeople
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
+            this.CancelButton = this.btnClose;
             this.ClientSize = new System.Drawing.Size(1448, 690);
-            this.Controls.Add(this.dtpFilterByDate);
             this.Controls.Add(this.txtbFilter);
             this.Controls.Add(this.btnAddPerson);
             this.Controls.Add(this.cbFilter);
@@ -286,7 +277,7 @@
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.pictureBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Name = "ManagePeopleForm";
+            this.Name = "frmListPeople";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Manage People";
             this.Load += new System.EventHandler(this.ManagePeopleForm_Load);
@@ -320,6 +311,5 @@
         private System.Windows.Forms.Button btnAddPerson;
         private System.Windows.Forms.ImageList imageList1;
         private System.Windows.Forms.TextBox txtbFilter;
-        private System.Windows.Forms.DateTimePicker dtpFilterByDate;
     }
 }

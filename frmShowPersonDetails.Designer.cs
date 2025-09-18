@@ -30,7 +30,7 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.btnClose = new System.Windows.Forms.Button();
-            this.personDetails1 = new DVLD_project.PersonDetails();
+            this.ctrlPersonCardDetails = new DVLD_project.ctrlPersonDetails();
             this.SuspendLayout();
             // 
             // label1
@@ -56,26 +56,25 @@
             this.btnClose.UseVisualStyleBackColor = false;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
-            // personDetails1
+            // ctrlPersonCardDetails
             // 
-            this.personDetails1.Location = new System.Drawing.Point(12, 93);
-            this.personDetails1.Name = "personDetails1";
-            this.personDetails1.Size = new System.Drawing.Size(805, 275);
-            this.personDetails1.TabIndex = 3;
+            this.ctrlPersonCardDetails.Location = new System.Drawing.Point(12, 93);
+            this.ctrlPersonCardDetails.Name = "ctrlPersonCardDetails";
+            this.ctrlPersonCardDetails.Size = new System.Drawing.Size(805, 275);
+            this.ctrlPersonCardDetails.TabIndex = 3;
             // 
-            // ShowPersonDetails
+            // frmShowPersonDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(828, 437);
-            this.Controls.Add(this.personDetails1);
+            this.Controls.Add(this.ctrlPersonCardDetails);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Name = "ShowPersonDetails";
+            this.Name = "frmShowPersonDetails";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Person Details";
-            this.Load += new System.EventHandler(this.ShowPersonDetails_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -85,6 +84,6 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnClose;
-        private PersonDetails personDetails1;
+        private ctrlPersonDetails ctrlPersonCardDetails;
     }
 }

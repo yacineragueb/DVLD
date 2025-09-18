@@ -1,6 +1,6 @@
 ﻿namespace DVLD_project
 {
-    partial class PersonDetails
+    partial class ctrlPersonDetails
     {
         /// <summary> 
         /// Required designer variable.

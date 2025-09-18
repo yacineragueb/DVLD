@@ -14,7 +14,7 @@ using System.IO;
 
 namespace DVLD_project
 {
-    public partial class PersonDetails : UserControl
+    public partial class ctrlPersonDetails : UserControl
     {
         clsPerson _Person;
 
@@ -33,7 +33,7 @@ namespace DVLD_project
             }
         }
 
-        public PersonDetails()
+        public ctrlPersonDetails()
         {
             InitializeComponent();
         }
@@ -140,8 +140,8 @@ namespace DVLD_project
         private void LlblEditPerson_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             frmAddEditPerson addEditPersonForm = new frmAddEditPerson(_PersonID);
-            addEditPersonForm.ShowDialog();
             addEditPersonForm.DataBack += AddEditPerson_DataBack; // Subscribe to the event
+            addEditPersonForm.ShowDialog();
         }
 
         void AddEditPerson_DataBack(object sender, int PersonID)

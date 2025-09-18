@@ -15,37 +15,36 @@ namespace DVLD_project
     public partial class frmListPeople : Form
     {
 
-        private void FormatDvgPeopleTable()
-        {
-            dgvPeopleTable.Columns["NationalNo"].HeaderText = "National No";
-            dgvPeopleTable.Columns["FirstName"].HeaderText = "First Name";
-            dgvPeopleTable.Columns["SecondName"].HeaderText = "Second Name";
-            dgvPeopleTable.Columns["ThirdName"].HeaderText = "Third Name";
-            dgvPeopleTable.Columns["LastName"].HeaderText = "Last Name";
-            dgvPeopleTable.Columns["DateOfBirth"].HeaderText = "Date Of Birth";
-            dgvPeopleTable.Columns["Gendor"].HeaderText = "Gender";
-            dgvPeopleTable.Columns["NationalityCountryID"].HeaderText = "Nationality";
-            dgvPeopleTable.Columns["ImagePath"].Visible = false;
-        }
+        private static DataTable _dtAllPeople = clsPerson.GetAllPeople();
 
-        private void _RefreshContactsList()
+        // Only select the columns that you want to show in the grid
+        private DataTable _dtPeople = _dtAllPeople.DefaultView.ToTable(false, "PersonID", "NationalNo", "FirstName", "SecondName", "ThirdName", "LastName", "GenderCaption", "DataOfBirth", "Country", "Phone", "Email");
+
+        private void _RefreshPeopleList()
         {
-            dgvPeopleTable.DataSource = clsPerson.GetAllPeople();
+            _dtAllPeople = clsPerson.GetAllPeople();
+            _dtPeople = _dtAllPeople.DefaultView.ToTable(false, "PersonID", "NationalNo",
+                                                       "FirstName", "SecondName", "ThirdName", "LastName",
+                                                       "GendorCaption", "DateOfBirth", "CountryName",
+                                                       "Phone", "Email");
+
+            dgvPeopleTable.DataSource = _dtPeople;
             lblRecords.Text = dgvPeopleTable.Rows.Count.ToString();
         }
 
-        void ShowPersonDetails()
+        private void _ShowPersonDetails()
         {
-            frmShowPersonDetails Form = new frmShowPersonDetails((int)dgvPeopleTable.CurrentRow.Cells[0].Value);
+            int PersonID = (int)dgvPeopleTable.CurrentRow.Cells[0].Value;
+            frmShowPersonDetails Form = new frmShowPersonDetails(PersonID);
             Form.ShowDialog();
-            _RefreshContactsList();
+            _RefreshPeopleList();
         }
 
-        void _AddEditPerson(int PersonID)
+        private void _AddEditPerson(int PersonID)
         {
             frmAddEditPerson addEditPersonForm = new frmAddEditPerson(PersonID);
             addEditPersonForm.ShowDialog();
-            _RefreshContactsList();
+            _RefreshPeopleList();
         }
 
         public frmListPeople()
@@ -60,24 +59,63 @@ namespace DVLD_project
 
         private void ManagePeopleForm_Load(object sender, EventArgs e)
         {
+            dgvPeopleTable.DataSource = _dtPeople;
             cbFilter.SelectedIndex = 0;
-            _RefreshContactsList();
-            FormatDvgPeopleTable();
+
+            lblRecords.Text = dgvPeopleTable.Rows.Count.ToString();
+
+            if(dgvPeopleTable.Rows.Count > 0)
+            {
+                dgvPeopleTable.Columns[0].HeaderText = "Person ID";
+                dgvPeopleTable.Columns[0].Width = 110;
+
+                dgvPeopleTable.Columns[1].HeaderText = "National No.";
+                dgvPeopleTable.Columns[1].Width = 120;
+
+                dgvPeopleTable.Columns[2].HeaderText = "First Name";
+                dgvPeopleTable.Columns[2].Width = 120;
+
+                dgvPeopleTable.Columns[3].HeaderText = "Second Name";
+                dgvPeopleTable.Columns[3].Width = 120;
+
+                dgvPeopleTable.Columns[4].HeaderText = "Third Name";
+                dgvPeopleTable.Columns[4].Width = 120;
+
+                dgvPeopleTable.Columns[5].HeaderText = "Last Name";
+                dgvPeopleTable.Columns[5].Width = 120;
+
+                dgvPeopleTable.Columns[6].HeaderText = "Gender";
+                dgvPeopleTable.Columns[6].Width = 120;
+
+                dgvPeopleTable.Columns[7].HeaderText = "Date Of Birth";
+                dgvPeopleTable.Columns[7].Width = 140;
+
+                dgvPeopleTable.Columns[8].HeaderText = "Nationality";
+                dgvPeopleTable.Columns[8].Width = 120;
+
+                dgvPeopleTable.Columns[9].HeaderText = "Phone";
+                dgvPeopleTable.Columns[9].Width = 120;
+
+                dgvPeopleTable.Columns[10].HeaderText = "Email";
+                dgvPeopleTable.Columns[10].Width = 170;
+            }
         }
 
         private void showDetailsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ShowPersonDetails();
+            _ShowPersonDetails();
         }
 
         private void btnAddPerson_Click(object sender, EventArgs e)
         {
-            _AddEditPerson(-1);
+            int PersonID = -1;
+            _AddEditPerson(PersonID);
         }
 
         private void addNewPersonToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            _AddEditPerson(-1);
+            int PersonID = -1;
+            _AddEditPerson(PersonID);
         }
 
         private void editToolStripMenuItem_Click(object sender, EventArgs e)
@@ -92,7 +130,7 @@ namespace DVLD_project
                 if(clsPerson.DeletePerson((int)dgvPeopleTable.CurrentRow.Cells[0].Value))
                 {
                     MessageBox.Show("User Deleted Successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    _RefreshContactsList();
+                    _RefreshPeopleList();
                 }
                 else
                 {
@@ -111,42 +149,15 @@ namespace DVLD_project
             MessageBox.Show("This is not implemented yet.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
 
-        private void dgvPeopleTable_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
-        {
-            if (dgvPeopleTable.Columns[e.ColumnIndex].Name == "Gendor")
-            {
-                if(e.Value.ToString() == "0")
-                {
-                    e.Value = "Male";
-                    e.FormattingApplied = true;
-                } else
-                {
-                    e.Value = "Female";
-                    e.FormattingApplied = true;
-                }
-            }
-
-            if (dgvPeopleTable.Columns[e.ColumnIndex].Name == "NationalityCountryID")
-            {
-                e.Value = clsCountry.Find(Convert.ToInt32(e.Value)).CountryName;
-                e.FormattingApplied = true;
-            }
-        }
-
         private void cbFilter_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cbFilter.SelectedIndex == 0)
             {
                 txtbFilter.Visible = false;
-                dtpFilterByDate.Visible = false;
-            } else if(cbFilter.SelectedIndex == 7)
-            {
-                txtbFilter.Visible = false;
-                dtpFilterByDate.Visible = true;
             } else
             {
                 txtbFilter.Visible = true;
-                dtpFilterByDate.Visible = false;
+                txtbFilter.Focus();
             }
 
             txtbFilter.Clear();
@@ -181,71 +192,64 @@ namespace DVLD_project
 
         private void txtbFilter_TextChanged(object sender, EventArgs e)
         {
-            DataTable dt = clsPerson.GetAllPeople();
-            DataView dv = dt.DefaultView;
+            string FilterColumn = "";
 
-            if (!string.IsNullOrEmpty(txtbFilter.Text))
+            switch (cbFilter.Text)
             {
+                case "Person ID":
+                    FilterColumn = "PersonID";
+                    break;
+                case "National No.":
+                    FilterColumn = "NationalNo";
+                    break;
+                case "First Name":
+                    FilterColumn = "FirstName";
+                    break;
+                case "Second Name":
+                    FilterColumn = "SecondName";
+                    break;
+                case "Third Name":
+                    FilterColumn = "ThirdName";
+                    break;
+                case "Last Name":
+                    FilterColumn = "LastName";
+                    break;
+                case "Nationality":
+                    FilterColumn = "CountryName";
+                    break;
+                case "Gender":
+                    FilterColumn = "GenderCaption";
+                    break;
+                case "Phone":
+                    FilterColumn = "Phone";
+                    break;
+                case "Email":
+                    FilterColumn = "Email";
+                    break;
 
-                switch (cbFilter.SelectedIndex)
-                {
-                    case 0:
-                        dv.RowFilter = "";
-                        break;
-                    case 1:
-                        dv.RowFilter = $"NationalNo LIKE '%{txtbFilter.Text}%'";
-                        break;
-                    case 2:
-                        dv.RowFilter = $"FirstName LIKE '%{txtbFilter.Text}%'";
-                        break;
-                    case 3:
-                        dv.RowFilter = $"SecondName LIKE '%{txtbFilter.Text}%'";
-                        break;
-                    case 4:
-                        dv.RowFilter = $"ThirdName LIKE '%{txtbFilter.Text}%'";
-                        break;
-                    case 5:
-                        dv.RowFilter = $"LastName LIKE '%{txtbFilter.Text}%'";
-                        break;
-                    case 6:
-                        if (txtbFilter.Text.ToLower() == "m")
-                        {
-                            dv.RowFilter = $"Gendor = 0";
-                        }
-                        else if (txtbFilter.Text.ToLower() == "f")
-                        {
-                            dv.RowFilter = $"Gendor = 1";
-                        }
-                        else
-                        {
-                            dv.RowFilter = "";
-                        }
-                        break;
-                    case 7:
-                        //DateTime selectedDate = dtpFilterByDate.Value.Date;
-                        //DateTime nextDate = selectedDate.AddDays(1);
-                        //dv.RowFilter = $"DateOfBirth >= #{selectedDate:MM/dd/yyyy}# AND DateOfBirth < #{nextDate:MM/dd/yyyy}#";
-                        break;
-                    case 8:
-                        dv.RowFilter = $"Phone LIKE '%{txtbFilter.Text}%'";
-                        break;
-                    case 9:
-                        dv.RowFilter = $"Address LIKE '%{txtbFilter.Text}%'";
-                        break;
-                    case 10:
-                        dv.RowFilter = $"Email LIKE '%{txtbFilter.Text}%'";
-                        break;
-                    case 11:
-                        clsCountry Country = clsCountry.Find(txtbFilter.Text);
-                        if (Country != null) {
-                            dv.RowFilter = $"NationalityCountryID = {Country.ID}"; 
-                        }
-                        break;
-                }
+                default:
+                    FilterColumn = "";
+                    break;
             }
 
-            dgvPeopleTable.DataSource = dv;
-            lblRecords.Text = dv.Count.ToString();
+            // Reset the filter in case nothing selected or filter value contains nothing.
+            if(txtbFilter.Text.Trim() == "" || FilterColumn == "")
+            {
+                _dtPeople.DefaultView.RowFilter = "";
+                lblRecords.Text = dgvPeopleTable.Rows.Count.ToString();
+                return;
+            }
+
+            if(FilterColumn == "PersonID")
+            {
+                // In this case we deal with integer not string.
+                _dtPeople.DefaultView.RowFilter = string.Format("[{0}] = {1}", FilterColumn, txtbFilter.Text.Trim());
+            } else
+            {
+                _dtPeople.DefaultView.RowFilter = string.Format("[{0}] LIKE '{1}%'", FilterColumn, txtbFilter.Text.Trim());
+            }
+
+            lblRecords.Text = dgvPeopleTable.Rows.Count.ToString();
         }
     }
 }
