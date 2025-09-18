@@ -5,7 +5,7 @@ using System.Data.SqlClient;
 
 namespace DVLDAccessLayer
 {
-    public class clsPersonDataAccess
+    public class clsPersonData
     {
         public static bool GetPersonInfoById(int ID, ref string NationalNo, ref string FirstName, ref string SecondName, ref int Gender, ref string ThirdName, ref string LastName, ref DateTime DateOfBirth, ref string Address, ref string Phone, ref string Email, ref int NationalityCountryID, ref string ImagePath)
         {
@@ -52,6 +52,60 @@ namespace DVLDAccessLayer
                             }
                         }
                     } catch (Exception ex)
+                    {
+                        IsFound = false;
+                    }
+                }
+            }
+            return IsFound;
+        }
+
+        public static bool GetPersonInfoByNationalNo(ref int ID, string NationalNo, ref string FirstName, ref string SecondName, ref int Gender, ref string ThirdName, ref string LastName, ref DateTime DateOfBirth, ref string Address, ref string Phone, ref string Email, ref int NationalityCountryID, ref string ImagePath)
+        {
+            bool IsFound = false;
+            using (SqlConnection connection = new SqlConnection(clsDVLDAcessLayerSettings.connectionString))
+            {
+                string query = "SELECT * FROM People WHERE NationalNo = @NationalNo";
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@NationalNo", NationalNo);
+                    try
+                    {
+                        connection.Open();
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                IsFound = true;
+
+                                ID = (int)reader["PersonID"];
+                                FirstName = (string)reader["FirstName"];
+                                SecondName = (string)reader["SecondName"];
+                                ThirdName = (string)reader["ThirdName"];
+                                LastName = (string)reader["LastName"];
+                                Gender = Convert.ToInt16(reader["Gendor"]);
+                                DateOfBirth = (DateTime)reader["DateOfBirth"];
+                                Address = (string)reader["Address"];
+                                Phone = (string)reader["Phone"];
+                                Email = (string)reader["Email"];
+                                NationalityCountryID = (int)reader["NationalityCountryID"];
+
+                                if (reader["ImagePath"] != DBNull.Value)
+                                {
+                                    ImagePath = (string)reader["ImagePath"];
+                                }
+                                else
+                                {
+                                    ImagePath = "";
+                                }
+                            }
+                            else
+                            {
+                                IsFound = false;
+                            }
+                        }
+                    }
+                    catch (Exception ex)
                     {
                         IsFound = false;
                     }
@@ -172,7 +226,9 @@ namespace DVLDAccessLayer
             DataTable table = new DataTable();
             using (SqlConnection connection = new SqlConnection(clsDVLDAcessLayerSettings.connectionString))
             {
-                string query = "SELECT * FROM People;";
+                string query = @"SELECT P.PersonID, P.NationalNo, P.FirstName, P.SecondName, P.ThirdName, P.LastName, P.DateOfBirth, P.Gendor, GenderCaption = CASE WHEN P.Gendor = 0 THEN 'Male' ELSE 'Female' END, P.Address, P.Phone, P.Email, P.NationalityCountryID, C.CountryName, P.ImagePath FROM People P
+                                 JOIN Countries C ON C.CountryID = P.NationalityCountryID
+                                 ORDER BY P.FirstName;";
                 using(SqlCommand command = new SqlCommand(query, connection))
                 {
                     try
@@ -276,7 +332,5 @@ namespace DVLDAccessLayer
 
             return IsFound;
         }
-
-
     }
 }

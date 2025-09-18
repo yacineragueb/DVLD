@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data;
+using ContactsBusinessLayer;
 using DVLDAccessLayer;
 
 namespace DVLDBusinessLayer
@@ -37,6 +38,8 @@ namespace DVLDBusinessLayer
         public string Email { get; set; }
         public int NationalityCountryID { get; set; }
         public string ImagePath { get; set; }
+
+        public clsCountry CountryInfo;
 
         public clsPerson() 
         {
@@ -78,13 +81,13 @@ namespace DVLDBusinessLayer
 
         private bool _AddNewPerson()
         {
-            this.ID = clsPersonDataAccess.AddNewPerson(this.NationalNo, this.FirstName, this.SecondName, (int)this.Gender, this.ThirdName, this.LastName, this.DateOfBirth, this.Address, this.Phone, this.Email, this.NationalityCountryID, this.ImagePath);
+            this.ID = clsPersonData.AddNewPerson(this.NationalNo, this.FirstName, this.SecondName, (int)this.Gender, this.ThirdName, this.LastName, this.DateOfBirth, this.Address, this.Phone, this.Email, this.NationalityCountryID, this.ImagePath);
             return (this.ID != -1);
         }
 
         private bool _UpdatePerson()
         {
-            return clsPersonDataAccess.UpdatePerson(this.ID, this.NationalNo, this.FirstName, this.SecondName, (int)this.Gender, this.ThirdName, this.LastName, this.DateOfBirth, this.Address, this.Phone, this.Email, this.NationalityCountryID, this.ImagePath);
+            return clsPersonData.UpdatePerson(this.ID, this.NationalNo, this.FirstName, this.SecondName, (int)this.Gender, this.ThirdName, this.LastName, this.DateOfBirth, this.Address, this.Phone, this.Email, this.NationalityCountryID, this.ImagePath);
         }
 
         public static clsPerson Find(int ID)
@@ -102,7 +105,29 @@ namespace DVLDBusinessLayer
             int NationalityCountryID = -1;
             string ImagePath = "";
 
-            if (clsPersonDataAccess.GetPersonInfoById(ID, ref NationalNo, ref FirstName, ref SecondName, ref Gender, ref ThirdName, ref LastName, ref DateOfBirth, ref Address, ref Phone, ref Email, ref NationalityCountryID, ref ImagePath))
+            if (clsPersonData.GetPersonInfoById(ID, ref NationalNo, ref FirstName, ref SecondName, ref Gender, ref ThirdName, ref LastName, ref DateOfBirth, ref Address, ref Phone, ref Email, ref NationalityCountryID, ref ImagePath))
+
+                return new clsPerson(ID, NationalNo, FirstName, SecondName, Gender, ThirdName, LastName, DateOfBirth, Address, Phone, Email, NationalityCountryID, ImagePath);
+            else
+                return null;
+        }
+
+        public static clsPerson Find(string NationalNo)
+        {
+            int ID = -1;
+            string FirstName = "";
+            string SecondName = "";
+            string ThirdName = "";
+            string LastName = "";
+            DateTime DateOfBirth = DateTime.Now;
+            int Gender = (int)enGender.Male;
+            string Address = "";
+            string Phone = "";
+            string Email = "";
+            int NationalityCountryID = -1;
+            string ImagePath = "";
+
+            if (clsPersonData.GetPersonInfoByNationalNo(ref ID, NationalNo, ref FirstName, ref SecondName, ref Gender, ref ThirdName, ref LastName, ref DateOfBirth, ref Address, ref Phone, ref Email, ref NationalityCountryID, ref ImagePath))
 
                 return new clsPerson(ID, NationalNo, FirstName, SecondName, Gender, ThirdName, LastName, DateOfBirth, Address, Phone, Email, NationalityCountryID, ImagePath);
             else
@@ -131,22 +156,22 @@ namespace DVLDBusinessLayer
 
         public static DataTable GetAllPeople()
         {
-            return clsPersonDataAccess.GetAllPeople();
+            return clsPersonData.GetAllPeople();
         }
 
         public static bool DeletePerson(int ID)
         {
-            return clsPersonDataAccess.DeletePerson(ID);
+            return clsPersonData.DeletePerson(ID);
         }
 
         public static bool IsPersonExistByID(int ID)
         {
-            return clsPersonDataAccess.IsPersonExist(ID);
+            return clsPersonData.IsPersonExist(ID);
         }
 
         public static bool IsPersonExistByNationalNo(string NationalNo)
         {
-            return clsPersonDataAccess.IsPersonExist(NationalNo);
+            return clsPersonData.IsPersonExist(NationalNo);
         }
     }
 }
