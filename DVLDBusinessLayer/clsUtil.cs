@@ -12,12 +12,18 @@ namespace DVLDBusinessLayer
 
         public static bool CreateFolderIfDoesNotExist(string FolderPath)
         {
-            if(!Directory.Exists(FolderPath))
+            try
             {
-                Directory.CreateDirectory(FolderPath);
-            }
+                if (!Directory.Exists(FolderPath))
+                {
+                    Directory.CreateDirectory(FolderPath);
+                }
 
-            return true;
+                return true;
+            } catch (Exception ex)
+            {
+                return false;
+            }
         }
 
         public static string ReplaceFileNameWithGUID(string sourceFile)
@@ -37,17 +43,18 @@ namespace DVLDBusinessLayer
             }
 
             string destinationFile = destinationFolder + ReplaceFileNameWithGUID(sourceFile);
+
             try
             {
                 File.Copy(sourceFile, destinationFile, true);
+                sourceFile = destinationFile;
+                return true;
             }
-            catch (IOException ex)
+            catch (Exception ex)
             {
                 return false;
             }
 
-            sourceFile = destinationFile;
-            return true;
         }
     }
 }

@@ -51,7 +51,7 @@ namespace DVLD_project
 
                 if (_Person.ImagePath != "")
                 {
-                    pbPersonImage.Load(_Person.ImagePath);
+                    pbPersonImage.ImageLocation = _Person.ImagePath;
                 }
 
             } else

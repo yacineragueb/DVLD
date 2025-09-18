@@ -28,7 +28,6 @@ namespace DVLD_project
         }
 
         enMode _Mode = enMode.AddNew;
-        private string _newImagePath = null;
 
         int _PersonID;
         clsPerson _Person;
@@ -141,43 +140,6 @@ namespace DVLD_project
             LlblRemoveImage.Visible = (_Person.ImagePath != "");
         }
 
-        private void _ChangeImagePath()
-        {
-            if (!string.IsNullOrEmpty(_newImagePath))
-            {
-                if (!string.IsNullOrEmpty(_Person.ImagePath) && File.Exists(_Person.ImagePath))
-                {
-                    try
-                    {
-                        File.Delete(_Person.ImagePath);
-                    }
-                    catch (Exception ex)
-                    {
-                        return;
-                    }
-                }
-
-                string destinationFolder = @"D:\DVLD\Images";
-                if (!Directory.Exists(destinationFolder))
-                {
-                    Directory.CreateDirectory(destinationFolder);
-                }
-
-                string fileName = Guid.NewGuid().ToString() + Path.GetExtension(_newImagePath);
-                string destinationPath = Path.Combine(destinationFolder, fileName);
-
-                File.Copy(_newImagePath, destinationPath, true);
-
-                _Person.ImagePath = destinationPath;
-
-                _newImagePath = null;
-            }
-            else
-            {
-               _Person.ImagePath = string.Empty;
-            }
-        }
-
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -201,9 +163,9 @@ namespace DVLD_project
 
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                _newImagePath = openFileDialog1.FileName;
+                string selectedFilePath = openFileDialog1.FileName;
 
-                pbPersonImage.Load(_newImagePath);
+                pbPersonImage.ImageLocation = selectedFilePath;
 
                 LlblRemoveImage.Visible = true;
             }
@@ -225,6 +187,36 @@ namespace DVLD_project
 
         private bool _HandlePersonImage()
         {
+            if(_Person.ImagePath != pbPersonImage.ImageLocation)
+            {
+                if(_Person.ImagePath != "")
+                {
+                    try
+                    {
+                        File.Delete(_Person.ImagePath);
+                    } catch (Exception ex)
+                    {
+                        // We could not delete the file
+                        // Log it later
+                    }
+                }
+
+                if(pbPersonImage.ImageLocation != null)
+                {
+                   string SourceImageFile = pbPersonImage.ImageLocation.ToString();
+
+                    if(clsUtil.CopyImageToProjectImagesFolder(ref SourceImageFile))
+                    {
+                        pbPersonImage.ImageLocation = SourceImageFile;
+                        return true;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error Copying Image File", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return false;
+                    }
+                }
+            }
             return true;
         }
 
@@ -238,7 +230,6 @@ namespace DVLD_project
             }
 
             if (!_HandlePersonImage()) return;
-
 
             int CountryID = clsCountry.Find(cbCountry.Text).ID;
 
@@ -262,7 +253,13 @@ namespace DVLD_project
             _Person.Phone = txtbPhone.Text.Trim();
             _Person.NationalityCountryID = CountryID;
 
-            _ChangeImagePath();
+            if(pbPersonImage.ImageLocation != null)
+            {
+                _Person.ImagePath = pbPersonImage.ImageLocation;
+            } else
+            {
+                _Person.ImagePath = "";
+            }
 
             if (_Person.Save())
             {
