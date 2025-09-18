@@ -36,7 +36,7 @@ namespace DVLD_project
 
         void ShowPersonDetails()
         {
-            frmPersonDetails Form = new frmPersonDetails((int)dgvPeopleTable.CurrentRow.Cells[0].Value);
+            frmShowPersonDetails Form = new frmShowPersonDetails((int)dgvPeopleTable.CurrentRow.Cells[0].Value);
             Form.ShowDialog();
             _RefreshContactsList();
         }

@@ -129,7 +129,7 @@
             // 
             // pbGender
             // 
-            this.pbGender.Image = global::DVLD_project.Properties.Resources.Female;
+            this.pbGender.Image = global::DVLD_project.Properties.Resources.Male;
             this.pbGender.Location = new System.Drawing.Point(135, 148);
             this.pbGender.Name = "pbGender";
             this.pbGender.Size = new System.Drawing.Size(32, 26);

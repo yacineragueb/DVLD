@@ -1,6 +1,6 @@
 ﻿namespace DVLD_project
 {
-    partial class frmPersonDetails
+    partial class frmShowPersonDetails
     {
         /// <summary>
         /// Required designer variable.
