@@ -72,7 +72,6 @@ namespace DVLD_project
                 this.Text = "Add New Person";
                 lblTitle.Text = "Add New Person";
                 _Person = new clsPerson();
-                return;
             } else
             {
                 this.Text = "Edit Person";
@@ -96,7 +95,6 @@ namespace DVLD_project
 
             // Set Default Country To Algeria
             cbCountry.SelectedIndex = cbCountry.FindString("Algeria");
-
         }
 
         private void _LoadData()
