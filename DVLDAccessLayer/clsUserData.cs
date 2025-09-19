@@ -16,7 +16,7 @@ namespace DVLDAccessLayer
                 string query = "SELECT * FROM Users WHERE UserID = @UserID;";
                 using(SqlCommand command = new SqlCommand(query, connection))
                 {
-                    command.Parameters.AddWithValue("@UserId", UserID);
+                    command.Parameters.AddWithValue("@UserID", UserID);
 
                     try
                     {
