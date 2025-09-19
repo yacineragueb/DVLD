@@ -52,6 +52,7 @@ namespace DVLD_project
                 lblNationalNo.Text = _Person.NationalNo;
                 lblDateOfBirth.Text = _Person.DateOfBirth.ToShortDateString();
                 lblCountry.Text = clsCountry.Find(_Person.NationalityCountryID).CountryName;
+                LlblEditPerson.Enabled = true;
 
                 switch (_Person.Gender)
                 {
@@ -101,6 +102,7 @@ namespace DVLD_project
                 lblNationalNo.Text = NationalNo;
                 lblDateOfBirth.Text = _Person.DateOfBirth.ToShortDateString();
                 lblCountry.Text = clsCountry.Find(_Person.NationalityCountryID).CountryName;
+                LlblEditPerson.Enabled = true;
 
                 switch (_Person.Gender)
                 {
@@ -147,6 +149,14 @@ namespace DVLD_project
         void AddEditPerson_DataBack(object sender, int PersonID)
         {
             LoadData(PersonID);
+        }
+
+        private void ctrlPersonDetails_Load(object sender, EventArgs e)
+        {
+            if(lblPersonID.Text == "N/A")
+            {
+                LlblEditPerson.Enabled = false;
+            }
         }
     }
 }
