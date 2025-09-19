@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DVLD_project.Users;
 using DVLDBusinessLayer;
 
 namespace DVLD_project
@@ -18,11 +19,17 @@ namespace DVLD_project
             InitializeComponent();
         }
 
-        frmListPeople managePeopleForm = new frmListPeople();
+        frmListPeople frmListPeople = new frmListPeople();
+        frmListUsers frmListUsers = new frmListUsers();
 
         private void peopleToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            managePeopleForm.ShowDialog();
+            frmListPeople.ShowDialog();
+        }
+
+        private void usersToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmListUsers.ShowDialog();
         }
     }
 }

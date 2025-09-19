@@ -18,14 +18,10 @@ namespace DVLDBusinessLayer
 
         enMode _Mode = enMode.AddNew;
 
-        clsPerson _Person;
+        readonly clsPerson _Person;
 
         public int UserID { get; set; }
-        public int PersonID
-        {
-            get { return _Person.ID; }
-            set { _Person.ID = value; }
-        }
+        public int PersonID { get; set; }
         public string UserName { get; set; }
         public string Password { get; set; }
         public bool IsActive { get; set; }
@@ -44,10 +40,11 @@ namespace DVLDBusinessLayer
         private clsUser(int UserID, int PersonID, string UserName, string Password, bool IsActive)
         {
             this.UserID = UserID;
-            this.PersonID = clsPerson.Find(PersonID).ID;
             this.UserName = UserName;
             this.Password = Password;
             this.IsActive = IsActive;
+
+            this._Person = clsPerson.Find(PersonID);
 
             _Mode = enMode.Update;
         }

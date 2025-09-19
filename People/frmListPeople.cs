@@ -129,7 +129,7 @@ namespace DVLD_project
             {
                 if(clsPerson.DeletePerson((int)dgvPeopleTable.CurrentRow.Cells[0].Value))
                 {
-                    MessageBox.Show("User Deleted Successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Person Deleted Successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     _RefreshPeopleList();
                 }
                 else

@@ -116,7 +116,9 @@ namespace DVLDAccessLayer
             DataTable dataTable = new DataTable();
             using (SqlConnection connection = new SqlConnection(clsDVLDAcessLayerSettings.connectionString))
             {
-                string query = "SELECT * FROM Users";
+                string query = @"SELECT U.UserID, U.PersonID, FullName = P.FirstName + ' ' + P.SecondName + ' ' + P.ThirdName + ' ' + P.LastName, U.UserName, U.IsActive FROM Users U
+                                JOIN People P ON U.PersonID = P.PersonID
+                                ORDER BY FirstName;";
 
                 using(SqlCommand command = new SqlCommand(query,connection))
                 {

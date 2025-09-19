@@ -78,11 +78,23 @@
     <Compile Include="People\frmShowPersonDetails.Designer.cs">
       <DependentUpon>frmShowPersonDetails.cs</DependentUpon>
     </Compile>
+    <Compile Include="Users\Controls\ctrlUserDetailsCard.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Users\Controls\ctrlUserDetailsCard.Designer.cs">
+      <DependentUpon>ctrlUserDetailsCard.cs</DependentUpon>
+    </Compile>
     <Compile Include="Users\frmListUsers.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Users\frmListUsers.Designer.cs">
       <DependentUpon>frmListUsers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Users\frmShowUserDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Users\frmShowUserDetails.Designer.cs">
+      <DependentUpon>frmShowUserDetails.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="People\frmAddEditPerson.resx">
       <DependentUpon>frmAddEditPerson.cs</DependentUpon>
@@ -104,8 +116,14 @@
     <EmbeddedResource Include="People\frmShowPersonDetails.resx">
       <DependentUpon>frmShowPersonDetails.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Users\Controls\ctrlUserDetailsCard.resx">
+      <DependentUpon>ctrlUserDetailsCard.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Users\frmListUsers.resx">
       <DependentUpon>frmListUsers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Users\frmShowUserDetails.resx">
+      <DependentUpon>frmShowUserDetails.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -193,6 +211,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\FemalePerson.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Password.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
