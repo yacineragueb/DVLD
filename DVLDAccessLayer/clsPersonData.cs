@@ -215,6 +215,7 @@ namespace DVLDAccessLayer
                     catch (Exception ex)
                     {
                         // Error !
+                        rowsAffected = 0;
                     }
                 }
             }
@@ -270,6 +271,7 @@ namespace DVLDAccessLayer
                     catch (Exception ex)
                     {
                         // Console.WriteLine("Error: " + ex.Message);
+                        rowsAffected = 0;
                     }
                 }
             }
