@@ -126,9 +126,135 @@ namespace DVLD_project.Users
             _AddEditUser(UserID);
         }
 
-        private void toolStripMenuItem3_Click(object sender, EventArgs e)
+        private void ChangePasswordToolStripMenuItme_Click(object sender, EventArgs e)
         {
             MessageBox.Show("This is not implemented yet.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        }
+
+        private void cbFilter_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            _dtUsers.DefaultView.RowFilter = "";
+            lblRecords.Text = dgvUsersTable.Rows.Count.ToString();
+
+            if (cbFilter.SelectedIndex == 0) // None
+            {
+                txtbFilter.Visible = false;
+                cbFilterByIsActive.Visible = false;
+            } else if (cbFilter.SelectedIndex == 5) // filter by Is Active
+            {
+                txtbFilter.Visible = false;
+                cbFilterByIsActive.Visible = true;
+            }
+            else
+            {
+                cbFilterByIsActive.Visible = false;
+                txtbFilter.Visible = true;
+                txtbFilter.Focus();
+            }
+
+            cbFilterByIsActive.SelectedIndex = 0;
+            txtbFilter.Clear();
+        }
+
+        private void Filter_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            switch (cbFilter.SelectedIndex)
+            {
+                // Filter by UserID
+                case 1:
+                    if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+                    {
+                        e.Handled = true;
+                    }
+                    break;
+                // Filter by PersonID
+                case 2:
+                    if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+                    {
+                        e.Handled = true;
+                    }
+                    break;
+
+                // Filter by UserName
+                case 4:
+                    break;
+
+                default:
+                    if (!char.IsControl(e.KeyChar) && !char.IsLetter(e.KeyChar))
+                    {
+                        e.Handled = true;
+                    }
+                    break;
+            }
+        }
+
+        private void txtbFilter_TextChanged(object sender, EventArgs e)
+        {
+            string FilterColumn = "";
+
+            switch (cbFilter.Text)
+            {
+                case "User ID":
+                    FilterColumn = "UserID";
+                    break;
+                case "Person ID":
+                    FilterColumn = "PersonID";
+                    break;
+                case "Full Name":
+                    FilterColumn = "FullName";
+                    break;
+                case "Username":
+                    FilterColumn = "UserName";
+                    break;
+
+                default:
+                    FilterColumn = "";
+                    break;
+            }
+
+            // Reset the filter in case nothing selected or filter value contains nothing.
+            if (txtbFilter.Text.Trim() == "" || FilterColumn == "")
+            {
+                _dtUsers.DefaultView.RowFilter = "";
+                lblRecords.Text = dgvUsersTable.Rows.Count.ToString();
+                return;
+            }
+
+            if (FilterColumn == "PersonID" || FilterColumn == "UserID")
+            {
+                // In this case we deal with integer not string.
+                _dtUsers.DefaultView.RowFilter = string.Format("[{0}] = {1}", FilterColumn, txtbFilter.Text.Trim());
+            }
+            else
+            {
+                _dtUsers.DefaultView.RowFilter = string.Format("[{0}] LIKE '%{1}%'", FilterColumn, txtbFilter.Text.Trim());
+            }
+
+            lblRecords.Text = dgvUsersTable.Rows.Count.ToString();
+        }
+
+        private void cbFilterByIsActive_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string FilterColumn = "";
+            if (cbFilter.Text == "Is Active")
+            {
+                FilterColumn = "IsActive";
+
+                if (cbFilterByIsActive.Text == "All")
+                {
+                    _dtUsers.DefaultView.RowFilter = "";
+                }
+                else if (cbFilterByIsActive.Text == "Yes")
+                {
+                    _dtUsers.DefaultView.RowFilter = string.Format("[{0}] = {1}", FilterColumn, true);
+                }
+                else
+                {
+                    _dtUsers.DefaultView.RowFilter = string.Format("[{0}] = {1}", FilterColumn, false);
+                }
+
+                lblRecords.Text = dgvUsersTable.Rows.Count.ToString();
+            }
         }
     }
 }

@@ -31,6 +31,16 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmListUsers));
             this.dgvUsersTable = new System.Windows.Forms.DataGridView();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.showDetailsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
+            this.addNewPersonToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ChangePassword_toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
+            this.sendEmailToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.callPhoneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label2 = new System.Windows.Forms.Label();
             this.txtbFilter = new System.Windows.Forms.TextBox();
             this.cbFilter = new System.Windows.Forms.ComboBox();
@@ -39,18 +49,9 @@
             this.btnClose = new System.Windows.Forms.Button();
             this.lblRecords = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
             this.btnAddUser = new System.Windows.Forms.Button();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.showDetailsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.addNewPersonToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
-            this.sendEmailToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.callPhoneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cbFilterByIsActive = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsersTable)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -72,6 +73,89 @@
             this.dgvUsersTable.Size = new System.Drawing.Size(1154, 377);
             this.dgvUsersTable.TabIndex = 3;
             // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Font = new System.Drawing.Font("Poppins", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(30, 30);
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.showDetailsToolStripMenuItem,
+            this.toolStripMenuItem1,
+            this.addNewPersonToolStripMenuItem,
+            this.editToolStripMenuItem,
+            this.deleteToolStripMenuItem,
+            this.ChangePassword_toolStripMenuItem3,
+            this.toolStripMenuItem2,
+            this.sendEmailToolStripMenuItem,
+            this.callPhoneToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(255, 268);
+            // 
+            // showDetailsToolStripMenuItem
+            // 
+            this.showDetailsToolStripMenuItem.Image = global::DVLD_project.Properties.Resources.Details;
+            this.showDetailsToolStripMenuItem.Name = "showDetailsToolStripMenuItem";
+            this.showDetailsToolStripMenuItem.Size = new System.Drawing.Size(254, 36);
+            this.showDetailsToolStripMenuItem.Text = "Show Details";
+            this.showDetailsToolStripMenuItem.Click += new System.EventHandler(this.showDetailsToolStripMenuItem_Click);
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(251, 6);
+            // 
+            // addNewPersonToolStripMenuItem
+            // 
+            this.addNewPersonToolStripMenuItem.Image = global::DVLD_project.Properties.Resources.Add_User;
+            this.addNewPersonToolStripMenuItem.Name = "addNewPersonToolStripMenuItem";
+            this.addNewPersonToolStripMenuItem.Size = new System.Drawing.Size(254, 36);
+            this.addNewPersonToolStripMenuItem.Text = "Add New User";
+            this.addNewPersonToolStripMenuItem.Click += new System.EventHandler(this.addNewPersonToolStripMenuItem_Click);
+            // 
+            // editToolStripMenuItem
+            // 
+            this.editToolStripMenuItem.Image = global::DVLD_project.Properties.Resources.Edit;
+            this.editToolStripMenuItem.Name = "editToolStripMenuItem";
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(254, 36);
+            this.editToolStripMenuItem.Text = "Edit";
+            this.editToolStripMenuItem.Click += new System.EventHandler(this.editToolStripMenuItem_Click);
+            // 
+            // deleteToolStripMenuItem
+            // 
+            this.deleteToolStripMenuItem.Image = global::DVLD_project.Properties.Resources.Trash;
+            this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(254, 36);
+            this.deleteToolStripMenuItem.Text = "Delete";
+            this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
+            // 
+            // ChangePassword_toolStripMenuItem3
+            // 
+            this.ChangePassword_toolStripMenuItem3.Image = global::DVLD_project.Properties.Resources.Password;
+            this.ChangePassword_toolStripMenuItem3.Name = "ChangePassword_toolStripMenuItem3";
+            this.ChangePassword_toolStripMenuItem3.Size = new System.Drawing.Size(254, 36);
+            this.ChangePassword_toolStripMenuItem3.Text = "Change Password";
+            this.ChangePassword_toolStripMenuItem3.Click += new System.EventHandler(this.ChangePasswordToolStripMenuItme_Click);
+            // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(251, 6);
+            // 
+            // sendEmailToolStripMenuItem
+            // 
+            this.sendEmailToolStripMenuItem.Image = global::DVLD_project.Properties.Resources.Email;
+            this.sendEmailToolStripMenuItem.Name = "sendEmailToolStripMenuItem";
+            this.sendEmailToolStripMenuItem.Size = new System.Drawing.Size(254, 36);
+            this.sendEmailToolStripMenuItem.Text = "Send Email";
+            this.sendEmailToolStripMenuItem.Click += new System.EventHandler(this.sendEmailToolStripMenuItem_Click);
+            // 
+            // callPhoneToolStripMenuItem
+            // 
+            this.callPhoneToolStripMenuItem.Image = global::DVLD_project.Properties.Resources.Phone;
+            this.callPhoneToolStripMenuItem.Name = "callPhoneToolStripMenuItem";
+            this.callPhoneToolStripMenuItem.Size = new System.Drawing.Size(254, 36);
+            this.callPhoneToolStripMenuItem.Text = "Call Phone";
+            this.callPhoneToolStripMenuItem.Click += new System.EventHandler(this.callPhoneToolStripMenuItem_Click);
+            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -89,6 +173,8 @@
             this.txtbFilter.Size = new System.Drawing.Size(204, 22);
             this.txtbFilter.TabIndex = 12;
             this.txtbFilter.Visible = false;
+            this.txtbFilter.TextChanged += new System.EventHandler(this.txtbFilter_TextChanged);
+            this.txtbFilter.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Filter_KeyPress);
             // 
             // cbFilter
             // 
@@ -105,6 +191,7 @@
             this.cbFilter.Name = "cbFilter";
             this.cbFilter.Size = new System.Drawing.Size(182, 24);
             this.cbFilter.TabIndex = 11;
+            this.cbFilter.SelectedIndexChanged += new System.EventHandler(this.cbFilter_SelectedIndexChanged);
             // 
             // label3
             // 
@@ -157,33 +244,6 @@
             this.label1.TabIndex = 15;
             this.label1.Text = "#Records: ";
             // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.Font = new System.Drawing.Font("Poppins", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(30, 30);
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.showDetailsToolStripMenuItem,
-            this.toolStripMenuItem1,
-            this.addNewPersonToolStripMenuItem,
-            this.editToolStripMenuItem,
-            this.deleteToolStripMenuItem,
-            this.toolStripMenuItem3,
-            this.toolStripMenuItem2,
-            this.sendEmailToolStripMenuItem,
-            this.callPhoneToolStripMenuItem});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(255, 268);
-            // 
-            // toolStripMenuItem1
-            // 
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(251, 6);
-            // 
-            // toolStripMenuItem2
-            // 
-            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(251, 6);
-            // 
             // btnAddUser
             // 
             this.btnAddUser.ImageIndex = 0;
@@ -205,61 +265,20 @@
             this.pictureBox2.TabIndex = 2;
             this.pictureBox2.TabStop = false;
             // 
-            // showDetailsToolStripMenuItem
+            // cbFilterByIsActive
             // 
-            this.showDetailsToolStripMenuItem.Image = global::DVLD_project.Properties.Resources.Details;
-            this.showDetailsToolStripMenuItem.Name = "showDetailsToolStripMenuItem";
-            this.showDetailsToolStripMenuItem.Size = new System.Drawing.Size(254, 36);
-            this.showDetailsToolStripMenuItem.Text = "Show Details";
-            this.showDetailsToolStripMenuItem.Click += new System.EventHandler(this.showDetailsToolStripMenuItem_Click);
-            // 
-            // addNewPersonToolStripMenuItem
-            // 
-            this.addNewPersonToolStripMenuItem.Image = global::DVLD_project.Properties.Resources.Add_User;
-            this.addNewPersonToolStripMenuItem.Name = "addNewPersonToolStripMenuItem";
-            this.addNewPersonToolStripMenuItem.Size = new System.Drawing.Size(254, 36);
-            this.addNewPersonToolStripMenuItem.Text = "Add New User";
-            this.addNewPersonToolStripMenuItem.Click += new System.EventHandler(this.addNewPersonToolStripMenuItem_Click);
-            // 
-            // editToolStripMenuItem
-            // 
-            this.editToolStripMenuItem.Image = global::DVLD_project.Properties.Resources.Edit;
-            this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(254, 36);
-            this.editToolStripMenuItem.Text = "Edit";
-            this.editToolStripMenuItem.Click += new System.EventHandler(this.editToolStripMenuItem_Click);
-            // 
-            // deleteToolStripMenuItem
-            // 
-            this.deleteToolStripMenuItem.Image = global::DVLD_project.Properties.Resources.Trash;
-            this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(254, 36);
-            this.deleteToolStripMenuItem.Text = "Delete";
-            this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
-            // 
-            // toolStripMenuItem3
-            // 
-            this.toolStripMenuItem3.Image = global::DVLD_project.Properties.Resources.Password;
-            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(254, 36);
-            this.toolStripMenuItem3.Text = "Change Password";
-            this.toolStripMenuItem3.Click += new System.EventHandler(this.toolStripMenuItem3_Click);
-            // 
-            // sendEmailToolStripMenuItem
-            // 
-            this.sendEmailToolStripMenuItem.Image = global::DVLD_project.Properties.Resources.Email;
-            this.sendEmailToolStripMenuItem.Name = "sendEmailToolStripMenuItem";
-            this.sendEmailToolStripMenuItem.Size = new System.Drawing.Size(254, 36);
-            this.sendEmailToolStripMenuItem.Text = "Send Email";
-            this.sendEmailToolStripMenuItem.Click += new System.EventHandler(this.sendEmailToolStripMenuItem_Click);
-            // 
-            // callPhoneToolStripMenuItem
-            // 
-            this.callPhoneToolStripMenuItem.Image = global::DVLD_project.Properties.Resources.Phone;
-            this.callPhoneToolStripMenuItem.Name = "callPhoneToolStripMenuItem";
-            this.callPhoneToolStripMenuItem.Size = new System.Drawing.Size(254, 36);
-            this.callPhoneToolStripMenuItem.Text = "Call Phone";
-            this.callPhoneToolStripMenuItem.Click += new System.EventHandler(this.callPhoneToolStripMenuItem_Click);
+            this.cbFilterByIsActive.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbFilterByIsActive.FormattingEnabled = true;
+            this.cbFilterByIsActive.Items.AddRange(new object[] {
+            "All",
+            "Yes",
+            "No"});
+            this.cbFilterByIsActive.Location = new System.Drawing.Point(297, 221);
+            this.cbFilterByIsActive.Name = "cbFilterByIsActive";
+            this.cbFilterByIsActive.Size = new System.Drawing.Size(204, 24);
+            this.cbFilterByIsActive.TabIndex = 17;
+            this.cbFilterByIsActive.Visible = false;
+            this.cbFilterByIsActive.SelectedIndexChanged += new System.EventHandler(this.cbFilterByIsActive_SelectedIndexChanged);
             // 
             // frmListUsers
             // 
@@ -268,6 +287,7 @@
             this.BackColor = System.Drawing.Color.White;
             this.CancelButton = this.btnClose;
             this.ClientSize = new System.Drawing.Size(1173, 705);
+            this.Controls.Add(this.cbFilterByIsActive);
             this.Controls.Add(this.lblRecords);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnClose);
@@ -310,9 +330,10 @@
         private System.Windows.Forms.ToolStripMenuItem addNewPersonToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem3;
+        private System.Windows.Forms.ToolStripMenuItem ChangePassword_toolStripMenuItem3;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem sendEmailToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem callPhoneToolStripMenuItem;
+        private System.Windows.Forms.ComboBox cbFilterByIsActive;
     }
 }
