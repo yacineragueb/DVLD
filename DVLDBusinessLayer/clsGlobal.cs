@@ -9,5 +9,7 @@ namespace DVLDBusinessLayer
     public static class clsGlobal
     {
         public static clsUser CurrentUser;
+
+        public static string FilePath = "credentials.txt";
     }
 }

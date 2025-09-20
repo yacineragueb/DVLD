@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -31,16 +32,32 @@ namespace DVLD_project
         {
             if (!_IsPasswordVisible)
             {
-                btnPasswordVisible.ImageIndex = 0; // Opened eye
+                btnPasswordVisible.ImageIndex = 1; // Opened eye
                 txtbPassword.PasswordChar = '\0';
             }
             else
             {
-                btnPasswordVisible.ImageIndex = 1; // Closed eye
+                btnPasswordVisible.ImageIndex = 0; // Closed eye
                 txtbPassword.PasswordChar = '*';
             }
 
             _IsPasswordVisible = !_IsPasswordVisible;
+        }
+
+        private void _HandleSaveCredentials()
+        {
+            string Username = txtbUsername.Text;
+            string Password = txtbPassword.Text;
+
+            if(ckbRememberMe.Checked)
+            {
+                clsUtil.SaveCredentials(Username, Password);
+            } else
+            {
+                if(File.Exists(clsGlobal.FilePath)) {
+                    File.Delete(clsGlobal.FilePath);
+                }
+            }
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
@@ -59,12 +76,26 @@ namespace DVLD_project
                 return;
             }
 
+            _HandleSaveCredentials();
+
             clsGlobal.CurrentUser = _User;
 
             frmMain frm = new frmMain(this);
             frm.Show();
 
             this.Hide();
+        }
+
+        private void frmLogin_Load(object sender, EventArgs e)
+        {
+            var credentials = clsUtil.LoadCredentails();
+
+            if(credentials.Username != null)
+            {
+                txtbUsername.Text = credentials.Username;
+                txtbPassword.Text = credentials.Password;
+                ckbRememberMe.Checked = true;
+            }
         }
     }
 }

@@ -184,7 +184,7 @@
             // 
             // btnPasswordVisible
             // 
-            this.btnPasswordVisible.ImageIndex = 1;
+            this.btnPasswordVisible.ImageIndex = 0;
             this.btnPasswordVisible.ImageList = this.imageList2;
             this.btnPasswordVisible.Location = new System.Drawing.Point(698, 239);
             this.btnPasswordVisible.Name = "btnPasswordVisible";
@@ -248,6 +248,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Load += new System.EventHandler(this.frmLogin_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

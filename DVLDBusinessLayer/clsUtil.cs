@@ -56,5 +56,30 @@ namespace DVLDBusinessLayer
             }
 
         }
+
+        public static void SaveCredentials(string Username, string Password)
+        {
+            using (StreamWriter writer = new StreamWriter(clsGlobal.FilePath))
+            {
+                writer.WriteLine(Username);
+                writer.WriteLine(Password);
+            }
+        }
+
+        public static (string Username, string Password) LoadCredentails()
+        {
+            if(File.Exists(clsGlobal.FilePath))
+            {
+                string[] lines = File.ReadAllLines(clsGlobal.FilePath);
+
+                if(lines.Length >= 2)
+                {
+                    return (lines[0], lines[1]);
+                }
+
+            }
+
+            return (null, null);
+        }
     }
 }
