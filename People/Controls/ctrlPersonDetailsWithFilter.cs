@@ -64,6 +64,7 @@ namespace DVLD_project.People.Controls
             _PersonID = PersonID;
             txtbFilter.Clear();
             cbFilter.SelectedIndex = 0;
+            txtbFilter.Text = PersonID.ToString();
             ctrlPersonDetails1.LoadData(PersonID);
         }
 

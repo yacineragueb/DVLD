@@ -128,7 +128,9 @@ namespace DVLD_project.Users
 
         private void ChangePasswordToolStripMenuItme_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("This is not implemented yet.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            int UserID = (int)dgvUsersTable.CurrentRow.Cells[0].Value;
+            frmChangePassword frm = new frmChangePassword(UserID);
+            frm.ShowDialog();
         }
 
         private void cbFilter_SelectedIndexChanged(object sender, EventArgs e)
