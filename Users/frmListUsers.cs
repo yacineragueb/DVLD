@@ -37,10 +37,8 @@ namespace DVLD_project.Users
 
         private void _AddEditUser(int UserID)
         {
-            frmAddEditUser Form = new frmAddEditUser();
+            frmAddEditUser Form = new frmAddEditUser(UserID);
             Form.ShowDialog();
-            //frmAddEditPerson addEditPersonForm = new frmAddEditPerson(PersonID);
-            //addEditPersonForm.ShowDialog();
             _RefreshUsersList();
         }
         public frmListUsers()

@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -22,6 +23,22 @@ namespace DVLD_project.People.Controls
             InitializeComponent();
 
             cbFilter.SelectedIndex = 0;
+        }
+
+        public int GetSelectedPersonID()
+        {
+            return ctrlPersonDetails1.PersonID;
+        }
+
+        public clsPerson GetSelectedPerson()
+        {
+            return ctrlPersonDetails1.SelectedPersonInfo;
+        }
+
+        public void LoadData(int PersonID)
+        {
+            gbFilter.Enabled = false;
+            ctrlPersonDetails1.LoadData(PersonID);
         }
 
         private void txtFilter_KeyPress(object sender, KeyPressEventArgs e)

@@ -167,5 +167,34 @@ namespace DVLDAccessLayer
 
             return (rowsAffected > 0);
         }
+
+        public static bool IsUserExist(int PersonID)
+        {
+            bool IsFound = false;
+            using (SqlConnection connection = new SqlConnection(clsDVLDAcessLayerSettings.connectionString))
+            {
+                string query = "SELECT Found = 1 FROM Users WHERE PersonID = @PersonID";
+
+                using (SqlCommand cmd = new SqlCommand(query, connection))
+                {
+                    cmd.Parameters.AddWithValue("@PersonID", PersonID);
+
+                    try
+                    {
+                        connection.Open();
+                        object result = cmd.ExecuteScalar();
+                        IsFound = result != null;
+                    }
+                    catch (Exception ex)
+                    {
+                        // Console.WriteLine("Error: " + ex.Message);
+                        IsFound = false;
+                    }
+                }
+            }
+
+            return IsFound;
+        }
+
     }
 }

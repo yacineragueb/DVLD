@@ -16,7 +16,7 @@ namespace DVLD_project
 {
     public partial class ctrlPersonDetails : UserControl
     {
-        clsPerson _Person;
+        clsPerson _Person = null;
 
         private int _PersonID = -1;
 
