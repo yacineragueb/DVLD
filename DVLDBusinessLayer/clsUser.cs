@@ -78,6 +78,22 @@ namespace DVLDBusinessLayer
             }
         }
 
+        public static clsUser FindUserByUserNameAndPassword(string UserName, string Password)
+        {
+            int UserID = -1;
+            int PersonID = -1;
+            bool IsActive = false;
+
+            if (clsUserData.GetUserInfoByUsernameAndPassword(ref UserID, ref PersonID, UserName, Password, ref IsActive))
+            {
+                return new clsUser(UserID, PersonID, UserName, Password, IsActive);
+            }
+            else
+            {
+                return null;
+            }
+        }
+
         public bool Save()
         {
             switch (_Mode)
