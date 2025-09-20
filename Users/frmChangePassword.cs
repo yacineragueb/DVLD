@@ -96,12 +96,12 @@ namespace DVLD_project.Users
         {
             if(!_IsNewPasswordVisible)
             {
-                btnNewPasswordVisible.ImageIndex = 0;
+                btnNewPasswordVisible.ImageIndex = 0; // Opened eye
                 txtbNewPassword.PasswordChar = '\0';
             }
             else
             {
-                btnNewPasswordVisible.ImageIndex = 1;
+                btnNewPasswordVisible.ImageIndex = 1; // Closed eye
                 txtbNewPassword.PasswordChar = '*';
             }
 
@@ -112,12 +112,12 @@ namespace DVLD_project.Users
         {
             if (!_IsConfirmPasswordVisible)
             {
-                btnConfirmPasswordVisible.ImageIndex = 0;
+                btnConfirmPasswordVisible.ImageIndex = 0; // Opened eye
                 txtbConfirmPassword.PasswordChar = '\0';
             }
             else
             {
-                btnConfirmPasswordVisible.ImageIndex = 1;
+                btnConfirmPasswordVisible.ImageIndex = 1; // Closed eye
                 txtbConfirmPassword.PasswordChar = '*';
             }
 

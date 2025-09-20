@@ -53,6 +53,9 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.btnPasswordVisible = new System.Windows.Forms.Button();
+            this.btnConfirmPasswordVisible = new System.Windows.Forms.Button();
+            this.imageList2 = new System.Windows.Forms.ImageList(this.components);
             this.tbUserInfo.SuspendLayout();
             this.PersonalInfo.SuspendLayout();
             this.LoginInfo.SuspendLayout();
@@ -82,7 +85,7 @@
             this.btnClose.Location = new System.Drawing.Point(748, 660);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(110, 58);
-            this.btnClose.TabIndex = 5;
+            this.btnClose.TabIndex = 7;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = false;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
@@ -96,7 +99,7 @@
             this.btnSave.Location = new System.Drawing.Point(632, 660);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(110, 58);
-            this.btnSave.TabIndex = 4;
+            this.btnSave.TabIndex = 6;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = false;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
@@ -153,6 +156,8 @@
             // 
             // LoginInfo
             // 
+            this.LoginInfo.Controls.Add(this.btnConfirmPasswordVisible);
+            this.LoginInfo.Controls.Add(this.btnPasswordVisible);
             this.LoginInfo.Controls.Add(this.ckbIsActive);
             this.LoginInfo.Controls.Add(this.lblUserID);
             this.LoginInfo.Controls.Add(this.txtbConfirmPassword);
@@ -182,7 +187,7 @@
             this.ckbIsActive.Location = new System.Drawing.Point(312, 344);
             this.ckbIsActive.Name = "ckbIsActive";
             this.ckbIsActive.Size = new System.Drawing.Size(85, 27);
-            this.ckbIsActive.TabIndex = 3;
+            this.ckbIsActive.TabIndex = 5;
             this.ckbIsActive.Text = "Is Active";
             this.ckbIsActive.UseVisualStyleBackColor = true;
             // 
@@ -202,7 +207,7 @@
             this.txtbConfirmPassword.Name = "txtbConfirmPassword";
             this.txtbConfirmPassword.PasswordChar = '*';
             this.txtbConfirmPassword.Size = new System.Drawing.Size(220, 27);
-            this.txtbConfirmPassword.TabIndex = 2;
+            this.txtbConfirmPassword.TabIndex = 3;
             this.txtbConfirmPassword.Validating += new System.ComponentModel.CancelEventHandler(this.txtbConfirmPassword_Validating);
             // 
             // txtbPassword
@@ -308,6 +313,35 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
+            // btnPasswordVisible
+            // 
+            this.btnPasswordVisible.ImageIndex = 0;
+            this.btnPasswordVisible.ImageList = this.imageList2;
+            this.btnPasswordVisible.Location = new System.Drawing.Point(555, 216);
+            this.btnPasswordVisible.Name = "btnPasswordVisible";
+            this.btnPasswordVisible.Size = new System.Drawing.Size(55, 31);
+            this.btnPasswordVisible.TabIndex = 2;
+            this.btnPasswordVisible.UseVisualStyleBackColor = true;
+            this.btnPasswordVisible.Click += new System.EventHandler(this.btnPasswordVisible_Click);
+            // 
+            // btnConfirmPasswordVisible
+            // 
+            this.btnConfirmPasswordVisible.ImageIndex = 0;
+            this.btnConfirmPasswordVisible.ImageList = this.imageList2;
+            this.btnConfirmPasswordVisible.Location = new System.Drawing.Point(555, 278);
+            this.btnConfirmPasswordVisible.Name = "btnConfirmPasswordVisible";
+            this.btnConfirmPasswordVisible.Size = new System.Drawing.Size(55, 31);
+            this.btnConfirmPasswordVisible.TabIndex = 4;
+            this.btnConfirmPasswordVisible.UseVisualStyleBackColor = true;
+            this.btnConfirmPasswordVisible.Click += new System.EventHandler(this.btnConfirmPasswordVisible_Click);
+            // 
+            // imageList2
+            // 
+            this.imageList2.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList2.ImageStream")));
+            this.imageList2.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList2.Images.SetKeyName(0, "ClosedEye.png");
+            this.imageList2.Images.SetKeyName(1, "OpenedEye.png");
+            // 
             // frmAddEditUser
             // 
             this.AcceptButton = this.btnSave;
@@ -364,5 +398,8 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.CheckBox ckbIsActive;
         private System.Windows.Forms.ErrorProvider errorProvider1;
+        private System.Windows.Forms.Button btnPasswordVisible;
+        private System.Windows.Forms.Button btnConfirmPasswordVisible;
+        private System.Windows.Forms.ImageList imageList2;
     }
 }

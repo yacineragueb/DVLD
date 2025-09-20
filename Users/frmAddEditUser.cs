@@ -24,6 +24,9 @@ namespace DVLD_project.Users
 
         enMode _Mode = enMode.AddNew;
 
+        private bool _IsPasswordVisible = false;
+        private bool _IsConfirmPasswordVisible = false;
+
         private int _UserID;
 
         private clsUser _User;
@@ -201,6 +204,38 @@ namespace DVLD_project.Users
         {
            tbUserInfo.SelectedIndex = 1;
            btnSave.Enabled = true;
+        }
+
+        private void btnPasswordVisible_Click(object sender, EventArgs e)
+        {
+            if (!_IsPasswordVisible)
+            {
+                btnPasswordVisible.ImageIndex = 1; // Opened eye
+                txtbPassword.PasswordChar = '\0';
+            }
+            else
+            {
+                btnPasswordVisible.ImageIndex = 0; // Closed eye
+                txtbPassword.PasswordChar = '*';
+            }
+
+            _IsPasswordVisible = !_IsPasswordVisible;
+        }
+
+        private void btnConfirmPasswordVisible_Click(object sender, EventArgs e)
+        {
+            if (!_IsConfirmPasswordVisible)
+            {
+                btnConfirmPasswordVisible.ImageIndex = 1; // Opened eye
+                txtbConfirmPassword.PasswordChar = '\0';
+            }
+            else
+            {
+                btnConfirmPasswordVisible.ImageIndex = 0; // Closed eye
+                txtbConfirmPassword.PasswordChar = '*';
+            }
+
+            _IsConfirmPasswordVisible = !_IsConfirmPasswordVisible;
         }
     }
 }
