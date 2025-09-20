@@ -200,6 +200,7 @@
             // 
             this.txtbConfirmPassword.Location = new System.Drawing.Point(311, 280);
             this.txtbConfirmPassword.Name = "txtbConfirmPassword";
+            this.txtbConfirmPassword.PasswordChar = '*';
             this.txtbConfirmPassword.Size = new System.Drawing.Size(220, 27);
             this.txtbConfirmPassword.TabIndex = 2;
             this.txtbConfirmPassword.Validating += new System.ComponentModel.CancelEventHandler(this.txtbConfirmPassword_Validating);
@@ -208,6 +209,7 @@
             // 
             this.txtbPassword.Location = new System.Drawing.Point(311, 218);
             this.txtbPassword.Name = "txtbPassword";
+            this.txtbPassword.PasswordChar = '*';
             this.txtbPassword.Size = new System.Drawing.Size(220, 27);
             this.txtbPassword.TabIndex = 1;
             this.txtbPassword.Tag = "Password";

@@ -59,29 +59,12 @@ namespace DVLD_project.Users
 
         private void tbUserDetails_SelectedIndexChange(object sender, EventArgs e)
         {
-            if(tbUserInfo.SelectedIndex != 0)
-            {
-                if (ctrlPersonDetailsWithFilter1.GetSelectedPerson() != null)
-                {
-                    if (!clsUser.IsUserExist(ctrlPersonDetailsWithFilter1.GetSelectedPersonID()))
-                    {
-                        btnSave.Enabled = true;
-                    }
-                    else
-                    {
-                        MessageBox.Show("Selected person already has a user, choose another one.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        tbUserInfo.SelectedIndex = 0;
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("You must select a person firt.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    tbUserInfo.SelectedIndex = 0;
-                }
-            } else
+            if(tbUserInfo.SelectedIndex == 0)
             {
                 btnSave.Enabled = false;
-
+            } else
+            {
+                btnSave.Enabled = true;
             }
         }
 
@@ -153,6 +136,36 @@ namespace DVLD_project.Users
             }
         }
 
+        private bool _HandleSelectedPerson()
+        {
+            if (ctrlPersonDetailsWithFilter1.GetSelectedPerson() != null)
+            {
+                int selectedPersonID = ctrlPersonDetailsWithFilter1.GetSelectedPersonID();
+
+                if (_Mode == enMode.Edit && selectedPersonID == _User.PersonID)
+                {
+                    return true;
+                }
+
+                if (!clsUser.IsUserExist(selectedPersonID))
+                {
+                    return true;
+                }
+                else
+                {
+                    MessageBox.Show("Selected person already has a user, choose another one.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    tbUserInfo.SelectedIndex = 0;
+                }
+            }
+            else
+            {
+                MessageBox.Show("You did not select a person.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                tbUserInfo.SelectedIndex = 0;
+            }
+
+            return false;
+        }
+
         private void btnSave_Click(object sender, EventArgs e)
         {
             if (!this.ValidateChildren())
@@ -161,6 +174,8 @@ namespace DVLD_project.Users
                 MessageBox.Show("Some fields are not valid!." + Environment.NewLine + "Put the mouse over the red icon to show what you miss.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+
+            if (!_HandleSelectedPerson()) return;
 
             int PersonID = ctrlPersonDetailsWithFilter1.GetSelectedPersonID();
 
@@ -184,25 +199,8 @@ namespace DVLD_project.Users
 
         private void btnNext_Click(object sender, EventArgs e)
         {
-            if(ctrlPersonDetailsWithFilter1.GetSelectedPerson() != null)
-            {
-                if(!clsUser.IsUserExist(ctrlPersonDetailsWithFilter1.GetSelectedPersonID()))
-                {
-                    tbUserInfo.SelectedIndex = 1;
-                    btnSave.Enabled = true;
-
-                } else
-                {
-                    MessageBox.Show("Selected person already has a user, choose another one.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    tbUserInfo.SelectedIndex = 0;
-                }
-                
-            }
-            else 
-            {
-                MessageBox.Show("You must select a person firt.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            
+           tbUserInfo.SelectedIndex = 1;
+           btnSave.Enabled = true;
         }
     }
 }
