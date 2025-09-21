@@ -1,6 +1,6 @@
 ﻿namespace DVLD_project.ApplicationType
 {
-    partial class frmUpdateApplicationTypes
+    partial class frmAddEditApplicationTypes
     {
         /// <summary>
         /// Required designer variable.
@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -39,15 +40,17 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lblApplicationTypeID = new System.Windows.Forms.Label();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Poppins SemiBold", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(58, 16);
+            this.label2.Location = new System.Drawing.Point(64, 16);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(332, 42);
             this.label2.TabIndex = 8;
@@ -117,6 +120,7 @@
             this.txtbTitle.Size = new System.Drawing.Size(297, 22);
             this.txtbTitle.TabIndex = 0;
             this.txtbTitle.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtbTitle_KeyPress);
+            this.txtbTitle.Validating += new System.ComponentModel.CancelEventHandler(this.txtbTitle_Validating);
             // 
             // txtbFee
             // 
@@ -125,6 +129,7 @@
             this.txtbFee.Size = new System.Drawing.Size(297, 22);
             this.txtbFee.TabIndex = 1;
             this.txtbFee.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtbFee_KeyPress);
+            this.txtbFee.Validating += new System.ComponentModel.CancelEventHandler(this.txtbFee_Validating);
             // 
             // pictureBox2
             // 
@@ -156,14 +161,18 @@
             this.lblApplicationTypeID.TabIndex = 18;
             this.lblApplicationTypeID.Text = "N/A";
             // 
-            // frmUpdateApplicationTypes
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
+            // frmAddEditApplicationTypes
             // 
             this.AcceptButton = this.btnSave;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.CancelButton = this.btnClose;
-            this.ClientSize = new System.Drawing.Size(446, 301);
+            this.ClientSize = new System.Drawing.Size(459, 301);
             this.Controls.Add(this.lblApplicationTypeID);
             this.Controls.Add(this.txtbFee);
             this.Controls.Add(this.pictureBox2);
@@ -176,12 +185,13 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Name = "frmUpdateApplicationTypes";
+            this.Name = "frmAddEditApplicationTypes";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Update Application Types";
             this.Load += new System.EventHandler(this.frmUpdateApplicationTypes_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -200,5 +210,6 @@
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.TextBox txtbFee;
         private System.Windows.Forms.Label lblApplicationTypeID;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }

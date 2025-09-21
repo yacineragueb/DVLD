@@ -1,6 +1,6 @@
 ﻿namespace DVLD_project.ApplicationType
 {
-    partial class frmManageApplicationType
+    partial class frmListApplicationType
     {
         /// <summary>
         /// Required designer variable.

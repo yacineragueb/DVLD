@@ -61,7 +61,7 @@ namespace DVLD_project
 
         private void manageApplicationTypesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmManageApplicationType frm = new frmManageApplicationType();
+            frmListApplicationType frm = new frmListApplicationType();
             frm.ShowDialog();
         }
     }

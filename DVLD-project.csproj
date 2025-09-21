@@ -46,17 +46,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ApplicationType\frmManageApplicationType.cs">
+    <Compile Include="ApplicationType\frmListApplicationType.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ApplicationType\frmManageApplicationType.Designer.cs">
-      <DependentUpon>frmManageApplicationType.cs</DependentUpon>
+    <Compile Include="ApplicationType\frmListApplicationType.Designer.cs">
+      <DependentUpon>frmListApplicationType.cs</DependentUpon>
     </Compile>
-    <Compile Include="ApplicationType\frmUpdateApplicationTypes.cs">
+    <Compile Include="ApplicationType\frmAddEditApplicationTypes.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ApplicationType\frmUpdateApplicationTypes.Designer.cs">
-      <DependentUpon>frmUpdateApplicationTypes.cs</DependentUpon>
+    <Compile Include="ApplicationType\frmAddEditApplicationTypes.Designer.cs">
+      <DependentUpon>frmAddEditApplicationTypes.cs</DependentUpon>
     </Compile>
     <Compile Include="frmLogin.cs">
       <SubType>Form</SubType>
@@ -134,11 +134,11 @@
     <Compile Include="Users\frmShowUserDetails.Designer.cs">
       <DependentUpon>frmShowUserDetails.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="ApplicationType\frmManageApplicationType.resx">
-      <DependentUpon>frmManageApplicationType.cs</DependentUpon>
+    <EmbeddedResource Include="ApplicationType\frmListApplicationType.resx">
+      <DependentUpon>frmListApplicationType.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ApplicationType\frmUpdateApplicationTypes.resx">
-      <DependentUpon>frmUpdateApplicationTypes.cs</DependentUpon>
+    <EmbeddedResource Include="ApplicationType\frmAddEditApplicationTypes.resx">
+      <DependentUpon>frmAddEditApplicationTypes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>

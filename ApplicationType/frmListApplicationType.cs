@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace DVLD_project.ApplicationType
 {
-    public partial class frmManageApplicationType : Form
+    public partial class frmListApplicationType : Form
     {
         private DataTable dtAllApplication = clsApplicationTypes.GetAllApplicationTypes();
 
@@ -23,7 +23,7 @@ namespace DVLD_project.ApplicationType
             lblRecords.Text = dgvApplicationTypesTable.Rows.Count.ToString();
         }
 
-        public frmManageApplicationType()
+        public frmListApplicationType()
         {
             InitializeComponent();
         }
@@ -46,7 +46,7 @@ namespace DVLD_project.ApplicationType
 
         private void toolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            frmUpdateApplicationTypes frm = new frmUpdateApplicationTypes((int)dgvApplicationTypesTable.CurrentRow.Cells[0].Value);
+            frmAddEditApplicationTypes frm = new frmAddEditApplicationTypes((int)dgvApplicationTypesTable.CurrentRow.Cells[0].Value);
             frm.ShowDialog();
             _RefreshApplicationTypesList();
         }

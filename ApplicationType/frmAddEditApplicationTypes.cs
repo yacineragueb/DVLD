@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace DVLD_project.ApplicationType
 {
-    public partial class frmUpdateApplicationTypes : Form
+    public partial class frmAddEditApplicationTypes : Form
     {
         private clsApplicationTypes _ApplicationType;
 
@@ -25,7 +25,7 @@ namespace DVLD_project.ApplicationType
 
         private enMode _Mode = enMode.AddNew;
 
-        public frmUpdateApplicationTypes( int ApplicationTypeID)
+        public frmAddEditApplicationTypes( int ApplicationTypeID)
         {
             InitializeComponent();
 
@@ -95,6 +95,12 @@ namespace DVLD_project.ApplicationType
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            if(!this.ValidateChildren())
+            {
+                MessageBox.Show("Some fields are not valid!." + Environment.NewLine + "Put the mouse over the red icon to show what you miss.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             _ApplicationType.Title = txtbTitle.Text.Trim();
             _ApplicationType.Fee = Convert.ToDecimal(txtbFee.Text.Trim());
 
@@ -106,6 +112,33 @@ namespace DVLD_project.ApplicationType
             } else
             {
                 MessageBox.Show("Error: Data Is not Saved Successfully.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void txtbTitle_Validating(object sender, CancelEventArgs e)
+        {
+            if(string.IsNullOrEmpty(txtbTitle.Text.Trim()))
+            {
+                e.Cancel = true;
+                errorProvider1.SetError(txtbTitle, "Title is required");
+            } else
+            {
+                e.Cancel = false;
+                errorProvider1.SetError(txtbTitle, "");
+            }
+        }
+
+        private void txtbFee_Validating(object sender, CancelEventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtbFee.Text.Trim()))
+            {
+                e.Cancel = true;
+                errorProvider1.SetError(txtbTitle, "Fee is required");
+            }
+            else
+            {
+                e.Cancel = false;
+                errorProvider1.SetError(txtbTitle, "");
             }
         }
     }
