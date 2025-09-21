@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DVLD_project.ApplicationType;
 using DVLD_project.Users;
 using DVLDBusinessLayer;
 
@@ -56,6 +57,12 @@ namespace DVLD_project
         {
             clsGlobal.CurrentUser = null;
             _frmLogin.Show();
+        }
+
+        private void manageApplicationTypesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmManageApplicationType frm = new frmManageApplicationType();
+            frm.ShowDialog();
         }
     }
 }
