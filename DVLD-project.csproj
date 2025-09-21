@@ -52,6 +52,8 @@
     <Compile Include="frmLogin.Designer.cs">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </Compile>
+    <Compile Include="lib\clsGlobal.cs" />
+    <Compile Include="lib\clsUtil.cs" />
     <Compile Include="People\Controls\ctrlPersonDetailsWithFilter.cs">
       <SubType>UserControl</SubType>
     </Compile>

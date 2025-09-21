@@ -80,10 +80,9 @@ namespace DVLD_project
 
             clsGlobal.CurrentUser = _User;
 
-            frmMain frm = new frmMain(this);
-            frm.Show();
-
             this.Hide();
+            frmMain frm = new frmMain(this);
+            frm.ShowDialog();
         }
 
         private void frmLogin_Load(object sender, EventArgs e)
@@ -95,6 +94,9 @@ namespace DVLD_project
                 txtbUsername.Text = credentials.Username;
                 txtbPassword.Text = credentials.Password;
                 ckbRememberMe.Checked = true;
+            } else
+            {
+                ckbRememberMe.Checked = false;
             }
         }
     }
