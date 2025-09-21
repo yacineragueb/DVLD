@@ -62,7 +62,6 @@ namespace DVLD_project.People.Controls
         private void ctrlPersonDetailsWithFilter_DataBack(object sender, int PersonID)
         {
             _PersonID = PersonID;
-            txtbFilter.Clear();
             cbFilter.SelectedIndex = 0;
             txtbFilter.Text = PersonID.ToString();
             ctrlPersonDetails1.LoadData(PersonID);
