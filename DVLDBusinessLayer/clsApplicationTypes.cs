@@ -14,22 +14,22 @@ namespace DVLDBusinessLayer
 
         enMode _Mode;
 
-        public int ApplicationID {  get; set; }
+        public int ApplicationTypeID {  get; set; }
         public string Title { get; set; }
         public decimal Fee { get; set; }
 
         public clsApplicationTypes()
         {
-            ApplicationID = -1;
+            ApplicationTypeID = -1;
             Title = "";
             Fee = 0;
 
             _Mode = enMode.AddNew;
         }
 
-        private clsApplicationTypes(int ApplicationID, string Title, decimal Fee)
+        private clsApplicationTypes(int ApplicationTypeID, string Title, decimal Fee)
         {
-            this.ApplicationID = ApplicationID;
+            this.ApplicationTypeID = ApplicationTypeID;
             this.Title = Title;
             this.Fee = Fee;
 
@@ -38,7 +38,7 @@ namespace DVLDBusinessLayer
 
         private bool _UpdateApplicationType()
         {
-            return clsApplicationTypesData.UpdateApplicationType(this.ApplicationID, this.Title, this.Fee);
+            return clsApplicationTypesData.UpdateApplicationType(this.ApplicationTypeID, this.Title, this.Fee);
         }
 
         public static DataTable GetAllApplicationTypes()

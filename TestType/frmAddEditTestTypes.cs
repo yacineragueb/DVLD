@@ -9,13 +9,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace DVLD_project.ApplicationType
+namespace DVLD_project.TestType
 {
-    public partial class frmAddEditApplicationTypes : Form
+    public partial class frmAddEditTestTypes : Form
     {
-        private clsApplicationTypes _ApplicationType;
+        private clsTestTypes _TestType;
 
-        private int _ApplicationTypeID;
+        private int _TestTypeID;
 
         enum enMode
         {
@@ -24,14 +24,13 @@ namespace DVLD_project.ApplicationType
         }
 
         private enMode _Mode = enMode.AddNew;
-
-        public frmAddEditApplicationTypes( int ApplicationTypeID)
+        public frmAddEditTestTypes(int TestTypeID)
         {
             InitializeComponent();
 
-            _ApplicationTypeID = ApplicationTypeID;
+            _TestTypeID = TestTypeID;
 
-            if(_ApplicationTypeID == -1)
+            if(_TestTypeID == -1)
             {
                 _Mode = enMode.AddNew;
             } else
@@ -47,7 +46,7 @@ namespace DVLD_project.ApplicationType
 
         private void txtbTitle_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if(!char.IsControl(e.KeyChar) && !char.IsLetter(e.KeyChar))
+            if (!char.IsControl(e.KeyChar) && !char.IsLetter(e.KeyChar))
             {
                 e.Handled = true;
             }
@@ -67,49 +66,52 @@ namespace DVLD_project.ApplicationType
             txtbTitle.Clear();
         }
 
-        private void _LoadData()
+        private void LoadData()
         {
-            _ApplicationType = clsApplicationTypes.Find(_ApplicationTypeID);
+            _TestType = clsTestTypes.Find(_TestTypeID);
 
-            if (_ApplicationType == null)
+            if (_TestType == null)
             {
-                MessageBox.Show("This form will be closed because No Application Type with ID = " + _ApplicationTypeID, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("This form will be closed because No Test Type with ID = " + _TestTypeID, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 this.Close();
                 return;
             }
 
-            lblApplicationTypeID.Text = _ApplicationTypeID.ToString();
-            txtbTitle.Text = _ApplicationType.Title;
-            txtbFee.Text = _ApplicationType.Fee.ToString();
+            lblTestTypeID.Text = _TestTypeID.ToString();
+            txtbTitle.Text = _TestType.Title;
+            txtbDescription.Text = _TestType.Description;
+            txtbFee.Text = _TestType.Fee.ToString();
         }
 
-        private void frmUpdateApplicationTypes_Load(object sender, EventArgs e)
+        private void frmAddEditTestTypes_Load(object sender, EventArgs e)
         {
             _ResetDefaultValues();
 
-            if (_Mode == enMode.Edit)
+            if(_Mode == enMode.Edit)
             {
-                _LoadData();
+                LoadData();
             }
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if(!this.ValidateChildren())
+            if (!this.ValidateChildren())
             {
                 MessageBox.Show("Some fields are not valid!." + Environment.NewLine + "Put the mouse over the red icon to show what you miss.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            _ApplicationType.Title = txtbTitle.Text.Trim();
-            _ApplicationType.Fee = Convert.ToDecimal(txtbFee.Text.Trim());
+            _TestType.Title = txtbTitle.Text.Trim();
+            _TestType.Description = txtbDescription.Text.Trim();
+            _TestType.Fee = Convert.ToDecimal(txtbFee.Text.Trim());
 
-            if(_ApplicationType.Save())
+            if (_TestType.Save())
             {
                 _Mode = enMode.Edit;
 
                 MessageBox.Show("Data Saved Successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            } else
+            }
+            else
             {
                 MessageBox.Show("Error: Data Is not Saved Successfully.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -117,11 +119,12 @@ namespace DVLD_project.ApplicationType
 
         private void txtbTitle_Validating(object sender, CancelEventArgs e)
         {
-            if(string.IsNullOrEmpty(txtbTitle.Text.Trim()))
+            if (string.IsNullOrEmpty(txtbTitle.Text.Trim()))
             {
                 e.Cancel = true;
                 errorProvider1.SetError(txtbTitle, "Title is required");
-            } else
+            }
+            else
             {
                 e.Cancel = false;
                 errorProvider1.SetError(txtbTitle, "");
@@ -139,6 +142,20 @@ namespace DVLD_project.ApplicationType
             {
                 e.Cancel = false;
                 errorProvider1.SetError(txtbFee, "");
+            }
+        }
+
+        private void txtbDescription_Validating(object sender, CancelEventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtbDescription.Text.Trim()))
+            {
+                e.Cancel = true;
+                errorProvider1.SetError(txtbDescription, "Description is required");
+            }
+            else
+            {
+                e.Cancel = false;
+                errorProvider1.SetError(txtbDescription, "");
             }
         }
     }

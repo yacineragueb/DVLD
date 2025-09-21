@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DVLD_project.ApplicationType;
+using DVLD_project.TestType;
 using DVLD_project.Users;
 using DVLDBusinessLayer;
 
@@ -62,6 +63,12 @@ namespace DVLD_project
         private void manageApplicationTypesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmListApplicationType frm = new frmListApplicationType();
+            frm.ShowDialog();
+        }
+
+        private void manageTestTypesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmListTestTypes frm = new frmListTestTypes();
             frm.ShowDialog();
         }
     }
