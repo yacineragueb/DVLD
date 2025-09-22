@@ -47,6 +47,7 @@
     <Compile Include="clsUserData.cs" />
     <Compile Include="CountryData.cs" />
     <Compile Include="DVLDAcessLayerSettings.cs" />
+    <Compile Include="clsLicenseClassData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

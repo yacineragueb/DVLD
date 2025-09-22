@@ -46,16 +46,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ApplicationType\frmListApplicationType.cs">
+    <Compile Include="Applications\frmListLocalDrivingLicenseApplications.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ApplicationType\frmListApplicationType.Designer.cs">
+    <Compile Include="Applications\frmListLocalDrivingLicenseApplications.Designer.cs">
+      <DependentUpon>frmListLocalDrivingLicenseApplications.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Applications\ApplicationType\frmListApplicationType.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Applications\ApplicationType\frmListApplicationType.Designer.cs">
       <DependentUpon>frmListApplicationType.cs</DependentUpon>
     </Compile>
-    <Compile Include="ApplicationType\frmAddEditApplicationTypes.cs">
+    <Compile Include="Applications\ApplicationType\frmAddEditApplicationTypes.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ApplicationType\frmAddEditApplicationTypes.Designer.cs">
+    <Compile Include="Applications\ApplicationType\frmAddEditApplicationTypes.Designer.cs">
       <DependentUpon>frmAddEditApplicationTypes.cs</DependentUpon>
     </Compile>
     <Compile Include="frmLogin.cs">
@@ -146,10 +152,13 @@
     <Compile Include="Users\frmShowUserDetails.Designer.cs">
       <DependentUpon>frmShowUserDetails.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="ApplicationType\frmListApplicationType.resx">
+    <EmbeddedResource Include="Applications\frmListLocalDrivingLicenseApplications.resx">
+      <DependentUpon>frmListLocalDrivingLicenseApplications.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Applications\ApplicationType\frmListApplicationType.resx">
       <DependentUpon>frmListApplicationType.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ApplicationType\frmAddEditApplicationTypes.resx">
+    <EmbeddedResource Include="Applications\ApplicationType\frmAddEditApplicationTypes.resx">
       <DependentUpon>frmAddEditApplicationTypes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmLogin.resx">

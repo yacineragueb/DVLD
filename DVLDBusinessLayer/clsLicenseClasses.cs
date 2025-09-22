@@ -1,5 +1,4 @@
-﻿using ContactsDataAccessLayer;
-using DVLDAccessLayer;
+﻿using DVLDAccessLayer;
 using System;
 using System.Data;
 
