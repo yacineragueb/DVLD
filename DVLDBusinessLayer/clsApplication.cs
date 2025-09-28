@@ -73,14 +73,14 @@ namespace DVLDBusinessLayer
             int PersonID = -1;
             DateTime ApplicationDate = DateTime.Now;
             int ApplicationTypeID = -1;
-            enApplicatinStatus ApplicationStatus = enApplicatinStatus.New;
+            short ApplicationStatus = (short)enApplicatinStatus.New;
             DateTime LastStatusDate = DateTime.Now;
             decimal PaidFees = 0;
             int UserID = -1;
 
-            if (false)
+            if (clsApplicationsData.FindApplicationByID(ApplicationID, ref PersonID, ref ApplicationDate, ref ApplicationTypeID, ref ApplicationStatus, ref LastStatusDate, ref PaidFees, ref UserID))
             {
-                return new clsApplication(ApplicationID, PersonID, ApplicationDate, ApplicationTypeID, ApplicationStatus, LastStatusDate, PaidFees, UserID);
+                return new clsApplication(ApplicationID, PersonID, ApplicationDate, ApplicationTypeID, (enApplicatinStatus)ApplicationStatus, LastStatusDate, PaidFees, UserID);
             } else { 
                 return null; 
             }

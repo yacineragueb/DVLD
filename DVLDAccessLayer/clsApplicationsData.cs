@@ -1,11 +1,54 @@
 ﻿using System;
 using System.Data;
 using System.Data.SqlClient;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace DVLDAccessLayer
 {
     public class clsApplicationsData
     {
+        public static bool FindApplicationByID(int ApplicationID, ref int PersonID, ref DateTime ApplicationDate, ref int ApplicationTypeID, ref short ApplicationStatus, ref DateTime LastStatusDate, ref decimal PaidFees, ref int UserID)
+        {
+            bool IsFound = false;
+
+            using (SqlConnection connection = new SqlConnection(clsDVLDAcessLayerSettings.connectionString))
+            {
+                string query = @"SELECT * FROM Applications WHERE ApplicationID = @ApplicationID;";
+
+                using (SqlCommand cmd = new SqlCommand(query, connection))
+                {
+                    cmd.Parameters.AddWithValue("@ApplicationID", ApplicationID);
+
+                    try
+                    {
+                        connection.Open();
+                        
+                        using(SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            if(reader.Read())
+                            {
+                                IsFound = true;
+
+                                PersonID = (int)reader["ApplicantPersonID"];
+                                ApplicationDate = (DateTime)reader["ApplicationDate"];
+                                ApplicationTypeID = (int)reader["ApplicationTypeID"];
+                                ApplicationStatus = (short)reader["ApplicationStatus"];
+                                LastStatusDate = (DateTime)reader["LastStatusDate"];
+                                PaidFees = (decimal)reader["PaidFees"];
+                                UserID = (int)reader["CreatedByUserID"];
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        IsFound = false;
+                    }
+                }
+            }
+
+            return IsFound;
+        }
+
         public static int AddNewApplication(int ApplicantPersonID, DateTime ApplicationDate, int ApplicationTypeID, short ApplicationStatus, DateTime LastStatusDate, decimal PaidFees, int CreatedByUserID)
         {
             int ApplicationID = -1;
