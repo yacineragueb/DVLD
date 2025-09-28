@@ -1,0 +1,110 @@
+﻿using System;
+using System.Data;
+using DVLDAccessLayer;
+
+namespace DVLDBusinessLayer
+{
+    public class clsApplication
+    {
+        enum enMode
+        {
+            AddNew = 0,
+            Edit = 1
+        }
+        public enum enApplicatinStatus
+        {
+            New = 0,
+            Cancelled = 1,
+            Completed = 2
+        }
+
+        enMode _Mode = enMode.AddNew;
+        public clsPerson Person;
+        public clsUser User;
+        public clsApplicationTypes ApplicationType;
+
+        public int ApplicationID { get; set; }
+        public int ApplicationPersonID { get; set; }
+        public DateTime ApplicationDate { get; set; }
+        public int ApplicationTypeID { get; set; }
+        public enApplicatinStatus ApplicationStatus { get; set; }
+        public DateTime LastStatusDate { get; set; }
+        public decimal PaidFees { get; set; }
+        public int CreateByUserID { get; set; }
+
+        public clsApplication()
+        {
+            ApplicationID = -1;
+            ApplicationPersonID = -1;
+            ApplicationDate = DateTime.Now;
+            ApplicationTypeID = -1;
+            ApplicationStatus = enApplicatinStatus.New;
+            LastStatusDate = DateTime.Now;
+            PaidFees = 0;
+            CreateByUserID = -1;
+        }
+
+        private clsApplication(int ApplicationID, int PersonID, DateTime ApplicationDate, int ApplicationTypeID, enApplicatinStatus ApplicationStatus, DateTime LastStatusDate, decimal PaidFees, int UserID)
+        {
+            this.ApplicationID = ApplicationID;
+            Person = clsPerson.Find(PersonID);
+            this.ApplicationDate = ApplicationDate;
+            ApplicationType = clsApplicationTypes.Find(ApplicationTypeID);
+            this.ApplicationStatus = ApplicationStatus;
+            this.LastStatusDate = LastStatusDate;
+            this.PaidFees = PaidFees;
+            User = clsUser.Find(UserID);
+        }
+
+        private bool _AddNewApplication()
+        {
+            this.ApplicationID = clsApplicationsData.AddNewApplication(this.ApplicationPersonID, this.ApplicationDate, this.ApplicationTypeID, (short)this.ApplicationStatus, this.LastStatusDate, this.PaidFees, this.CreateByUserID);
+
+            return this.ApplicationID != -1;
+        }
+
+        private bool _UpdateApplication()
+        {
+            return clsApplicationsData.UpdateApplication(this.ApplicationID, this.ApplicationPersonID, this.ApplicationDate, this.ApplicationTypeID, (short)this.ApplicationStatus, this.LastStatusDate, this.PaidFees, this.CreateByUserID);
+        }
+
+        public static clsApplication Find(int ApplicationID)
+        {
+            int PersonID = -1;
+            DateTime ApplicationDate = DateTime.Now;
+            int ApplicationTypeID = -1;
+            enApplicatinStatus ApplicationStatus = enApplicatinStatus.New;
+            DateTime LastStatusDate = DateTime.Now;
+            decimal PaidFees = 0;
+            int UserID = -1;
+
+            if (false)
+            {
+                return new clsApplication(ApplicationID, PersonID, ApplicationDate, ApplicationTypeID, ApplicationStatus, LastStatusDate, PaidFees, UserID);
+            } else { 
+                return null; 
+            }
+        }
+
+        public bool Save()
+        {
+            switch(_Mode)
+            {
+                case enMode.AddNew:
+                    if(_AddNewApplication())
+                    {
+                        _Mode = enMode.Edit;
+                        return true;
+                    } else
+                    {
+                        return false;
+                    }
+
+                case enMode.Edit:
+                    return _UpdateApplication();
+            }
+
+            return false;
+        }
+    }
+}
