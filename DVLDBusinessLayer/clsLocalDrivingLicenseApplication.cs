@@ -46,6 +46,27 @@ namespace DVLDBusinessLayer
             return false;
         }
 
+        public static clsLocalDrivingLicenseApplication Find(int LDLApplicationID)
+        {
+            int ApplicationID = -1;
+            int LicenseClassID = -1;
+
+            if (clsLocalDrivingLicenseApplicationsData.FindLDLApplicationByID(LDLApplicationID, ref ApplicationID, ref LicenseClassID))
+            {
+                clsApplication Application = clsApplication.Find(ApplicationID);
+
+                if (Application != null)
+                {
+                    return new clsLocalDrivingLicenseApplication(ApplicationID, Application.ApplicationPersonID, Application.ApplicationDate, Application.ApplicationTypeID, Application.ApplicationStatus,
+                                Application.LastStatusDate, Application.PaidFees, Application.CreateByUserID, LDLApplicationID, LicenseClassID);
+                }
+                else return null;
+            } else
+            {
+                return null;
+            }
+        }
+
         public static DataTable GetAllLocalDrivingLicenseApplication()
         {
             return clsLocalDrivingLicenseApplicationsData.GetAllLocalDrivingLicenseApplication();

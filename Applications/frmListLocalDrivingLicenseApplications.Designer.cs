@@ -38,9 +38,6 @@
             this.cbFilter = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.dgvLDLApplicationsTable = new System.Windows.Forms.DataGridView();
-            this.lblRecords = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.btnClose = new System.Windows.Forms.Button();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.showDetailsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
@@ -56,6 +53,9 @@
             this.sendEmailToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
+            this.lblRecords = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.btnClose = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLDLApplicationsTable)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
@@ -100,6 +100,7 @@
             this.btnAddLocalDrivingLicenseApplication.Size = new System.Drawing.Size(87, 58);
             this.btnAddLocalDrivingLicenseApplication.TabIndex = 13;
             this.btnAddLocalDrivingLicenseApplication.UseVisualStyleBackColor = true;
+            this.btnAddLocalDrivingLicenseApplication.Click += new System.EventHandler(this.btnAddLocalDrivingLicenseApplication_Click);
             // 
             // imageList1
             // 
@@ -140,6 +141,7 @@
             this.dgvLDLApplicationsTable.AllowUserToOrderColumns = true;
             this.dgvLDLApplicationsTable.BackgroundColor = System.Drawing.Color.White;
             this.dgvLDLApplicationsTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvLDLApplicationsTable.ContextMenuStrip = this.contextMenuStrip1;
             this.dgvLDLApplicationsTable.Location = new System.Drawing.Point(12, 262);
             this.dgvLDLApplicationsTable.Name = "dgvLDLApplicationsTable";
             this.dgvLDLApplicationsTable.ReadOnly = true;
@@ -147,41 +149,6 @@
             this.dgvLDLApplicationsTable.RowTemplate.Height = 24;
             this.dgvLDLApplicationsTable.Size = new System.Drawing.Size(1420, 377);
             this.dgvLDLApplicationsTable.TabIndex = 10;
-            // 
-            // lblRecords
-            // 
-            this.lblRecords.AutoSize = true;
-            this.lblRecords.Font = new System.Drawing.Font("Poppins SemiBold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRecords.Location = new System.Drawing.Point(110, 656);
-            this.lblRecords.Name = "lblRecords";
-            this.lblRecords.Size = new System.Drawing.Size(17, 29);
-            this.lblRecords.TabIndex = 17;
-            this.lblRecords.Text = "0";
-            this.lblRecords.UseCompatibleTextRendering = true;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Poppins SemiBold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(8, 655);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(106, 30);
-            this.label1.TabIndex = 16;
-            this.label1.Text = "#Records: ";
-            // 
-            // btnClose
-            // 
-            this.btnClose.BackColor = System.Drawing.Color.Red;
-            this.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnClose.Font = new System.Drawing.Font("Poppins Medium", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClose.ForeColor = System.Drawing.Color.White;
-            this.btnClose.Location = new System.Drawing.Point(1294, 647);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(138, 51);
-            this.btnClose.TabIndex = 15;
-            this.btnClose.Text = "Close";
-            this.btnClose.UseVisualStyleBackColor = false;
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // contextMenuStrip1
             // 
@@ -203,7 +170,7 @@
             this.toolStripSeparator2,
             this.toolStripMenuItem4});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(378, 328);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(378, 356);
             // 
             // showDetailsToolStripMenuItem
             // 
@@ -223,6 +190,7 @@
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
             this.editToolStripMenuItem.Size = new System.Drawing.Size(377, 36);
             this.editToolStripMenuItem.Text = "Edit Application";
+            this.editToolStripMenuItem.Click += new System.EventHandler(this.editToolStripMenuItem_Click);
             // 
             // deleteToolStripMenuItem
             // 
@@ -285,6 +253,41 @@
             this.toolStripMenuItem4.Name = "toolStripMenuItem4";
             this.toolStripMenuItem4.Size = new System.Drawing.Size(377, 36);
             this.toolStripMenuItem4.Text = "Show Person License History";
+            // 
+            // lblRecords
+            // 
+            this.lblRecords.AutoSize = true;
+            this.lblRecords.Font = new System.Drawing.Font("Poppins SemiBold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRecords.Location = new System.Drawing.Point(110, 656);
+            this.lblRecords.Name = "lblRecords";
+            this.lblRecords.Size = new System.Drawing.Size(17, 29);
+            this.lblRecords.TabIndex = 17;
+            this.lblRecords.Text = "0";
+            this.lblRecords.UseCompatibleTextRendering = true;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Poppins SemiBold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(8, 655);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(106, 30);
+            this.label1.TabIndex = 16;
+            this.label1.Text = "#Records: ";
+            // 
+            // btnClose
+            // 
+            this.btnClose.BackColor = System.Drawing.Color.Red;
+            this.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnClose.Font = new System.Drawing.Font("Poppins Medium", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClose.ForeColor = System.Drawing.Color.White;
+            this.btnClose.Location = new System.Drawing.Point(1294, 647);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(138, 51);
+            this.btnClose.TabIndex = 15;
+            this.btnClose.Text = "Close";
+            this.btnClose.UseVisualStyleBackColor = false;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // frmListLocalDrivingLicenseApplications
             // 

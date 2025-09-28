@@ -32,7 +32,7 @@ namespace DVLDAccessLayer
                                 PersonID = (int)reader["ApplicantPersonID"];
                                 ApplicationDate = (DateTime)reader["ApplicationDate"];
                                 ApplicationTypeID = (int)reader["ApplicationTypeID"];
-                                ApplicationStatus = (short)reader["ApplicationStatus"];
+                                ApplicationStatus = Convert.ToInt16(reader["ApplicationStatus"]);
                                 LastStatusDate = (DateTime)reader["LastStatusDate"];
                                 PaidFees = (decimal)reader["PaidFees"];
                                 UserID = (int)reader["CreatedByUserID"];

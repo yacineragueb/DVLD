@@ -6,6 +6,42 @@ namespace DVLDAccessLayer
 {
     public class clsLocalDrivingLicenseApplicationsData
     {
+        public static bool FindLDLApplicationByID(int LocalDrivingLicenseApplicationID, ref int ApplicationID, ref int LicenseClassID)
+        {
+            bool IsFound = false;
+
+            using( SqlConnection conn = new SqlConnection(clsDVLDAcessLayerSettings.connectionString))
+            {
+                string query = "SELECT * FROM LocalDrivingLicenseApplications WHERE LocalDrivingLicenseApplicationID = @LocalDrivingLicenseApplicationID;";
+
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@LocalDrivingLicenseApplicationID", LocalDrivingLicenseApplicationID);
+
+                    try
+                    {
+                        conn.Open();
+                        using(SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            if(reader.Read())
+                            {
+                                IsFound = true;
+
+                                ApplicationID = (int)reader["ApplicationID"];
+                                LicenseClassID = (int)reader["LicenseClassID"];
+                            }
+                        }
+
+                    } catch (Exception ex)
+                    {
+                        IsFound = false;
+                    }
+                }
+            }
+
+            return IsFound;
+        }
+
         public static DataTable GetAllLocalDrivingLicenseApplication()
         {
             DataTable dt = new DataTable();

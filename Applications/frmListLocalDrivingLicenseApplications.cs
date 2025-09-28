@@ -20,6 +20,13 @@ namespace DVLD_project.Applications
             InitializeComponent();
         }
 
+        private void _AddEditLocalDrivingLicenseApplication(int ID)
+        {
+            frmAddEditLDLApplication frm = new frmAddEditLDLApplication(ID);
+            frm.ShowDialog();
+            frmListLocalDrivingLicenseApplications_Load(null, null);
+        }
+
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -41,7 +48,7 @@ namespace DVLD_project.Applications
                 dgvLDLApplicationsTable.Columns[1].Width = 220;
 
                 dgvLDLApplicationsTable.Columns[2].HeaderText = "National No.";
-                dgvLDLApplicationsTable.Columns[2].Width = 120;
+                dgvLDLApplicationsTable.Columns[2].Width = 100;
 
                 dgvLDLApplicationsTable.Columns[3].HeaderText = "Full Name";
                 dgvLDLApplicationsTable.Columns[3].Width = 240;
@@ -50,7 +57,7 @@ namespace DVLD_project.Applications
                 dgvLDLApplicationsTable.Columns[4].Width = 140;
 
                 dgvLDLApplicationsTable.Columns[5].HeaderText = "Passed Tests";
-                dgvLDLApplicationsTable.Columns[5].Width = 80;
+                dgvLDLApplicationsTable.Columns[5].Width = 100;
 
                 dgvLDLApplicationsTable.Columns[6].HeaderText = "Status";
                 dgvLDLApplicationsTable.Columns[6].Width = 90;
@@ -140,6 +147,17 @@ namespace DVLD_project.Applications
             }
 
             txtbFilter.Clear();
+        }
+
+        private void btnAddLocalDrivingLicenseApplication_Click(object sender, EventArgs e)
+        {
+            _AddEditLocalDrivingLicenseApplication(-1);
+        }
+
+        private void editToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int LDLApplicationID = (int)dgvLDLApplicationsTable.CurrentRow.Cells[0].Value;
+            _AddEditLocalDrivingLicenseApplication(LDLApplicationID);
         }
     }
 }
