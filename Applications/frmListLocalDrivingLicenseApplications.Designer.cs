@@ -37,7 +37,7 @@
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.cbFilter = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.dgvPeopleTable = new System.Windows.Forms.DataGridView();
+            this.dgvLDLApplicationsTable = new System.Windows.Forms.DataGridView();
             this.lblRecords = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.btnClose = new System.Windows.Forms.Button();
@@ -48,16 +48,16 @@
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
-            this.sendEmailToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.callPhoneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.sendEmailToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvPeopleTable)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvLDLApplicationsTable)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -88,6 +88,8 @@
             this.txtbFilter.Size = new System.Drawing.Size(204, 22);
             this.txtbFilter.TabIndex = 14;
             this.txtbFilter.Visible = false;
+            this.txtbFilter.TextChanged += new System.EventHandler(this.txtbFilter_TextChanged);
+            this.txtbFilter.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtbFilter_KeyPress);
             // 
             // btnAddLocalDrivingLicenseApplication
             // 
@@ -119,6 +121,7 @@
             this.cbFilter.Name = "cbFilter";
             this.cbFilter.Size = new System.Drawing.Size(182, 24);
             this.cbFilter.TabIndex = 12;
+            this.cbFilter.SelectedIndexChanged += new System.EventHandler(this.cbFilter_SelectedIndexChanged);
             // 
             // label3
             // 
@@ -130,20 +133,20 @@
             this.label3.TabIndex = 11;
             this.label3.Text = "Filter By:";
             // 
-            // dgvPeopleTable
+            // dgvLDLApplicationsTable
             // 
-            this.dgvPeopleTable.AllowUserToAddRows = false;
-            this.dgvPeopleTable.AllowUserToDeleteRows = false;
-            this.dgvPeopleTable.AllowUserToOrderColumns = true;
-            this.dgvPeopleTable.BackgroundColor = System.Drawing.Color.White;
-            this.dgvPeopleTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvPeopleTable.Location = new System.Drawing.Point(12, 262);
-            this.dgvPeopleTable.Name = "dgvPeopleTable";
-            this.dgvPeopleTable.ReadOnly = true;
-            this.dgvPeopleTable.RowHeadersWidth = 51;
-            this.dgvPeopleTable.RowTemplate.Height = 24;
-            this.dgvPeopleTable.Size = new System.Drawing.Size(1420, 377);
-            this.dgvPeopleTable.TabIndex = 10;
+            this.dgvLDLApplicationsTable.AllowUserToAddRows = false;
+            this.dgvLDLApplicationsTable.AllowUserToDeleteRows = false;
+            this.dgvLDLApplicationsTable.AllowUserToOrderColumns = true;
+            this.dgvLDLApplicationsTable.BackgroundColor = System.Drawing.Color.White;
+            this.dgvLDLApplicationsTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvLDLApplicationsTable.Location = new System.Drawing.Point(12, 262);
+            this.dgvLDLApplicationsTable.Name = "dgvLDLApplicationsTable";
+            this.dgvLDLApplicationsTable.ReadOnly = true;
+            this.dgvLDLApplicationsTable.RowHeadersWidth = 51;
+            this.dgvLDLApplicationsTable.RowTemplate.Height = 24;
+            this.dgvLDLApplicationsTable.Size = new System.Drawing.Size(1420, 377);
+            this.dgvLDLApplicationsTable.TabIndex = 10;
             // 
             // lblRecords
             // 
@@ -200,7 +203,7 @@
             this.toolStripSeparator2,
             this.toolStripMenuItem4});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(378, 356);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(378, 328);
             // 
             // showDetailsToolStripMenuItem
             // 
@@ -239,22 +242,38 @@
             this.toolStripMenuItem3.Size = new System.Drawing.Size(377, 36);
             this.toolStripMenuItem3.Text = "Cancel Application";
             // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(374, 6);
+            // 
+            // toolStripMenuItem5
+            // 
+            this.toolStripMenuItem5.Name = "toolStripMenuItem5";
+            this.toolStripMenuItem5.Size = new System.Drawing.Size(377, 36);
+            this.toolStripMenuItem5.Text = "Schdule Tests";
+            // 
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
             this.toolStripMenuItem2.Size = new System.Drawing.Size(374, 6);
-            // 
-            // sendEmailToolStripMenuItem
-            // 
-            this.sendEmailToolStripMenuItem.Name = "sendEmailToolStripMenuItem";
-            this.sendEmailToolStripMenuItem.Size = new System.Drawing.Size(377, 36);
-            this.sendEmailToolStripMenuItem.Text = "Show License";
             // 
             // callPhoneToolStripMenuItem
             // 
             this.callPhoneToolStripMenuItem.Name = "callPhoneToolStripMenuItem";
             this.callPhoneToolStripMenuItem.Size = new System.Drawing.Size(377, 36);
             this.callPhoneToolStripMenuItem.Text = "Issue Driving License (First Time)";
+            // 
+            // toolStripSeparator4
+            // 
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            this.toolStripSeparator4.Size = new System.Drawing.Size(374, 6);
+            // 
+            // sendEmailToolStripMenuItem
+            // 
+            this.sendEmailToolStripMenuItem.Name = "sendEmailToolStripMenuItem";
+            this.sendEmailToolStripMenuItem.Size = new System.Drawing.Size(377, 36);
+            this.sendEmailToolStripMenuItem.Text = "Show License";
             // 
             // toolStripSeparator2
             // 
@@ -266,22 +285,6 @@
             this.toolStripMenuItem4.Name = "toolStripMenuItem4";
             this.toolStripMenuItem4.Size = new System.Drawing.Size(377, 36);
             this.toolStripMenuItem4.Text = "Show Person License History";
-            // 
-            // toolStripMenuItem5
-            // 
-            this.toolStripMenuItem5.Name = "toolStripMenuItem5";
-            this.toolStripMenuItem5.Size = new System.Drawing.Size(377, 36);
-            this.toolStripMenuItem5.Text = "Schdule Tests";
-            // 
-            // toolStripSeparator3
-            // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(374, 6);
-            // 
-            // toolStripSeparator4
-            // 
-            this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(374, 6);
             // 
             // frmListLocalDrivingLicenseApplications
             // 
@@ -297,15 +300,16 @@
             this.Controls.Add(this.btnAddLocalDrivingLicenseApplication);
             this.Controls.Add(this.cbFilter);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.dgvPeopleTable);
+            this.Controls.Add(this.dgvLDLApplicationsTable);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.pictureBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "frmListLocalDrivingLicenseApplications";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Local Driving License Applications";
+            this.Load += new System.EventHandler(this.frmListLocalDrivingLicenseApplications_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvPeopleTable)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvLDLApplicationsTable)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -320,7 +324,7 @@
         private System.Windows.Forms.Button btnAddLocalDrivingLicenseApplication;
         private System.Windows.Forms.ComboBox cbFilter;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.DataGridView dgvPeopleTable;
+        private System.Windows.Forms.DataGridView dgvLDLApplicationsTable;
         private System.Windows.Forms.Label lblRecords;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnClose;
