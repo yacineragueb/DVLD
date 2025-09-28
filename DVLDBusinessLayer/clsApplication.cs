@@ -50,12 +50,15 @@ namespace DVLDBusinessLayer
         {
             this.ApplicationID = ApplicationID;
             Person = clsPerson.Find(PersonID);
+            this.ApplicationPersonID = PersonID;
             this.ApplicationDate = ApplicationDate;
             ApplicationType = clsApplicationTypes.Find(ApplicationTypeID);
+            this.ApplicationTypeID = ApplicationTypeID;
             this.ApplicationStatus = ApplicationStatus;
             this.LastStatusDate = LastStatusDate;
             this.PaidFees = PaidFees;
             User = clsUser.Find(CreatedByUserID);
+            this.CreateByUserID = CreatedByUserID;
 
             _Mode = enMode.Edit;
         }

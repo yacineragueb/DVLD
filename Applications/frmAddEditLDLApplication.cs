@@ -128,12 +128,10 @@ namespace DVLD_project.Applications
 
             int PersonID = ctrlPersonDetailsWithFilter1.GetSelectedPersonID();
             int CreatedByUserID = clsGlobal.CurrentUser.UserID;
+            int LicenseClassID = cbLicenseClass.FindString(clsLicenseClasses.Find(cbLicenseClass.Text).ClassName);
 
-            //_User.UserName = txtbUsername.Text.Trim();
-            //_User.Password = txtbPassword.Text.Trim();
-            //_User.IsActive = ckbIsActive.Checked;
-            //_User.PersonID = PersonID;
-
+            _LDLApplication.ApplicationPersonID = PersonID;
+            _LDLApplication.LicenseClassID = LicenseClassID;
 
             if (_LDLApplication.Save())
             {

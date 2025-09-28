@@ -224,9 +224,9 @@
             this.lblApplicationFees.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblApplicationFees.Location = new System.Drawing.Point(307, 280);
             this.lblApplicationFees.Name = "lblApplicationFees";
-            this.lblApplicationFees.Size = new System.Drawing.Size(40, 26);
+            this.lblApplicationFees.Size = new System.Drawing.Size(26, 26);
             this.lblApplicationFees.TabIndex = 14;
-            this.lblApplicationFees.Text = "N/A";
+            this.lblApplicationFees.Text = "15";
             // 
             // lblApplicationDate
             // 
