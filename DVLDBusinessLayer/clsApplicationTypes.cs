@@ -12,11 +12,24 @@ namespace DVLDBusinessLayer
             Edit = 1
         }
 
+       public enum enApplicationTypes
+        {
+          NewLocalDrivingLicenseService = 1,
+          RenewDrivingLicenseService = 2,
+          ReplacementLostDrivingLicense = 3,
+          ReplacementDamagedDrivingLicense = 4,
+          ReleaseDetainedDrivingLicsense = 5,
+          NewInternationalLicense = 6,
+          RetakeTest = 7,
+        }
+
         enMode _Mode;
 
         public int ApplicationTypeID {  get; set; }
         public string Title { get; set; }
         public decimal Fee { get; set; }
+
+        
 
         public clsApplicationTypes()
         {

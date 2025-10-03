@@ -67,6 +67,28 @@ namespace DVLDBusinessLayer
             }
         }
 
+        public bool Save()
+        {
+            switch(_Mode)
+            {
+                case enMode.AddNew:
+                    if(_AddNewLocalDrivingLicenseApplication())
+                    {
+                        _Mode = enMode.Edit;
+                        return true; 
+                    }else
+                    {
+                        return false;
+                    }
+
+                case enMode.Edit:
+                    return _UpdateLocalDrivingLicenseApplication();
+
+                default:
+                    return false;
+            }
+        }
+
         public static DataTable GetAllLocalDrivingLicenseApplication()
         {
             return clsLocalDrivingLicenseApplicationsData.GetAllLocalDrivingLicenseApplication();

@@ -13,7 +13,6 @@ namespace DVLD_project.Applications
 {
     public partial class frmAddEditLDLApplication : Form
     {
-
         enum enMode
         {
             AddNew = 0,
@@ -69,6 +68,8 @@ namespace DVLD_project.Applications
             lblApplicationDate.Text = DateTime.Now.ToShortDateString();
 
             lblCreatedByUser.Text = clsGlobal.CurrentUser.UserName;
+
+            lblApplicationFees.Text = clsApplicationTypes.Find((int)clsApplicationTypes.enApplicationTypes.NewLocalDrivingLicenseService).Fee.ToString();
         }
 
         private void _LoadData()
@@ -116,6 +117,33 @@ namespace DVLD_project.Applications
             }
         }
 
+        private bool _HandleSelectedPerson()
+        {
+            if (ctrlPersonDetailsWithFilter1.GetSelectedPerson() != null)
+            {
+                int selectedPersonID = ctrlPersonDetailsWithFilter1.GetSelectedPersonID();
+
+                // Here we will add handle add Applications with the same type for person
+
+                //if (!clsUser.IsUserExist(selectedPersonID))
+                //{
+                //    return true;
+                //}
+                //else
+                //{
+                //    MessageBox.Show("Selected person already has a user, choose another one.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //    tbLDLApplicationInfo.SelectedIndex = 0;
+                //}
+            }
+            else
+            {
+                MessageBox.Show("You did not select a person.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                tbLDLApplicationInfo.SelectedIndex = 0;
+            }
+
+            return false;
+        }
+
         private void btnSave_Click(object sender, EventArgs e)
         {
             if (!this.ValidateChildren())
@@ -124,7 +152,7 @@ namespace DVLD_project.Applications
                 return;
             }
 
-            //if (!_HandleSelectedPerson()) return;
+            if (!_HandleSelectedPerson()) return;
 
             int PersonID = ctrlPersonDetailsWithFilter1.GetSelectedPersonID();
             int CreatedByUserID = clsGlobal.CurrentUser.UserID;
