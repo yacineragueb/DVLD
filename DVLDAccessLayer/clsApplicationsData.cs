@@ -98,7 +98,7 @@ namespace DVLDAccessLayer
                                                 ApplicationStatus = @ApplicationStatus,
                                                 LastStatusDate = @LastStatusDate,
                                                 PaidFees = @PaidFees,
-                                                CreatedByUserID = @CreatedByUserID,
+                                                CreatedByUserID = @CreatedByUserID
                                             WHERE ApplicationID = @ApplicationID;";
 
                 using (SqlCommand cmd = new SqlCommand(query, connection))

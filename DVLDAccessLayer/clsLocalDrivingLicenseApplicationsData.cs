@@ -42,6 +42,38 @@ namespace DVLDAccessLayer
             return IsFound;
         }
 
+        public static int AddNewLDLApplication(int ApplicationID, int LicenseClassID)
+        {
+            int LDLApplicationID = -1;
+            using( SqlConnection conn = new SqlConnection(clsDVLDAcessLayerSettings.connectionString) )
+            {
+                string query = @"INSERT INTO LocalDrivingLicenseApplications (ApplicationID ,LicenseClassID) VALUES ( @ApplicationID, @LicenseClassID );
+                                 SELECT SCOPE_IDENTITY();";
+
+                using(SqlCommand cmd = new SqlCommand(query,conn))
+                {
+                    cmd.Parameters.AddWithValue("@ApplicationID", ApplicationID);
+                    cmd.Parameters.AddWithValue("@LicenseClassID", LicenseClassID);
+
+                    try
+                    {
+                        conn.Open();
+                        object result = cmd.ExecuteScalar();
+                        if(result != null && int.TryParse(result.ToString(), out int insertedLDLApplicationID))
+                        {
+                            LDLApplicationID = insertedLDLApplicationID;
+                        }
+
+                    } catch (Exception ex)
+                    {
+                        LDLApplicationID = -1;
+                    }
+                }
+            }
+
+            return LDLApplicationID;
+        }
+
         public static DataTable GetAllLocalDrivingLicenseApplication()
         {
             DataTable dt = new DataTable();

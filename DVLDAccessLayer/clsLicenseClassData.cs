@@ -6,7 +6,7 @@ namespace DVLDAccessLayer
 {
     public class clsLicenseClassData
     {
-        public static bool GetLicenseClassInfoByClassName(ref int LicenseClassID, string ClassName, ref string ClassDescription, ref int MinimumAllowedAge, ref int DefaultValidityLength, ref decimal ClassFees)
+        public static bool GetLicenseClassInfoByClassName(ref int LicenseClassID, string ClassName, ref string ClassDescription, ref byte MinimumAllowedAge, ref byte DefaultValidityLength, ref decimal ClassFees)
         {
             bool IsFound = false;
             using (SqlConnection conn = new SqlConnection(clsDVLDAcessLayerSettings.connectionString))
@@ -28,8 +28,8 @@ namespace DVLDAccessLayer
 
                                 LicenseClassID = (int)reader["LicenseClassID"];
                                 ClassDescription = (string)reader["ClassDescription"];
-                                MinimumAllowedAge = (int)reader["MinimumAllowedAge"];
-                                DefaultValidityLength = (int)reader["DefaultValidityLength"];
+                                MinimumAllowedAge = (byte)reader["MinimumAllowedAge"];
+                                DefaultValidityLength = (byte)reader["DefaultValidityLength"];
                                 ClassFees = Convert.ToDecimal(reader["ClassFees"]);
                             }
                             else
@@ -47,7 +47,7 @@ namespace DVLDAccessLayer
 
             return IsFound;
         }
-        public static bool GetLicenseClassInfoByID( int LicenseClassID, ref string ClassName, ref string ClassDescription, ref int MinimumAllowedAge, ref int DefaultValidityLength, ref decimal ClassFees)
+        public static bool GetLicenseClassInfoByID( int LicenseClassID, ref string ClassName, ref string ClassDescription, ref byte MinimumAllowedAge, ref byte DefaultValidityLength, ref decimal ClassFees)
         {
             bool IsFound = false;
             using (SqlConnection conn = new SqlConnection(clsDVLDAcessLayerSettings.connectionString))
@@ -69,8 +69,8 @@ namespace DVLDAccessLayer
 
                                 ClassName = (string)reader["ClassName"];
                                 ClassDescription = (string)reader["ClassDescription"];
-                                MinimumAllowedAge = (int)reader["MinimumAllowedAge"];
-                                DefaultValidityLength = (int)reader["DefaultValidityLength"];
+                                MinimumAllowedAge = (byte)reader["MinimumAllowedAge"];
+                                DefaultValidityLength = (byte)reader["DefaultValidityLength"];
                                 ClassFees = Convert.ToDecimal(reader["ClassFees"]);
                             }
                             else

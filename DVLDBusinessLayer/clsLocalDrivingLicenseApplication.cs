@@ -26,7 +26,7 @@ namespace DVLDBusinessLayer
             _Mode = enMode.AddNew;
         }
 
-        private clsLocalDrivingLicenseApplication(int ApplicationID, int PersonID, DateTime ApplicationDate, int ApplicationTypeID, enApplicatinStatus ApplicationStatus, DateTime LastStatusDate, decimal PaidFees, int CreatedByUserID ,int LocalDrivingLicenseApplicationID, int LicenseClassID) : base(ApplicationID, PersonID, ApplicationDate, ApplicationTypeID, ApplicationStatus, LastStatusDate, PaidFees, CreatedByUserID)
+        private clsLocalDrivingLicenseApplication(int ApplicationID, int PersonID, DateTime ApplicationDate, int ApplicationTypeID, enApplicationStatus ApplicationStatus, DateTime LastStatusDate, decimal PaidFees, int CreatedByUserID ,int LocalDrivingLicenseApplicationID, int LicenseClassID) : base(ApplicationID, PersonID, ApplicationDate, ApplicationTypeID, ApplicationStatus, LastStatusDate, PaidFees, CreatedByUserID)
         {
             this.LocalDrivingLicenseApplicationID = LocalDrivingLicenseApplicationID;
             this.LicenseClassID = LicenseClassID;
@@ -36,7 +36,7 @@ namespace DVLDBusinessLayer
 
         private bool _AddNewLocalDrivingLicenseApplication()
         {
-            this.LocalDrivingLicenseApplicationID = -1;
+            this.LocalDrivingLicenseApplicationID = clsLocalDrivingLicenseApplicationsData.AddNewLDLApplication(this.ApplicationID, this.LicenseClassID);
 
             return this.LocalDrivingLicenseApplicationID != -1;
         }
@@ -69,6 +69,12 @@ namespace DVLDBusinessLayer
 
         public bool Save()
         {
+            base._Mode = (clsApplication.enMode)_Mode;
+            if(!base.Save())
+            {
+                return false;
+            }
+            
             switch(_Mode)
             {
                 case enMode.AddNew:

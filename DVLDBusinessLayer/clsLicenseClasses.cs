@@ -12,8 +12,8 @@ namespace DVLDBusinessLayer
         public int LicenseClassID { get; set; }
         public string ClassName { get; set; }
         public string ClassDescription { get; set; }
-        public int MinimumAllowedAge { get; set; }
-        public int DefaultValidityLength { get; set; }
+        public byte MinimumAllowedAge { get; set; }
+        public byte DefaultValidityLength { get; set; }
         public decimal ClassFees { get; set; }
 
         public clsLicenseClasses()
@@ -27,7 +27,7 @@ namespace DVLDBusinessLayer
             Mode = enMode.AddNew;
         }
 
-        private clsLicenseClasses(int LicenseClassID, string ClassName, string ClassDescription, int MinimumAllowedAge, int DefaultValidityLength, decimal ClassFees)
+        private clsLicenseClasses(int LicenseClassID, string ClassName, string ClassDescription, byte MinimumAllowedAge, byte DefaultValidityLength, decimal ClassFees)
         {
             this.LicenseClassID = LicenseClassID;
             this.ClassName = ClassName;
@@ -43,8 +43,8 @@ namespace DVLDBusinessLayer
         {
             string ClassName = "";
             string ClassDescription = "";
-            int MinimumAllowedAge = 0;
-            int DefaultValidityLength = 0;
+            byte MinimumAllowedAge = 0;
+            byte DefaultValidityLength = 0;
             decimal ClassFees = 0;
 
             if (clsLicenseClassData.GetLicenseClassInfoByID(LicenseClassID, ref ClassName, ref ClassDescription, ref MinimumAllowedAge, ref DefaultValidityLength, ref ClassFees))
@@ -58,8 +58,8 @@ namespace DVLDBusinessLayer
         {
             int LicenseClassID = -1;
             string ClassDescription = "";
-            int MinimumAllowedAge = 0;
-            int DefaultValidityLength = 0;
+            byte MinimumAllowedAge = 0;
+            byte DefaultValidityLength = 0;
             decimal ClassFees = 0;
 
             if (clsLicenseClassData.GetLicenseClassInfoByClassName(ref LicenseClassID, ClassName, ref ClassDescription, ref MinimumAllowedAge, ref DefaultValidityLength, ref ClassFees))

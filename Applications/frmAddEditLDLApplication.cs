@@ -127,7 +127,7 @@ namespace DVLD_project.Applications
 
                 //if (!clsUser.IsUserExist(selectedPersonID))
                 //{
-                //    return true;
+                    return true;
                 //}
                 //else
                 //{
@@ -160,6 +160,12 @@ namespace DVLD_project.Applications
 
             _LDLApplication.ApplicationPersonID = PersonID;
             _LDLApplication.LicenseClassID = LicenseClassID;
+            _LDLApplication.CreateByUserID = CreatedByUserID;
+            _LDLApplication.ApplicationDate = DateTime.Now;
+            _LDLApplication.ApplicationTypeID = (int)clsApplicationTypes.enApplicationTypes.NewLocalDrivingLicenseService;
+            _LDLApplication.ApplicationStatus = clsApplication.enApplicationStatus.New;
+            _LDLApplication.LastStatusDate = DateTime.Now;
+            _LDLApplication.PaidFees = Convert.ToDecimal(lblApplicationFees.Text);
 
             if (_LDLApplication.Save())
             {
