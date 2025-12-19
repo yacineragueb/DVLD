@@ -33,7 +33,7 @@ namespace DVLD_project
             if (!_IsPasswordVisible)
             {
                 btnPasswordVisible.ImageIndex = 1; // Opened eye
-                txtbPassword.PasswordChar = '\0';
+                txtbPassword.PasswordChar = '\0'; // Make Password visible. ex: *** => 123
             }
             else
             {
@@ -89,7 +89,7 @@ namespace DVLD_project
         {
             var credentials = clsUtil.LoadCredentails();
 
-            if(credentials.Username != null)
+            if(credentials.Username != null && credentials.Password != null)
             {
                 txtbUsername.Text = credentials.Username;
                 txtbPassword.Text = credentials.Password;

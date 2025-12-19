@@ -13,6 +13,7 @@ namespace DVLDBusinessLayer
         }
 
         enMode _Mode = enMode.AddNew;
+
         clsLicenseClasses _LicenseClasses;
 
         public int LocalDrivingLicenseApplicationID { get; set; }
