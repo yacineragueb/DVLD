@@ -121,18 +121,7 @@ namespace DVLD_project.Applications
         {
             if (ctrlPersonDetailsWithFilter1.GetSelectedPerson() != null)
             {
-
-                // Here we will add handle add Applications with the same type for person
-
-                //if (!clsUser.IsUserExist(selectedPersonID))
-                //{
                     return true;
-                //}
-                //else
-                //{
-                //    MessageBox.Show("Selected person already has a user, choose another one.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                //    tbLDLApplicationInfo.SelectedIndex = 0;
-                //}
             }
             else
             {
