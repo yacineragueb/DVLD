@@ -1,4 +1,5 @@
 ﻿using System;
+using System.CodeDom;
 using System.Data;
 using System.Data.SqlClient;
 using static System.Net.Mime.MediaTypeNames;
@@ -168,6 +169,35 @@ namespace DVLDAccessLayer
             }
 
             return ActiveApplicationID;
+        }
+    
+        public static bool CancelApplication(int ApplicationID)
+        {
+            int rowsAffected = -1;
+
+            using (SqlConnection connection = new SqlConnection(clsDVLDAcessLayerSettings.connectionString))
+            {
+                string query = @"UPDATE Applications
+                                SET ApplicationStatus = 2
+                                WHERE ApplicationID = @ApplicationID;";
+
+                using (SqlCommand cmd = new SqlCommand(query, connection))
+                {
+                    cmd.Parameters.AddWithValue("@ApplicationID", ApplicationID);
+
+                    try
+                    {
+                        connection.Open();
+                        rowsAffected = cmd.ExecuteNonQuery();
+                    } catch (Exception ex)
+                    {
+                        rowsAffected = -1;
+                    }
+                }
+            }
+
+
+                return rowsAffected > 0;
         }
     }
 }

@@ -31,20 +31,14 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmListLocalDrivingLicenseApplications));
             this.label2 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.txtbFilter = new System.Windows.Forms.TextBox();
-            this.btnAddLocalDrivingLicenseApplication = new System.Windows.Forms.Button();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.cbFilter = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.dgvLDLApplicationsTable = new System.Windows.Forms.DataGridView();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.showDetailsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
-            this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
@@ -56,9 +50,15 @@
             this.lblRecords = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.btnClose = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.btnAddLocalDrivingLicenseApplication = new System.Windows.Forms.Button();
+            this.showDetailsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.CancelApplication = new System.Windows.Forms.ToolStripMenuItem();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLDLApplicationsTable)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // label2
@@ -71,16 +71,6 @@
             this.label2.TabIndex = 7;
             this.label2.Text = "Local Driving License Applications";
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::DVLD_project.Properties.Resources.LocalLicense;
-            this.pictureBox1.Location = new System.Drawing.Point(569, 4);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(307, 156);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 6;
-            this.pictureBox1.TabStop = false;
-            // 
             // txtbFilter
             // 
             this.txtbFilter.Location = new System.Drawing.Point(298, 223);
@@ -90,17 +80,6 @@
             this.txtbFilter.Visible = false;
             this.txtbFilter.TextChanged += new System.EventHandler(this.txtbFilter_TextChanged);
             this.txtbFilter.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtbFilter_KeyPress);
-            // 
-            // btnAddLocalDrivingLicenseApplication
-            // 
-            this.btnAddLocalDrivingLicenseApplication.ImageIndex = 0;
-            this.btnAddLocalDrivingLicenseApplication.ImageList = this.imageList1;
-            this.btnAddLocalDrivingLicenseApplication.Location = new System.Drawing.Point(1345, 188);
-            this.btnAddLocalDrivingLicenseApplication.Name = "btnAddLocalDrivingLicenseApplication";
-            this.btnAddLocalDrivingLicenseApplication.Size = new System.Drawing.Size(87, 58);
-            this.btnAddLocalDrivingLicenseApplication.TabIndex = 13;
-            this.btnAddLocalDrivingLicenseApplication.UseVisualStyleBackColor = true;
-            this.btnAddLocalDrivingLicenseApplication.Click += new System.EventHandler(this.btnAddLocalDrivingLicenseApplication_Click);
             // 
             // imageList1
             // 
@@ -160,7 +139,7 @@
             this.editToolStripMenuItem,
             this.deleteToolStripMenuItem,
             this.toolStripSeparator1,
-            this.toolStripMenuItem3,
+            this.CancelApplication,
             this.toolStripSeparator3,
             this.toolStripMenuItem5,
             this.toolStripMenuItem2,
@@ -170,45 +149,17 @@
             this.toolStripSeparator2,
             this.toolStripMenuItem4});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(378, 356);
-            // 
-            // showDetailsToolStripMenuItem
-            // 
-            this.showDetailsToolStripMenuItem.Image = global::DVLD_project.Properties.Resources.Details;
-            this.showDetailsToolStripMenuItem.Name = "showDetailsToolStripMenuItem";
-            this.showDetailsToolStripMenuItem.Size = new System.Drawing.Size(377, 36);
-            this.showDetailsToolStripMenuItem.Text = "Show Application Details";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(378, 328);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
             this.toolStripMenuItem1.Size = new System.Drawing.Size(374, 6);
             // 
-            // editToolStripMenuItem
-            // 
-            this.editToolStripMenuItem.Image = global::DVLD_project.Properties.Resources.Edit;
-            this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(377, 36);
-            this.editToolStripMenuItem.Text = "Edit Application";
-            this.editToolStripMenuItem.Click += new System.EventHandler(this.editToolStripMenuItem_Click);
-            // 
-            // deleteToolStripMenuItem
-            // 
-            this.deleteToolStripMenuItem.Image = global::DVLD_project.Properties.Resources.Trash;
-            this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(377, 36);
-            this.deleteToolStripMenuItem.Text = "Delete Application";
-            // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(374, 6);
-            // 
-            // toolStripMenuItem3
-            // 
-            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(377, 36);
-            this.toolStripMenuItem3.Text = "Cancel Application";
             // 
             // toolStripSeparator3
             // 
@@ -289,6 +240,57 @@
             this.btnClose.UseVisualStyleBackColor = false;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
+            // btnAddLocalDrivingLicenseApplication
+            // 
+            this.btnAddLocalDrivingLicenseApplication.ImageIndex = 0;
+            this.btnAddLocalDrivingLicenseApplication.ImageList = this.imageList1;
+            this.btnAddLocalDrivingLicenseApplication.Location = new System.Drawing.Point(1345, 188);
+            this.btnAddLocalDrivingLicenseApplication.Name = "btnAddLocalDrivingLicenseApplication";
+            this.btnAddLocalDrivingLicenseApplication.Size = new System.Drawing.Size(87, 58);
+            this.btnAddLocalDrivingLicenseApplication.TabIndex = 13;
+            this.btnAddLocalDrivingLicenseApplication.UseVisualStyleBackColor = true;
+            this.btnAddLocalDrivingLicenseApplication.Click += new System.EventHandler(this.btnAddLocalDrivingLicenseApplication_Click);
+            // 
+            // showDetailsToolStripMenuItem
+            // 
+            this.showDetailsToolStripMenuItem.Image = global::DVLD_project.Properties.Resources.Details;
+            this.showDetailsToolStripMenuItem.Name = "showDetailsToolStripMenuItem";
+            this.showDetailsToolStripMenuItem.Size = new System.Drawing.Size(377, 36);
+            this.showDetailsToolStripMenuItem.Text = "Show Application Details";
+            // 
+            // editToolStripMenuItem
+            // 
+            this.editToolStripMenuItem.Image = global::DVLD_project.Properties.Resources.Edit;
+            this.editToolStripMenuItem.Name = "editToolStripMenuItem";
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(377, 36);
+            this.editToolStripMenuItem.Text = "Edit Application";
+            this.editToolStripMenuItem.Click += new System.EventHandler(this.editToolStripMenuItem_Click);
+            // 
+            // deleteToolStripMenuItem
+            // 
+            this.deleteToolStripMenuItem.Image = global::DVLD_project.Properties.Resources.Trash;
+            this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(377, 36);
+            this.deleteToolStripMenuItem.Text = "Delete Application";
+            // 
+            // CancelApplication
+            // 
+            this.CancelApplication.Image = global::DVLD_project.Properties.Resources.Cancel;
+            this.CancelApplication.Name = "CancelApplication";
+            this.CancelApplication.Size = new System.Drawing.Size(377, 36);
+            this.CancelApplication.Text = "Cancel Application";
+            this.CancelApplication.Click += new System.EventHandler(this.CancelApplication_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::DVLD_project.Properties.Resources.LocalLicense;
+            this.pictureBox1.Location = new System.Drawing.Point(569, 4);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(307, 156);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 6;
+            this.pictureBox1.TabStop = false;
+            // 
             // frmListLocalDrivingLicenseApplications
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -311,9 +313,9 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Local Driving License Applications";
             this.Load += new System.EventHandler(this.frmListLocalDrivingLicenseApplications_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLDLApplicationsTable)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -340,7 +342,7 @@
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem sendEmailToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem callPhoneToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem3;
+        private System.Windows.Forms.ToolStripMenuItem CancelApplication;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;

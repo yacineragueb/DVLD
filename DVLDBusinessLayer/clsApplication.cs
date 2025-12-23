@@ -118,5 +118,10 @@ namespace DVLDBusinessLayer
         {
             return clsApplicationsData.GetActiveApplicationIDForLicenseClass(ApplicantPersonId, (int)ApplicationTypeID, LicenseClassID);
         }
+    
+        public static bool CancelApplication(int ApplicationID)
+        {
+            return clsApplicationsData.CancelApplication(ApplicationID);
+        }
     }
 }

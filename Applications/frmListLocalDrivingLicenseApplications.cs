@@ -159,5 +159,24 @@ namespace DVLD_project.Applications
             int LDLApplicationID = (int)dgvLDLApplicationsTable.CurrentRow.Cells[0].Value;
             _AddEditLocalDrivingLicenseApplication(LDLApplicationID);
         }
+
+        private void CancelApplication_Click(object sender, EventArgs e)
+        {
+            int LDLApplicationID = (int)dgvLDLApplicationsTable.CurrentRow.Cells[0].Value;
+
+            int ApplicationID = clsLocalDrivingLicenseApplication.Find(LDLApplicationID).ApplicationID;
+
+            if (MessageBox.Show("Are you sure you want to cancel this application?", "Cancel Application", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+            {
+                if (clsApplication.CancelApplication(ApplicationID))
+                {
+                    frmListLocalDrivingLicenseApplications_Load(null, null);
+                }
+                else
+                {
+                    MessageBox.Show("Faild to cancel this Application because it has a data linked with it.", "Faild", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
     }
 }
