@@ -70,7 +70,7 @@ namespace DVLDBusinessLayer
 
         public bool Save()
         {
-            base._Mode = (clsApplication.enMode)_Mode;
+            base._Mode = (clsApplication.enMode)_Mode; // Casting
             if(!base.Save())
             {
                 return false;

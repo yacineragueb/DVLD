@@ -86,7 +86,7 @@ namespace DVLD_project.Applications
             lblLDLApplicationID.Text = _LDLApplicationID.ToString();
             ctrlPersonDetailsWithFilter1.LoadData(_LDLApplication.ApplicationPersonID);
             lblApplicationDate.Text = _LDLApplication.ApplicationDate.ToShortDateString();
-            lblApplicationFees.Text = _LDLApplication.PaidFees.ToString();
+            lblApplicationFees.Text = _LDLApplication.PaidFees.ToString(); // I think this is wrong, I will check it later.
             lblCreatedByUser.Text = _LDLApplication.User.UserName;
         }
 
@@ -156,7 +156,9 @@ namespace DVLD_project.Applications
 
             int PersonID = ctrlPersonDetailsWithFilter1.GetSelectedPersonID();
             int CreatedByUserID = clsGlobal.CurrentUser.UserID;
-            int LicenseClassID = cbLicenseClass.FindString(clsLicenseClasses.Find(cbLicenseClass.Text).ClassName);
+
+            // We added '1' here because the ComboBox starts with index 0, while the licenseClass IDs start from 1.
+            int LicenseClassID = cbLicenseClass.FindString(clsLicenseClasses.Find(cbLicenseClass.Text).ClassName) + 1;
 
             _LDLApplication.ApplicationPersonID = PersonID;
             _LDLApplication.LicenseClassID = LicenseClassID;
