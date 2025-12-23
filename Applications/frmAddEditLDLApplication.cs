@@ -121,7 +121,6 @@ namespace DVLD_project.Applications
         {
             if (ctrlPersonDetailsWithFilter1.GetSelectedPerson() != null)
             {
-                int selectedPersonID = ctrlPersonDetailsWithFilter1.GetSelectedPersonID();
 
                 // Here we will add handle add Applications with the same type for person
 
@@ -144,6 +143,22 @@ namespace DVLD_project.Applications
             return false;
         }
 
+        private bool _CheckIfPersonAlreadyHasAnActiveApplication(int LicenseClassID)
+        {
+            int selectedPersonID = ctrlPersonDetailsWithFilter1.GetSelectedPersonID();
+
+            int ActiveApplicationID = clsApplication.GetActiveApplicationIDForLicenseClass(selectedPersonID, clsApplicationTypes.enApplicationTypes.NewLocalDrivingLicenseService, LicenseClassID);
+
+            if (ActiveApplicationID != -1)
+            {
+                MessageBox.Show("Choose another License Class, the selected Person Already have an active application for the selected class with id=" + ActiveApplicationID, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                cbLicenseClass.Focus();
+                return false;
+            }
+
+            return true;
+        }
+
         private void btnSave_Click(object sender, EventArgs e)
         {
             if (!this.ValidateChildren())
@@ -157,8 +172,9 @@ namespace DVLD_project.Applications
             int PersonID = ctrlPersonDetailsWithFilter1.GetSelectedPersonID();
             int CreatedByUserID = clsGlobal.CurrentUser.UserID;
 
-            // We added '1' here because the ComboBox starts with index 0, while the licenseClass IDs start from 1.
-            int LicenseClassID = cbLicenseClass.FindString(clsLicenseClasses.Find(cbLicenseClass.Text).ClassName) + 1;
+            int LicenseClassID = clsLicenseClasses.Find(cbLicenseClass.Text).LicenseClassID;
+
+            if (!_CheckIfPersonAlreadyHasAnActiveApplication(LicenseClassID)) return;
 
             _LDLApplication.ApplicationPersonID = PersonID;
             _LDLApplication.LicenseClassID = LicenseClassID;

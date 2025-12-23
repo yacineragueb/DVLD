@@ -113,5 +113,10 @@ namespace DVLDBusinessLayer
 
             return false;
         }
+
+        public static int GetActiveApplicationIDForLicenseClass(int ApplicantPersonId, clsApplicationTypes.enApplicationTypes ApplicationTypeID, int LicenseClassID)
+        {
+            return clsApplicationsData.GetActiveApplicationIDForLicenseClass(ApplicantPersonId, (int)ApplicationTypeID, LicenseClassID);
+        }
     }
 }
