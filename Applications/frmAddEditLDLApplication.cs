@@ -132,11 +132,10 @@ namespace DVLD_project.Applications
             return false;
         }
 
-        private bool _CheckIfPersonAlreadyHasAnActiveApplication(int LicenseClassID)
+        private bool _CheckIfPersonAlreadyHasAnActiveApplication(int PersonID, int LicenseClassID)
         {
-            int selectedPersonID = ctrlPersonDetailsWithFilter1.GetSelectedPersonID();
 
-            int ActiveApplicationID = clsApplication.GetActiveApplicationIDForLicenseClass(selectedPersonID, clsApplicationTypes.enApplicationTypes.NewLocalDrivingLicenseService, LicenseClassID);
+            int ActiveApplicationID = clsApplication.GetActiveApplicationIDForLicenseClass(PersonID, clsApplicationTypes.enApplicationTypes.NewLocalDrivingLicenseService, LicenseClassID);
 
             if (ActiveApplicationID != -1)
             {
@@ -162,7 +161,7 @@ namespace DVLD_project.Applications
             int CreatedByUserID = clsGlobal.CurrentUser.UserID;
             int LicenseClassID = clsLicenseClasses.Find(cbLicenseClass.Text).LicenseClassID;
 
-            if (!_CheckIfPersonAlreadyHasAnActiveApplication(LicenseClassID)) return;
+            if (!_CheckIfPersonAlreadyHasAnActiveApplication(PersonID, LicenseClassID)) return;
 
             //check if user already have issued license of the same driving  class.
             if(clsLicense.IsLicenseExistByPersonID(PersonID, LicenseClassID))
