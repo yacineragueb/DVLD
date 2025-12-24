@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using DVLD_project.Applications;
 using DVLD_project.ApplicationType;
+using DVLD_project.Drivers;
 using DVLD_project.TestType;
 using DVLD_project.Users;
 using DVLDBusinessLayer;
@@ -82,6 +83,12 @@ namespace DVLD_project
         private void localLicenseToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmAddEditLDLApplication frm = new frmAddEditLDLApplication(-1);
+            frm.ShowDialog();
+        }
+
+        private void driversToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmListDrivers frm = new frmListDrivers();
             frm.ShowDialog();
         }
     }
