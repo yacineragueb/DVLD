@@ -160,10 +160,16 @@ namespace DVLD_project.Applications
 
             int PersonID = ctrlPersonDetailsWithFilter1.GetSelectedPersonID();
             int CreatedByUserID = clsGlobal.CurrentUser.UserID;
-
             int LicenseClassID = clsLicenseClasses.Find(cbLicenseClass.Text).LicenseClassID;
 
             if (!_CheckIfPersonAlreadyHasAnActiveApplication(LicenseClassID)) return;
+
+            //check if user already have issued license of the same driving  class.
+            if(clsLicense.IsLicenseExistByPersonID(PersonID, LicenseClassID))
+            {
+                MessageBox.Show("Person already have a license with the same applied driving class, Choose diffrent driving class", "Not allowed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
             _LDLApplication.ApplicationPersonID = PersonID;
             _LDLApplication.LicenseClassID = LicenseClassID;
