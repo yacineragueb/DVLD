@@ -70,6 +70,12 @@
     <Compile Include="Applications\ApplicationType\frmAddEditApplicationTypes.Designer.cs">
       <DependentUpon>frmAddEditApplicationTypes.cs</DependentUpon>
     </Compile>
+    <Compile Include="Drivers\Controller\ctrlDriverDetailsCard.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Drivers\Controller\ctrlDriverDetailsCard.Designer.cs">
+      <DependentUpon>ctrlDriverDetailsCard.cs</DependentUpon>
+    </Compile>
     <Compile Include="Drivers\frmListDrivers.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -175,6 +181,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Applications\ApplicationType\frmAddEditApplicationTypes.resx">
       <DependentUpon>frmAddEditApplicationTypes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Drivers\Controller\ctrlDriverDetailsCard.resx">
+      <DependentUpon>ctrlDriverDetailsCard.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Drivers\frmListDrivers.resx">
       <DependentUpon>frmListDrivers.cs</DependentUpon>
@@ -360,6 +369,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\ManageDrivers.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Replacement.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Release.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\RetakeTest.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\QuestionMark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Notes.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
