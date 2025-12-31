@@ -52,10 +52,10 @@
     <Compile Include="Applications\Controls\ctrlApplicationDetailsCard.Designer.cs">
       <DependentUpon>ctrlApplicationDetailsCard.cs</DependentUpon>
     </Compile>
-    <Compile Include="Applications\Controls\ctrlLDLApplicationDetailsCard.cs">
+    <Compile Include="Applications\LocalDrivingLicenseApplication\Controls\ctrlLDLApplicationDetailsCard.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Applications\Controls\ctrlLDLApplicationDetailsCard.Designer.cs">
+    <Compile Include="Applications\LocalDrivingLicenseApplication\Controls\ctrlLDLApplicationDetailsCard.Designer.cs">
       <DependentUpon>ctrlLDLApplicationDetailsCard.cs</DependentUpon>
     </Compile>
     <Compile Include="Applications\LocalDrivingLicenseApplication\frmAddEditLDLApplication.cs">
@@ -140,16 +140,22 @@
     <Compile Include="People\frmShowPersonDetails.Designer.cs">
       <DependentUpon>frmShowPersonDetails.cs</DependentUpon>
     </Compile>
-    <Compile Include="TestType\frmAddEditTestTypes.cs">
+    <Compile Include="Tests\frmListTestAppointments.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="TestType\frmAddEditTestTypes.Designer.cs">
+    <Compile Include="Tests\frmListTestAppointments.Designer.cs">
+      <DependentUpon>frmListTestAppointments.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tests\TestType\frmAddEditTestTypes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tests\TestType\frmAddEditTestTypes.Designer.cs">
       <DependentUpon>frmAddEditTestTypes.cs</DependentUpon>
     </Compile>
-    <Compile Include="TestType\frmListTestTypes.cs">
+    <Compile Include="Tests\TestType\frmListTestTypes.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="TestType\frmListTestTypes.Designer.cs">
+    <Compile Include="Tests\TestType\frmListTestTypes.Designer.cs">
       <DependentUpon>frmListTestTypes.cs</DependentUpon>
     </Compile>
     <Compile Include="Users\Controls\ctrlUserDetailsCard.cs">
@@ -185,7 +191,7 @@
     <EmbeddedResource Include="Applications\Controls\ctrlApplicationDetailsCard.resx">
       <DependentUpon>ctrlApplicationDetailsCard.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Applications\Controls\ctrlLDLApplicationDetailsCard.resx">
+    <EmbeddedResource Include="Applications\LocalDrivingLicenseApplication\Controls\ctrlLDLApplicationDetailsCard.resx">
       <DependentUpon>ctrlLDLApplicationDetailsCard.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Applications\LocalDrivingLicenseApplication\frmAddEditLDLApplication.resx">
@@ -232,10 +238,13 @@
     <EmbeddedResource Include="People\frmShowPersonDetails.resx">
       <DependentUpon>frmShowPersonDetails.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="TestType\frmAddEditTestTypes.resx">
+    <EmbeddedResource Include="Tests\frmListTestAppointments.resx">
+      <DependentUpon>frmListTestAppointments.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tests\TestType\frmAddEditTestTypes.resx">
       <DependentUpon>frmAddEditTestTypes.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="TestType\frmListTestTypes.resx">
+    <EmbeddedResource Include="Tests\TestType\frmListTestTypes.resx">
       <DependentUpon>frmListTestTypes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Users\Controls\ctrlUserDetailsCard.resx">

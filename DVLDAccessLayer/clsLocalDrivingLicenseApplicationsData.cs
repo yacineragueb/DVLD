@@ -116,5 +116,33 @@ namespace DVLDAccessLayer
 
             return dt;
         }
+
+        public static int GetTheNumberOfPassedTest(int LDLApplicationID)
+        {
+            int NumberOfPassedTest = 0;
+
+            using (SqlConnection conn = new SqlConnection(clsDVLDAcessLayerSettings.connectionString))
+            {
+                string query = @"SELECT COUNT(TestAppointments.TestTypeID) AS PassedTestCount
+                                FROM Tests INNER JOIN TestAppointments ON Tests.TestAppointmentID = TestAppointments.TestAppointmentID
+                                WHERE (TestAppointments.LocalDrivingLicenseApplicationID = @LocalDrivingLicenseApplicationID) AND (Tests.TestResult = 1);";
+
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@LocalDrivingLicenseApplicationID", LDLApplicationID);
+
+                    try
+                    {
+                        conn.Open();
+                        NumberOfPassedTest = (int)cmd.ExecuteScalar();
+                    } catch (Exception ex)
+                    {
+                        NumberOfPassedTest = 0;
+                    }
+                } 
+            }
+
+                return NumberOfPassedTest;
+        }
     }
 }

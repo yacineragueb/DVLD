@@ -117,5 +117,29 @@ namespace DVLDAccessLayer
                 return dataTable;
             }
         }
+    
+        public static int GetTotalNumberOfTests()
+        {
+            int totalNumberOfTests = 0;
+
+            using (SqlConnection conn = new SqlConnection(clsDVLDAcessLayerSettings.connectionString))
+            {
+                string query = @"SELECT COUNT(TestTypeID) AS TotalTests FROM TestTypes";
+
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    try
+                    {
+                        conn.Open();
+                        totalNumberOfTests = (int)cmd.ExecuteScalar();
+                    } catch (Exception ex)
+                    {
+                        totalNumberOfTests = 0;
+                    }
+                }
+            }
+
+            return totalNumberOfTests;
+        }
     }
 }

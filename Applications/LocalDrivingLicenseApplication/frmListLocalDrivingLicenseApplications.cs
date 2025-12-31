@@ -1,4 +1,5 @@
-﻿using DVLDBusinessLayer;
+﻿using DVLD_project.Tests;
+using DVLDBusinessLayer;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -177,6 +178,13 @@ namespace DVLD_project.Applications
                     MessageBox.Show("Faild to cancel this Application because it has a data linked with it.", "Faild", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+        }
+
+        private void scheduleVisionTestToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int LDLApplicationID = (int)dgvLDLApplicationsTable.CurrentRow.Cells[0].Value;
+            frmListTestAppointments frm = new frmListTestAppointments(LDLApplicationID);
+            frm.ShowDialog();
         }
     }
 }

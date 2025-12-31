@@ -76,5 +76,10 @@ namespace DVLDBusinessLayer
                     return false;
             }
         }
+
+        public static int GetTotalNumberOfTests()
+        {
+            return clsTestTypesData.GetTotalNumberOfTests();
+        }
     }
 }

@@ -83,7 +83,7 @@ namespace DVLD_project
 
             } else
             {
-                MessageBox.Show("Person with ID = " + _PersonID + " not found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Person with ID = " + PersonID + " not found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
         }

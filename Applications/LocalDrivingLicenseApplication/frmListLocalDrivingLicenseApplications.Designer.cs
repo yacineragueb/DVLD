@@ -37,10 +37,17 @@
             this.label3 = new System.Windows.Forms.Label();
             this.dgvLDLApplicationsTable = new System.Windows.Forms.DataGridView();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.showDetailsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
+            this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.CancelApplication = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
+            this.scheduleVisionTestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.scheduleWrittenTestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.scheduleStreetTestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
             this.callPhoneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
@@ -50,14 +57,7 @@
             this.lblRecords = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.btnClose = new System.Windows.Forms.Button();
-            this.scheduleWrittenTestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.scheduleStreetTestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnAddLocalDrivingLicenseApplication = new System.Windows.Forms.Button();
-            this.showDetailsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.CancelApplication = new System.Windows.Forms.ToolStripMenuItem();
-            this.scheduleVisionTestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLDLApplicationsTable)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
@@ -152,17 +152,47 @@
             this.toolStripSeparator2,
             this.toolStripMenuItem4});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(378, 328);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(378, 356);
+            // 
+            // showDetailsToolStripMenuItem
+            // 
+            this.showDetailsToolStripMenuItem.Image = global::DVLD_project.Properties.Resources.Details;
+            this.showDetailsToolStripMenuItem.Name = "showDetailsToolStripMenuItem";
+            this.showDetailsToolStripMenuItem.Size = new System.Drawing.Size(377, 36);
+            this.showDetailsToolStripMenuItem.Text = "Show Application Details";
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
             this.toolStripMenuItem1.Size = new System.Drawing.Size(374, 6);
             // 
+            // editToolStripMenuItem
+            // 
+            this.editToolStripMenuItem.Image = global::DVLD_project.Properties.Resources.Edit;
+            this.editToolStripMenuItem.Name = "editToolStripMenuItem";
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(377, 36);
+            this.editToolStripMenuItem.Text = "Edit Application";
+            this.editToolStripMenuItem.Click += new System.EventHandler(this.editToolStripMenuItem_Click);
+            // 
+            // deleteToolStripMenuItem
+            // 
+            this.deleteToolStripMenuItem.Image = global::DVLD_project.Properties.Resources.Trash;
+            this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(377, 36);
+            this.deleteToolStripMenuItem.Text = "Delete Application";
+            // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(374, 6);
+            // 
+            // CancelApplication
+            // 
+            this.CancelApplication.Image = global::DVLD_project.Properties.Resources.Cancel;
+            this.CancelApplication.Name = "CancelApplication";
+            this.CancelApplication.Size = new System.Drawing.Size(377, 36);
+            this.CancelApplication.Text = "Cancel Application";
+            this.CancelApplication.Click += new System.EventHandler(this.CancelApplication_Click);
             // 
             // toolStripSeparator3
             // 
@@ -178,6 +208,28 @@
             this.toolStripMenuItem5.Name = "toolStripMenuItem5";
             this.toolStripMenuItem5.Size = new System.Drawing.Size(377, 36);
             this.toolStripMenuItem5.Text = "Schdule Tests";
+            // 
+            // scheduleVisionTestToolStripMenuItem
+            // 
+            this.scheduleVisionTestToolStripMenuItem.Image = global::DVLD_project.Properties.Resources.OpenedEye;
+            this.scheduleVisionTestToolStripMenuItem.Name = "scheduleVisionTestToolStripMenuItem";
+            this.scheduleVisionTestToolStripMenuItem.Size = new System.Drawing.Size(295, 36);
+            this.scheduleVisionTestToolStripMenuItem.Text = "Schedule Vision Test";
+            this.scheduleVisionTestToolStripMenuItem.Click += new System.EventHandler(this.scheduleVisionTestToolStripMenuItem_Click);
+            // 
+            // scheduleWrittenTestToolStripMenuItem
+            // 
+            this.scheduleWrittenTestToolStripMenuItem.Image = global::DVLD_project.Properties.Resources.TestType;
+            this.scheduleWrittenTestToolStripMenuItem.Name = "scheduleWrittenTestToolStripMenuItem";
+            this.scheduleWrittenTestToolStripMenuItem.Size = new System.Drawing.Size(295, 36);
+            this.scheduleWrittenTestToolStripMenuItem.Text = "Schedule Written Test";
+            // 
+            // scheduleStreetTestToolStripMenuItem
+            // 
+            this.scheduleStreetTestToolStripMenuItem.Image = global::DVLD_project.Properties.Resources.Street;
+            this.scheduleStreetTestToolStripMenuItem.Name = "scheduleStreetTestToolStripMenuItem";
+            this.scheduleStreetTestToolStripMenuItem.Size = new System.Drawing.Size(295, 36);
+            this.scheduleStreetTestToolStripMenuItem.Text = "Schedule Street Test";
             // 
             // toolStripMenuItem2
             // 
@@ -247,20 +299,6 @@
             this.btnClose.UseVisualStyleBackColor = false;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
-            // scheduleWrittenTestToolStripMenuItem
-            // 
-            this.scheduleWrittenTestToolStripMenuItem.Image = global::DVLD_project.Properties.Resources.TestType;
-            this.scheduleWrittenTestToolStripMenuItem.Name = "scheduleWrittenTestToolStripMenuItem";
-            this.scheduleWrittenTestToolStripMenuItem.Size = new System.Drawing.Size(295, 36);
-            this.scheduleWrittenTestToolStripMenuItem.Text = "Schedule Written Test";
-            // 
-            // scheduleStreetTestToolStripMenuItem
-            // 
-            this.scheduleStreetTestToolStripMenuItem.Image = global::DVLD_project.Properties.Resources.Street;
-            this.scheduleStreetTestToolStripMenuItem.Name = "scheduleStreetTestToolStripMenuItem";
-            this.scheduleStreetTestToolStripMenuItem.Size = new System.Drawing.Size(295, 36);
-            this.scheduleStreetTestToolStripMenuItem.Text = "Schedule Street Test";
-            // 
             // btnAddLocalDrivingLicenseApplication
             // 
             this.btnAddLocalDrivingLicenseApplication.ImageIndex = 0;
@@ -271,43 +309,6 @@
             this.btnAddLocalDrivingLicenseApplication.TabIndex = 13;
             this.btnAddLocalDrivingLicenseApplication.UseVisualStyleBackColor = true;
             this.btnAddLocalDrivingLicenseApplication.Click += new System.EventHandler(this.btnAddLocalDrivingLicenseApplication_Click);
-            // 
-            // showDetailsToolStripMenuItem
-            // 
-            this.showDetailsToolStripMenuItem.Image = global::DVLD_project.Properties.Resources.Details;
-            this.showDetailsToolStripMenuItem.Name = "showDetailsToolStripMenuItem";
-            this.showDetailsToolStripMenuItem.Size = new System.Drawing.Size(377, 36);
-            this.showDetailsToolStripMenuItem.Text = "Show Application Details";
-            // 
-            // editToolStripMenuItem
-            // 
-            this.editToolStripMenuItem.Image = global::DVLD_project.Properties.Resources.Edit;
-            this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(377, 36);
-            this.editToolStripMenuItem.Text = "Edit Application";
-            this.editToolStripMenuItem.Click += new System.EventHandler(this.editToolStripMenuItem_Click);
-            // 
-            // deleteToolStripMenuItem
-            // 
-            this.deleteToolStripMenuItem.Image = global::DVLD_project.Properties.Resources.Trash;
-            this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(377, 36);
-            this.deleteToolStripMenuItem.Text = "Delete Application";
-            // 
-            // CancelApplication
-            // 
-            this.CancelApplication.Image = global::DVLD_project.Properties.Resources.Cancel;
-            this.CancelApplication.Name = "CancelApplication";
-            this.CancelApplication.Size = new System.Drawing.Size(377, 36);
-            this.CancelApplication.Text = "Cancel Application";
-            this.CancelApplication.Click += new System.EventHandler(this.CancelApplication_Click);
-            // 
-            // scheduleVisionTestToolStripMenuItem
-            // 
-            this.scheduleVisionTestToolStripMenuItem.Image = global::DVLD_project.Properties.Resources.OpenedEye;
-            this.scheduleVisionTestToolStripMenuItem.Name = "scheduleVisionTestToolStripMenuItem";
-            this.scheduleVisionTestToolStripMenuItem.Size = new System.Drawing.Size(295, 36);
-            this.scheduleVisionTestToolStripMenuItem.Text = "Schedule Vision Test";
             // 
             // pictureBox1
             // 

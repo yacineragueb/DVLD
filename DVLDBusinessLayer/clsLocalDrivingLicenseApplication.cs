@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data;
+using System.Runtime.CompilerServices;
 using DVLDAccessLayer;
 
 namespace DVLDBusinessLayer
@@ -14,7 +15,7 @@ namespace DVLDBusinessLayer
 
         enMode _Mode = enMode.AddNew;
 
-        clsLicenseClasses _LicenseClasses;
+        public clsLicenseClasses _LicenseClasses;
 
         public int LocalDrivingLicenseApplicationID { get; set; }
         public int LicenseClassID { get; set; }
@@ -31,6 +32,8 @@ namespace DVLDBusinessLayer
         {
             this.LocalDrivingLicenseApplicationID = LocalDrivingLicenseApplicationID;
             this.LicenseClassID = LicenseClassID;
+
+            _LicenseClasses = clsLicenseClasses.Find(LicenseClassID);
 
             _Mode = enMode.Edit;
         }
@@ -99,6 +102,11 @@ namespace DVLDBusinessLayer
         public static DataTable GetAllLocalDrivingLicenseApplication()
         {
             return clsLocalDrivingLicenseApplicationsData.GetAllLocalDrivingLicenseApplication();
+        }
+
+        public int GetTheNumberOfPassedTest()
+        {
+            return clsLocalDrivingLicenseApplicationsData.GetTheNumberOfPassedTest(LocalDrivingLicenseApplicationID);
         }
 
         public static bool DeleteLocalDrivingLicenseApplication(int LocalDrivingLicenseApplicationID)
