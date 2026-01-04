@@ -10,6 +10,48 @@ namespace DVLDAccessLayer
 {
     public class clsDriverData
     {
+
+        public static bool GetDriverByDriverID(int DriverID, ref int PersonID, ref int CreatedByUserID, ref DateTime CreatedDate)
+        {
+            bool IsFound = false;
+
+            using (SqlConnection conn = new SqlConnection(clsDVLDAcessLayerSettings.connectionString))
+            {
+                string query = @"SELECT * FROM Drivers WHERE DriverID = @DriverID";
+
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@DriverID", DriverID);
+
+                    try
+                    {
+                        conn.Open();
+
+                        using(SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            if(reader.Read())
+                            {
+                                IsFound = true;
+
+                                PersonID = (int)reader["PersonID"];
+                                CreatedByUserID = (int)reader["CreatedByUserID"];
+                                CreatedDate = (DateTime)reader["CreatedDate"];
+                            } else
+                            {
+                                IsFound = false;
+                            }
+                        }
+
+                    } catch (Exception ex)
+                    {
+                        IsFound = false;
+                    }
+                }
+            }
+
+            return IsFound;
+        }
+
         public static DataTable GetAllDrivers()
         {
             DataTable dataTable = new DataTable();

@@ -48,6 +48,21 @@ namespace DVLDBusinessLayer
             this._LicenseInfo = clsLicense.FindLicenseByDriverID(DriverID);
         }
 
+        public static clsDriver Find(int DriverID)
+        {
+            int PersonID = -1;
+            int CreatedByUserID = -1;
+            DateTime CreatedDate = DateTime.Now;
+
+            if(clsDriverData.GetDriverByDriverID(DriverID, ref PersonID, ref CreatedByUserID, ref CreatedDate))
+            {
+                return new clsDriver(DriverID, PersonID, CreatedByUserID, CreatedDate);
+            } else
+            {
+                return null;
+            }
+        }
+
         public static DataTable GetAllDrivers()
         {
             return clsDriverData.GetAllDrivers();

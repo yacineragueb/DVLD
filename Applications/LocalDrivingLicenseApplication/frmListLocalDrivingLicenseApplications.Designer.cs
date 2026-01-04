@@ -51,7 +51,7 @@
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
             this.callPhoneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
-            this.sendEmailToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ShowLicenseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
             this.lblRecords = new System.Windows.Forms.Label();
@@ -148,11 +148,11 @@
             this.toolStripMenuItem2,
             this.callPhoneToolStripMenuItem,
             this.toolStripSeparator4,
-            this.sendEmailToolStripMenuItem,
+            this.ShowLicenseToolStripMenuItem,
             this.toolStripSeparator2,
             this.toolStripMenuItem4});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(378, 328);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(378, 356);
             // 
             // showDetailsToolStripMenuItem
             // 
@@ -249,11 +249,12 @@
             this.toolStripSeparator4.Name = "toolStripSeparator4";
             this.toolStripSeparator4.Size = new System.Drawing.Size(374, 6);
             // 
-            // sendEmailToolStripMenuItem
+            // ShowLicenseToolStripMenuItem
             // 
-            this.sendEmailToolStripMenuItem.Name = "sendEmailToolStripMenuItem";
-            this.sendEmailToolStripMenuItem.Size = new System.Drawing.Size(377, 36);
-            this.sendEmailToolStripMenuItem.Text = "Show License";
+            this.ShowLicenseToolStripMenuItem.Name = "ShowLicenseToolStripMenuItem";
+            this.ShowLicenseToolStripMenuItem.Size = new System.Drawing.Size(377, 36);
+            this.ShowLicenseToolStripMenuItem.Text = "Show License";
+            this.ShowLicenseToolStripMenuItem.Click += new System.EventHandler(this.ShowLicenseToolStripMenuItem_Click);
             // 
             // toolStripSeparator2
             // 
@@ -371,7 +372,7 @@
         private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem2;
-        private System.Windows.Forms.ToolStripMenuItem sendEmailToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ShowLicenseToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem callPhoneToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem CancelApplication;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;

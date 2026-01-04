@@ -16,6 +16,8 @@ namespace DVLD_project.Drivers
         public frmShowDriverInformation(int DriverID)
         {
             InitializeComponent();
+
+            ctrlDriverDetailsCard.LoadData(DriverID);
         }
 
         private void btnClose_Click(object sender, EventArgs e)

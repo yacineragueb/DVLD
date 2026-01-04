@@ -80,7 +80,7 @@ namespace DVLD_project.Drivers.Controller
             }
         }
 
-        public void LoadData( int DriverID)
+        public void LoadData(int DriverID)
         {
             _Driver = clsDriver.Find(DriverID);
 

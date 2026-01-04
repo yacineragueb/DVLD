@@ -9,7 +9,7 @@ namespace DVLDAccessLayer
 {
     public class clsLicenseData
     {
-        public static bool FindLicenseByDriverID(ref int LicenseID, ref int ApplicationID, int DriverID, ref int LicenseClassID, ref DateTime IssueDate, ref DateTime ExpirationDate, ref int CreatedByUserID, ref string Notes, ref decimal PaidFees, ref int IssueReason, ref bool IsActive)
+        public static bool GetLicenseByDriverID(ref int LicenseID, ref int ApplicationID, int DriverID, ref int LicenseClassID, ref DateTime IssueDate, ref DateTime ExpirationDate, ref int CreatedByUserID, ref string Notes, ref decimal PaidFees, ref int IssueReason, ref bool IsActive)
         {
             bool IsFound = false;
 

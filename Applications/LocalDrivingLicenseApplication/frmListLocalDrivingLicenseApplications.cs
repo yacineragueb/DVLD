@@ -1,4 +1,5 @@
-﻿using DVLD_project.Tests;
+﻿using DVLD_project.Drivers;
+using DVLD_project.Tests;
 using DVLDBusinessLayer;
 using System;
 using System.Collections.Generic;
@@ -199,6 +200,22 @@ namespace DVLD_project.Applications
             int LDLApplicationID = (int)dgvLDLApplicationsTable.CurrentRow.Cells[0].Value;
             frmListTestAppointments frm = new frmListTestAppointments(LDLApplicationID, clsTestTypes.enTestType.StreetTest);
             frm.ShowDialog();
+        }
+
+        private void ShowLicenseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string PersonNationalNo = (string)dgvLDLApplicationsTable.CurrentRow.Cells[2].Value;
+
+            //clsDriver Driver = clsDriver.FindDriverByNationalNo(PersonNationalNo);
+
+            //if (Driver != null)
+            //{
+            //    frmShowDriverInformation frm = new frmShowDriverInformation(Driver.DriverID);
+            //}
+            //else
+            //{
+            //    return;
+            //}
         }
     }
 }

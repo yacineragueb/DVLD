@@ -110,7 +110,7 @@ namespace DVLDBusinessLayer
             int IssueReason = (int)enIssueReason.FirstTime;
             int CreatedByUserID = -1;
 
-            if (clsLicenseData.FindLicenseByDriverID(ref LicenseID, ref ApplicationID, DriverID, ref LicenseClassID, ref IssueDate, ref ExpirationDate, ref CreatedByUserID, ref Notes, ref PaidFees, ref IssueReason, ref IsActive))
+            if (clsLicenseData.GetLicenseByDriverID(ref LicenseID, ref ApplicationID, DriverID, ref LicenseClassID, ref IssueDate, ref ExpirationDate, ref CreatedByUserID, ref Notes, ref PaidFees, ref IssueReason, ref IsActive))
             {
                 return new clsLicense(LicenseID, ApplicationID, DriverID,  LicenseClassID,  IssueDate, ExpirationDate, CreatedByUserID, Notes, PaidFees, (enIssueReason)IssueReason, IsActive);
             } else

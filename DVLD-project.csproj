@@ -94,6 +94,12 @@
     <Compile Include="Drivers\frmListDrivers.Designer.cs">
       <DependentUpon>frmListDrivers.cs</DependentUpon>
     </Compile>
+    <Compile Include="Drivers\frmShowDriverInformation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Drivers\frmShowDriverInformation.Designer.cs">
+      <DependentUpon>frmShowDriverInformation.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -211,6 +217,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Drivers\frmListDrivers.resx">
       <DependentUpon>frmListDrivers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Drivers\frmShowDriverInformation.resx">
+      <DependentUpon>frmShowDriverInformation.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
