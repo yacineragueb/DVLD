@@ -28,6 +28,25 @@ namespace DVLDBusinessLayer
         public DateTime ApplicationDate { get; set; }
         public int ApplicationTypeID { get; set; }
         public enApplicationStatus ApplicationStatus { get; set; }
+
+        public string GetApplicatinStatusString()
+        {
+            switch(ApplicationStatus)
+            {
+                case enApplicationStatus.New:
+                    return "New";
+                
+                case enApplicationStatus.Cancelled:
+                    return "Cancelled";
+
+                case enApplicationStatus.Completed:
+                    return "Completed";
+
+                default:
+                    return "Unkown";
+            }
+        }
+
         public DateTime LastStatusDate { get; set; }
         public decimal PaidFees { get; set; }
         public int CreateByUserID { get; set; }

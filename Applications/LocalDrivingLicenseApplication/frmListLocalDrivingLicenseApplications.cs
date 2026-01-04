@@ -183,7 +183,21 @@ namespace DVLD_project.Applications
         private void scheduleVisionTestToolStripMenuItem_Click(object sender, EventArgs e)
         {
             int LDLApplicationID = (int)dgvLDLApplicationsTable.CurrentRow.Cells[0].Value;
-            frmListTestAppointments frm = new frmListTestAppointments(LDLApplicationID);
+            frmListTestAppointments frm = new frmListTestAppointments(LDLApplicationID, clsTestTypes.enTestType.VisionTest);
+            frm.ShowDialog();
+        }
+
+        private void scheduleWrittenTestToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int LDLApplicationID = (int)dgvLDLApplicationsTable.CurrentRow.Cells[0].Value;
+            frmListTestAppointments frm = new frmListTestAppointments(LDLApplicationID, clsTestTypes.enTestType.WrittenTest);
+            frm.ShowDialog();
+        }
+
+        private void scheduleStreetTestToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int LDLApplicationID = (int)dgvLDLApplicationsTable.CurrentRow.Cells[0].Value;
+            frmListTestAppointments frm = new frmListTestAppointments(LDLApplicationID, clsTestTypes.enTestType.StreetTest);
             frm.ShowDialog();
         }
     }

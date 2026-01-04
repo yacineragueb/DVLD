@@ -40,7 +40,7 @@
             this.lblLDLApplicationID = new System.Windows.Forms.Label();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.ctrlApplicationDetailsCard1 = new DVLD_project.Applications.Controls.ctrlApplicationDetailsCard();
+            this.ctrlApplicationDetailsCard = new DVLD_project.Applications.Controls.ctrlApplicationDetailsCard();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -82,6 +82,7 @@
             // linkLabel1
             // 
             this.linkLabel1.AutoSize = true;
+            this.linkLabel1.Enabled = false;
             this.linkLabel1.Location = new System.Drawing.Point(58, 88);
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.Size = new System.Drawing.Size(205, 26);
@@ -176,13 +177,13 @@
             this.label1.TabIndex = 30;
             this.label1.Text = "L.D.L Application ID:";
             // 
-            // ctrlApplicationDetailsCard1
+            // ctrlApplicationDetailsCard
             // 
-            this.ctrlApplicationDetailsCard1.BackColor = System.Drawing.Color.White;
-            this.ctrlApplicationDetailsCard1.Location = new System.Drawing.Point(3, 154);
-            this.ctrlApplicationDetailsCard1.Name = "ctrlApplicationDetailsCard1";
-            this.ctrlApplicationDetailsCard1.Size = new System.Drawing.Size(897, 236);
-            this.ctrlApplicationDetailsCard1.TabIndex = 0;
+            this.ctrlApplicationDetailsCard.BackColor = System.Drawing.Color.White;
+            this.ctrlApplicationDetailsCard.Location = new System.Drawing.Point(3, 154);
+            this.ctrlApplicationDetailsCard.Name = "ctrlApplicationDetailsCard";
+            this.ctrlApplicationDetailsCard.Size = new System.Drawing.Size(897, 236);
+            this.ctrlApplicationDetailsCard.TabIndex = 0;
             // 
             // ctrlLDLApplicationDetailsCard
             // 
@@ -190,7 +191,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.ctrlApplicationDetailsCard1);
+            this.Controls.Add(this.ctrlApplicationDetailsCard);
             this.Name = "ctrlLDLApplicationDetailsCard";
             this.Size = new System.Drawing.Size(906, 390);
             this.groupBox1.ResumeLayout(false);
@@ -205,7 +206,7 @@
 
         #endregion
 
-        private ctrlApplicationDetailsCard ctrlApplicationDetailsCard1;
+        private ctrlApplicationDetailsCard ctrlApplicationDetailsCard;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.LinkLabel linkLabel1;
         private System.Windows.Forms.Label lblPassedTest;

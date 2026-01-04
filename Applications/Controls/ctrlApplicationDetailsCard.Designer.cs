@@ -30,13 +30,13 @@
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.LlblViewPersonInformation = new System.Windows.Forms.LinkLabel();
-            this.label10 = new System.Windows.Forms.Label();
+            this.lblCreatedBy = new System.Windows.Forms.Label();
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
             this.label11 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
+            this.lblApplicationStatusDate = new System.Windows.Forms.Label();
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
+            this.lblApplicationDate = new System.Windows.Forms.Label();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.label7 = new System.Windows.Forms.Label();
             this.lblApplicant = new System.Windows.Forms.Label();
@@ -68,13 +68,13 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.LlblViewPersonInformation);
-            this.groupBox1.Controls.Add(this.label10);
+            this.groupBox1.Controls.Add(this.lblCreatedBy);
             this.groupBox1.Controls.Add(this.pictureBox8);
             this.groupBox1.Controls.Add(this.label11);
-            this.groupBox1.Controls.Add(this.label8);
+            this.groupBox1.Controls.Add(this.lblApplicationStatusDate);
             this.groupBox1.Controls.Add(this.pictureBox7);
             this.groupBox1.Controls.Add(this.label9);
-            this.groupBox1.Controls.Add(this.label6);
+            this.groupBox1.Controls.Add(this.lblApplicationDate);
             this.groupBox1.Controls.Add(this.pictureBox6);
             this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.lblApplicant);
@@ -109,15 +109,16 @@
             this.LlblViewPersonInformation.TabIndex = 43;
             this.LlblViewPersonInformation.TabStop = true;
             this.LlblViewPersonInformation.Text = "View Person Information";
+            this.LlblViewPersonInformation.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LlblViewPersonInformation_LinkClicked);
             // 
-            // label10
+            // lblCreatedBy
             // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(661, 115);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(40, 26);
-            this.label10.TabIndex = 42;
-            this.label10.Text = "N/A";
+            this.lblCreatedBy.AutoSize = true;
+            this.lblCreatedBy.Location = new System.Drawing.Point(661, 115);
+            this.lblCreatedBy.Name = "lblCreatedBy";
+            this.lblCreatedBy.Size = new System.Drawing.Size(40, 26);
+            this.lblCreatedBy.TabIndex = 42;
+            this.lblCreatedBy.Text = "N/A";
             // 
             // pictureBox8
             // 
@@ -139,14 +140,14 @@
             this.label11.TabIndex = 40;
             this.label11.Text = "Created By:";
             // 
-            // label8
+            // lblApplicationStatusDate
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(661, 79);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(40, 26);
-            this.label8.TabIndex = 39;
-            this.label8.Text = "N/A";
+            this.lblApplicationStatusDate.AutoSize = true;
+            this.lblApplicationStatusDate.Location = new System.Drawing.Point(661, 79);
+            this.lblApplicationStatusDate.Name = "lblApplicationStatusDate";
+            this.lblApplicationStatusDate.Size = new System.Drawing.Size(40, 26);
+            this.lblApplicationStatusDate.TabIndex = 39;
+            this.lblApplicationStatusDate.Text = "N/A";
             // 
             // pictureBox7
             // 
@@ -168,14 +169,14 @@
             this.label9.TabIndex = 37;
             this.label9.Text = "Status Date:";
             // 
-            // label6
+            // lblApplicationDate
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(661, 43);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(40, 26);
-            this.label6.TabIndex = 36;
-            this.label6.Text = "N/A";
+            this.lblApplicationDate.AutoSize = true;
+            this.lblApplicationDate.Location = new System.Drawing.Point(661, 43);
+            this.lblApplicationDate.Name = "lblApplicationDate";
+            this.lblApplicationDate.Size = new System.Drawing.Size(40, 26);
+            this.lblApplicationDate.TabIndex = 36;
+            this.lblApplicationDate.Text = "N/A";
             // 
             // pictureBox6
             // 
@@ -383,13 +384,13 @@
         private System.Windows.Forms.Label lblApplicationFees;
         private System.Windows.Forms.Label lblApplicationStatus;
         private System.Windows.Forms.LinkLabel LlblViewPersonInformation;
-        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label lblCreatedBy;
         private System.Windows.Forms.PictureBox pictureBox8;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label lblApplicationStatusDate;
         private System.Windows.Forms.PictureBox pictureBox7;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label lblApplicationDate;
         private System.Windows.Forms.PictureBox pictureBox6;
         private System.Windows.Forms.Label label7;
     }

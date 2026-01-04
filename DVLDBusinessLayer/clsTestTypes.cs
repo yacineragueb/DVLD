@@ -6,18 +6,43 @@ namespace DVLDBusinessLayer
 {
     public class clsTestTypes
     {
-        enum enMode
+        public enum enMode
         {
             AddNew = 0,
             Edit = 1
         }
 
-        enMode _Mode;
+        public enMode _Mode;
 
         public int TestTypeID { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
         public decimal Fee { get; set; }
+
+        public enum enTestType
+        {
+            VisionTest = 1,
+            WrittenTest = 2,
+            StreetTest = 3
+        }
+
+        public string GetTestTypeString()
+        {
+            switch (TestTypeID)
+            {
+                case 1:
+                    return "Vision Test";
+
+                case 2:
+                    return "Written Test";
+
+                case 3:
+                    return "Street Test";
+
+                default:
+                    return "Unkown Test";
+            }
+        }
 
         public clsTestTypes()
         {

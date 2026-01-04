@@ -38,49 +38,53 @@ namespace DVLD_project
             InitializeComponent();
         }
 
+        private void _FillPersonInformation(clsPerson Person)
+        {
+            _PersonID = _Person.ID;
+            lblPersonID.Text = _Person.ID.ToString();
+            lblName.Text = _Person.FullName();
+            lblAddress.Text = _Person.Address;
+            lblPhone.Text = _Person.Phone;
+            lblEmail.Text = _Person.Email;
+            lblNationalNo.Text = _Person.NationalNo;
+            lblDateOfBirth.Text = _Person.DateOfBirth.ToShortDateString();
+            lblCountry.Text = clsCountry.Find(_Person.NationalityCountryID).CountryName;
+            LlblEditPerson.Enabled = true;
+
+            switch (_Person.Gender)
+            {
+                case clsPerson.enGender.Male:
+                    pbGender.Image = Resources.Male;
+                    pbPersonImage.Image = Resources.MalePerson;
+                    lblGender.Text = "Male";
+                    break;
+                case clsPerson.enGender.Female:
+                    pbGender.Image = Resources.Female;
+                    pbPersonImage.Image = Resources.FemalePerson;
+                    lblGender.Text = "Female";
+                    break;
+            }
+
+            string ImagePath = _Person.ImagePath;
+            if (ImagePath != "")
+            {
+                if (File.Exists(ImagePath))
+                {
+                    pbPersonImage.ImageLocation = ImagePath;
+                }
+                else
+                {
+                    MessageBox.Show("Could not find this image = " + ImagePath, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
         public void LoadData(int PersonID)
         {
             _Person = clsPerson.Find(PersonID);
             if (_Person != null)
             {
-                _PersonID = _Person.ID;
-                lblPersonID.Text = PersonID.ToString();
-                lblName.Text = _Person.FullName();
-                lblAddress.Text = _Person.Address;
-                lblPhone.Text = _Person.Phone;
-                lblEmail.Text = _Person.Email;
-                lblNationalNo.Text = _Person.NationalNo;
-                lblDateOfBirth.Text = _Person.DateOfBirth.ToShortDateString();
-                lblCountry.Text = clsCountry.Find(_Person.NationalityCountryID).CountryName;
-                LlblEditPerson.Enabled = true;
-
-                switch (_Person.Gender)
-                {
-                    case clsPerson.enGender.Male:
-                        pbGender.Image = Resources.Male;
-                        pbPersonImage.Image = Resources.MalePerson;
-                        lblGender.Text = "Male";
-                        break;
-                    case clsPerson.enGender.Female:
-                        pbGender.Image = Resources.Female;
-                        pbPersonImage.Image = Resources.FemalePerson;
-                        lblGender.Text = "Female";
-                        break;
-                }
-
-                string ImagePath = _Person.ImagePath;
-                if (ImagePath != "")
-                {
-                    if(File.Exists(ImagePath))
-                    {
-                        pbPersonImage.ImageLocation = ImagePath;
-                    }
-                    else
-                    {
-                        MessageBox.Show("Could not find this image = " + ImagePath, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                }
-
+                _FillPersonInformation(_Person);
             } else
             {
                 MessageBox.Show("Person with ID = " + PersonID + " not found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -93,44 +97,7 @@ namespace DVLD_project
             _Person = clsPerson.Find(NationalNo);
             if (_Person != null)
             {
-                _PersonID = _Person.ID;
-                lblPersonID.Text = _Person.ID.ToString();
-                lblName.Text = _Person.FullName();
-                lblAddress.Text = _Person.Address;
-                lblPhone.Text = _Person.Phone;
-                lblEmail.Text = _Person.Email;
-                lblNationalNo.Text = NationalNo;
-                lblDateOfBirth.Text = _Person.DateOfBirth.ToShortDateString();
-                lblCountry.Text = clsCountry.Find(_Person.NationalityCountryID).CountryName;
-                LlblEditPerson.Enabled = true;
-
-                switch (_Person.Gender)
-                {
-                    case clsPerson.enGender.Male:
-                        pbGender.Image = Resources.Male;
-                        pbPersonImage.Image = Resources.MalePerson;
-                        lblGender.Text = "Male";
-                        break;
-                    case clsPerson.enGender.Female:
-                        pbGender.Image = Resources.Female;
-                        pbPersonImage.Image = Resources.FemalePerson;
-                        lblGender.Text = "Female";
-                        break;
-                }
-
-                string ImagePath = _Person.ImagePath;
-                if (ImagePath != "")
-                {
-                    if (File.Exists(ImagePath))
-                    {
-                        pbPersonImage.ImageLocation = ImagePath;
-                    }
-                    else
-                    {
-                        MessageBox.Show("Could not find this image = " + ImagePath, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                }
-
+                _FillPersonInformation(_Person);
             }
             else
             {

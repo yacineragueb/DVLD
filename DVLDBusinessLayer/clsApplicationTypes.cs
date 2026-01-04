@@ -29,8 +29,6 @@ namespace DVLDBusinessLayer
         public string Title { get; set; }
         public decimal Fee { get; set; }
 
-        
-
         public clsApplicationTypes()
         {
             ApplicationTypeID = -1;

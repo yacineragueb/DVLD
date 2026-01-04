@@ -33,6 +33,7 @@ namespace DVLD_project.Applications.Controls
             lblLDLApplicationID.Text = _LDLApplicationID.ToString();
             lblAppliedForLicense.Text = _LDLApplication._LicenseClasses.ClassName;
             lblPassedTest.Text = _LDLApplication.GetTheNumberOfPassedTest() + "/" + clsTestTypes.GetTotalNumberOfTests();
+            ctrlApplicationDetailsCard.LoadData(_LDLApplication.ApplicationID);
         }
 
         public void LoadData(int LDLApplicationID)
@@ -40,7 +41,7 @@ namespace DVLD_project.Applications.Controls
             _LDLApplication = clsLocalDrivingLicenseApplication.Find(LDLApplicationID);
 
             if(_LDLApplication == null) {
-                MessageBox.Show("Local Driving license with ID = " + LDLApplicationID + " not found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Local Driving License Application with ID = " + LDLApplicationID + " not found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
