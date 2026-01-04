@@ -24,6 +24,7 @@ namespace DVLDBusinessLayer
         public int CreatedByUserID { get; set; }
         public clsUser _CreatedUserInfo;
         public DateTime CreatedDate { get; set; }
+        public clsLicense _LicenseInfo;
 
         public clsDriver()
         {
@@ -44,6 +45,7 @@ namespace DVLDBusinessLayer
 
             this._PersonInfo = clsPerson.Find(PersonID);
             this._CreatedUserInfo = clsUser.Find(CreatedByUserID);
+            this._LicenseInfo = clsLicense.FindLicenseByDriverID(DriverID);
         }
 
         public static DataTable GetAllDrivers()

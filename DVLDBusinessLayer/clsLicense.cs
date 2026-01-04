@@ -21,10 +21,12 @@ namespace DVLDBusinessLayer
 
         public enMode _Mode = enMode.AddNew;
 
+        public int LicenseID { get; set; }
         public int ApplicationID { get; set; }
         public clsApplication _Application;
         public int DriverID { get; set; }
-        // Add driver object here
+        public clsDriver _DriverInfo;
+
         public int LicenseClassID { get; set; }
         public clsLicenseClasses _LicenseClass;
 
@@ -33,11 +35,33 @@ namespace DVLDBusinessLayer
         public string Notes { get; set; }
         public decimal PaidFees { get; set; }
         public bool IsActive {  get; set; }
-        enIssueReason IssueReason { get; set; }
+        public enIssueReason IssueReason { get; set; }
         public int CreatedByUserId {  get; set; }
+
+        public string GetIssueReasonString()
+        {
+            switch (IssueReason)
+            {
+                case enIssueReason.FirstTime:
+                    return "First Time";
+
+                case enIssueReason.Renew:
+                    return "Renew";
+
+                case enIssueReason.ReplacementForDamage:
+                    return "Replacement For Damage";
+
+                case enIssueReason.ReplacementForLost:
+                    return "Replacement For Lost";
+
+                default:
+                    return "Unkown Reason";
+            }
+        }
 
         public clsLicense()
         {
+            this.LicenseID = -1;
             this.ApplicationID = -1;
             this.DriverID = -1;
             this.LicenseClassID = -1;
@@ -52,8 +76,9 @@ namespace DVLDBusinessLayer
             _Mode = enMode.AddNew;
         }
 
-        private clsLicense(int ApplicationID, int DriverID, int LicenseClassID, DateTime IssueDate, DateTime ExpirationDate, int CreatedByUserID, string Notes, decimal PaidFees, enIssueReason IssueReason, bool IsActive)
+        private clsLicense(int LicenseID, int ApplicationID, int DriverID, int LicenseClassID, DateTime IssueDate, DateTime ExpirationDate, int CreatedByUserID, string Notes, decimal PaidFees, enIssueReason IssueReason, bool IsActive)
         {
+            this.LicenseID = LicenseID;
             this.ApplicationID = ApplicationID;
             this.DriverID = DriverID;
             this.LicenseClassID = LicenseClassID;
@@ -67,9 +92,31 @@ namespace DVLDBusinessLayer
 
             this._Application = clsApplication.Find(this.ApplicationID);
             this._LicenseClass = clsLicenseClasses.Find(this.LicenseClassID);
-            // Fill driver object here 
+            this._DriverInfo = clsDriver.Find(this.DriverID);
 
             _Mode = enMode.Update;
+        }
+
+        public static clsLicense FindLicenseByDriverID(int DriverID)
+        {
+            int LicenseID = -1;
+            int ApplicationID = -1;
+            int LicenseClassID = -1;
+            DateTime IssueDate = DateTime.Now;
+            DateTime ExpirationDate = DateTime.Now;
+            string Notes = "";
+            decimal PaidFees = 0;
+            bool IsActive = false;
+            int IssueReason = (int)enIssueReason.FirstTime;
+            int CreatedByUserID = -1;
+
+            if (clsLicenseData.FindLicenseByDriverID(ref LicenseID, ref ApplicationID, DriverID, ref LicenseClassID, ref IssueDate, ref ExpirationDate, ref CreatedByUserID, ref Notes, ref PaidFees, ref IssueReason, ref IsActive))
+            {
+                return new clsLicense(LicenseID, ApplicationID, DriverID,  LicenseClassID,  IssueDate, ExpirationDate, CreatedByUserID, Notes, PaidFees, (enIssueReason)IssueReason, IsActive);
+            } else
+            {
+                return null;
+            }
         }
 
         public static bool IsLicenseExistByPersonID(int PersonID, int LicenseClassID)

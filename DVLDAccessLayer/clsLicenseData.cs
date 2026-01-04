@@ -9,6 +9,54 @@ namespace DVLDAccessLayer
 {
     public class clsLicenseData
     {
+        public static bool FindLicenseByDriverID(ref int LicenseID, ref int ApplicationID, int DriverID, ref int LicenseClassID, ref DateTime IssueDate, ref DateTime ExpirationDate, ref int CreatedByUserID, ref string Notes, ref decimal PaidFees, ref int IssueReason, ref bool IsActive)
+        {
+            bool IsFound = false;
+
+            using (SqlConnection connection = new SqlConnection(clsDVLDAcessLayerSettings.connectionString))
+            {
+                string query = @"SELECT * FROM Licenses WHERE DriverID = @DriverID";
+
+                using (SqlCommand cmd = new SqlCommand(query, connection))
+                {
+                    cmd.Parameters.AddWithValue("@DriverID", DriverID);
+
+                    try
+                    {
+                        connection.Open();
+
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                IsFound = true;
+
+                                LicenseID = (int)reader["LicenseID"];
+                                ApplicationID = (int)reader["ApplicationID"];
+                                LicenseClassID = (int)reader["LicenseClass"];
+                                IssueDate = (DateTime)reader["IssueDate"];
+                                ExpirationDate = (DateTime)reader["ExpirationDate"];
+                                Notes = (string)reader["Notes"];
+                                PaidFees = (decimal)reader["PaidFees"];
+                                IsActive = (bool)reader["IsActive"];
+                                IssueReason = (int)reader["IssueReason"];
+                                CreatedByUserID = (int)reader["CreatedByUserID"];
+                            }
+                            else
+                            {
+                                IsFound = false;
+                            }
+                        }
+
+                    } catch (Exception ex)
+                    {
+                        IsFound = false;
+                    }
+                }
+            }
+
+                return IsFound;
+        }
         public static int GetActiveLicesenByPersonID(int PersonID, int LicenseClassID)
         {
             int ActiveLicenseID = -1;
