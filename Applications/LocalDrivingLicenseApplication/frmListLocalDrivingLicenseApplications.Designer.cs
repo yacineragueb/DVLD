@@ -44,12 +44,12 @@
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.CancelApplication = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
+            this.SchduleTestsMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.scheduleVisionTestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.scheduleWrittenTestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.scheduleStreetTestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
-            this.callPhoneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.IssueDrivingLicenseFirstTimeMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.ShowLicenseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
@@ -144,9 +144,9 @@
             this.toolStripSeparator1,
             this.CancelApplication,
             this.toolStripSeparator3,
-            this.toolStripMenuItem5,
+            this.SchduleTestsMenuItem,
             this.toolStripMenuItem2,
-            this.callPhoneToolStripMenuItem,
+            this.IssueDrivingLicenseFirstTimeMenuItem,
             this.toolStripSeparator4,
             this.ShowLicenseToolStripMenuItem,
             this.toolStripSeparator2,
@@ -199,15 +199,16 @@
             this.toolStripSeparator3.Name = "toolStripSeparator3";
             this.toolStripSeparator3.Size = new System.Drawing.Size(374, 6);
             // 
-            // toolStripMenuItem5
+            // SchduleTestsMenuItem
             // 
-            this.toolStripMenuItem5.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.SchduleTestsMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.scheduleVisionTestToolStripMenuItem,
             this.scheduleWrittenTestToolStripMenuItem,
             this.scheduleStreetTestToolStripMenuItem});
-            this.toolStripMenuItem5.Name = "toolStripMenuItem5";
-            this.toolStripMenuItem5.Size = new System.Drawing.Size(377, 36);
-            this.toolStripMenuItem5.Text = "Schdule Tests";
+            this.SchduleTestsMenuItem.Name = "SchduleTestsMenuItem";
+            this.SchduleTestsMenuItem.Size = new System.Drawing.Size(377, 36);
+            this.SchduleTestsMenuItem.Text = "Schdule Tests";
+            this.SchduleTestsMenuItem.DropDownOpening += new System.EventHandler(this.SchduleTestsMenuItem_DropDownOpening);
             // 
             // scheduleVisionTestToolStripMenuItem
             // 
@@ -238,11 +239,11 @@
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
             this.toolStripMenuItem2.Size = new System.Drawing.Size(374, 6);
             // 
-            // callPhoneToolStripMenuItem
+            // IssueDrivingLicenseFirstTimeMenuItem
             // 
-            this.callPhoneToolStripMenuItem.Name = "callPhoneToolStripMenuItem";
-            this.callPhoneToolStripMenuItem.Size = new System.Drawing.Size(377, 36);
-            this.callPhoneToolStripMenuItem.Text = "Issue Driving License (First Time)";
+            this.IssueDrivingLicenseFirstTimeMenuItem.Name = "IssueDrivingLicenseFirstTimeMenuItem";
+            this.IssueDrivingLicenseFirstTimeMenuItem.Size = new System.Drawing.Size(377, 36);
+            this.IssueDrivingLicenseFirstTimeMenuItem.Text = "Issue Driving License (First Time)";
             // 
             // toolStripSeparator4
             // 
@@ -251,6 +252,7 @@
             // 
             // ShowLicenseToolStripMenuItem
             // 
+            this.ShowLicenseToolStripMenuItem.Image = global::DVLD_project.Properties.Resources.License;
             this.ShowLicenseToolStripMenuItem.Name = "ShowLicenseToolStripMenuItem";
             this.ShowLicenseToolStripMenuItem.Size = new System.Drawing.Size(377, 36);
             this.ShowLicenseToolStripMenuItem.Text = "Show License";
@@ -373,12 +375,12 @@
         private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem ShowLicenseToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem callPhoneToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem IssueDrivingLicenseFirstTimeMenuItem;
         private System.Windows.Forms.ToolStripMenuItem CancelApplication;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem5;
+        private System.Windows.Forms.ToolStripMenuItem SchduleTestsMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem4;
         private System.Windows.Forms.ToolStripMenuItem scheduleVisionTestToolStripMenuItem;

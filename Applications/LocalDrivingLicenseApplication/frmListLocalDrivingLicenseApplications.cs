@@ -209,5 +209,39 @@ namespace DVLD_project.Applications
             frmShowDriverInformation frm = new frmShowDriverInformation(PersonNationalNo);
             frm.ShowDialog();
         }
+
+        private void SchduleTestsMenuItem_DropDownOpening(object sender, EventArgs e)
+        {
+            int LDLApplicationID = (int)dgvLDLApplicationsTable.CurrentRow.Cells[0].Value;
+            clsLocalDrivingLicenseApplication LDLApplication = clsLocalDrivingLicenseApplication.Find(LDLApplicationID);
+
+            if(LDLApplication != null)
+            {
+                int NumberOfPassedTest = LDLApplication.GetTheNumberOfPassedTest();
+
+                if (NumberOfPassedTest == 0)
+                {
+                    scheduleVisionTestToolStripMenuItem.Enabled = true;
+                    scheduleWrittenTestToolStripMenuItem.Enabled = false;
+                    scheduleStreetTestToolStripMenuItem.Enabled = false;
+                }
+                else if (NumberOfPassedTest == 1)
+                {
+                    scheduleVisionTestToolStripMenuItem.Enabled = false;
+                    scheduleWrittenTestToolStripMenuItem.Enabled = true;
+                    scheduleStreetTestToolStripMenuItem.Enabled = false;
+                }
+                else
+                {
+                    scheduleVisionTestToolStripMenuItem.Enabled = false;
+                    scheduleWrittenTestToolStripMenuItem.Enabled = false;
+                    scheduleStreetTestToolStripMenuItem.Enabled = true;
+                }
+            } else
+            {
+                contextMenuStrip1.Close();
+                return;
+            }
+        }
     }
 }
