@@ -24,6 +24,7 @@ namespace DVLDBusinessLayer
         public int CreatedByUserID { get; set; }
         public clsUser _CreatedUserInfo;
         public DateTime CreatedDate { get; set; }
+
         public clsLicense _LicenseInfo;
 
         public clsDriver()
@@ -58,6 +59,23 @@ namespace DVLDBusinessLayer
             {
                 return new clsDriver(DriverID, PersonID, CreatedByUserID, CreatedDate);
             } else
+            {
+                return null;
+            }
+        }
+
+        public static clsDriver Find(string PersonNationalNo)
+        {
+            int DriverID = -1;
+            int PersonID = -1;
+            int CreatedByUserID = -1;
+            DateTime CreatedDate = DateTime.Now;
+
+            if (clsDriverData.GetDriverByPersonNationalNo(PersonNationalNo, ref DriverID, ref PersonID, ref CreatedByUserID, ref CreatedDate))
+            {
+                return new clsDriver(DriverID, PersonID, CreatedByUserID, CreatedDate);
+            }
+            else
             {
                 return null;
             }

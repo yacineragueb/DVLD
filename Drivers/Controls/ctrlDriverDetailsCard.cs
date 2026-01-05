@@ -18,11 +18,18 @@ namespace DVLD_project.Drivers.Controller
         private clsDriver _Driver = null;
 
         private int _DriverID = -1;
+        private string _PersonNationalNo = "";
 
         public int DriverID
         {
             get { return _DriverID; }
         }
+
+        public string PersonNationalNo
+        {
+            get { return _PersonNationalNo; }
+        }
+
         public ctrlDriverDetailsCard()
         {
             InitializeComponent();
@@ -91,6 +98,20 @@ namespace DVLD_project.Drivers.Controller
             }
 
             _DriverID = DriverID;
+            _FillDriverInformation();
+        }
+
+        public void LoadData(string PersonNationalNo)
+        {
+            _Driver = clsDriver.Find(PersonNationalNo);
+
+            if (_Driver == null)
+            {
+                MessageBox.Show("Driver with Person National No. = " + PersonNationalNo + " not found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            _PersonNationalNo = PersonNationalNo;
             _FillDriverInformation();
         }
     }

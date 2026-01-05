@@ -206,16 +206,8 @@ namespace DVLD_project.Applications
         {
             string PersonNationalNo = (string)dgvLDLApplicationsTable.CurrentRow.Cells[2].Value;
 
-            //clsDriver Driver = clsDriver.FindDriverByNationalNo(PersonNationalNo);
-
-            //if (Driver != null)
-            //{
-            //    frmShowDriverInformation frm = new frmShowDriverInformation(Driver.DriverID);
-            //}
-            //else
-            //{
-            //    return;
-            //}
+            frmShowDriverInformation frm = new frmShowDriverInformation(PersonNationalNo);
+            frm.ShowDialog();
         }
     }
 }

@@ -25,7 +25,6 @@ namespace DVLDBusinessLayer
         public int ApplicationID { get; set; }
         public clsApplication _Application;
         public int DriverID { get; set; }
-        public clsDriver _DriverInfo;
 
         public int LicenseClassID { get; set; }
         public clsLicenseClasses _LicenseClass;
@@ -92,7 +91,6 @@ namespace DVLDBusinessLayer
 
             this._Application = clsApplication.Find(this.ApplicationID);
             this._LicenseClass = clsLicenseClasses.Find(this.LicenseClassID);
-            this._DriverInfo = clsDriver.Find(this.DriverID);
 
             _Mode = enMode.Update;
         }

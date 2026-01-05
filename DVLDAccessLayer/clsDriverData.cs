@@ -10,7 +10,50 @@ namespace DVLDAccessLayer
 {
     public class clsDriverData
     {
+        public static bool GetDriverByPersonNationalNo(string PersonNationalNo, ref int DriverID, ref int PersonID, ref int CreatedByUserID, ref DateTime CreatedDate)
+        {
+            bool IsFound = false;
 
+            using (SqlConnection conn = new SqlConnection(clsDVLDAcessLayerSettings.connectionString))
+            {
+                string query = @"SELECT DriverID, Drivers.PersonID, CreatedByUserID, CreatedDate FROM Drivers 
+                                 INNER JOIN People ON Drivers.PersonID = People.PersonID
+                                 WHERE NationalNo = @PersonNationalNo";
+
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+
+                    cmd.Parameters.AddWithValue("@PersonNationalNo", PersonNationalNo);
+
+                    try
+                    {
+                        conn.Open();
+
+                        using(SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                IsFound = true;
+
+                                DriverID = (int)reader["DriverID"];
+                                PersonID = (int)reader["PersonID"];
+                                CreatedByUserID = (int)reader["CreatedByUserID"];
+                                CreatedDate = (DateTime)reader["CreatedDate"];
+                            } else
+                            {
+                                IsFound = false;
+                            }
+                        }
+                    } catch (Exception ex)
+                    {
+                        IsFound = false;
+                    }
+                }
+            }
+
+            return IsFound;
+        }
+        
         public static bool GetDriverByDriverID(int DriverID, ref int PersonID, ref int CreatedByUserID, ref DateTime CreatedDate)
         {
             bool IsFound = false;

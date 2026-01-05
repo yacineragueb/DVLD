@@ -36,11 +36,18 @@ namespace DVLDAccessLayer
                                 LicenseClassID = (int)reader["LicenseClass"];
                                 IssueDate = (DateTime)reader["IssueDate"];
                                 ExpirationDate = (DateTime)reader["ExpirationDate"];
-                                Notes = (string)reader["Notes"];
                                 PaidFees = (decimal)reader["PaidFees"];
                                 IsActive = (bool)reader["IsActive"];
-                                IssueReason = (int)reader["IssueReason"];
+                                IssueReason = Convert.ToInt16(reader["IssueReason"]);
                                 CreatedByUserID = (int)reader["CreatedByUserID"];
+
+                                if (reader["Notes"] != DBNull.Value)
+                                {
+                                    Notes = (string)reader["Notes"];
+                                } else
+                                {
+                                    Notes = "";
+                                }
                             }
                             else
                             {
