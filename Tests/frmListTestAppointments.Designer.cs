@@ -98,6 +98,7 @@
             this.btnAddPerson.Size = new System.Drawing.Size(73, 50);
             this.btnAddPerson.TabIndex = 9;
             this.btnAddPerson.UseVisualStyleBackColor = true;
+            this.btnAddPerson.Click += new System.EventHandler(this.btnAddPerson_Click);
             // 
             // imageList1
             // 

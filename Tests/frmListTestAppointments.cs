@@ -68,5 +68,11 @@ namespace DVLD_project.Tests
         {
             this.Close();
         }
+
+        private void btnAddPerson_Click(object sender, EventArgs e)
+        {
+            frmScheduleTest frm = new frmScheduleTest();
+            frm.ShowDialog();
+        }
     }
 }

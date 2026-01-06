@@ -37,7 +37,9 @@ namespace DVLD_project.Applications
 
         private void frmListLocalDrivingLicenseApplications_Load(object sender, EventArgs e)
         {
-            dgvLDLApplicationsTable.DataSource = clsLocalDrivingLicenseApplication.GetAllLocalDrivingLicenseApplication();
+            _dtAllLDLApplications = clsLocalDrivingLicenseApplication.GetAllLocalDrivingLicenseApplication();
+
+            dgvLDLApplicationsTable.DataSource = _dtAllLDLApplications;
             cbFilter.SelectedIndex = 0;
 
             lblRecords.Text = dgvLDLApplicationsTable.Rows.Count.ToString();
