@@ -1,4 +1,5 @@
-﻿using DVLD_project.Drivers;
+﻿using DVLD_project.Applications.LocalDrivingLicenseApplication;
+using DVLD_project.Drivers;
 using DVLD_project.Tests;
 using DVLDBusinessLayer;
 using System;
@@ -210,37 +211,84 @@ namespace DVLD_project.Applications
             frm.ShowDialog();
         }
 
-        private void SchduleTestsMenuItem_DropDownOpening(object sender, EventArgs e)
+        private void contextMenuStrip1_Opening(object sender, CancelEventArgs e)
         {
             int LDLApplicationID = (int)dgvLDLApplicationsTable.CurrentRow.Cells[0].Value;
-            clsLocalDrivingLicenseApplication LDLApplication = clsLocalDrivingLicenseApplication.Find(LDLApplicationID);
 
-            if(LDLApplication != null)
+            clsLocalDrivingLicenseApplication localDrivingLicenseApplication = clsLocalDrivingLicenseApplication.Find(LDLApplicationID);
+
+            int TotalPassedTest = (int)dgvLDLApplicationsTable.CurrentRow.Cells[5].Value;
+
+            bool IsLicenseIssued = localDrivingLicenseApplication.IsLicenseIssued();
+
+            if (localDrivingLicenseApplication != null)
             {
-                int NumberOfPassedTest = LDLApplication.GetTheNumberOfPassedTest();
+                //Enable/Disable Cancel Menue Item
+                //We only canel the applications with status=new.
+                CancelApplication.Enabled = (localDrivingLicenseApplication.ApplicationStatus == clsApplication.enApplicationStatus.New);
 
-                if (NumberOfPassedTest == 0)
+                //Enabled only if person passed all tests and Does not have license. 
+                IssueDrivingLicenseFirstTimeMenuItem.Enabled = (TotalPassedTest == 3) && !IsLicenseIssued;
+
+                ShowLicenseToolStripMenuItem.Enabled = IsLicenseIssued;
+                SchduleTestsMenuItem.Enabled = !IsLicenseIssued;
+                editToolStripMenuItem.Enabled = !IsLicenseIssued && (localDrivingLicenseApplication.ApplicationStatus == clsApplication.enApplicationStatus.New);
+
+                //Enable/Disable Delete Menue Item
+                //We only allow delete incase the application status is new not complete or Cancelled.
+                deleteToolStripMenuItem.Enabled = (localDrivingLicenseApplication.ApplicationStatus == clsApplication.enApplicationStatus.New);
+
+                //Enable Disable Schedule menue and it's sub menue
+                bool PassedVisionTest = localDrivingLicenseApplication.DoesPassTestType(clsTestTypes.enTestType.VisionTest); ;
+                bool PassedWrittenTest = localDrivingLicenseApplication.DoesPassTestType(clsTestTypes.enTestType.WrittenTest);
+                bool PassedStreetTest = localDrivingLicenseApplication.DoesPassTestType(clsTestTypes.enTestType.StreetTest);
+
+                SchduleTestsMenuItem.Enabled = (!PassedVisionTest || !PassedWrittenTest || !PassedStreetTest) && (localDrivingLicenseApplication.ApplicationStatus == clsApplication.enApplicationStatus.New);
+
+                if (SchduleTestsMenuItem.Enabled)
                 {
-                    scheduleVisionTestToolStripMenuItem.Enabled = true;
-                    scheduleWrittenTestToolStripMenuItem.Enabled = false;
-                    scheduleStreetTestToolStripMenuItem.Enabled = false;
+                    //To Allow Schdule vision test, Person must not passed the same test before.
+                    scheduleVisionTestToolStripMenuItem.Enabled = !PassedVisionTest;
+
+                    //To Allow Schdule written test, Person must pass the vision test and must not passed the same test before.
+                    scheduleWrittenTestToolStripMenuItem.Enabled = PassedVisionTest && !PassedWrittenTest;
+
+                    //To Allow Schdule steet test, Person must pass the vision * written tests, and must not passed the same test before.
+                    scheduleStreetTestToolStripMenuItem.Enabled = PassedVisionTest && PassedWrittenTest && !PassedStreetTest;
+
                 }
-                else if (NumberOfPassedTest == 1)
+            }
+        }
+
+        private void showDetailsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int LDLApplicationID = (int)dgvLDLApplicationsTable.CurrentRow.Cells[0].Value;
+
+            frmShowLocalDrivingLicenseApplicationInformation frm = new frmShowLocalDrivingLicenseApplicationInformation(LDLApplicationID);
+            frm.ShowDialog();
+        }
+
+        private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int LDLApplicationID = (int)dgvLDLApplicationsTable.CurrentRow.Cells[0].Value;
+
+            if (MessageBox.Show("Are you sure do want to delete this application?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+                return;
+
+            clsLocalDrivingLicenseApplication LocalDrivingLicenseApplication =
+                clsLocalDrivingLicenseApplication.Find(LDLApplicationID);
+
+            if (LocalDrivingLicenseApplication != null)
+            {
+                if (LocalDrivingLicenseApplication.Delete())
                 {
-                    scheduleVisionTestToolStripMenuItem.Enabled = false;
-                    scheduleWrittenTestToolStripMenuItem.Enabled = true;
-                    scheduleStreetTestToolStripMenuItem.Enabled = false;
+                    MessageBox.Show("Application Deleted Successfully.", "Deleted", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    frmListLocalDrivingLicenseApplications_Load(null, null);
                 }
                 else
                 {
-                    scheduleVisionTestToolStripMenuItem.Enabled = false;
-                    scheduleWrittenTestToolStripMenuItem.Enabled = false;
-                    scheduleStreetTestToolStripMenuItem.Enabled = true;
+                    MessageBox.Show("Could not delete applicatoin, other data depends on it.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-            } else
-            {
-                contextMenuStrip1.Close();
-                return;
             }
         }
     }

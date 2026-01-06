@@ -99,6 +99,17 @@ namespace DVLDBusinessLayer
             }
         }
 
+        public bool IsLicenseIssued()
+        {
+            return (GetActiveLicenseID() != -1);
+        }
+
+        public int GetActiveLicenseID()
+        {
+            //this will get the license id that belongs to this application
+            return clsLicense.GetActiveLicesenByPersonID(this.ApplicationPersonID, this.LicenseClassID);
+        }
+
         public static DataTable GetAllLocalDrivingLicenseApplication()
         {
             return clsLocalDrivingLicenseApplicationsData.GetAllLocalDrivingLicenseApplication();
@@ -109,9 +120,26 @@ namespace DVLDBusinessLayer
             return clsLocalDrivingLicenseApplicationsData.GetTheNumberOfPassedTest(LocalDrivingLicenseApplicationID);
         }
 
-        public static bool DeleteLocalDrivingLicenseApplication(int LocalDrivingLicenseApplicationID)
+        public bool DoesPassTestType(clsTestTypes.enTestType TestType)
         {
-            return false;
+            return clsLocalDrivingLicenseApplicationsData.DoesPassTestType(this.LocalDrivingLicenseApplicationID, (int)TestType);
+        }
+
+        public bool Delete()
+        {
+            bool IsLDLApplicationDeleted = false;
+            bool IsBaseApplicationDeleted = false;
+
+            IsLDLApplicationDeleted = clsLocalDrivingLicenseApplicationsData.DeleteLocalDriverLicenseApplication(this.LocalDrivingLicenseApplicationID);
+
+            if(!IsLDLApplicationDeleted)
+            {
+                return false;
+            }
+
+            IsBaseApplicationDeleted = base.Delete();
+
+            return IsBaseApplicationDeleted;
         }
     }
 }

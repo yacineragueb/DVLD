@@ -6,6 +6,66 @@ namespace DVLDAccessLayer
 {
     public class clsLocalDrivingLicenseApplicationsData
     {
+        
+        public static bool DoesPassTestType(int LocalDrivingLicenseApplicationID, int TestTypeID)
+        {
+            bool result = false;
+
+            using (SqlConnection conn = new SqlConnection(clsDVLDAcessLayerSettings.connectionString))
+            {
+                string query = @"";
+
+                using(SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@LocalDrivingLicenseApplicationID", LocalDrivingLicenseApplicationID);
+                    cmd.Parameters.AddWithValue("@TestTypeID", TestTypeID);
+
+                    try
+                    {
+                        conn.Open();
+                        object Result = cmd.ExecuteScalar();
+
+                        if(Result != null && bool.TryParse(Result.ToString(), out bool returnedResult))
+                        {
+                            result = returnedResult;
+                        }
+
+                    } catch (Exception ex)
+                    {
+                        result = false;
+                    }
+                }
+            }
+
+            return result;
+        }
+
+        public static bool DeleteLocalDriverLicenseApplication(int LocalDrivingLicenseApplicationID)
+        {
+            int rowsAffected = -1;
+            using(SqlConnection connection = new SqlConnection(clsDVLDAcessLayerSettings.connectionString))
+            {
+                string query = @"DELETE FROM LocalDrivingLicenseApplications 
+                                 WHERE LocalDrivingLicenseApplicationID = @LocalDrivingLicenseApplicationID";
+
+                using (SqlCommand cmd = new SqlCommand(query, connection))
+                {
+                    cmd.Parameters.AddWithValue("@LocalDrivingLicenseApplicationID", LocalDrivingLicenseApplicationID);
+
+                    try
+                    {
+                        connection.Open();
+                        rowsAffected = cmd.ExecuteNonQuery();
+                    } catch (Exception ex) 
+                    {
+                        rowsAffected = -1;
+                    }
+                }
+            }
+
+            return rowsAffected > 0;
+        }
+
         public static bool FindLDLApplicationByID(int LocalDrivingLicenseApplicationID, ref int ApplicationID, ref int LicenseClassID)
         {
             bool IsFound = false;

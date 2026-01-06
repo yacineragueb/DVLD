@@ -82,6 +82,12 @@
     <Compile Include="Applications\ApplicationType\frmAddEditApplicationTypes.Designer.cs">
       <DependentUpon>frmAddEditApplicationTypes.cs</DependentUpon>
     </Compile>
+    <Compile Include="Applications\LocalDrivingLicenseApplication\frmShowLocalDrivingLicenseApplicationInformation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Applications\LocalDrivingLicenseApplication\frmShowLocalDrivingLicenseApplicationInformation.Designer.cs">
+      <DependentUpon>frmShowLocalDrivingLicenseApplicationInformation.cs</DependentUpon>
+    </Compile>
     <Compile Include="Drivers\Controls\ctrlDriverDetailsCard.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -211,6 +217,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Applications\ApplicationType\frmAddEditApplicationTypes.resx">
       <DependentUpon>frmAddEditApplicationTypes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Applications\LocalDrivingLicenseApplication\frmShowLocalDrivingLicenseApplicationInformation.resx">
+      <DependentUpon>frmShowLocalDrivingLicenseApplicationInformation.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Drivers\Controls\ctrlDriverDetailsCard.resx">
       <DependentUpon>ctrlDriverDetailsCard.cs</DependentUpon>
@@ -426,6 +435,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Street.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Schedule.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Issue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Hisotry.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

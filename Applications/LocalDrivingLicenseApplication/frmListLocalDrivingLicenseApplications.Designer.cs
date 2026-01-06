@@ -153,6 +153,7 @@
             this.toolStripMenuItem4});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(378, 356);
+            this.contextMenuStrip1.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip1_Opening);
             // 
             // showDetailsToolStripMenuItem
             // 
@@ -160,6 +161,7 @@
             this.showDetailsToolStripMenuItem.Name = "showDetailsToolStripMenuItem";
             this.showDetailsToolStripMenuItem.Size = new System.Drawing.Size(377, 36);
             this.showDetailsToolStripMenuItem.Text = "Show Application Details";
+            this.showDetailsToolStripMenuItem.Click += new System.EventHandler(this.showDetailsToolStripMenuItem_Click);
             // 
             // toolStripMenuItem1
             // 
@@ -180,6 +182,7 @@
             this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
             this.deleteToolStripMenuItem.Size = new System.Drawing.Size(377, 36);
             this.deleteToolStripMenuItem.Text = "Delete Application";
+            this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
@@ -205,10 +208,10 @@
             this.scheduleVisionTestToolStripMenuItem,
             this.scheduleWrittenTestToolStripMenuItem,
             this.scheduleStreetTestToolStripMenuItem});
+            this.SchduleTestsMenuItem.Image = global::DVLD_project.Properties.Resources.Schedule;
             this.SchduleTestsMenuItem.Name = "SchduleTestsMenuItem";
             this.SchduleTestsMenuItem.Size = new System.Drawing.Size(377, 36);
             this.SchduleTestsMenuItem.Text = "Schdule Tests";
-            this.SchduleTestsMenuItem.DropDownOpening += new System.EventHandler(this.SchduleTestsMenuItem_DropDownOpening);
             // 
             // scheduleVisionTestToolStripMenuItem
             // 
@@ -241,6 +244,7 @@
             // 
             // IssueDrivingLicenseFirstTimeMenuItem
             // 
+            this.IssueDrivingLicenseFirstTimeMenuItem.Image = global::DVLD_project.Properties.Resources.Issue;
             this.IssueDrivingLicenseFirstTimeMenuItem.Name = "IssueDrivingLicenseFirstTimeMenuItem";
             this.IssueDrivingLicenseFirstTimeMenuItem.Size = new System.Drawing.Size(377, 36);
             this.IssueDrivingLicenseFirstTimeMenuItem.Text = "Issue Driving License (First Time)";
@@ -265,6 +269,7 @@
             // 
             // toolStripMenuItem4
             // 
+            this.toolStripMenuItem4.Image = global::DVLD_project.Properties.Resources.Hisotry;
             this.toolStripMenuItem4.Name = "toolStripMenuItem4";
             this.toolStripMenuItem4.Size = new System.Drawing.Size(377, 36);
             this.toolStripMenuItem4.Text = "Show Person License History";

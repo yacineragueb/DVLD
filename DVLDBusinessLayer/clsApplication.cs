@@ -22,13 +22,28 @@ namespace DVLDBusinessLayer
         public clsPerson Person;
         public clsUser User;
         public clsApplicationTypes ApplicationType;
+        public string GetApplicationStatusString()
+        {
+            switch(this.ApplicationStatus)
+            {
+                case enApplicationStatus.New:
+                    return "New";
 
+                case enApplicationStatus.Cancelled:
+                    return "Cancelled";
+
+                case enApplicationStatus.Completed:
+                    return "Completed";
+
+                default:
+                    return "Unknown Status";
+            }
+        }
         public int ApplicationID { get; set; }
         public int ApplicationPersonID { get; set; }
         public DateTime ApplicationDate { get; set; }
         public int ApplicationTypeID { get; set; }
         public enApplicationStatus ApplicationStatus { get; set; }
-
         public string GetApplicatinStatusString()
         {
             switch(ApplicationStatus)
@@ -46,7 +61,6 @@ namespace DVLDBusinessLayer
                     return "Unkown";
             }
         }
-
         public DateTime LastStatusDate { get; set; }
         public decimal PaidFees { get; set; }
         public int CreateByUserID { get; set; }
@@ -141,6 +155,11 @@ namespace DVLDBusinessLayer
         public static bool CancelApplication(int ApplicationID)
         {
             return clsApplicationsData.CancelApplication(ApplicationID);
+        }
+
+        public bool Delete()
+        {
+            return clsApplicationsData.DeleteApplication(this.ApplicationID);
         }
     }
 }
