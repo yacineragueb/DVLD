@@ -69,10 +69,23 @@ namespace DVLD_project.Tests
             this.Close();
         }
 
-        private void btnAddPerson_Click(object sender, EventArgs e)
+        private void btnAddAppointment_Click(object sender, EventArgs e)
         {
-            frmScheduleTest frm = new frmScheduleTest();
-            frm.ShowDialog();
+            clsLocalDrivingLicenseApplication LDLApplication = clsLocalDrivingLicenseApplication.Find(_LDLApplicationID);
+
+            if (LDLApplication != null)
+            {
+                if ( ! LDLApplication.HasAnActiveAppointment(_TestTypeID))
+                {
+                    frmScheduleTest frm = new frmScheduleTest();
+                    frm.ShowDialog();
+                }
+                else
+                {
+                    MessageBox.Show("Person already have an active appointment for this test, you cannot add new appointment.", "Not Allowed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+            }
         }
     }
 }

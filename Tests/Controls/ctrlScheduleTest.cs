@@ -12,6 +12,14 @@ namespace DVLD_project.Tests
 {
     public partial class ctrlScheduleTest : UserControl
     {
+        enum enMode
+        {
+            AddNew,
+            Edit,
+        }
+
+        enMode Mode = enMode.AddNew;
+
         public ctrlScheduleTest()
         {
             InitializeComponent();

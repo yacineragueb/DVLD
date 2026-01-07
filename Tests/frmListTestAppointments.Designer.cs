@@ -34,7 +34,7 @@
             this.lblTestTitle = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.btnAddPerson = new System.Windows.Forms.Button();
+            this.btnAddAppointment = new System.Windows.Forms.Button();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.btnClose = new System.Windows.Forms.Button();
             this.lblRecords = new System.Windows.Forms.Label();
@@ -89,16 +89,16 @@
             this.dataGridView1.Size = new System.Drawing.Size(884, 158);
             this.dataGridView1.TabIndex = 4;
             // 
-            // btnAddPerson
+            // btnAddAppointment
             // 
-            this.btnAddPerson.ImageIndex = 0;
-            this.btnAddPerson.ImageList = this.imageList1;
-            this.btnAddPerson.Location = new System.Drawing.Point(829, 615);
-            this.btnAddPerson.Name = "btnAddPerson";
-            this.btnAddPerson.Size = new System.Drawing.Size(73, 50);
-            this.btnAddPerson.TabIndex = 9;
-            this.btnAddPerson.UseVisualStyleBackColor = true;
-            this.btnAddPerson.Click += new System.EventHandler(this.btnAddPerson_Click);
+            this.btnAddAppointment.ImageIndex = 0;
+            this.btnAddAppointment.ImageList = this.imageList1;
+            this.btnAddAppointment.Location = new System.Drawing.Point(829, 615);
+            this.btnAddAppointment.Name = "btnAddAppointment";
+            this.btnAddAppointment.Size = new System.Drawing.Size(73, 50);
+            this.btnAddAppointment.TabIndex = 9;
+            this.btnAddAppointment.UseVisualStyleBackColor = true;
+            this.btnAddAppointment.Click += new System.EventHandler(this.btnAddAppointment_Click);
             // 
             // imageList1
             // 
@@ -160,7 +160,7 @@
             this.Controls.Add(this.lblRecords);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.btnClose);
-            this.Controls.Add(this.btnAddPerson);
+            this.Controls.Add(this.btnAddAppointment);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lblTestTitle);
@@ -185,7 +185,7 @@
         private System.Windows.Forms.Label lblTestTitle;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Button btnAddPerson;
+        private System.Windows.Forms.Button btnAddAppointment;
         private System.Windows.Forms.ImageList imageList1;
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Label lblRecords;

@@ -7,13 +7,57 @@ namespace DVLDAccessLayer
     public class clsLocalDrivingLicenseApplicationsData
     {
         
+        public static bool HasAnActiveAppointment(int LocalDrivingLicenseApplicationID, int TestTypeID)
+        {
+            bool resutl = false;
+
+            using (SqlConnection conn = new SqlConnection(clsDVLDAcessLayerSettings.connectionString))
+            {
+                string query = @"SELECT TOP 1 IsLocked FROM TestAppointments
+                                INNER JOIN LocalDrivingLicenseApplications ON LocalDrivingLicenseApplications.LocalDrivingLicenseApplicationID = TestAppointments.LocalDrivingLicenseApplicationID
+                                WHERE TestAppointments.LocalDrivingLicenseApplicationID = 38
+                                AND TestAppointments.TestTypeID = 3
+                                ORDER BY TestAppointments.TestAppointmentID desc";
+
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@LocalDrivingLicenseApplicationID", LocalDrivingLicenseApplicationID);
+                    cmd.Parameters.AddWithValue("@TestTypeID", TestTypeID);
+
+                    try
+                    {
+                        conn.Open();
+
+                        object Resutl = cmd.ExecuteScalar();
+
+                        if(Resutl != null && bool.TryParse(Resutl.ToString(), out bool returnedResult) ) 
+                        {
+                            resutl = returnedResult;
+                        }
+
+                    } catch (Exception ex)
+                    {
+                        resutl = false;
+                    }
+                }
+            }
+
+            return resutl;
+        }
+        
         public static bool DoesPassTestType(int LocalDrivingLicenseApplicationID, int TestTypeID)
         {
             bool result = false;
 
             using (SqlConnection conn = new SqlConnection(clsDVLDAcessLayerSettings.connectionString))
             {
-                string query = @"";
+                string query = @"SELECT TOP 1 * FROM TestAppointments
+                                 INNER JOIN LocalDrivingLicenseApplications ON LocalDrivingLicenseApplications.LocalDrivingLicenseApplicationID = TestAppointments.LocalDrivingLicenseApplicationID
+                                 INNER JOIN TestTypes ON TestTypes.TestTypeID = TestAppointments.TestTypeID
+                                 INNER JOIN Tests ON Tests.TestAppointmentID = TestAppointments.TestAppointmentID
+                                 WHERE TestAppointments.LocalDrivingLicenseApplicationID = @LocalDrivingLicenseApplicationID 
+                                 AND TestAppointments.TestTypeID = @TestTypeID
+                                 ORDER BY TestAppointments.TestAppointmentID desc";
 
                 using(SqlCommand cmd = new SqlCommand(query, conn))
                 {
