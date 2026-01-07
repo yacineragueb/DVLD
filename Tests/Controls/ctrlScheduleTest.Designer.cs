@@ -40,7 +40,7 @@
             this.label13 = new System.Windows.Forms.Label();
             this.lblRetakeTestLDLApplicationID = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.dtpDate = new System.Windows.Forms.DateTimePicker();
+            this.dtpTestDate = new System.Windows.Forms.DateTimePicker();
             this.lblFees = new System.Windows.Forms.Label();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.lblTrail = new System.Windows.Forms.Label();
@@ -49,7 +49,7 @@
             this.lblDrivingClass = new System.Windows.Forms.Label();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
-            this.lblName = new System.Windows.Forms.Label();
+            this.lblFullName = new System.Windows.Forms.Label();
             this.pictureBox12 = new System.Windows.Forms.PictureBox();
             this.lblLDLApplicationID = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -58,7 +58,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblTitle = new System.Windows.Forms.Label();
             this.pbTestImage = new System.Windows.Forms.PictureBox();
             this.gbScheduleTest.SuspendLayout();
             this.gbRetakeTestInformation.SuspendLayout();
@@ -78,7 +78,7 @@
             // 
             this.gbScheduleTest.Controls.Add(this.btnSave);
             this.gbScheduleTest.Controls.Add(this.gbRetakeTestInformation);
-            this.gbScheduleTest.Controls.Add(this.dtpDate);
+            this.gbScheduleTest.Controls.Add(this.dtpTestDate);
             this.gbScheduleTest.Controls.Add(this.lblFees);
             this.gbScheduleTest.Controls.Add(this.pictureBox3);
             this.gbScheduleTest.Controls.Add(this.lblTrail);
@@ -87,7 +87,7 @@
             this.gbScheduleTest.Controls.Add(this.lblDrivingClass);
             this.gbScheduleTest.Controls.Add(this.pictureBox6);
             this.gbScheduleTest.Controls.Add(this.pictureBox5);
-            this.gbScheduleTest.Controls.Add(this.lblName);
+            this.gbScheduleTest.Controls.Add(this.lblFullName);
             this.gbScheduleTest.Controls.Add(this.pictureBox12);
             this.gbScheduleTest.Controls.Add(this.lblLDLApplicationID);
             this.gbScheduleTest.Controls.Add(this.label7);
@@ -96,7 +96,7 @@
             this.gbScheduleTest.Controls.Add(this.label4);
             this.gbScheduleTest.Controls.Add(this.label3);
             this.gbScheduleTest.Controls.Add(this.label2);
-            this.gbScheduleTest.Controls.Add(this.label1);
+            this.gbScheduleTest.Controls.Add(this.lblTitle);
             this.gbScheduleTest.Controls.Add(this.pbTestImage);
             this.gbScheduleTest.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbScheduleTest.Location = new System.Drawing.Point(3, 3);
@@ -226,13 +226,13 @@
             this.label11.TabIndex = 66;
             this.label11.Text = "L.D.L App ID: ";
             // 
-            // dtpDate
+            // dtpTestDate
             // 
-            this.dtpDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpDate.Location = new System.Drawing.Point(175, 402);
-            this.dtpDate.Name = "dtpDate";
-            this.dtpDate.Size = new System.Drawing.Size(127, 30);
-            this.dtpDate.TabIndex = 64;
+            this.dtpTestDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpTestDate.Location = new System.Drawing.Point(175, 402);
+            this.dtpTestDate.Name = "dtpTestDate";
+            this.dtpTestDate.Size = new System.Drawing.Size(127, 30);
+            this.dtpTestDate.TabIndex = 64;
             // 
             // lblFees
             // 
@@ -314,15 +314,15 @@
             this.pictureBox5.TabIndex = 55;
             this.pictureBox5.TabStop = false;
             // 
-            // lblName
+            // lblFullName
             // 
-            this.lblName.AutoSize = true;
-            this.lblName.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblName.Location = new System.Drawing.Point(170, 322);
-            this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(40, 26);
-            this.lblName.TabIndex = 54;
-            this.lblName.Text = "N/A";
+            this.lblFullName.AutoSize = true;
+            this.lblFullName.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFullName.Location = new System.Drawing.Point(170, 322);
+            this.lblFullName.Name = "lblFullName";
+            this.lblFullName.Size = new System.Drawing.Size(40, 26);
+            this.lblFullName.TabIndex = 54;
+            this.lblFullName.Text = "N/A";
             // 
             // pictureBox12
             // 
@@ -404,15 +404,15 @@
             this.label2.TabIndex = 2;
             this.label2.Text = "L.D.L App ID: ";
             // 
-            // label1
+            // lblTitle
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Poppins SemiBold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(163, 164);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(157, 36);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Schedule Test";
+            this.lblTitle.AutoSize = true;
+            this.lblTitle.Font = new System.Drawing.Font("Poppins SemiBold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitle.Location = new System.Drawing.Point(163, 164);
+            this.lblTitle.Name = "lblTitle";
+            this.lblTitle.Size = new System.Drawing.Size(157, 36);
+            this.lblTitle.TabIndex = 1;
+            this.lblTitle.Text = "Schedule Test";
             // 
             // pbTestImage
             // 
@@ -432,7 +432,6 @@
             this.Controls.Add(this.gbScheduleTest);
             this.Name = "ctrlScheduleTest";
             this.Size = new System.Drawing.Size(482, 708);
-            this.Load += new System.EventHandler(this.ctrlScheduleTest_Load);
             this.gbScheduleTest.ResumeLayout(false);
             this.gbScheduleTest.PerformLayout();
             this.gbRetakeTestInformation.ResumeLayout(false);
@@ -456,7 +455,7 @@
         private System.Windows.Forms.GroupBox gbScheduleTest;
         private System.Windows.Forms.PictureBox pbTestImage;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
@@ -465,7 +464,7 @@
         private System.Windows.Forms.PictureBox pictureBox12;
         private System.Windows.Forms.Label lblLDLApplicationID;
         private System.Windows.Forms.PictureBox pictureBox5;
-        private System.Windows.Forms.Label lblName;
+        private System.Windows.Forms.Label lblFullName;
         private System.Windows.Forms.PictureBox pictureBox6;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Label lblDrivingClass;
@@ -479,7 +478,7 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label lblRetakeTestLDLApplicationID;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.DateTimePicker dtpDate;
+        private System.Windows.Forms.DateTimePicker dtpTestDate;
         private System.Windows.Forms.Label lblFees;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.Label lblTrail;

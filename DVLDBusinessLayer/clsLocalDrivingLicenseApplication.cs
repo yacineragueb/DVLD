@@ -128,6 +128,16 @@ namespace DVLDBusinessLayer
         public bool HasAnActiveAppointment(clsTestTypes.enTestType TestType)
         {
             return clsLocalDrivingLicenseApplicationsData.HasAnActiveAppointment(this.LocalDrivingLicenseApplicationID, (int)TestType);
+        } 
+
+        public bool DoesAttendTestType(clsTestTypes.enTestType AttendTestType)
+        {
+            return clsLocalDrivingLicenseApplicationsData.DoesAttendTestType(this.LocalDrivingLicenseApplicationID, (int)AttendTestType);
+        }
+
+        public byte TotalTrialsPerTest(clsTestTypes.enTestType TestTypeID)
+        {
+            return clsLocalDrivingLicenseApplicationsData.TotalTrialsPerTest(this.LocalDrivingLicenseApplicationID, (int)TestTypeID);
         }
 
         public bool Delete()
