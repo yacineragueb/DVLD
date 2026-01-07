@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.btnClose = new System.Windows.Forms.Button();
-            this.ctrlScheduleTest1 = new DVLD_project.Tests.ctrlScheduleTest();
+            this.ctrlScheduleTest = new DVLD_project.Tests.ctrlScheduleTest();
             this.SuspendLayout();
             // 
             // btnClose
@@ -46,13 +46,13 @@
             this.btnClose.UseVisualStyleBackColor = false;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
-            // ctrlScheduleTest1
+            // ctrlScheduleTest
             // 
-            this.ctrlScheduleTest1.BackColor = System.Drawing.Color.White;
-            this.ctrlScheduleTest1.Location = new System.Drawing.Point(12, 4);
-            this.ctrlScheduleTest1.Name = "ctrlScheduleTest1";
-            this.ctrlScheduleTest1.Size = new System.Drawing.Size(482, 708);
-            this.ctrlScheduleTest1.TabIndex = 0;
+            this.ctrlScheduleTest.BackColor = System.Drawing.Color.White;
+            this.ctrlScheduleTest.Location = new System.Drawing.Point(12, 4);
+            this.ctrlScheduleTest.Name = "ctrlScheduleTest";
+            this.ctrlScheduleTest.Size = new System.Drawing.Size(482, 708);
+            this.ctrlScheduleTest.TabIndex = 0;
             // 
             // frmScheduleTest
             // 
@@ -62,7 +62,7 @@
             this.CancelButton = this.btnClose;
             this.ClientSize = new System.Drawing.Size(505, 766);
             this.Controls.Add(this.btnClose);
-            this.Controls.Add(this.ctrlScheduleTest1);
+            this.Controls.Add(this.ctrlScheduleTest);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "frmScheduleTest";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -73,7 +73,7 @@
 
         #endregion
 
-        private ctrlScheduleTest ctrlScheduleTest1;
+        private ctrlScheduleTest ctrlScheduleTest;
         private System.Windows.Forms.Button btnClose;
     }
 }

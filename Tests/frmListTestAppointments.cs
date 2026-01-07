@@ -77,7 +77,7 @@ namespace DVLD_project.Tests
             {
                 if ( ! LDLApplication.HasAnActiveAppointment(_TestTypeID))
                 {
-                    frmScheduleTest frm = new frmScheduleTest();
+                    frmScheduleTest frm = new frmScheduleTest(LDLApplication, _TestTypeID);
                     frm.ShowDialog();
                 }
                 else
