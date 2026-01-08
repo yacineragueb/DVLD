@@ -13,7 +13,7 @@ namespace DVLD_project.Tests
 {
     public partial class frmScheduleTest : Form
     {
-        public frmScheduleTest(int LocalDrivingLicenseApplicationID, clsTestTypes.enTestType TestType, int TestAppointmentID)
+        public frmScheduleTest(int LocalDrivingLicenseApplicationID, clsTestTypes.enTestType TestType, int TestAppointmentID = -1)
         {
             InitializeComponent();
 

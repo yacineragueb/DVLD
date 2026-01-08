@@ -60,6 +60,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.lblTitle = new System.Windows.Forms.Label();
             this.pbTestImage = new System.Windows.Forms.PictureBox();
+            this.lblUserMessage = new System.Windows.Forms.Label();
             this.gbScheduleTest.SuspendLayout();
             this.gbRetakeTestInformation.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
@@ -76,6 +77,7 @@
             // 
             // gbScheduleTest
             // 
+            this.gbScheduleTest.Controls.Add(this.lblUserMessage);
             this.gbScheduleTest.Controls.Add(this.btnSave);
             this.gbScheduleTest.Controls.Add(this.gbRetakeTestInformation);
             this.gbScheduleTest.Controls.Add(this.dtpTestDate);
@@ -117,6 +119,7 @@
             this.btnSave.TabIndex = 66;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = false;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // gbRetakeTestInformation
             // 
@@ -424,6 +427,16 @@
             this.pbTestImage.TabIndex = 0;
             this.pbTestImage.TabStop = false;
             // 
+            // lblUserMessage
+            // 
+            this.lblUserMessage.AutoSize = true;
+            this.lblUserMessage.ForeColor = System.Drawing.Color.Red;
+            this.lblUserMessage.Location = new System.Drawing.Point(27, 200);
+            this.lblUserMessage.Name = "lblUserMessage";
+            this.lblUserMessage.Size = new System.Drawing.Size(428, 26);
+            this.lblUserMessage.TabIndex = 67;
+            this.lblUserMessage.Text = "Person Already have an active appointment for this test";
+            // 
             // ctrlScheduleTest
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -484,5 +497,6 @@
         private System.Windows.Forms.Label lblTrail;
         private System.Windows.Forms.PictureBox pictureBox9;
         private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.Label lblUserMessage;
     }
 }

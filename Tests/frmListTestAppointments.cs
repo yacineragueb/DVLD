@@ -16,17 +16,19 @@ namespace DVLD_project.Tests
     {
         private int _LDLApplicationID;
         private clsTestTypes.enTestType _TestTypeID;
+        private int _TestAppointment;
         public frmListTestAppointments()
         {
             InitializeComponent();
         }
 
-        public frmListTestAppointments(int LDLApplicationID, clsTestTypes.enTestType TestTypeID)
+        public frmListTestAppointments(int LDLApplicationID, clsTestTypes.enTestType TestTypeID, int TestAppointmentID = -1)
         {
             InitializeComponent();
 
             _LDLApplicationID = LDLApplicationID;
             _TestTypeID = TestTypeID;
+            _TestAppointment = TestAppointmentID;
         }
 
         private void _UpdateFormHeader()
@@ -77,7 +79,7 @@ namespace DVLD_project.Tests
             {
                 if ( ! LDLApplication.HasAnActiveAppointment(_TestTypeID))
                 {
-                    frmScheduleTest frm = new frmScheduleTest(LDLApplication, _TestTypeID);
+                    frmScheduleTest frm = new frmScheduleTest(LDLApplication.LocalDrivingLicenseApplicationID, _TestTypeID, _TestAppointment);
                     frm.ShowDialog();
                 }
                 else
