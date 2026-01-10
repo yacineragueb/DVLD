@@ -96,7 +96,7 @@ namespace DVLDAccessLayer
 
             using (SqlConnection conn = new SqlConnection(clsDVLDAcessLayerSettings.connectionString))
             {
-                string query = @"SELECT TOP 1 IsLocked FROM TestAppointments
+                string query = @"SELECT TOP 1 Found = 1 FROM TestAppointments
                                 INNER JOIN LocalDrivingLicenseApplications ON LocalDrivingLicenseApplications.LocalDrivingLicenseApplicationID = TestAppointments.LocalDrivingLicenseApplicationID
                                 WHERE TestAppointments.LocalDrivingLicenseApplicationID = 38
                                 AND TestAppointments.TestTypeID = 3
@@ -113,10 +113,10 @@ namespace DVLDAccessLayer
 
                         object Resutl = cmd.ExecuteScalar();
 
-                        if(Resutl != null && bool.TryParse(Resutl.ToString(), out bool returnedResult) ) 
+                        if(Resutl != null ) 
                         {
-                            resutl = returnedResult;
-                        }
+                            resutl = true;
+                        } 
 
                     } catch (Exception ex)
                     {

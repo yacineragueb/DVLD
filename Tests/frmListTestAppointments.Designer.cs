@@ -33,7 +33,7 @@
             this.pbTestImage = new System.Windows.Forms.PictureBox();
             this.lblTestTitle = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgvTestAppointments = new System.Windows.Forms.DataGridView();
             this.btnAddAppointment = new System.Windows.Forms.Button();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.btnClose = new System.Windows.Forms.Button();
@@ -41,7 +41,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.ctrlLDLApplicationDetailsCard = new DVLD_project.Applications.Controls.ctrlLDLApplicationDetailsCard();
             ((System.ComponentModel.ISupportInitialize)(this.pbTestImage)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvTestAppointments)).BeginInit();
             this.SuspendLayout();
             // 
             // pbTestImage
@@ -74,20 +74,20 @@
             this.label1.TabIndex = 3;
             this.label1.Text = "Appointments:";
             // 
-            // dataGridView1
+            // dgvTestAppointments
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.AllowUserToOrderColumns = true;
-            this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(18, 672);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(884, 158);
-            this.dataGridView1.TabIndex = 4;
+            this.dgvTestAppointments.AllowUserToAddRows = false;
+            this.dgvTestAppointments.AllowUserToDeleteRows = false;
+            this.dgvTestAppointments.AllowUserToOrderColumns = true;
+            this.dgvTestAppointments.BackgroundColor = System.Drawing.Color.White;
+            this.dgvTestAppointments.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvTestAppointments.Location = new System.Drawing.Point(18, 672);
+            this.dgvTestAppointments.Name = "dgvTestAppointments";
+            this.dgvTestAppointments.ReadOnly = true;
+            this.dgvTestAppointments.RowHeadersWidth = 51;
+            this.dgvTestAppointments.RowTemplate.Height = 24;
+            this.dgvTestAppointments.Size = new System.Drawing.Size(884, 158);
+            this.dgvTestAppointments.TabIndex = 4;
             // 
             // btnAddAppointment
             // 
@@ -161,7 +161,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnAddAppointment);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dgvTestAppointments);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lblTestTitle);
             this.Controls.Add(this.pbTestImage);
@@ -172,7 +172,7 @@
             this.Text = "frmListTestAppointments";
             this.Load += new System.EventHandler(this.frmListTestAppointments_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbTestImage)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvTestAppointments)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -184,7 +184,7 @@
         private System.Windows.Forms.PictureBox pbTestImage;
         private System.Windows.Forms.Label lblTestTitle;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgvTestAppointments;
         private System.Windows.Forms.Button btnAddAppointment;
         private System.Windows.Forms.ImageList imageList1;
         private System.Windows.Forms.Button btnClose;

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -9,6 +10,44 @@ namespace DVLDAccessLayer
 {
     public class clsTestAppointmentData
     {
+
+        public static DataTable GetAllTestAppointmentsByTestType(int LocalDrivingLicenseApplicationID, int TestTypeID)
+        {
+            DataTable dataTable = new DataTable();
+
+            using (SqlConnection connection = new SqlConnection(clsDVLDAcessLayerSettings.connectionString))
+            {
+                string query = @"SELECT TestAppointmentID, AppointmentDate,PaidFees, IsLocked FROM TestAppointments
+                                 WHERE LocalDrivingLicenseApplicationID = @LocalDrivingLicenseApplicationID
+                                 AND TestTypeID = @TestTypeID";
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@LocalDrivingLicenseApplicationID", LocalDrivingLicenseApplicationID);
+                    command.Parameters.AddWithValue("@TestTypeID", TestTypeID);
+
+                    try
+                    {
+                        connection.Open();
+
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            if(reader.HasRows)
+                            {
+                                dataTable.Load(reader);
+                            }
+                        }
+
+
+                    } catch (Exception ex)
+                    {
+
+                    }
+                }
+            }
+
+            return dataTable;
+        }
 
         public static int AddNewTestAppointment(
              int TestTypeID, int LocalDrivingLicenseApplicationID,

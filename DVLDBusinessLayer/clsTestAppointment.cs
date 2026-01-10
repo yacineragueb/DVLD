@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -119,6 +120,11 @@ namespace DVLDBusinessLayer
             }
 
             return false;
+        }
+
+        public static DataTable GetAllTestAppointmentsByTestType(int LocalDrivingLicenseApplicationID, clsTestTypes.enTestType TestTypeID)
+        {
+            return clsTestAppointmentData.GetAllTestAppointmentsByTestType(LocalDrivingLicenseApplicationID, (int)TestTypeID);
         }
 
     }

@@ -24,6 +24,7 @@ namespace DVLDBusinessLayer
 
         public int TestID {  get; set; }
         public int TestAppointmentID {  get; set; }
+        public clsTestAppointment _TestAppointmentInfo;
         public enTestResult TestResult { get; set; }
         public string Notes { get; set; }
         public int CreatedByUserID { get; set; }
@@ -49,6 +50,7 @@ namespace DVLDBusinessLayer
             this.CreatedByUserID = CreatedByUserID;
 
             _CreatedByUserInfo = clsUser.Find(CreatedByUserID);
+            _TestAppointmentInfo = clsTestAppointment.Find(TestAppointmentID);
 
             _Mode = enMode.Update;
         }
