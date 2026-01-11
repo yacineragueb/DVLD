@@ -106,12 +106,7 @@ namespace DVLD_project.Tests
 
             if (LDLApplication != null)
             {
-                if ( ! LDLApplication.HasAnActiveAppointment(_TestTypeID))
-                {
-                    frmScheduleTest frm = new frmScheduleTest(LDLApplication.LocalDrivingLicenseApplicationID, _TestTypeID, _TestAppointment);
-                    frm.ShowDialog();
-                }
-                else
+                if (LDLApplication.HasAnActiveAppointment(_TestTypeID))
                 {
                     MessageBox.Show("Person already have an active appointment for this test, you cannot add new appointment.", "Not Allowed", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;

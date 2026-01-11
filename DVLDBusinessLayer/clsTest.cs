@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DVLDAccessLayer;
 
 namespace DVLDBusinessLayer
 {
@@ -53,6 +54,26 @@ namespace DVLDBusinessLayer
             _TestAppointmentInfo = clsTestAppointment.Find(TestAppointmentID);
 
             _Mode = enMode.Update;
+        }
+
+        public static clsTest FindLastTestPerPersonAndLicenseClass(int PersonID,  int LicenseClassID, clsTestTypes.enTestType TestTypeID)
+        {
+            int TestID = -1;
+            int TestAppointmentID = -1;
+            bool result = false;
+            string Notes = string.Empty;
+            int CreatedByUserID = -1;
+
+            if(clsTestData.GetLastTestByPersonAndTestTypeAndLicenseClass(PersonID, LicenseClassID, (int)TestTypeID, ref TestID, ref TestAppointmentID, ref result, ref Notes, ref CreatedByUserID))
+            {
+                enTestResult TestResult = result ? enTestResult.Pass : enTestResult.Fail;
+
+                return new clsTest(TestID, TestAppointmentID, TestResult, Notes, CreatedByUserID);
+            } else
+            {
+                return null;
+            }
+
         }
     }
 }

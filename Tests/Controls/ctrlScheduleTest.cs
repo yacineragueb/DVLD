@@ -150,7 +150,6 @@ namespace DVLD_project.Tests
             //this will show the trials for this test before  
             lblTrail.Text = _LocalDrivingLicenseApplication.TotalTrialsPerTest(_TestType).ToString();
 
-
             if (Mode == enMode.AddNew)
             {
                 lblFees.Text = clsTestTypes.Find((int)_TestType).Fee.ToString();
@@ -197,7 +196,7 @@ namespace DVLD_project.Tests
             if (_TestAppointment.IsLocked)
             {
                 lblUserMessage.Visible = true;
-                lblUserMessage.Text = "Person already sat for the test, appointment loacked.";
+                lblUserMessage.Text = "Person already sat for the test, appointment is loacked.";
                 dtpTestDate.Enabled = false;
                 btnSave.Enabled = false;
                 return false;

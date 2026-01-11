@@ -145,6 +145,11 @@ namespace DVLDBusinessLayer
             return clsLocalDrivingLicenseApplicationsData.TotalTrialsPerTest(this.LocalDrivingLicenseApplicationID, (int)TestTypeID);
         }
 
+        public clsTest GetLastTestPerTestType(clsTestTypes.enTestType TestTypeID)
+        {
+            return clsTest.FindLastTestPerPersonAndLicenseClass(this.ApplicationPersonID, this.LicenseClassID, TestTypeID);
+        }
+
         public bool Delete()
         {
             bool IsLDLApplicationDeleted = false;
