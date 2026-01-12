@@ -17,7 +17,6 @@ namespace DVLD_project.Tests
     {
         private int _LDLApplicationID;
         private clsTestTypes.enTestType _TestTypeID;
-        private int _TestAppointment;
 
         private DataTable _dtTestAppointments; 
 
@@ -26,13 +25,12 @@ namespace DVLD_project.Tests
             InitializeComponent();
         }
 
-        public frmListTestAppointments(int LDLApplicationID, clsTestTypes.enTestType TestTypeID, int TestAppointmentID = -1)
+        public frmListTestAppointments(int LDLApplicationID, clsTestTypes.enTestType TestTypeID)
         {
             InitializeComponent();
 
             _LDLApplicationID = LDLApplicationID;
             _TestTypeID = TestTypeID;
-            _TestAppointment = TestAppointmentID;
         }
 
         private void _UpdateFormHeader()
@@ -133,6 +131,14 @@ namespace DVLD_project.Tests
                 frm2.ShowDialog();
                 frmListTestAppointments_Load(null, null);
             }
+        }
+
+        private void editToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int TestAppointmentID = (int)dgvTestAppointments.CurrentRow.Cells[0].Value;
+            frmScheduleTest frm = new frmScheduleTest(_LDLApplicationID, _TestTypeID, TestAppointmentID);
+            frm.ShowDialog();
+            frmListTestAppointments_Load(null, null);
         }
     }
 }

@@ -19,7 +19,8 @@ namespace DVLDAccessLayer
             {
                 string query = @"SELECT TestAppointmentID, AppointmentDate,PaidFees, IsLocked FROM TestAppointments
                                  WHERE LocalDrivingLicenseApplicationID = @LocalDrivingLicenseApplicationID
-                                 AND TestTypeID = @TestTypeID";
+                                 AND TestTypeID = @TestTypeID
+                                 ORDER BY TestAppointmentID desc";
 
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {

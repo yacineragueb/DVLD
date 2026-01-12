@@ -110,7 +110,6 @@ namespace DVLD_project.Tests
 
             _LocalDrivingLicenseApplicationID = LocalDrivingLicenseApplicationID;
             _TestAppointmentID = TestAppointmentID;
-            _LocalDrivingLicenseApplicationID = LocalDrivingLicenseApplicationID;
             _LocalDrivingLicenseApplication = clsLocalDrivingLicenseApplication.Find(_LocalDrivingLicenseApplicationID);
 
             if (_LocalDrivingLicenseApplication == null)
@@ -180,6 +179,7 @@ namespace DVLD_project.Tests
         {
             if (Mode == enMode.AddNew && clsLocalDrivingLicenseApplication.HasAnActiveAppointment(_LocalDrivingLicenseApplicationID, _TestType))
             {
+                lblUserMessage.Visible = true;
                 lblUserMessage.Text = "Person Already have an active appointment for this test";
                 btnSave.Enabled = false;
                 dtpTestDate.Enabled = false;
