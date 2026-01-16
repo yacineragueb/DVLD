@@ -75,5 +75,64 @@ namespace DVLDBusinessLayer
             }
 
         }
+
+        private bool _AddNewTest()
+        {
+            bool TestResult = this.TestResult == enTestResult.Pass;
+
+            this.TestID = clsTestData.AddNewTest(this.TestAppointmentID,
+                TestResult, this.Notes, this.CreatedByUserID);
+
+            return (this.TestID != -1);
+        }
+
+        private bool _UpdateTest()
+        {
+            bool TestResult = this.TestResult == enTestResult.Pass;
+
+            return clsTestData.UpdateTest(this.TestID, this.TestAppointmentID,
+                TestResult, this.Notes, this.CreatedByUserID);
+        }
+
+        public bool Save()
+        {
+            switch (_Mode)
+            {
+                case enMode.AddNew:
+                    if (_AddNewTest())
+                    {
+
+                        _Mode = enMode.Update;
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+
+                case enMode.Update:
+
+                    return _UpdateTest();
+
+            }
+
+            return false;
+        }
+    
+        public static clsTest Find(int TestID)
+        {
+            int TestAppointmentID = -1;
+            bool TestResult = false; string Notes = ""; int CreatedByUserID = -1;
+
+            if (clsTestData.GetTestInfoByID(TestID,
+            ref TestAppointmentID, ref TestResult,
+            ref Notes, ref CreatedByUserID))
+            {
+                clsTest.enTestResult Result = TestResult ? clsTest.enTestResult.Pass : clsTest.enTestResult.Fail;
+                return new clsTest(TestID, TestAppointmentID, Result, Notes, CreatedByUserID);
+            } else {
+                return null;
+            }
+        }
     }
 }

@@ -16,13 +16,23 @@ namespace DVLD_project.Tests.Controls
 {
     public partial class ctrlShowTestInformation : UserControl
     {
+        private int _TestID = -1;
         private clsTestTypes.enTestType _TestType;
         private int _TestAppointmentID = -1;
         private clsTestAppointment _TestAppointment = null;
 
-        public clsTestTypes.enTestType TestType
+        public int TestID
         {
-            get;
+            get
+            {
+                return _TestID;
+            }
+        }
+
+        public void SetLableTestID(int TestID)
+        {
+            _TestID = TestID;
+            lblTestID.Text = TestID.ToString();
         }
 
         private void _LoadHeaderContent()
@@ -77,6 +87,7 @@ namespace DVLD_project.Tests.Controls
 
             if (Test != null)
             {
+                _TestID = Test.TestID;
                 lblTestID.Text = Test.TestID.ToString();
             }
         }

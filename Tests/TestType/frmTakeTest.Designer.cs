@@ -36,8 +36,9 @@
             this.rbFail = new System.Windows.Forms.RadioButton();
             this.label1 = new System.Windows.Forms.Label();
             this.txtbNotes = new System.Windows.Forms.TextBox();
-            this.ctrlShowTestInformation = new DVLD_project.Tests.Controls.ctrlShowTestInformation();
             this.ctrlShowTestInformation1 = new DVLD_project.Tests.Controls.ctrlShowTestInformation();
+            this.ctrlShowTestInformation = new DVLD_project.Tests.Controls.ctrlShowTestInformation();
+            this.lblUserMessage = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
             this.SuspendLayout();
             // 
@@ -130,6 +131,14 @@
             this.txtbNotes.Size = new System.Drawing.Size(380, 111);
             this.txtbNotes.TabIndex = 66;
             // 
+            // ctrlShowTestInformation1
+            // 
+            this.ctrlShowTestInformation1.BackColor = System.Drawing.Color.White;
+            this.ctrlShowTestInformation1.Location = new System.Drawing.Point(10, 2);
+            this.ctrlShowTestInformation1.Name = "ctrlShowTestInformation1";
+            this.ctrlShowTestInformation1.Size = new System.Drawing.Size(462, 498);
+            this.ctrlShowTestInformation1.TabIndex = 0;
+            // 
             // ctrlShowTestInformation
             // 
             this.ctrlShowTestInformation.BackColor = System.Drawing.Color.White;
@@ -138,13 +147,18 @@
             this.ctrlShowTestInformation.Size = new System.Drawing.Size(462, 498);
             this.ctrlShowTestInformation.TabIndex = 0;
             // 
-            // ctrlShowTestInformation1
+            // lblUserMessage
             // 
-            this.ctrlShowTestInformation1.BackColor = System.Drawing.Color.White;
-            this.ctrlShowTestInformation1.Location = new System.Drawing.Point(10, 2);
-            this.ctrlShowTestInformation1.Name = "ctrlShowTestInformation1";
-            this.ctrlShowTestInformation1.Size = new System.Drawing.Size(462, 498);
-            this.ctrlShowTestInformation1.TabIndex = 0;
+            this.lblUserMessage.AutoSize = true;
+            this.lblUserMessage.BackColor = System.Drawing.Color.White;
+            this.lblUserMessage.Font = new System.Drawing.Font("Poppins", 7.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUserMessage.ForeColor = System.Drawing.Color.Red;
+            this.lblUserMessage.Location = new System.Drawing.Point(267, 505);
+            this.lblUserMessage.Name = "lblUserMessage";
+            this.lblUserMessage.Size = new System.Drawing.Size(179, 22);
+            this.lblUserMessage.TabIndex = 67;
+            this.lblUserMessage.Text = "You can\'t change the result";
+            this.lblUserMessage.Visible = false;
             // 
             // frmTakeTest
             // 
@@ -154,6 +168,7 @@
             this.BackColor = System.Drawing.Color.White;
             this.CancelButton = this.btnClose;
             this.ClientSize = new System.Drawing.Size(474, 735);
+            this.Controls.Add(this.lblUserMessage);
             this.Controls.Add(this.txtbNotes);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.rbFail);
@@ -167,6 +182,7 @@
             this.Name = "frmTakeTest";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Take Test";
+            this.Load += new System.EventHandler(this.frmTakeTest_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -174,8 +190,6 @@
         }
 
         #endregion
-
-        private Controls.ctrlShowTestInformation ctrlShowTestInformation;
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Button btnSave;
         private Controls.ctrlShowTestInformation ctrlShowTestInformation1;
@@ -185,5 +199,7 @@
         private System.Windows.Forms.RadioButton rbFail;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtbNotes;
+        private Controls.ctrlShowTestInformation ctrlShowTestInformation;
+        private System.Windows.Forms.Label lblUserMessage;
     }
 }
