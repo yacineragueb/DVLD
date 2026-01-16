@@ -1,4 +1,5 @@
 ﻿using DVLD_project.Properties;
+using DVLD_project.Tests.TestType;
 using DVLDBusinessLayer;
 using System;
 using System.Collections.Generic;
@@ -137,6 +138,14 @@ namespace DVLD_project.Tests
         {
             int TestAppointmentID = (int)dgvTestAppointments.CurrentRow.Cells[0].Value;
             frmScheduleTest frm = new frmScheduleTest(_LDLApplicationID, _TestTypeID, TestAppointmentID);
+            frm.ShowDialog();
+            frmListTestAppointments_Load(null, null);
+        }
+
+        private void takeTestToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int TestAppointmentID = (int)dgvTestAppointments.CurrentRow.Cells[0].Value;
+            frmTakeTest frm = new frmTakeTest(TestAppointmentID);
             frm.ShowDialog();
             frmListTestAppointments_Load(null, null);
         }
