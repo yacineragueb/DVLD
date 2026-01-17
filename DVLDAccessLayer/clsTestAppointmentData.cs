@@ -11,6 +11,38 @@ namespace DVLDAccessLayer
     public class clsTestAppointmentData
     {
 
+        public static int GetTestID(int TestAppointmentID)
+        {
+            int TestID = -1;
+
+            using (SqlConnection conn = new SqlConnection(clsDVLDAcessLayerSettings.connectionString))
+            {
+                string query = "SELECT TestID FROM Tests where TestAppointmentID = @TestAppointmentID;";
+
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@TestAppointmentID", TestAppointmentID);
+
+                    try
+                    {
+                        conn.Open();
+                        object result = cmd.ExecuteScalar();
+
+                        if (result != null && int.TryParse(result.ToString(), out int insertedID))
+                        {
+                            TestID = insertedID;
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        TestID = -1;
+                    }
+                }
+            }
+
+            return TestID;
+        }
+
         public static DataTable GetAllTestAppointmentsByTestType(int LocalDrivingLicenseApplicationID, int TestTypeID)
         {
             DataTable dataTable = new DataTable();

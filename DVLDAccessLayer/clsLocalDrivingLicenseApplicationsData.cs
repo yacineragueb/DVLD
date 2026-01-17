@@ -98,8 +98,8 @@ namespace DVLDAccessLayer
             {
                 string query = @"SELECT TOP 1 Found = 1 FROM TestAppointments
                                 INNER JOIN LocalDrivingLicenseApplications ON LocalDrivingLicenseApplications.LocalDrivingLicenseApplicationID = TestAppointments.LocalDrivingLicenseApplicationID
-                                WHERE TestAppointments.LocalDrivingLicenseApplicationID = 38
-                                AND TestAppointments.TestTypeID = 3
+                                WHERE TestAppointments.LocalDrivingLicenseApplicationID = @LocalDrivingLicenseApplicationID
+                                AND TestAppointments.TestTypeID = @TestTypeID AND IsLocked = 0
                                 ORDER BY TestAppointments.TestAppointmentID desc";
 
                 using (SqlCommand cmd = new SqlCommand(query, conn))

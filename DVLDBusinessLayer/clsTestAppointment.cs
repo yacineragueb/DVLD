@@ -31,6 +31,14 @@ namespace DVLDBusinessLayer
         public int RetakeTestApplicationID { get; set; }
         public clsApplication _RetakeTestApplication;
 
+        public int TestID
+        {
+            get
+            {
+                return _GetTestID();
+            }
+        }
+
         public clsTestAppointment()
         {
             this.TestAppointmentID = -1;
@@ -127,5 +135,9 @@ namespace DVLDBusinessLayer
             return clsTestAppointmentData.GetAllTestAppointmentsByTestType(LocalDrivingLicenseApplicationID, (int)TestTypeID);
         }
 
+        private int _GetTestID()
+        {
+            return clsTestAppointmentData.GetTestID(this.TestAppointmentID);
+        }
     }
 }

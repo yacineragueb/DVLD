@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.gbScheduleTest = new System.Windows.Forms.GroupBox();
+            this.lblUserMessage = new System.Windows.Forms.Label();
             this.btnSave = new System.Windows.Forms.Button();
             this.gbRetakeTestInformation = new System.Windows.Forms.GroupBox();
             this.lblTotalFees = new System.Windows.Forms.Label();
@@ -60,7 +61,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.lblTitle = new System.Windows.Forms.Label();
             this.pbTestImage = new System.Windows.Forms.PictureBox();
-            this.lblUserMessage = new System.Windows.Forms.Label();
             this.gbScheduleTest.SuspendLayout();
             this.gbRetakeTestInformation.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
@@ -107,6 +107,16 @@
             this.gbScheduleTest.TabIndex = 0;
             this.gbScheduleTest.TabStop = false;
             this.gbScheduleTest.Text = "Vision Test";
+            // 
+            // lblUserMessage
+            // 
+            this.lblUserMessage.AutoSize = true;
+            this.lblUserMessage.ForeColor = System.Drawing.Color.Red;
+            this.lblUserMessage.Location = new System.Drawing.Point(27, 200);
+            this.lblUserMessage.Name = "lblUserMessage";
+            this.lblUserMessage.Size = new System.Drawing.Size(428, 26);
+            this.lblUserMessage.TabIndex = 67;
+            this.lblUserMessage.Text = "Person Already have an active appointment for this test";
             // 
             // btnSave
             // 
@@ -192,7 +202,7 @@
             // pictureBox4
             // 
             this.pictureBox4.Image = global::DVLD_project.Properties.Resources.ID_Card;
-            this.pictureBox4.Location = new System.Drawing.Point(137, 72);
+            this.pictureBox4.Location = new System.Drawing.Point(151, 72);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(32, 26);
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -213,7 +223,7 @@
             // 
             this.lblRetakeTestLDLApplicationID.AutoSize = true;
             this.lblRetakeTestLDLApplicationID.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRetakeTestLDLApplicationID.Location = new System.Drawing.Point(175, 72);
+            this.lblRetakeTestLDLApplicationID.Location = new System.Drawing.Point(189, 72);
             this.lblRetakeTestLDLApplicationID.Name = "lblRetakeTestLDLApplicationID";
             this.lblRetakeTestLDLApplicationID.Size = new System.Drawing.Size(40, 26);
             this.lblRetakeTestLDLApplicationID.TabIndex = 67;
@@ -225,9 +235,9 @@
             this.label11.Font = new System.Drawing.Font("Poppins Medium", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.Location = new System.Drawing.Point(11, 72);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(120, 26);
+            this.label11.Size = new System.Drawing.Size(142, 26);
             this.label11.TabIndex = 66;
-            this.label11.Text = "L.D.L App ID: ";
+            this.label11.Text = "R. Test App. ID: ";
             // 
             // dtpTestDate
             // 
@@ -426,16 +436,6 @@
             this.pbTestImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbTestImage.TabIndex = 0;
             this.pbTestImage.TabStop = false;
-            // 
-            // lblUserMessage
-            // 
-            this.lblUserMessage.AutoSize = true;
-            this.lblUserMessage.ForeColor = System.Drawing.Color.Red;
-            this.lblUserMessage.Location = new System.Drawing.Point(27, 200);
-            this.lblUserMessage.Name = "lblUserMessage";
-            this.lblUserMessage.Size = new System.Drawing.Size(428, 26);
-            this.lblUserMessage.TabIndex = 67;
-            this.lblUserMessage.Text = "Person Already have an active appointment for this test";
             // 
             // ctrlScheduleTest
             // 

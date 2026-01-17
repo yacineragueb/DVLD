@@ -83,7 +83,9 @@ namespace DVLD_project.Tests.Controls
 
             lblTestDate.Text = _TestAppointment.AppointmentDate.ToShortDateString();
 
-            clsTest Test = clsTest.FindLastTestPerPersonAndLicenseClass(_TestAppointment._LocalDrivingLicenseApplicationInfo.ApplicationPersonID, _TestAppointment._LocalDrivingLicenseApplicationInfo.LicenseClassID, (clsTestTypes.enTestType)_TestAppointment.TestTypeID);
+            int TestID = _TestAppointment.TestID;
+
+            clsTest Test = clsTest.Find(TestID);
 
             if (Test != null)
             {
