@@ -189,6 +189,7 @@ namespace DVLD_project.Applications
             int LDLApplicationID = (int)dgvLDLApplicationsTable.CurrentRow.Cells[0].Value;
             frmListTestAppointments frm = new frmListTestAppointments(LDLApplicationID, clsTestTypes.enTestType.VisionTest);
             frm.ShowDialog();
+            frmListLocalDrivingLicenseApplications_Load(null, null);
         }
 
         private void scheduleWrittenTestToolStripMenuItem_Click(object sender, EventArgs e)
@@ -196,6 +197,7 @@ namespace DVLD_project.Applications
             int LDLApplicationID = (int)dgvLDLApplicationsTable.CurrentRow.Cells[0].Value;
             frmListTestAppointments frm = new frmListTestAppointments(LDLApplicationID, clsTestTypes.enTestType.WrittenTest);
             frm.ShowDialog();
+            frmListLocalDrivingLicenseApplications_Load(null, null);
         }
 
         private void scheduleStreetTestToolStripMenuItem_Click(object sender, EventArgs e)
@@ -203,6 +205,7 @@ namespace DVLD_project.Applications
             int LDLApplicationID = (int)dgvLDLApplicationsTable.CurrentRow.Cells[0].Value;
             frmListTestAppointments frm = new frmListTestAppointments(LDLApplicationID, clsTestTypes.enTestType.StreetTest);
             frm.ShowDialog();
+            frmListLocalDrivingLicenseApplications_Load(null, null);
         }
 
         private void ShowLicenseToolStripMenuItem_Click(object sender, EventArgs e)
@@ -257,7 +260,6 @@ namespace DVLD_project.Applications
 
                     //To Allow Schdule steet test, Person must pass the vision * written tests, and must not passed the same test before.
                     scheduleStreetTestToolStripMenuItem.Enabled = PassedVisionTest && PassedWrittenTest && !PassedStreetTest;
-
                 }
             }
         }

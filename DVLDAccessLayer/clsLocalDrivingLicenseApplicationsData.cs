@@ -134,7 +134,7 @@ namespace DVLDAccessLayer
 
             using (SqlConnection conn = new SqlConnection(clsDVLDAcessLayerSettings.connectionString))
             {
-                string query = @"SELECT TOP 1 * FROM TestAppointments
+                string query = @"SELECT TOP 1 Found = 1 FROM TestAppointments
                                  INNER JOIN LocalDrivingLicenseApplications ON LocalDrivingLicenseApplications.LocalDrivingLicenseApplicationID = TestAppointments.LocalDrivingLicenseApplicationID
                                  INNER JOIN TestTypes ON TestTypes.TestTypeID = TestAppointments.TestTypeID
                                  INNER JOIN Tests ON Tests.TestAppointmentID = TestAppointments.TestAppointmentID
@@ -152,9 +152,9 @@ namespace DVLDAccessLayer
                         conn.Open();
                         object Result = cmd.ExecuteScalar();
 
-                        if(Result != null && bool.TryParse(Result.ToString(), out bool returnedResult))
+                        if(Result != null)
                         {
-                            result = returnedResult;
+                            result = true;
                         }
 
                     } catch (Exception ex)
