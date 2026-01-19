@@ -59,7 +59,10 @@ namespace DVLD_project.Tests
                     break;
             }
 
-            lblTestTitle.Text = TestType.GetTestTypeString() + " Appointement";
+            string title = TestType.GetTestTypeString() + " Appointement";
+
+            lblTestTitle.Text = title;
+            this.Text = title;
         }
 
         private void _LoadTestAppointments()

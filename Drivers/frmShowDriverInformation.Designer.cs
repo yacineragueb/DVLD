@@ -77,7 +77,7 @@
             this.ctrlDriverDetailsCard.Size = new System.Drawing.Size(850, 391);
             this.ctrlDriverDetailsCard.TabIndex = 5;
             // 
-            // frmShowDrivierLicenseInfo
+            // frmShowDriverInformation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -89,9 +89,9 @@
             this.Controls.Add(this.pbTestImage);
             this.Controls.Add(this.btnClose);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Name = "frmShowDrivierLicenseInfo";
+            this.Name = "frmShowDriverInformation";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frmShowDrivierLicenseInfo";
+            this.Text = "Driver License Information";
             ((System.ComponentModel.ISupportInitialize)(this.pbTestImage)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

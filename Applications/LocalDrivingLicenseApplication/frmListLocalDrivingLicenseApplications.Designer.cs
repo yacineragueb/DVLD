@@ -248,6 +248,7 @@
             this.IssueDrivingLicenseFirstTimeMenuItem.Name = "IssueDrivingLicenseFirstTimeMenuItem";
             this.IssueDrivingLicenseFirstTimeMenuItem.Size = new System.Drawing.Size(377, 36);
             this.IssueDrivingLicenseFirstTimeMenuItem.Text = "Issue Driving License (First Time)";
+            this.IssueDrivingLicenseFirstTimeMenuItem.Click += new System.EventHandler(this.IssueDrivingLicenseFirstTimeMenuItem_Click);
             // 
             // toolStripSeparator4
             // 

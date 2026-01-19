@@ -1,5 +1,6 @@
 ﻿using DVLD_project.Applications.LocalDrivingLicenseApplication;
 using DVLD_project.Drivers;
+using DVLD_project.Licenses;
 using DVLD_project.Tests;
 using DVLDBusinessLayer;
 using System;
@@ -294,6 +295,14 @@ namespace DVLD_project.Applications
                     MessageBox.Show("Could not delete applicatoin, other data depends on it.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+        }
+
+        private void IssueDrivingLicenseFirstTimeMenuItem_Click(object sender, EventArgs e)
+        {
+            int LDLApplication = (int)dgvLDLApplicationsTable.CurrentRow.Cells[0].Value;
+
+            frmIssueLicenseFirstTime frm = new frmIssueLicenseFirstTime(LDLApplication);
+            frm.ShowDialog();
         }
     }
 }
