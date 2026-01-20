@@ -119,7 +119,7 @@ namespace DVLDBusinessLayer
 
         public static bool IsLicenseExistByPersonID(int PersonID, int LicenseClassID)
         {
-            return GetActiveLicesenByPersonID(PersonID,  LicenseClassID) != 1;
+            return GetActiveLicesenByPersonID(PersonID,  LicenseClassID) != -1;
         }
 
         public static int GetActiveLicesenByPersonID(int PersonID, int LicenseClassID)

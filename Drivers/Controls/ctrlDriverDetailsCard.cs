@@ -17,19 +17,6 @@ namespace DVLD_project.Drivers.Controller
     {
         private clsDriver _Driver = null;
 
-        private int _DriverID = -1;
-        private string _PersonNationalNo = "";
-
-        public int DriverID
-        {
-            get { return _DriverID; }
-        }
-
-        public string PersonNationalNo
-        {
-            get { return _PersonNationalNo; }
-        }
-
         public ctrlDriverDetailsCard()
         {
             InitializeComponent();
@@ -37,7 +24,7 @@ namespace DVLD_project.Drivers.Controller
 
         private void _FillDriverInformation()
         {
-            lblLicenseClass.Text = _Driver._LicenseInfo._LicenseClass.ClassName;
+            lblLicenseClass.Text = _Driver._LicenseInfo._LicenseClass.ClassName; // There is error here
             lblName.Text = _Driver._PersonInfo.FullName();
             lblLicenseID.Text = _Driver._LicenseInfo.LicenseID.ToString();
             lblNationalNo.Text = _Driver._PersonInfo.NationalNo;
@@ -97,7 +84,6 @@ namespace DVLD_project.Drivers.Controller
                 return;
             }
 
-            _DriverID = DriverID;
             _FillDriverInformation();
         }
 
@@ -111,7 +97,6 @@ namespace DVLD_project.Drivers.Controller
                 return;
             }
 
-            _PersonNationalNo = PersonNationalNo;
             _FillDriverInformation();
         }
     }

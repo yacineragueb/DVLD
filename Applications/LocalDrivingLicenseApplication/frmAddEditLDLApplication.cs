@@ -163,7 +163,7 @@ namespace DVLD_project.Applications
 
             if (!_CheckIfPersonAlreadyHasAnActiveApplication(PersonID, LicenseClassID)) return;
 
-            //check if user already have issued license of the same driving  class.
+            //check if user already have issued license of the same driving class.
             if(clsLicense.IsLicenseExistByPersonID(PersonID, LicenseClassID))
             {
                 MessageBox.Show("Person already have a license with the same applied driving class, Choose diffrent driving class", "Not allowed", MessageBoxButtons.OK, MessageBoxIcon.Error);
