@@ -10,6 +10,78 @@ namespace DVLDAccessLayer
 {
     public class clsDriverData
     {
+
+        public static bool UpdateDriver(int DriverID, int PersonID, DateTime CreatedDate, int CreatedByUserID)
+        {
+            int rowsAffected = 0;
+
+            using (SqlConnection connection = new SqlConnection(clsDVLDAcessLayerSettings.connectionString))
+            {
+                string query = @"UPDATE Drivers
+                                 SET PersonID = @PersonID,
+                                 CreatedByUserID = @CreatedByUserID,
+                                 CreatedDate = @CreatedDate
+                                 WHERE DriverID = @DriverID;";
+
+                using (SqlCommand cmd = new SqlCommand(query, connection))
+                {
+                    cmd.Parameters.AddWithValue("@DriverID", DriverID);
+                    cmd.Parameters.AddWithValue("@PersonID", PersonID);
+                    cmd.Parameters.AddWithValue("@CreatedDate", CreatedDate);
+                    cmd.Parameters.AddWithValue("@CreatedByUserID", CreatedByUserID);
+
+                    try
+                    {
+                        connection.Open();
+
+                        rowsAffected = cmd.ExecuteNonQuery();
+                    }
+                    catch (Exception ex)
+                    {
+                        rowsAffected = -1;
+                    }
+                }
+            }
+
+            return rowsAffected > 0;
+        }
+
+        public static int AddNewDriver(int PersonID, DateTime CreatedDate, int CreatedByUserID)
+        {
+            int DriverID = -1;
+
+            using (SqlConnection connection = new SqlConnection(clsDVLDAcessLayerSettings.connectionString))
+            {
+                string query = @"INSERT INTO Drivers (PersonID, CreatedByUserID, CreatedDate) VALUES (@PersonID, @CreatedByUserID, @CreatedDate);
+                                 SELECT SCOPE_IDENTITY();";
+
+                using (SqlCommand cmd = new SqlCommand(query, connection))
+                {
+                    cmd.Parameters.AddWithValue("@PersonID", PersonID);
+                    cmd.Parameters.AddWithValue("@CreatedDate", CreatedDate);
+                    cmd.Parameters.AddWithValue("@CreatedByUserID", CreatedByUserID);
+                    
+                    try
+                    {
+                        connection.Open();
+
+                        object result = cmd.ExecuteScalar();
+
+                        if( result != null && int.TryParse(result.ToString(), out int insertedDriverID))
+                        {
+                            DriverID = insertedDriverID;
+                        }
+
+                    } catch (Exception ex)
+                    {
+                        DriverID = -1;
+                    }
+                }
+            }
+
+            return DriverID;
+        }
+
         public static bool GetDriverByPersonNationalNo(string PersonNationalNo, ref int DriverID, ref int PersonID, ref int CreatedByUserID, ref DateTime CreatedDate)
         {
             bool IsFound = false;

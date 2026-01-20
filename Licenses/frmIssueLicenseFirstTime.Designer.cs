@@ -31,7 +31,7 @@
             this.ctrlLDLApplicationDetailsCard = new DVLD_project.Applications.Controls.ctrlLDLApplicationDetailsCard();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtbNotes = new System.Windows.Forms.TextBox();
             this.btnClose = new System.Windows.Forms.Button();
             this.btnIssue = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -65,13 +65,13 @@
             this.label3.TabIndex = 60;
             this.label3.Text = "Notes: ";
             // 
-            // textBox1
+            // txtbNotes
             // 
-            this.textBox1.Location = new System.Drawing.Point(138, 415);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(771, 164);
-            this.textBox1.TabIndex = 62;
+            this.txtbNotes.Location = new System.Drawing.Point(138, 415);
+            this.txtbNotes.Multiline = true;
+            this.txtbNotes.Name = "txtbNotes";
+            this.txtbNotes.Size = new System.Drawing.Size(771, 164);
+            this.txtbNotes.TabIndex = 62;
             // 
             // btnClose
             // 
@@ -98,8 +98,9 @@
             this.btnIssue.TabIndex = 63;
             this.btnIssue.Text = "Issue";
             this.btnIssue.UseVisualStyleBackColor = false;
+            this.btnIssue.Click += new System.EventHandler(this.btnIssue_Click);
             // 
-            // IssueLicenseFirstTime
+            // frmIssueLicenseFirstTime
             // 
             this.AcceptButton = this.btnIssue;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -109,12 +110,12 @@
             this.ClientSize = new System.Drawing.Size(921, 666);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnIssue);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtbNotes);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.ctrlLDLApplicationDetailsCard);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Name = "IssueLicenseFirstTime";
+            this.Name = "frmIssueLicenseFirstTime";
             this.Text = "Issue License For The First Time";
             this.Load += new System.EventHandler(this.IssueLicenseFirstTime_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
@@ -128,7 +129,7 @@
         private Applications.Controls.ctrlLDLApplicationDetailsCard ctrlLDLApplicationDetailsCard;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtbNotes;
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Button btnIssue;
     }

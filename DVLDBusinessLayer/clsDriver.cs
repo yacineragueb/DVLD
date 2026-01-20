@@ -85,5 +85,39 @@ namespace DVLDBusinessLayer
         {
             return clsDriverData.GetAllDrivers();
         }
+
+        private bool _AddNewDriver()
+        {
+            this.DriverID = clsDriverData.AddNewDriver(this.PersonID, this.CreatedDate, this.CreatedByUserID);
+
+            return this.DriverID != -1;
+        }
+
+        private bool _UpdateDriver()
+        {
+            return clsDriverData.UpdateDriver(this.DriverID, this.PersonID, this.CreatedDate, this.CreatedByUserID);
+        }
+
+        public bool Save()
+        {
+            switch(_Mode)
+            {
+                case enMode.AddNew:
+                    if(_AddNewDriver()) { 
+
+                        _Mode = enMode.Update;
+                    
+                        return true;
+                    } else
+                    {
+                        return false;
+                    }
+
+                case enMode.Update:
+                    return _UpdateDriver();
+            }
+
+            return false;
+        }
     }
 }

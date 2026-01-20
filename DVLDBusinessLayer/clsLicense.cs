@@ -126,5 +126,39 @@ namespace DVLDBusinessLayer
         {
             return clsLicenseData.GetActiveLicesenByPersonID(PersonID, LicenseClassID);
         }
+
+        private bool _AddNewLicense()
+        {
+            this.LicenseID = clsLicenseData.AddNewLicense(this.ApplicationID, this.DriverID, this.LicenseClassID, this.IssueDate, this.ExpirationDate, this.Notes, this.PaidFees, this.IsActive, (int)this.IssueReason, this.CreatedByUserId); 
+
+            return this.LicenseID != -1;
+        }
+
+        private bool _UpdateLicense()
+        {
+            return clsLicenseData.UpdateLicense(this.LicenseID, this.ApplicationID, this.DriverID, this.LicenseClassID, this.IssueDate, this.ExpirationDate, this.Notes, this.PaidFees, this.IsActive, (int)this.IssueReason, this.CreatedByUserId);
+        }
+
+        public bool Save()
+        {
+            switch(_Mode)
+            {
+                case enMode.AddNew:
+                    if(_AddNewLicense())
+                    {
+                        _Mode = enMode.Update;
+
+                        return true;
+                    } else
+                    {
+                        return false;
+                    }
+
+                case enMode.Update:
+                    return _UpdateLicense();
+            }
+
+            return false;
+        }
     }
 }
