@@ -115,17 +115,17 @@ namespace DVLDAccessLayer
 
             return LicenseID;
         }
-        public static bool GetLicenseByDriverID(ref int LicenseID, ref int ApplicationID, int DriverID, ref int LicenseClassID, ref DateTime IssueDate, ref DateTime ExpirationDate, ref int CreatedByUserID, ref string Notes, ref decimal PaidFees, ref int IssueReason, ref bool IsActive)
+        public static bool GetLicenseInfoByID(int LicenseID, ref int ApplicationID, ref int DriverID, ref int LicenseClassID, ref DateTime IssueDate, ref DateTime ExpirationDate, ref int CreatedByUserID, ref string Notes, ref decimal PaidFees, ref int IssueReason, ref bool IsActive)
         {
             bool IsFound = false;
 
             using (SqlConnection connection = new SqlConnection(clsDVLDAcessLayerSettings.connectionString))
             {
-                string query = @"SELECT * FROM Licenses WHERE DriverID = @DriverID";
+                string query = @"SELECT * FROM Licenses WHERE LicenseID = @LicenseID";
 
                 using (SqlCommand cmd = new SqlCommand(query, connection))
                 {
-                    cmd.Parameters.AddWithValue("@DriverID", DriverID);
+                    cmd.Parameters.AddWithValue("@LicenseID", LicenseID);
 
                     try
                     {
@@ -137,7 +137,7 @@ namespace DVLDAccessLayer
                             {
                                 IsFound = true;
 
-                                LicenseID = (int)reader["LicenseID"];
+                                DriverID = (int)reader["DriverID"];
                                 ApplicationID = (int)reader["ApplicationID"];
                                 LicenseClassID = (int)reader["LicenseClass"];
                                 IssueDate = (DateTime)reader["IssueDate"];

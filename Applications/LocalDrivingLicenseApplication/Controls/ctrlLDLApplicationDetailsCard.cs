@@ -1,4 +1,5 @@
-﻿using DVLDBusinessLayer;
+﻿using DVLD_project.Drivers;
+using DVLDBusinessLayer;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -17,6 +18,7 @@ namespace DVLD_project.Applications.Controls
         private clsLocalDrivingLicenseApplication _LDLApplication = null;
 
         private int _LDLApplicationID = -1;
+        private int _LicenseID;
 
         public int LDLApplicationID
         {
@@ -34,6 +36,16 @@ namespace DVLD_project.Applications.Controls
             lblAppliedForLicense.Text = _LDLApplication._LicenseClasses.ClassName;
             lblPassedTest.Text = _LDLApplication.GetTheNumberOfPassedTest() + "/" + clsTestTypes.GetTotalNumberOfTests();
             ctrlApplicationDetailsCard.LoadData(_LDLApplication.ApplicationID);
+
+            _LicenseID = _LDLApplication.GetActiveLicenseID();
+
+            if(_LicenseID != -1)
+            {
+                LlblShowLicenseInformation.Enabled = true;
+            } else
+            {
+                LlblShowLicenseInformation.Enabled = false;
+            }
         }
 
         public void LoadData(int LDLApplicationID)
@@ -47,6 +59,12 @@ namespace DVLD_project.Applications.Controls
 
             _LDLApplicationID = LDLApplicationID;
             _FillLDLApplicationInformation();
+        }
+
+        private void LlblShowLicenseInformation_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            frmShowDriverInformation frm = new frmShowDriverInformation(_LicenseID);
+            frm.ShowDialog();
         }
     }
 }

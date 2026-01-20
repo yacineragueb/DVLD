@@ -92,6 +92,7 @@
             this.Name = "frmShowDriverInformation";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Driver License Information";
+            this.Load += new System.EventHandler(this.frmShowDriverInformation_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbTestImage)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

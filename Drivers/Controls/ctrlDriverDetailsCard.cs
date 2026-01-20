@@ -15,7 +15,16 @@ namespace DVLD_project.Drivers.Controller
 {
     public partial class ctrlDriverDetailsCard : UserControl
     {
-        private clsDriver _Driver = null;
+        private clsLicense _License = null;
+        private int _LicenseID = -1;
+
+        public int LicenseID
+        {
+            get { return _LicenseID; }
+        }
+
+        public clsLicense SelectedLicenseInfo
+        { get { return _License; } }
 
         public ctrlDriverDetailsCard()
         {
@@ -24,12 +33,14 @@ namespace DVLD_project.Drivers.Controller
 
         private void _FillDriverInformation()
         {
-            lblLicenseClass.Text = _Driver._LicenseInfo._LicenseClass.ClassName; // There is error here
-            lblName.Text = _Driver._PersonInfo.FullName();
-            lblLicenseID.Text = _Driver._LicenseInfo.LicenseID.ToString();
-            lblNationalNo.Text = _Driver._PersonInfo.NationalNo;
+            lblLicenseClass.Text = _License._LicenseClass.ClassName; // There is error here
+            lblName.Text = _License._DriverInfo._PersonInfo.FullName();
+            lblLicenseID.Text = _License.LicenseID.ToString();
+            lblNationalNo.Text = _License._DriverInfo._PersonInfo.NationalNo;
 
-            switch (_Driver._PersonInfo.Gender)
+            clsPerson.enGender Gender = _License._DriverInfo._PersonInfo.Gender;
+
+            switch (Gender)
             {
                 case clsPerson.enGender.Male:
                     pbGender.Image = Resources.Male;
@@ -43,24 +54,24 @@ namespace DVLD_project.Drivers.Controller
                     break;
             }
 
-            lblIssueDate.Text = _Driver._LicenseInfo.IssueDate.ToShortDateString();
-            lblExpirationDate.Text = _Driver._LicenseInfo.ExpirationDate.ToShortDateString();
-            lblIssueReason.Text = _Driver._LicenseInfo.GetIssueReasonString();
+            lblIssueDate.Text = _License.IssueDate.ToShortDateString();
+            lblExpirationDate.Text = _License.ExpirationDate.ToShortDateString();
+            lblIssueReason.Text = _License.GetIssueReasonString();
 
-            if (string.IsNullOrEmpty(_Driver._LicenseInfo.Notes))
+            if (string.IsNullOrEmpty(_License.Notes))
             {
                 lblNotes.Text = "No Notes";
             } else
             {
-                lblNotes.Text = _Driver._LicenseInfo.Notes;
+                lblNotes.Text = _License.Notes;
             }
 
-            lblIsAcitve.Text = _Driver._LicenseInfo.IsActive ? "Yes" : "No";
-            lblDateOfBirth.Text = _Driver._PersonInfo.DateOfBirth.ToShortDateString();
-            lblDriverID.Text = _Driver.DriverID.ToString();
+            lblIsAcitve.Text = _License.IsActive ? "Yes" : "No";
+            lblDateOfBirth.Text = _License._DriverInfo._PersonInfo.DateOfBirth.ToShortDateString();
+            lblDriverID.Text = _License._DriverInfo.DriverID.ToString();
             lblIsDetained.Text = "This will add later";
 
-            string ImagePath = _Driver._PersonInfo.ImagePath;
+            string ImagePath = _License._DriverInfo._PersonInfo.ImagePath;
             if (! string.IsNullOrEmpty(ImagePath))
             {
                 if (File.Exists(ImagePath))
@@ -74,26 +85,15 @@ namespace DVLD_project.Drivers.Controller
             }
         }
 
-        public void LoadData(int DriverID)
+        public void LoadData(int LicenseID)
         {
-            _Driver = clsDriver.Find(DriverID);
+            _LicenseID = LicenseID;
+            _License = clsLicense.Find(_LicenseID);
 
-            if ( _Driver == null )
+            if (_License == null )
             {
-                MessageBox.Show("Driver with ID = " + DriverID + " not found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            _FillDriverInformation();
-        }
-
-        public void LoadData(string PersonNationalNo)
-        {
-            _Driver = clsDriver.Find(PersonNationalNo);
-
-            if (_Driver == null)
-            {
-                MessageBox.Show("Driver with Person National No. = " + PersonNationalNo + " not found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Driver with license ID = " + _LicenseID + " not found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                _LicenseID = -1;
                 return;
             }
 

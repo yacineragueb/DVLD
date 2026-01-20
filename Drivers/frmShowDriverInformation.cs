@@ -13,23 +13,23 @@ namespace DVLD_project.Drivers
 {
     public partial class frmShowDriverInformation : Form
     {
-        public frmShowDriverInformation(int DriverID)
+        private int _LicenseID;
+
+        public frmShowDriverInformation(int LicenseID)
         {
             InitializeComponent();
 
-            ctrlDriverDetailsCard.LoadData(DriverID);
-        }
-
-        public frmShowDriverInformation(string PersonNationalNo)
-        {
-            InitializeComponent();
-
-            ctrlDriverDetailsCard.LoadData(PersonNationalNo);
+            _LicenseID = LicenseID;
         }
 
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void frmShowDriverInformation_Load(object sender, EventArgs e)
+        {
+            ctrlDriverDetailsCard.LoadData(_LicenseID);
         }
     }
 }

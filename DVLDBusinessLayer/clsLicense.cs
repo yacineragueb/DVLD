@@ -25,6 +25,7 @@ namespace DVLDBusinessLayer
         public int ApplicationID { get; set; }
         public clsApplication _Application;
         public int DriverID { get; set; }
+        public clsDriver _DriverInfo;
 
         public int LicenseClassID { get; set; }
         public clsLicenseClasses _LicenseClass;
@@ -91,30 +92,32 @@ namespace DVLDBusinessLayer
 
             this._Application = clsApplication.Find(this.ApplicationID);
             this._LicenseClass = clsLicenseClasses.Find(this.LicenseClassID);
+            this._DriverInfo = clsDriver.Find(this.DriverID);
 
             _Mode = enMode.Update;
         }
 
-        public static clsLicense FindLicenseByDriverID(int DriverID)
+        public static clsLicense Find(int LicenseID)
         {
-            int LicenseID = -1;
             int ApplicationID = -1;
-            int LicenseClassID = -1;
+            int DriverID = -1;
+            int LicenseClass = -1;
             DateTime IssueDate = DateTime.Now;
             DateTime ExpirationDate = DateTime.Now;
             string Notes = "";
-            decimal PaidFees = 0;
-            bool IsActive = false;
-            int IssueReason = (int)enIssueReason.FirstTime;
-            int CreatedByUserID = -1;
+            decimal PaidFees = 0; 
+            bool IsActive = true;
+            int CreatedByUserID = 1;
+            int IssueReason = 1;
+            if (clsLicenseData.GetLicenseInfoByID(LicenseID, ref ApplicationID, ref DriverID, ref LicenseClass,
+            ref IssueDate, ref ExpirationDate, ref CreatedByUserID, ref Notes,
+            ref PaidFees, ref IssueReason, ref IsActive))
 
-            if (clsLicenseData.GetLicenseByDriverID(ref LicenseID, ref ApplicationID, DriverID, ref LicenseClassID, ref IssueDate, ref ExpirationDate, ref CreatedByUserID, ref Notes, ref PaidFees, ref IssueReason, ref IsActive))
-            {
-                return new clsLicense(LicenseID, ApplicationID, DriverID,  LicenseClassID,  IssueDate, ExpirationDate, CreatedByUserID, Notes, PaidFees, (enIssueReason)IssueReason, IsActive);
-            } else
-            {
+                return new clsLicense(LicenseID, ApplicationID, DriverID, LicenseClass,
+                                     IssueDate, ExpirationDate, CreatedByUserID, Notes,
+                                     PaidFees, (enIssueReason)IssueReason, IsActive);
+            else
                 return null;
-            }
         }
 
         public static bool IsLicenseExistByPersonID(int PersonID, int LicenseClassID)

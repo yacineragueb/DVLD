@@ -30,7 +30,7 @@
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+            this.LlblShowLicenseInformation = new System.Windows.Forms.LinkLabel();
             this.lblPassedTest = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.lblAppliedForLicense = new System.Windows.Forms.Label();
@@ -51,7 +51,7 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.pictureBox3);
-            this.groupBox1.Controls.Add(this.linkLabel1);
+            this.groupBox1.Controls.Add(this.LlblShowLicenseInformation);
             this.groupBox1.Controls.Add(this.lblPassedTest);
             this.groupBox1.Controls.Add(this.pictureBox2);
             this.groupBox1.Controls.Add(this.lblAppliedForLicense);
@@ -79,16 +79,17 @@
             this.pictureBox3.TabIndex = 40;
             this.pictureBox3.TabStop = false;
             // 
-            // linkLabel1
+            // LlblShowLicenseInformation
             // 
-            this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Enabled = false;
-            this.linkLabel1.Location = new System.Drawing.Point(58, 88);
-            this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(205, 26);
-            this.linkLabel1.TabIndex = 39;
-            this.linkLabel1.TabStop = true;
-            this.linkLabel1.Text = "Show License Information";
+            this.LlblShowLicenseInformation.AutoSize = true;
+            this.LlblShowLicenseInformation.Enabled = false;
+            this.LlblShowLicenseInformation.Location = new System.Drawing.Point(58, 88);
+            this.LlblShowLicenseInformation.Name = "LlblShowLicenseInformation";
+            this.LlblShowLicenseInformation.Size = new System.Drawing.Size(205, 26);
+            this.LlblShowLicenseInformation.TabIndex = 39;
+            this.LlblShowLicenseInformation.TabStop = true;
+            this.LlblShowLicenseInformation.Text = "Show License Information";
+            this.LlblShowLicenseInformation.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LlblShowLicenseInformation_LinkClicked);
             // 
             // lblPassedTest
             // 
@@ -208,7 +209,7 @@
 
         private ctrlApplicationDetailsCard ctrlApplicationDetailsCard;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.LinkLabel linkLabel1;
+        private System.Windows.Forms.LinkLabel LlblShowLicenseInformation;
         private System.Windows.Forms.Label lblPassedTest;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Label lblAppliedForLicense;

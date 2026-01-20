@@ -211,10 +211,21 @@ namespace DVLD_project.Applications
 
         private void ShowLicenseToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            string PersonNationalNo = (string)dgvLDLApplicationsTable.CurrentRow.Cells[2].Value;
+            int LocalDrivingLicenseApplicationID = (int)dgvLDLApplicationsTable.CurrentRow.Cells[0].Value;
 
-            frmShowDriverInformation frm = new frmShowDriverInformation(PersonNationalNo);
-            frm.ShowDialog();
+            int LicenseID = clsLocalDrivingLicenseApplication.Find(
+               LocalDrivingLicenseApplicationID).GetActiveLicenseID();
+
+            if (LicenseID != -1)
+            {
+                frmShowDriverInformation frm = new frmShowDriverInformation(LicenseID);
+                frm.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("No License Found!", "No License", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
         }
 
         private void contextMenuStrip1_Opening(object sender, CancelEventArgs e)
