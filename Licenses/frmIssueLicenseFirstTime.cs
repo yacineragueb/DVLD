@@ -50,16 +50,22 @@ namespace DVLD_project.Licenses
 
         private bool _HandleAddNewDriver()
         {
-            clsDriver Driver = new clsDriver();
+            clsDriver Driver = clsDriver.FindByPersonID(_LDLApplication.ApplicationPersonID);
 
-            Driver.PersonID = _LDLApplication.ApplicationPersonID;
-            Driver.CreatedDate = DateTime.Now;
-            Driver.CreatedByUserID = clsGlobal.CurrentUser.UserID;
-
-            if(!Driver.Save())
+            if (Driver == null)
             {
-                return false;
-            }
+                //we check if the driver already exist in database for this person.
+                Driver = new clsDriver();
+
+                Driver.PersonID = _LDLApplication.ApplicationPersonID;
+                Driver.CreatedDate = DateTime.Now;
+                Driver.CreatedByUserID = clsGlobal.CurrentUser.UserID;
+
+                if (!Driver.Save())
+                {
+                    return false;
+                }
+            } 
 
             _DriverID = Driver.DriverID;
 

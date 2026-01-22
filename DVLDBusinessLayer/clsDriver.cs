@@ -61,14 +61,13 @@ namespace DVLDBusinessLayer
             }
         }
 
-        public static clsDriver Find(string PersonNationalNo)
+        public static clsDriver FindByPersonID(int PersonID)
         {
             int DriverID = -1;
-            int PersonID = -1;
             int CreatedByUserID = -1;
             DateTime CreatedDate = DateTime.Now;
 
-            if (clsDriverData.GetDriverByPersonNationalNo(PersonNationalNo, ref DriverID, ref PersonID, ref CreatedByUserID, ref CreatedDate))
+            if (clsDriverData.GetDriverByPersonID(PersonID, ref DriverID, ref CreatedByUserID, ref CreatedDate))
             {
                 return new clsDriver(DriverID, PersonID, CreatedByUserID, CreatedDate);
             }

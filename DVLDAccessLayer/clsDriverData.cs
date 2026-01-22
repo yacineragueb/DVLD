@@ -82,20 +82,18 @@ namespace DVLDAccessLayer
             return DriverID;
         }
 
-        public static bool GetDriverByPersonNationalNo(string PersonNationalNo, ref int DriverID, ref int PersonID, ref int CreatedByUserID, ref DateTime CreatedDate)
+        public static bool GetDriverByPersonID(int PersonID, ref int DriverID, ref int CreatedByUserID, ref DateTime CreatedDate)
         {
             bool IsFound = false;
 
             using (SqlConnection conn = new SqlConnection(clsDVLDAcessLayerSettings.connectionString))
             {
-                string query = @"SELECT DriverID, Drivers.PersonID, CreatedByUserID, CreatedDate FROM Drivers 
-                                 INNER JOIN People ON Drivers.PersonID = People.PersonID
-                                 WHERE NationalNo = @PersonNationalNo";
+                string query = @"SELECT * FROM Drivers WHERE PersonID = @PersonID";
 
                 using (SqlCommand cmd = new SqlCommand(query, conn))
                 {
 
-                    cmd.Parameters.AddWithValue("@PersonNationalNo", PersonNationalNo);
+                    cmd.Parameters.AddWithValue("@PersonID", PersonID);
 
                     try
                     {
@@ -108,7 +106,6 @@ namespace DVLDAccessLayer
                                 IsFound = true;
 
                                 DriverID = (int)reader["DriverID"];
-                                PersonID = (int)reader["PersonID"];
                                 CreatedByUserID = (int)reader["CreatedByUserID"];
                                 CreatedDate = (DateTime)reader["CreatedDate"];
                             } else
