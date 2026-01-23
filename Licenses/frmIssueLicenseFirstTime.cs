@@ -40,7 +40,7 @@ namespace DVLD_project.Licenses
             if (_LDLApplication == null)
             {
 
-                MessageBox.Show("No Applicaiton with ID = " + _LocalDrivingLicenseApplicationID.ToString(), "Not Allowed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("No Local Driving License Applicaiton with ID = " + _LocalDrivingLicenseApplicationID.ToString(), "Not Allowed", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 this.Close();
                 return;
             }
@@ -50,11 +50,11 @@ namespace DVLD_project.Licenses
 
         private bool _HandleAddNewDriver()
         {
+            //we check if the driver already exist in database for this person.
             clsDriver Driver = clsDriver.FindByPersonID(_LDLApplication.ApplicationPersonID);
 
             if (Driver == null)
             {
-                //we check if the driver already exist in database for this person.
                 Driver = new clsDriver();
 
                 Driver.PersonID = _LDLApplication.ApplicationPersonID;

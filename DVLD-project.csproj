@@ -114,11 +114,23 @@
     </Compile>
     <Compile Include="lib\clsGlobal.cs" />
     <Compile Include="lib\clsUtil.cs" />
+    <Compile Include="Licenses\Controls\ctrlDriverLicenses.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Licenses\Controls\ctrlDriverLicenses.Designer.cs">
+      <DependentUpon>ctrlDriverLicenses.cs</DependentUpon>
+    </Compile>
     <Compile Include="Licenses\frmIssueLicenseFirstTime.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Licenses\frmIssueLicenseFirstTime.Designer.cs">
       <DependentUpon>frmIssueLicenseFirstTime.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Licenses\frmShowDriverLicensesHistory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Licenses\frmShowDriverLicensesHistory.Designer.cs">
+      <DependentUpon>frmShowDriverLicensesHistory.cs</DependentUpon>
     </Compile>
     <Compile Include="People\Controls\ctrlPersonDetailsWithFilter.cs">
       <SubType>UserControl</SubType>
@@ -263,8 +275,14 @@
     <EmbeddedResource Include="frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Licenses\Controls\ctrlDriverLicenses.resx">
+      <DependentUpon>ctrlDriverLicenses.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Licenses\frmIssueLicenseFirstTime.resx">
       <DependentUpon>frmIssueLicenseFirstTime.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Licenses\frmShowDriverLicensesHistory.resx">
+      <DependentUpon>frmShowDriverLicensesHistory.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="People\Controls\ctrlPersonDetailsWithFilter.resx">
       <DependentUpon>ctrlPersonDetailsWithFilter.cs</DependentUpon>

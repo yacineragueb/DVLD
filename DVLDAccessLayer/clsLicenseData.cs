@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -11,6 +12,43 @@ namespace DVLDAccessLayer
     public class clsLicenseData
     {
 
+        public static DataTable GetDriverLicensesByPersonID(int PersonID)
+        {
+            DataTable dataTable = new DataTable();
+
+            using (SqlConnection connection = new SqlConnection(clsDVLDAcessLayerSettings.connectionString))
+            {
+                string query = @"SELECT LicenseID, Licenses.ApplicationID, LicenseClasses.ClassName, IssueDate, ExpirationDate, IsActive FROM Licenses
+                                 INNER JOIN Applications ON Applications.ApplicationID = Licenses.ApplicationID
+                                 INNER JOIN LicenseClasses ON LicenseClasses.LicenseClassID = Licenses.LicenseClass
+                                 WHERE ApplicantPersonID = @PersonID
+                                 ORDER BY IsActive Desc, ExpirationDate Desc";
+
+                using (SqlCommand cmd = new SqlCommand(query, connection))
+                {
+                    cmd.Parameters.AddWithValue("@PersonID", PersonID);
+
+                    try
+                    {
+                        connection.Open();
+                        
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            if (reader.HasRows)
+                            {
+                                dataTable.Load(reader);
+                            }
+                        }
+
+                    } catch
+                    {
+                        // Error!!
+                    }
+                }
+            }
+
+            return dataTable;
+        }
         public static bool UpdateLicense(int LicenseID, int ApplicationID, int DriverID, int LicenseClassID, DateTime IssueDate, DateTime ExpirationDate, string Notes, decimal PaidFees, bool IsActive, int IssueReason, int CreatedByUserId)
         {
             int rowsAffected = 0;

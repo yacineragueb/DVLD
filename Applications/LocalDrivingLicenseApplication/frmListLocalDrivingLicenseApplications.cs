@@ -315,5 +315,23 @@ namespace DVLD_project.Applications
             frmIssueLicenseFirstTime frm = new frmIssueLicenseFirstTime(LDLApplication);
             frm.ShowDialog();
         }
+
+        private void toolStripMenuItem4_Click(object sender, EventArgs e)
+        {
+            int LocalDrivingLicenseApplicationID = (int)dgvLDLApplicationsTable.CurrentRow.Cells[0].Value;
+
+            clsLocalDrivingLicenseApplication localDrivingLicenseApplication = clsLocalDrivingLicenseApplication.Find(
+               LocalDrivingLicenseApplicationID);
+
+            if (localDrivingLicenseApplication != null)
+            {
+                frmShowDriverLicensesHistory frm = new frmShowDriverLicensesHistory(localDrivingLicenseApplication.ApplicationPersonID);
+                frm.ShowDialog();
+            } else
+            {
+                MessageBox.Show("No Local Driving License Application Found With ID = " + LocalDrivingLicenseApplicationID, "Not Found", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+        }
     }
 }

@@ -274,6 +274,7 @@
             this.toolStripMenuItem4.Name = "toolStripMenuItem4";
             this.toolStripMenuItem4.Size = new System.Drawing.Size(377, 36);
             this.toolStripMenuItem4.Text = "Show Person License History";
+            this.toolStripMenuItem4.Click += new System.EventHandler(this.toolStripMenuItem4_Click);
             // 
             // lblRecords
             // 

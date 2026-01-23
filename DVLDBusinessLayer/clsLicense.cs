@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -162,6 +163,11 @@ namespace DVLDBusinessLayer
             }
 
             return false;
+        }
+
+        public static DataTable GetDriverLicenses(int PersonID)
+        {
+            return clsLicenseData.GetDriverLicensesByPersonID(PersonID);
         }
     }
 }
