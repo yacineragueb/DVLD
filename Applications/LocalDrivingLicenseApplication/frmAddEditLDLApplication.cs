@@ -83,6 +83,7 @@ namespace DVLD_project.Applications
                 return;
             }
 
+            cbLicenseClass.SelectedIndex = _LDLApplication.LicenseClassID - 1;
             lblLDLApplicationID.Text = _LDLApplicationID.ToString();
             ctrlPersonDetailsWithFilter1.LoadData(_LDLApplication.ApplicationPersonID);
             lblApplicationDate.Text = _LDLApplication.ApplicationDate.ToShortDateString();

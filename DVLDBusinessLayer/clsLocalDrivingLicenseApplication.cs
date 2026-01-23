@@ -47,7 +47,7 @@ namespace DVLDBusinessLayer
 
         private bool _UpdateLocalDrivingLicenseApplication()
         {
-            return false;
+            return clsLocalDrivingLicenseApplicationsData.UpdateLocalDrivingLicenseApplication(this.LocalDrivingLicenseApplicationID, this.ApplicationID, this.LicenseClassID);
         }
 
         public static clsLocalDrivingLicenseApplication Find(int LDLApplicationID)

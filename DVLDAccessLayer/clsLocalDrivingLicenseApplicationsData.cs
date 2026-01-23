@@ -260,6 +260,37 @@ namespace DVLDAccessLayer
             return LDLApplicationID;
         }
 
+        public static bool UpdateLocalDrivingLicenseApplication(int LocalDrivingLicenseApplicationID, int ApplicationID, int LicenseClassID)
+        {
+            int rowsAffected = 0;
+
+            using (SqlConnection conn = new SqlConnection(clsDVLDAcessLayerSettings.connectionString))
+            {
+                string query = @"UPDATE LocalDrivingLicenseApplications
+                                    SET ApplicationID = @ApplicationID,
+                                    LicenseClassID = @LicenseClassID
+                                    WHERE LocalDrivingLicenseApplicationID = @LocalDrivingLicenseApplicationID";
+
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@LocalDrivingLicenseApplicationID", LocalDrivingLicenseApplicationID);
+                    cmd.Parameters.AddWithValue("@ApplicationID", ApplicationID);
+                    cmd.Parameters.AddWithValue("@LicenseClassID", LicenseClassID);
+
+                    try
+                    {
+                        conn.Open();
+                        rowsAffected = cmd.ExecuteNonQuery();
+                    } catch (Exception ex)
+                    {
+                        rowsAffected = 0;
+                    }
+                }
+            }
+
+                return rowsAffected > 0;
+        }
+
         public static DataTable GetAllLocalDrivingLicenseApplication()
         {
             DataTable dt = new DataTable();
