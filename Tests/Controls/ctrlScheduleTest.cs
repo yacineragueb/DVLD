@@ -240,6 +240,7 @@ namespace DVLD_project.Tests
                 }
 
                 _TestAppointment.RetakeTestApplicationID = Application.ApplicationID;
+                lblRetakeTestLDLApplicationID.Text = _TestAppointment.RetakeTestApplicationID.ToString();
             }
 
             return true;

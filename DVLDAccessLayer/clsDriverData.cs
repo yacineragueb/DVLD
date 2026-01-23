@@ -170,9 +170,13 @@ namespace DVLDAccessLayer
 
             using (SqlConnection conn = new SqlConnection(clsDVLDAcessLayerSettings.connectionString))
             {
-                string query = @"SELECT D.DriverID, D.PersonID, P.NationalNo, FullName = (P.FirstName + ' ' + P.SecondName + ' ' + P.ThirdName + ' ' + P.LastName), D.CreatedDate, L.IsActive  FROM Drivers D
-                                 INNER JOIN People P ON P.PersonID = D.PersonID
-                                 INNER JOIN Licenses L ON L.DriverID = D.DriverID;";
+                string query = @"SELECT D.DriverID, D.PersonID, P.NationalNo, FullName = (P.FirstName + ' ' + P.SecondName + ' ' + P.ThirdName + ' ' + P.LastName), D.CreatedDate, 
+                                (
+                                	SELECT COUNT(LicenseID) FROM Licenses
+                                	WHERE IsActive = 1 AND D.DriverID = Licenses.DriverID
+                                ) 
+                                AS NumberOfActiveLicenses FROM Drivers D
+                                INNER JOIN People P ON P.PersonID = D.PersonID;";
 
                 using (SqlCommand cmd = new SqlCommand(query, conn))
                 {

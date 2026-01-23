@@ -116,6 +116,7 @@
             this.Controls.Add(this.ctrlLDLApplicationDetailsCard);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "frmIssueLicenseFirstTime";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Issue License For The First Time";
             this.Load += new System.EventHandler(this.IssueLicenseFirstTime_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();

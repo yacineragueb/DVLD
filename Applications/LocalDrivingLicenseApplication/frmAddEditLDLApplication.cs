@@ -87,7 +87,7 @@ namespace DVLD_project.Applications
             lblLDLApplicationID.Text = _LDLApplicationID.ToString();
             ctrlPersonDetailsWithFilter1.LoadData(_LDLApplication.ApplicationPersonID);
             lblApplicationDate.Text = _LDLApplication.ApplicationDate.ToShortDateString();
-            lblApplicationFees.Text = _LDLApplication.PaidFees.ToString(); // I think this is wrong, I will check it later.
+            lblApplicationFees.Text = _LDLApplication.PaidFees.ToString();
             lblCreatedByUser.Text = _LDLApplication.User.UserName;
         }
 

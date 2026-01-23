@@ -49,8 +49,8 @@ namespace DVLD_project.Drivers
                 dgvDriversTable.Columns[4].HeaderText = "Date";
                 dgvDriversTable.Columns[4].Width = 160;
 
-                dgvDriversTable.Columns[5].HeaderText = "Active License";
-                dgvDriversTable.Columns[5].Width = 120;
+                dgvDriversTable.Columns[5].HeaderText = "Number Of Active Licenses";
+                dgvDriversTable.Columns[5].Width = 170;
             }
         }
 
