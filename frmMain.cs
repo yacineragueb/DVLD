@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DVLD_project.Applications;
+using DVLD_project.Applications.InternationalLicenceApplication;
 using DVLD_project.ApplicationType;
 using DVLD_project.Drivers;
 using DVLD_project.TestType;
@@ -89,6 +90,12 @@ namespace DVLD_project
         private void driversToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmListDrivers frm = new frmListDrivers();
+            frm.ShowDialog();
+        }
+
+        private void internationalDrivingLicenseApplicationsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmListInternationalLicenseApplication frm = new frmListInternationalLicenseApplication();
             frm.ShowDialog();
         }
     }

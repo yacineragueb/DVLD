@@ -96,7 +96,7 @@
             this.cbFilter.FormattingEnabled = true;
             this.cbFilter.Items.AddRange(new object[] {
             "None",
-            "L.D.L AppID",
+            "L.D.L App. ID",
             "National No.",
             "Full Name",
             "Status"});
@@ -152,7 +152,7 @@
             this.toolStripSeparator2,
             this.toolStripMenuItem4});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(378, 356);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(378, 328);
             this.contextMenuStrip1.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip1_Opening);
             // 
             // showDetailsToolStripMenuItem

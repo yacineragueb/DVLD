@@ -52,6 +52,12 @@
     <Compile Include="Applications\Controls\ctrlApplicationDetailsCard.Designer.cs">
       <DependentUpon>ctrlApplicationDetailsCard.cs</DependentUpon>
     </Compile>
+    <Compile Include="Applications\InternationalLicenceApplication\frmListInternationalLicenseApplication.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Applications\InternationalLicenceApplication\frmListInternationalLicenseApplication.Designer.cs">
+      <DependentUpon>frmListInternationalLicenseApplication.cs</DependentUpon>
+    </Compile>
     <Compile Include="Applications\LocalDrivingLicenseApplication\Controls\ctrlLDLApplicationDetailsCard.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -244,6 +250,9 @@
     </Compile>
     <EmbeddedResource Include="Applications\Controls\ctrlApplicationDetailsCard.resx">
       <DependentUpon>ctrlApplicationDetailsCard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Applications\InternationalLicenceApplication\frmListInternationalLicenseApplication.resx">
+      <DependentUpon>frmListInternationalLicenseApplication.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Applications\LocalDrivingLicenseApplication\Controls\ctrlLDLApplicationDetailsCard.resx">
       <DependentUpon>ctrlLDLApplicationDetailsCard.cs</DependentUpon>

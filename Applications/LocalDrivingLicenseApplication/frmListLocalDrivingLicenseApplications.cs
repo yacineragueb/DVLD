@@ -47,7 +47,7 @@ namespace DVLD_project.Applications
 
             if(dgvLDLApplicationsTable.Rows.Count > 0 )
             {
-                dgvLDLApplicationsTable.Columns[0].HeaderText = "L.D.L AppID";
+                dgvLDLApplicationsTable.Columns[0].HeaderText = "L.D.L App. ID";
                 dgvLDLApplicationsTable.Columns[0].Width = 110;
 
                 dgvLDLApplicationsTable.Columns[1].HeaderText = "Driving Class";
@@ -101,7 +101,7 @@ namespace DVLD_project.Applications
 
             switch (cbFilter.Text)
             {
-                case "L.D.L AppID":
+                case "L.D.L App. ID":
                     FilterColumn = "LocalDrivingLicenseApplicationID";
                     break;
                 case "National No.":
@@ -142,11 +142,11 @@ namespace DVLD_project.Applications
 
         private void cbFilter_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cbFilter.SelectedIndex == 0)
+            if (cbFilter.SelectedIndex == 0) // None is selected
             {
                 txtbFilter.Visible = false;
             }
-            else
+            else 
             {
                 txtbFilter.Visible = true;
                 txtbFilter.Focus();
