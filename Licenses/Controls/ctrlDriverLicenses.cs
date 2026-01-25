@@ -13,16 +13,18 @@ namespace DVLD_project.Licenses.Controls
 {
     public partial class ctrlDriverLicenses : UserControl
     {
+        private int _PersonID;
+
         public ctrlDriverLicenses()
         {
             InitializeComponent();
         }
 
-        public void LoadData(int PersonID)
+        private void LoadLocalLicenses()
         {
-            dgvLocalLicensesHistory.DataSource = clsLicense.GetDriverLicenses(PersonID);
+            dgvLocalLicensesHistory.DataSource = clsLicense.GetDriverLicenses(_PersonID);
 
-            lblRecords.Text = dgvLocalLicensesHistory.Rows.Count.ToString();
+            lblRecordsOfLocalLicenses.Text = dgvLocalLicensesHistory.Rows.Count.ToString();
 
             if (dgvLocalLicensesHistory.Rows.Count > 0)
             {
@@ -44,6 +46,43 @@ namespace DVLD_project.Licenses.Controls
                 dgvLocalLicensesHistory.Columns[5].HeaderText = "Is Active";
                 dgvLocalLicensesHistory.Columns[5].Width = 70;
             }
+        }
+
+        private void LoadInternationalLicenses()
+        {
+            dgvInternationalLicensesHistory.DataSource = clsLicense.GetDriverInternationalLicenses(_PersonID);
+
+            lblRecordsOfInternationalLicenses.Text = dgvInternationalLicensesHistory.Rows.Count.ToString();
+
+            if (dgvInternationalLicensesHistory.Rows.Count > 0)
+            {
+                dgvInternationalLicensesHistory.Columns[0].HeaderText = "Int.License ID";
+                dgvInternationalLicensesHistory.Columns[0].Width = 110;
+
+                dgvInternationalLicensesHistory.Columns[1].HeaderText = "Application ID";
+                dgvInternationalLicensesHistory.Columns[1].Width = 110;
+
+                dgvInternationalLicensesHistory.Columns[2].HeaderText = "L.License ID";
+                dgvInternationalLicensesHistory.Columns[2].Width = 110;
+
+                dgvInternationalLicensesHistory.Columns[3].HeaderText = "Issue Date";
+                dgvInternationalLicensesHistory.Columns[3].Width = 130;
+
+                dgvInternationalLicensesHistory.Columns[4].HeaderText = "Expiration Date";
+                dgvInternationalLicensesHistory.Columns[4].Width = 130;
+
+                dgvInternationalLicensesHistory.Columns[5].HeaderText = "Is Active";
+                dgvInternationalLicensesHistory.Columns[5].Width = 120;
+
+            }
+        }
+
+        public void LoadData(int PersonID)
+        {
+            _PersonID = PersonID;
+
+            LoadLocalLicenses();
+            LoadInternationalLicenses();
         }
     }
 }

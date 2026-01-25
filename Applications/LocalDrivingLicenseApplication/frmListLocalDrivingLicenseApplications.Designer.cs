@@ -53,7 +53,7 @@
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.ShowLicenseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
+            this.ShowPersonLicenseHistoryMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lblRecords = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.btnClose = new System.Windows.Forms.Button();
@@ -150,9 +150,9 @@
             this.toolStripSeparator4,
             this.ShowLicenseToolStripMenuItem,
             this.toolStripSeparator2,
-            this.toolStripMenuItem4});
+            this.ShowPersonLicenseHistoryMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(378, 328);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(378, 356);
             this.contextMenuStrip1.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip1_Opening);
             // 
             // showDetailsToolStripMenuItem
@@ -268,13 +268,13 @@
             this.toolStripSeparator2.Name = "toolStripSeparator2";
             this.toolStripSeparator2.Size = new System.Drawing.Size(374, 6);
             // 
-            // toolStripMenuItem4
+            // ShowPersonLicenseHistoryMenuItem
             // 
-            this.toolStripMenuItem4.Image = global::DVLD_project.Properties.Resources.Hisotry;
-            this.toolStripMenuItem4.Name = "toolStripMenuItem4";
-            this.toolStripMenuItem4.Size = new System.Drawing.Size(377, 36);
-            this.toolStripMenuItem4.Text = "Show Person License History";
-            this.toolStripMenuItem4.Click += new System.EventHandler(this.toolStripMenuItem4_Click);
+            this.ShowPersonLicenseHistoryMenuItem.Image = global::DVLD_project.Properties.Resources.Hisotry;
+            this.ShowPersonLicenseHistoryMenuItem.Name = "ShowPersonLicenseHistoryMenuItem";
+            this.ShowPersonLicenseHistoryMenuItem.Size = new System.Drawing.Size(377, 36);
+            this.ShowPersonLicenseHistoryMenuItem.Text = "Show Person License History";
+            this.ShowPersonLicenseHistoryMenuItem.Click += new System.EventHandler(this.ShowPersonLicenseHistoryMenuItem_Click);
             // 
             // lblRecords
             // 
@@ -389,7 +389,7 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripMenuItem SchduleTestsMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem4;
+        private System.Windows.Forms.ToolStripMenuItem ShowPersonLicenseHistoryMenuItem;
         private System.Windows.Forms.ToolStripMenuItem scheduleVisionTestToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem scheduleWrittenTestToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem scheduleStreetTestToolStripMenuItem;

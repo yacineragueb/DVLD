@@ -316,7 +316,7 @@ namespace DVLD_project.Applications
             frm.ShowDialog();
         }
 
-        private void toolStripMenuItem4_Click(object sender, EventArgs e)
+        private void ShowPersonLicenseHistoryMenuItem_Click(object sender, EventArgs e)
         {
             int LocalDrivingLicenseApplicationID = (int)dgvLDLApplicationsTable.CurrentRow.Cells[0].Value;
 

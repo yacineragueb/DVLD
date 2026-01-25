@@ -11,6 +11,43 @@ namespace DVLDAccessLayer
 {
     public class clsLicenseData
     {
+        public static DataTable GetDriverInternationalLicensesByPersonID(int PersonID)
+        {
+            DataTable dataTable = new DataTable();
+
+            using (SqlConnection connection = new SqlConnection(clsDVLDAcessLayerSettings.connectionString))
+            {
+                string query = @"SELECT InternationalLicenseID, InternationalLicenses.ApplicationID, IssuedUsingLocalLicenseID, IssueDate, ExpirationDate, IsActive FROM InternationalLicenses
+                                INNER JOIN Applications ON Applications.ApplicationID = InternationalLicenses.ApplicationID
+                                WHERE ApplicantPersonID = @PersonID
+                                ORDER BY IsActive Desc, ExpirationDate Desc ";
+
+                using (SqlCommand cmd = new SqlCommand(query, connection))
+                {
+                    cmd.Parameters.AddWithValue("@PersonID", PersonID);
+
+                    try
+                    {
+                        connection.Open();
+
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            if (reader.HasRows)
+                            {
+                                dataTable.Load(reader);
+                            }
+                        }
+
+                    }
+                    catch
+                    {
+                        // Error!!
+                    }
+                }
+            }
+
+            return dataTable;
+        }
 
         public static DataTable GetDriverLicensesByPersonID(int PersonID)
         {

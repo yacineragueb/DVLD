@@ -22,15 +22,12 @@ namespace DVLDBusinessLayer
         private DateTime IssueDate { get; set; }
         private DateTime ExpirationDate { get; set; }
         private bool IsActive { get; set; }
-        private int CreatedByUserID { get; set; }
-        private clsUser _CreatedByUserInfo;
 
         public clsInternationalLicenseApplication()
         {
             this.InternationalLicenseID = -1;
             this.DriverID = -1;
             this.IssuedUsingLocalLicenseID = -1;
-            this.CreatedByUserID = -1;
             this.IsActive = false;
             this.IssueDate = DateTime.Now;
             this.ExpirationDate = DateTime.Now;
@@ -38,18 +35,17 @@ namespace DVLDBusinessLayer
             _Mode = enMode.AddNew;
         }
 
-        private clsInternationalLicenseApplication(int InternationalLicenseID, int DriverID, int IssuedUsingLocalLicenseID, DateTime IssueDate, DateTime ExpirationDate, bool IsActive, int CreatedByUserID)
+        private clsInternationalLicenseApplication(int ApplicationID, int PersonID, DateTime ApplicationDate, int ApplicationTypeID, enApplicationStatus ApplicationStatus, DateTime LastStatusDate, decimal PaidFees, int CreatedByUserID, 
+          int InternationalLicenseID, int DriverID, int IssuedUsingLocalLicenseID, DateTime IssueDate, DateTime ExpirationDate, bool IsActive) : base(ApplicationID, PersonID, ApplicationDate, ApplicationTypeID, ApplicationStatus, LastStatusDate, PaidFees, CreatedByUserID)
         {
             this.InternationalLicenseID = InternationalLicenseID;
             this.DriverID = DriverID;
-            this.CreateByUserID = CreatedByUserID;
             this.IssueDate = IssueDate;
             this.ExpirationDate = ExpirationDate;
             this.IssuedUsingLocalLicenseID = IssuedUsingLocalLicenseID;
 
             _DriverInfo = clsDriver.Find(this.DriverID);
             _LocalLicenseInfo = clsLicense.Find(this.IssuedUsingLocalLicenseID);
-            _CreatedByUserInfo = clsUser.Find(this.CreatedByUserID);
 
             _Mode = enMode.Update;
         }
@@ -57,6 +53,34 @@ namespace DVLDBusinessLayer
         public static DataTable GetAllInternationalLicenseApplications()
         {
             return clsInternationalLicenseApplicationData.GetAllInternationalLicenseApplications();
+        }
+
+        public static clsInternationalLicenseApplication Find(int InternationalLicenseID)
+        {
+            int ApplicationID = -1;
+            int DriverID = -1;
+            int IssuedUsingLocalLicenseID = -1;
+            int CreatedByUserID = -1;
+            DateTime IssueDate = DateTime.Now;
+            DateTime ExpirationDate = DateTime.Now;
+            bool IsActive = false;
+
+            if(clsInternationalLicenseApplicationData.GetInternationalLicenseApplicationByID(InternationalLicenseID, ref ApplicationID, ref DriverID, ref IssuedUsingLocalLicenseID, ref IssueDate, ref ExpirationDate, ref IsActive, ref CreatedByUserID))
+            {
+                clsApplication Application = clsApplication.Find(ApplicationID);
+
+                if(Application != null)
+                {
+                    return new clsInternationalLicenseApplication(ApplicationID, Application.ApplicationPersonID, Application.ApplicationDate, Application.ApplicationTypeID, Application.ApplicationStatus, Application.LastStatusDate, Application.PaidFees, CreatedByUserID, InternationalLicenseID, DriverID, IssuedUsingLocalLicenseID, IssueDate, ExpirationDate, IsActive);
+                }
+                else
+                {
+                    return null;
+                }
+            } else
+            {
+                return null;
+            }
         }
     }
 }

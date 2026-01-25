@@ -1,4 +1,5 @@
-﻿using DVLDBusinessLayer;
+﻿using DVLD_project.Licenses;
+using DVLDBusinessLayer;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -148,6 +149,37 @@ namespace DVLD_project.Applications.InternationalLicenceApplication
                 }
 
                 lblRecords.Text = dgvInternationalLicenseApplicationsTable.Rows.Count.ToString();
+            }
+        }
+
+        private void showPersonDetailsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int InternationalLicenseID = (int)dgvInternationalLicenseApplicationsTable.CurrentRow.Cells[0].Value;
+
+            clsInternationalLicenseApplication internationalLicenseApplication = clsInternationalLicenseApplication.Find(InternationalLicenseID);
+
+            if(internationalLicenseApplication != null)
+            {
+                frmShowPersonDetails frm = new frmShowPersonDetails(internationalLicenseApplication.ApplicationPersonID);
+                frm.ShowDialog();
+            }
+        }
+
+        private void showPersonLicenseHistoryToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int InternationalLicenseApplicationID = (int)dgvInternationalLicenseApplicationsTable.CurrentRow.Cells[0].Value;
+
+            clsInternationalLicenseApplication internationalLicenseApplication = clsInternationalLicenseApplication.Find(InternationalLicenseApplicationID);
+
+            if (internationalLicenseApplication != null)
+            {
+                frmShowDriverLicensesHistory frm = new frmShowDriverLicensesHistory(internationalLicenseApplication.ApplicationPersonID);
+                frm.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("No International License Application Found With ID = " + InternationalLicenseApplicationID, "Not Found", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
         }
     }

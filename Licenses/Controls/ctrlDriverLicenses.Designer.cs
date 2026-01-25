@@ -31,15 +31,21 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tpLocalLicenses = new System.Windows.Forms.TabPage();
-            this.tpInternationalLicenses = new System.Windows.Forms.TabPage();
-            this.lblRecords = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.dgvLocalLicensesHistory = new System.Windows.Forms.DataGridView();
             this.label2 = new System.Windows.Forms.Label();
+            this.dgvLocalLicensesHistory = new System.Windows.Forms.DataGridView();
+            this.lblRecordsOfLocalLicenses = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.tpInternationalLicenses = new System.Windows.Forms.TabPage();
+            this.lblRecordsOfInternationalLicenses = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.dgvInternationalLicensesHistory = new System.Windows.Forms.DataGridView();
+            this.label3 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tpLocalLicenses.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLocalLicensesHistory)).BeginInit();
+            this.tpInternationalLicenses.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvInternationalLicensesHistory)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -68,7 +74,7 @@
             // 
             this.tpLocalLicenses.Controls.Add(this.label2);
             this.tpLocalLicenses.Controls.Add(this.dgvLocalLicensesHistory);
-            this.tpLocalLicenses.Controls.Add(this.lblRecords);
+            this.tpLocalLicenses.Controls.Add(this.lblRecordsOfLocalLicenses);
             this.tpLocalLicenses.Controls.Add(this.label1);
             this.tpLocalLicenses.Location = new System.Drawing.Point(4, 32);
             this.tpLocalLicenses.Name = "tpLocalLicenses";
@@ -78,36 +84,15 @@
             this.tpLocalLicenses.Text = "Local";
             this.tpLocalLicenses.UseVisualStyleBackColor = true;
             // 
-            // tpInternationalLicenses
+            // label2
             // 
-            this.tpInternationalLicenses.Location = new System.Drawing.Point(4, 32);
-            this.tpInternationalLicenses.Name = "tpInternationalLicenses";
-            this.tpInternationalLicenses.Padding = new System.Windows.Forms.Padding(3);
-            this.tpInternationalLicenses.Size = new System.Drawing.Size(835, 332);
-            this.tpInternationalLicenses.TabIndex = 1;
-            this.tpInternationalLicenses.Text = "International";
-            this.tpInternationalLicenses.UseVisualStyleBackColor = true;
-            // 
-            // lblRecords
-            // 
-            this.lblRecords.AutoSize = true;
-            this.lblRecords.Font = new System.Drawing.Font("Poppins SemiBold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRecords.Location = new System.Drawing.Point(105, 300);
-            this.lblRecords.Name = "lblRecords";
-            this.lblRecords.Size = new System.Drawing.Size(17, 29);
-            this.lblRecords.TabIndex = 6;
-            this.lblRecords.Text = "0";
-            this.lblRecords.UseCompatibleTextRendering = true;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Poppins SemiBold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(3, 299);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(106, 30);
-            this.label1.TabIndex = 5;
-            this.label1.Text = "#Records: ";
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Poppins SemiBold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(6, 12);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(208, 30);
+            this.label2.TabIndex = 8;
+            this.label2.Text = "Local Licenses History: ";
             // 
             // dgvLocalLicensesHistory
             // 
@@ -124,15 +109,86 @@
             this.dgvLocalLicensesHistory.Size = new System.Drawing.Size(1053, 245);
             this.dgvLocalLicensesHistory.TabIndex = 7;
             // 
-            // label2
+            // lblRecordsOfLocalLicenses
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Poppins SemiBold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(6, 12);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(208, 30);
-            this.label2.TabIndex = 8;
-            this.label2.Text = "Local Licenses History: ";
+            this.lblRecordsOfLocalLicenses.AutoSize = true;
+            this.lblRecordsOfLocalLicenses.Font = new System.Drawing.Font("Poppins SemiBold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRecordsOfLocalLicenses.Location = new System.Drawing.Point(105, 300);
+            this.lblRecordsOfLocalLicenses.Name = "lblRecordsOfLocalLicenses";
+            this.lblRecordsOfLocalLicenses.Size = new System.Drawing.Size(17, 29);
+            this.lblRecordsOfLocalLicenses.TabIndex = 6;
+            this.lblRecordsOfLocalLicenses.Text = "0";
+            this.lblRecordsOfLocalLicenses.UseCompatibleTextRendering = true;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Poppins SemiBold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(3, 299);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(106, 30);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "#Records: ";
+            // 
+            // tpInternationalLicenses
+            // 
+            this.tpInternationalLicenses.Controls.Add(this.lblRecordsOfInternationalLicenses);
+            this.tpInternationalLicenses.Controls.Add(this.label5);
+            this.tpInternationalLicenses.Controls.Add(this.dgvInternationalLicensesHistory);
+            this.tpInternationalLicenses.Controls.Add(this.label3);
+            this.tpInternationalLicenses.Location = new System.Drawing.Point(4, 32);
+            this.tpInternationalLicenses.Name = "tpInternationalLicenses";
+            this.tpInternationalLicenses.Padding = new System.Windows.Forms.Padding(3);
+            this.tpInternationalLicenses.Size = new System.Drawing.Size(1067, 332);
+            this.tpInternationalLicenses.TabIndex = 1;
+            this.tpInternationalLicenses.Text = "International";
+            this.tpInternationalLicenses.UseVisualStyleBackColor = true;
+            // 
+            // lblRecordsOfInternationalLicenses
+            // 
+            this.lblRecordsOfInternationalLicenses.AutoSize = true;
+            this.lblRecordsOfInternationalLicenses.Font = new System.Drawing.Font("Poppins SemiBold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRecordsOfInternationalLicenses.Location = new System.Drawing.Point(105, 300);
+            this.lblRecordsOfInternationalLicenses.Name = "lblRecordsOfInternationalLicenses";
+            this.lblRecordsOfInternationalLicenses.Size = new System.Drawing.Size(17, 29);
+            this.lblRecordsOfInternationalLicenses.TabIndex = 8;
+            this.lblRecordsOfInternationalLicenses.Text = "0";
+            this.lblRecordsOfInternationalLicenses.UseCompatibleTextRendering = true;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Poppins SemiBold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(3, 299);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(106, 30);
+            this.label5.TabIndex = 7;
+            this.label5.Text = "#Records: ";
+            // 
+            // dgvInternationalLicensesHistory
+            // 
+            this.dgvInternationalLicensesHistory.AllowUserToAddRows = false;
+            this.dgvInternationalLicensesHistory.AllowUserToDeleteRows = false;
+            this.dgvInternationalLicensesHistory.AllowUserToOrderColumns = true;
+            this.dgvInternationalLicensesHistory.BackgroundColor = System.Drawing.Color.White;
+            this.dgvInternationalLicensesHistory.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvInternationalLicensesHistory.Location = new System.Drawing.Point(8, 47);
+            this.dgvInternationalLicensesHistory.Name = "dgvInternationalLicensesHistory";
+            this.dgvInternationalLicensesHistory.ReadOnly = true;
+            this.dgvInternationalLicensesHistory.RowHeadersWidth = 51;
+            this.dgvInternationalLicensesHistory.RowTemplate.Height = 24;
+            this.dgvInternationalLicensesHistory.Size = new System.Drawing.Size(1050, 249);
+            this.dgvInternationalLicensesHistory.TabIndex = 1;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Poppins SemiBold", 10.2F, System.Drawing.FontStyle.Bold);
+            this.label3.Location = new System.Drawing.Point(6, 14);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(263, 30);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "International License History:";
             // 
             // ctrlDriverLicenses
             // 
@@ -147,6 +203,9 @@
             this.tpLocalLicenses.ResumeLayout(false);
             this.tpLocalLicenses.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLocalLicensesHistory)).EndInit();
+            this.tpInternationalLicenses.ResumeLayout(false);
+            this.tpInternationalLicenses.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvInternationalLicensesHistory)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -158,8 +217,12 @@
         private System.Windows.Forms.TabPage tpLocalLicenses;
         private System.Windows.Forms.TabPage tpInternationalLicenses;
         private System.Windows.Forms.DataGridView dgvLocalLicensesHistory;
-        private System.Windows.Forms.Label lblRecords;
+        private System.Windows.Forms.Label lblRecordsOfLocalLicenses;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lblRecordsOfInternationalLicenses;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.DataGridView dgvInternationalLicensesHistory;
     }
 }
