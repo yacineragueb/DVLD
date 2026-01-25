@@ -63,7 +63,7 @@ namespace DVLD_project.Applications.Controls
 
         private void LlblShowLicenseInformation_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            frmShowDriverInformation frm = new frmShowDriverInformation(_LicenseID);
+            frmShowLicenseInformation frm = new frmShowLicenseInformation(_LicenseID);
             frm.ShowDialog();
         }
     }

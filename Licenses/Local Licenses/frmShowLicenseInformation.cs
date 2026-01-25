@@ -11,11 +11,11 @@ using System.Windows.Forms;
 
 namespace DVLD_project.Drivers
 {
-    public partial class frmShowDriverInformation : Form
+    public partial class frmShowLicenseInformation : Form
     {
         private int _LicenseID;
 
-        public frmShowDriverInformation(int LicenseID)
+        public frmShowLicenseInformation(int LicenseID)
         {
             InitializeComponent();
 

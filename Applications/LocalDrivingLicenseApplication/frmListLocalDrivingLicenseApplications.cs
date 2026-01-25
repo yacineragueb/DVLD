@@ -218,7 +218,7 @@ namespace DVLD_project.Applications
 
             if (LicenseID != -1)
             {
-                frmShowDriverInformation frm = new frmShowDriverInformation(LicenseID);
+                frmShowLicenseInformation frm = new frmShowLicenseInformation(LicenseID);
                 frm.ShowDialog();
             }
             else

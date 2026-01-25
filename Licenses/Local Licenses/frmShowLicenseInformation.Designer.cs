@@ -1,6 +1,6 @@
 ﻿namespace DVLD_project.Drivers
 {
-    partial class frmShowDriverInformation
+    partial class frmShowLicenseInformation
     {
         /// <summary>
         /// Required designer variable.

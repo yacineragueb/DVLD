@@ -94,10 +94,10 @@
     <Compile Include="Applications\LocalDrivingLicenseApplication\frmShowLocalDrivingLicenseApplicationInformation.Designer.cs">
       <DependentUpon>frmShowLocalDrivingLicenseApplicationInformation.cs</DependentUpon>
     </Compile>
-    <Compile Include="Drivers\Controls\ctrlDriverDetailsCard.cs">
+    <Compile Include="Licenses\Local Licenses\Controls\ctrlDriverDetailsCard.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Drivers\Controls\ctrlDriverDetailsCard.Designer.cs">
+    <Compile Include="Licenses\Local Licenses\Controls\ctrlDriverDetailsCard.Designer.cs">
       <DependentUpon>ctrlDriverDetailsCard.cs</DependentUpon>
     </Compile>
     <Compile Include="Drivers\frmListDrivers.cs">
@@ -106,11 +106,11 @@
     <Compile Include="Drivers\frmListDrivers.Designer.cs">
       <DependentUpon>frmListDrivers.cs</DependentUpon>
     </Compile>
-    <Compile Include="Drivers\frmShowDriverInformation.cs">
+    <Compile Include="Licenses\Local Licenses\frmShowLicenseInformation.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Drivers\frmShowDriverInformation.Designer.cs">
-      <DependentUpon>frmShowDriverInformation.cs</DependentUpon>
+    <Compile Include="Licenses\Local Licenses\frmShowLicenseInformation.Designer.cs">
+      <DependentUpon>frmShowLicenseInformation.cs</DependentUpon>
     </Compile>
     <Compile Include="frmLogin.cs">
       <SubType>Form</SubType>
@@ -126,10 +126,10 @@
     <Compile Include="Licenses\Controls\ctrlDriverLicenses.Designer.cs">
       <DependentUpon>ctrlDriverLicenses.cs</DependentUpon>
     </Compile>
-    <Compile Include="Licenses\frmIssueLicenseFirstTime.cs">
+    <Compile Include="Licenses\Local Licenses\frmIssueLicenseFirstTime.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Licenses\frmIssueLicenseFirstTime.Designer.cs">
+    <Compile Include="Licenses\Local Licenses\frmIssueLicenseFirstTime.Designer.cs">
       <DependentUpon>frmIssueLicenseFirstTime.cs</DependentUpon>
     </Compile>
     <Compile Include="Licenses\frmShowDriverLicensesHistory.cs">
@@ -272,14 +272,14 @@
     <EmbeddedResource Include="Applications\LocalDrivingLicenseApplication\frmShowLocalDrivingLicenseApplicationInformation.resx">
       <DependentUpon>frmShowLocalDrivingLicenseApplicationInformation.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Drivers\Controls\ctrlDriverDetailsCard.resx">
+    <EmbeddedResource Include="Licenses\Local Licenses\Controls\ctrlDriverDetailsCard.resx">
       <DependentUpon>ctrlDriverDetailsCard.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Drivers\frmListDrivers.resx">
       <DependentUpon>frmListDrivers.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Drivers\frmShowDriverInformation.resx">
-      <DependentUpon>frmShowDriverInformation.cs</DependentUpon>
+    <EmbeddedResource Include="Licenses\Local Licenses\frmShowLicenseInformation.resx">
+      <DependentUpon>frmShowLicenseInformation.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
@@ -287,7 +287,7 @@
     <EmbeddedResource Include="Licenses\Controls\ctrlDriverLicenses.resx">
       <DependentUpon>ctrlDriverLicenses.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Licenses\frmIssueLicenseFirstTime.resx">
+    <EmbeddedResource Include="Licenses\Local Licenses\frmIssueLicenseFirstTime.resx">
       <DependentUpon>frmIssueLicenseFirstTime.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Licenses\frmShowDriverLicensesHistory.resx">
@@ -516,6 +516,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Hisotry.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Licenses\International Licenses\Controls\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
