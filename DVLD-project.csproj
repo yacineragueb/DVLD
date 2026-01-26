@@ -94,6 +94,18 @@
     <Compile Include="Applications\LocalDrivingLicenseApplication\frmShowLocalDrivingLicenseApplicationInformation.Designer.cs">
       <DependentUpon>frmShowLocalDrivingLicenseApplicationInformation.cs</DependentUpon>
     </Compile>
+    <Compile Include="Licenses\International Licenses\Controls\ctrlInternationalDriverDetailsCard.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Licenses\International Licenses\Controls\ctrlInternationalDriverDetailsCard.Designer.cs">
+      <DependentUpon>ctrlInternationalDriverDetailsCard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Licenses\International Licenses\frmShowDriverInternationalLicenseInforamtion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Licenses\International Licenses\frmShowDriverInternationalLicenseInforamtion.Designer.cs">
+      <DependentUpon>frmShowDriverInternationalLicenseInforamtion.cs</DependentUpon>
+    </Compile>
     <Compile Include="Licenses\Local Licenses\Controls\ctrlDriverDetailsCard.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -271,6 +283,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Applications\LocalDrivingLicenseApplication\frmShowLocalDrivingLicenseApplicationInformation.resx">
       <DependentUpon>frmShowLocalDrivingLicenseApplicationInformation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Licenses\International Licenses\Controls\ctrlInternationalDriverDetailsCard.resx">
+      <DependentUpon>ctrlInternationalDriverDetailsCard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Licenses\International Licenses\frmShowDriverInternationalLicenseInforamtion.resx">
+      <DependentUpon>frmShowDriverInternationalLicenseInforamtion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Licenses\Local Licenses\Controls\ctrlDriverDetailsCard.resx">
       <DependentUpon>ctrlDriverDetailsCard.cs</DependentUpon>
@@ -517,8 +535,6 @@
   <ItemGroup>
     <None Include="Resources\Hisotry.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Licenses\International Licenses\Controls\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

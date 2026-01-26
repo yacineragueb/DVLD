@@ -15,13 +15,13 @@ namespace DVLDBusinessLayer
         public enMode _Mode = enMode.AddNew;
 
         public int InternationalLicenseID { get; set; }
-        private int DriverID { get; set; }
-        private clsDriver _DriverInfo;
-        private int IssuedUsingLocalLicenseID { get; set; }
-        private clsLicense _LocalLicenseInfo;
-        private DateTime IssueDate { get; set; }
-        private DateTime ExpirationDate { get; set; }
-        private bool IsActive { get; set; }
+        public int DriverID { get; set; }
+        public clsDriver _DriverInfo;
+        public int IssuedUsingLocalLicenseID { get; set; }
+        public clsLicense _LocalLicenseInfo;
+        public DateTime IssueDate { get; set; }
+        public DateTime ExpirationDate { get; set; }
+        public bool IsActive { get; set; }
 
         public clsInternationalLicenseApplication()
         {
