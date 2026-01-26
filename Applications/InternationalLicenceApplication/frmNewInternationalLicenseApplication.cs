@@ -13,6 +13,8 @@ namespace DVLD_project.Applications.InternationalLicenceApplication
 {
     public partial class frmNewInternationalLicenseApplication : Form
     {
+        private clsLicense _License;
+
         public frmNewInternationalLicenseApplication()
         {
             InitializeComponent();
@@ -40,7 +42,27 @@ namespace DVLD_project.Applications.InternationalLicenceApplication
         private void ctrlDriverDetailsCardWithFilter1_OnLicenseSelected(int LicenseID)
         {
             lblLocalLicenseID.Text = LicenseID.ToString();
-            LlblShowLicenseHistory.Enabled = true;
+            LlblShowLicenseHistory.Enabled = LicenseID != -1;
+
+            //check the license class, person could not issue international license without having
+            //normal license of class 3.
+            if (ctrlDriverDetailsCardWithFilter.SelectedLicenseInfo.LicenseClassID != 3)
+            {
+                MessageBox.Show("Selected License should be Class 3, select another one.", "Not allowed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            //check if person already have an active international license
+            int ActiveInternaionalLicenseID = clsInternationalLicenseApplication.GetActiveInternationalLicenseIDByDriverID(ctrlDriverDetailsCardWithFilter.SelectedLicenseInfo.DriverID);
+
+            if (ActiveInternaionalLicenseID != -1)
+            {
+                MessageBox.Show("Person already have an active international license with ID = " + ActiveInternaionalLicenseID.ToString(), "Not allowed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                LlblShowLicenseInformation.Enabled = true;
+                return;
+            }
+
+            btnIssueInternationaLicense.Enabled = true;
         }
     }
 }

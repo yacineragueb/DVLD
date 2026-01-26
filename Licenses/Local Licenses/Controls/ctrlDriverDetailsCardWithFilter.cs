@@ -30,6 +30,19 @@ namespace DVLD_project.Licenses.Local_Licenses.Controls
 
         private int _LicenseID = -1;
 
+        public int LicenseID
+        {
+            get { return _LicenseID; }
+        }
+
+        public clsLicense SelectedLicenseInfo
+        {
+            get
+            {
+                return ctrlDriverDetailsCard.SelectedLicenseInfo;
+            }
+        }
+
         public ctrlDriverDetailsCardWithFilter()
         {
             InitializeComponent();

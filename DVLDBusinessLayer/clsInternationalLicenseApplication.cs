@@ -25,6 +25,9 @@ namespace DVLDBusinessLayer
 
         public clsInternationalLicenseApplication()
         {
+            //here we set the applicaiton type to New International License.
+            this.ApplicationTypeID = (int)clsApplicationTypes.enApplicationTypes.NewInternationalLicense;
+
             this.InternationalLicenseID = -1;
             this.DriverID = -1;
             this.IssuedUsingLocalLicenseID = -1;
@@ -38,6 +41,9 @@ namespace DVLDBusinessLayer
         private clsInternationalLicenseApplication(int ApplicationID, int PersonID, DateTime ApplicationDate, int ApplicationTypeID, enApplicationStatus ApplicationStatus, DateTime LastStatusDate, decimal PaidFees, int CreatedByUserID, 
           int InternationalLicenseID, int DriverID, int IssuedUsingLocalLicenseID, DateTime IssueDate, DateTime ExpirationDate, bool IsActive) : base(ApplicationID, PersonID, ApplicationDate, ApplicationTypeID, ApplicationStatus, LastStatusDate, PaidFees, CreatedByUserID)
         {
+
+            this.ApplicationTypeID = (int)clsApplicationTypes.enApplicationTypes.NewInternationalLicense;
+
             this.InternationalLicenseID = InternationalLicenseID;
             this.DriverID = DriverID;
             this.IssueDate = IssueDate;
@@ -82,5 +88,12 @@ namespace DVLDBusinessLayer
                 return null;
             }
         }
+
+        public static int GetActiveInternationalLicenseIDByDriverID(int DriverID)
+        {
+            return clsInternationalLicenseApplicationData.GetActiveInternationalLicenseIDByDriverID(DriverID);
+        }
+
+
     }
 }
