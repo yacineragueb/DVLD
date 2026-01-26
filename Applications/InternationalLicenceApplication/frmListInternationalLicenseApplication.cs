@@ -191,5 +191,12 @@ namespace DVLD_project.Applications.InternationalLicenceApplication
             frmShowDriverInternationalLicenseInforamtion frm = new frmShowDriverInternationalLicenseInforamtion(InternationalLicenseApplicationID);
             frm.ShowDialog();
         }
+
+        private void btnAddInternationalLicenseApplication_Click(object sender, EventArgs e)
+        {
+            frmNewInternationalLicenseApplication frm = new frmNewInternationalLicenseApplication();
+            frm.ShowDialog();
+            frmListInternationalLicenseApplication_Load(null, null);
+        }
     }
 }

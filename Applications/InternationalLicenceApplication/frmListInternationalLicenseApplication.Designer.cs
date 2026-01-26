@@ -96,7 +96,7 @@
             this.showLicenseDetailsToolStripMenuItem,
             this.showPersonLicenseHistoryToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(331, 134);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(331, 106);
             // 
             // showPersonDetailsToolStripMenuItem
             // 
@@ -168,6 +168,7 @@
             this.btnAddInternationalLicenseApplication.Size = new System.Drawing.Size(87, 58);
             this.btnAddInternationalLicenseApplication.TabIndex = 18;
             this.btnAddInternationalLicenseApplication.UseVisualStyleBackColor = true;
+            this.btnAddInternationalLicenseApplication.Click += new System.EventHandler(this.btnAddInternationalLicenseApplication_Click);
             // 
             // imageList1
             // 

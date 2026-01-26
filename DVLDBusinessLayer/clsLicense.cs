@@ -174,5 +174,10 @@ namespace DVLDBusinessLayer
         {
             return clsLicenseData.GetDriverInternationalLicensesByPersonID(PerosnID);
         }
+
+        public static bool IsLicenseExistByID(int LicenseID)
+        {
+            return clsLicenseData.IsLicenseExistByID(LicenseID);
+        }
     }
 }

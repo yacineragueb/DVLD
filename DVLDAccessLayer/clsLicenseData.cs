@@ -11,6 +11,35 @@ namespace DVLDAccessLayer
 {
     public class clsLicenseData
     {
+
+        public static bool IsLicenseExistByID(int LicenseID)
+        {
+            bool IsFound = false;
+
+            using (SqlConnection conn = new SqlConnection(clsDVLDAcessLayerSettings.connectionString))
+            {
+                string query = "SELECT Found = 1 FROM Licenses WHERE LicenseID = @LicenseID";
+
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@LicenseID", LicenseID);
+
+                    try
+                    {
+                        conn.Open();
+                        object result = cmd.ExecuteScalar();
+
+                        IsFound = result != null;
+
+                    } catch (Exception ex)
+                    {
+                        IsFound = false;
+                    }
+                }
+            }
+
+            return IsFound;
+        }
         public static DataTable GetDriverInternationalLicensesByPersonID(int PersonID)
         {
             DataTable dataTable = new DataTable();
