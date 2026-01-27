@@ -65,7 +65,7 @@ namespace DVLD_project.Applications.InternationalLicenceApplication
                 return;
             }
 
-            btnIssueInternationaLicense.Enabled = true;
+            btnIssueInternationalLicense.Enabled = true;
         }
 
         private void LlblShowLicenseInformation_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -80,7 +80,7 @@ namespace DVLD_project.Applications.InternationalLicenceApplication
             frm.ShowDialog();
         }
 
-        private void btnIssueInternationaLicense_Click(object sender, EventArgs e)
+        private void btnIssueInternationalLicense_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("Are you sure you want to issue the license?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
             {
@@ -114,7 +114,7 @@ namespace DVLD_project.Applications.InternationalLicenceApplication
             _InternationalLicenseID = internationalLicenseApplication.InternationalLicenseID;
             MessageBox.Show("International License Issued Successfully with ID = " + internationalLicenseApplication.InternationalLicenseID, "License Issued", MessageBoxButtons.OK, MessageBoxIcon.Information);
             LlblShowLicenseInformation.Enabled = true;
-            btnIssueInternationaLicense.Enabled = false;
+            btnIssueInternationalLicense.Enabled = false;
             ctrlDriverDetailsCardWithFilter.EnableFilter = false;
         }
     }

@@ -65,6 +65,13 @@ namespace DVLD_project.Licenses.Local_Licenses.Controls
         private void txtbLicenseID_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+
+            // Check if the pressed key is Enter (character code 13)
+            if (e.KeyChar == (char)13)
+            {
+
+                btnFindLicense.PerformClick();
+            }
         }
 
         private void btnFindLicense_Click(object sender, EventArgs e)

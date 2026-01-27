@@ -12,6 +12,33 @@ namespace DVLDAccessLayer
     public class clsLicenseData
     {
 
+        public static bool DeactivateLicense(int LicenseID)
+        {
+            int rowsAffected = 0;
+
+            using (SqlConnection connection = new SqlConnection(clsDVLDAcessLayerSettings.connectionString))
+            {
+                string query = @"UPDATE Licenses
+                                SET IsActive = 0
+                                WHERE LicenseID=@LicenseID";
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@LicenseID", LicenseID);
+                    try
+                    {
+                        connection.Open();
+                        rowsAffected = command.ExecuteNonQuery();
+                    }
+                    catch (Exception ex)
+                    {
+                        return false;
+                    }
+                }
+            }
+
+            return (rowsAffected > 0);
+        }
+
         public static bool IsLicenseExistByID(int LicenseID)
         {
             bool IsFound = false;

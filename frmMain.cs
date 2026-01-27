@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using DVLD_project.Applications;
 using DVLD_project.Applications.InternationalLicenceApplication;
+using DVLD_project.Applications.RenewDrivingLicenseApplication;
 using DVLD_project.ApplicationType;
 using DVLD_project.Drivers;
 using DVLD_project.TestType;
@@ -102,6 +103,12 @@ namespace DVLD_project
         private void internationalLicenseToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmNewInternationalLicenseApplication frm = new frmNewInternationalLicenseApplication();
+            frm.ShowDialog();
+        }
+
+        private void renewDrivingLicenseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmRenewDrivingLicenseApplication frm = new frmRenewDrivingLicenseApplication();
             frm.ShowDialog();
         }
     }
