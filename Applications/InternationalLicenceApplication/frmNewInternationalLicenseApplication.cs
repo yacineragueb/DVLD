@@ -1,4 +1,6 @@
-﻿using DVLDBusinessLayer;
+﻿using DVLD_project.Licenses;
+using DVLD_project.Licenses.International_Licenses;
+using DVLDBusinessLayer;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,7 +15,7 @@ namespace DVLD_project.Applications.InternationalLicenceApplication
 {
     public partial class frmNewInternationalLicenseApplication : Form
     {
-        private clsLicense _License;
+        private int _InternationalLicenseID;
 
         public frmNewInternationalLicenseApplication()
         {
@@ -59,10 +61,61 @@ namespace DVLD_project.Applications.InternationalLicenceApplication
             {
                 MessageBox.Show("Person already have an active international license with ID = " + ActiveInternaionalLicenseID.ToString(), "Not allowed", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 LlblShowLicenseInformation.Enabled = true;
+                _InternationalLicenseID = ActiveInternaionalLicenseID;
                 return;
             }
 
             btnIssueInternationaLicense.Enabled = true;
+        }
+
+        private void LlblShowLicenseInformation_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            frmShowDriverInternationalLicenseInforamtion frm = new frmShowDriverInternationalLicenseInforamtion(_InternationalLicenseID);
+            frm.ShowDialog();
+        }
+
+        private void LlblShowLicenseHistory_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            frmShowDriverLicensesHistory frm = new frmShowDriverLicensesHistory(ctrlDriverDetailsCardWithFilter.SelectedLicenseInfo._DriverInfo.PersonID);
+            frm.ShowDialog();
+        }
+
+        private void btnIssueInternationaLicense_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Are you sure you want to issue the license?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+            {
+                return;
+            }
+
+            clsInternationalLicenseApplication internationalLicenseApplication = new clsInternationalLicenseApplication();
+
+            internationalLicenseApplication.ApplicationPersonID = ctrlDriverDetailsCardWithFilter.SelectedLicenseInfo._DriverInfo.PersonID;
+            internationalLicenseApplication.ApplicationDate = DateTime.Now;
+            internationalLicenseApplication.ApplicationStatus = clsApplication.enApplicationStatus.Completed;
+            internationalLicenseApplication.LastStatusDate = DateTime.Now;
+            internationalLicenseApplication.PaidFees = Convert.ToDecimal(lblApplicationFees.Text);
+            internationalLicenseApplication.CreateByUserID = clsGlobal.CurrentUser.UserID;
+
+            internationalLicenseApplication.DriverID = ctrlDriverDetailsCardWithFilter.SelectedLicenseInfo.DriverID;
+            internationalLicenseApplication.IssuedUsingLocalLicenseID = ctrlDriverDetailsCardWithFilter.SelectedLicenseInfo.LicenseID;
+            internationalLicenseApplication.IssueDate = DateTime.Now;
+            internationalLicenseApplication.ExpirationDate = DateTime.Now.AddYears(1);
+            internationalLicenseApplication.IsActive = true;
+
+            if (!internationalLicenseApplication.Save())
+            {
+                MessageBox.Show("Faild to Issue International License", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                return;
+            }
+
+            lblInternationalLicenseApplicationID.Text = internationalLicenseApplication.ApplicationID.ToString();
+            lblInternationaLicenseID.Text = internationalLicenseApplication.InternationalLicenseID.ToString();
+            _InternationalLicenseID = internationalLicenseApplication.InternationalLicenseID;
+            MessageBox.Show("International License Issued Successfully with ID = " + internationalLicenseApplication.InternationalLicenseID, "License Issued", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            LlblShowLicenseInformation.Enabled = true;
+            btnIssueInternationaLicense.Enabled = false;
+            ctrlDriverDetailsCardWithFilter.EnableFilter = false;
         }
     }
 }

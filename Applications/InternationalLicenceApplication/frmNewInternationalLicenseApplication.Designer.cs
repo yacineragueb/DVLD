@@ -362,6 +362,7 @@
             this.btnIssueInternationaLicense.TabIndex = 15;
             this.btnIssueInternationaLicense.Text = "Issue";
             this.btnIssueInternationaLicense.UseVisualStyleBackColor = false;
+            this.btnIssueInternationaLicense.Click += new System.EventHandler(this.btnIssueInternationaLicense_Click);
             // 
             // LlblShowLicenseHistory
             // 
@@ -374,6 +375,7 @@
             this.LlblShowLicenseHistory.TabIndex = 17;
             this.LlblShowLicenseHistory.TabStop = true;
             this.LlblShowLicenseHistory.Text = "Show License History";
+            this.LlblShowLicenseHistory.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LlblShowLicenseHistory_LinkClicked);
             // 
             // LlblShowLicenseInformation
             // 
@@ -386,6 +388,7 @@
             this.LlblShowLicenseInformation.TabIndex = 18;
             this.LlblShowLicenseInformation.TabStop = true;
             this.LlblShowLicenseInformation.Text = "Show License Inforamtion";
+            this.LlblShowLicenseInformation.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LlblShowLicenseInformation_LinkClicked);
             // 
             // label13
             // 

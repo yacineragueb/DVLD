@@ -43,6 +43,14 @@ namespace DVLD_project.Licenses.Local_Licenses.Controls
             }
         }
 
+        public bool EnableFilter
+        {
+            set
+            {
+                gbFilter.Enabled = value;
+            }
+        }
+
         public ctrlDriverDetailsCardWithFilter()
         {
             InitializeComponent();

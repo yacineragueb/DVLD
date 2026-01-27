@@ -5,12 +5,95 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace DVLDAccessLayer
 {
     public class clsInternationalLicenseApplicationData
     {
+        public static bool UpdateInternationalLicense(int InternationalLicenseID, int ApplicationID, int DriverID, int IssuedUsingLocalLicenseID, DateTime IssueDate, DateTime ExpirationDate, bool IsActive, int CreatedByUserID)
+        {
+            int rowsAffected = 0;
 
+            using (SqlConnection connection = new SqlConnection(clsDVLDAcessLayerSettings.connectionString))
+            {
+                string query = @"UPDATE InternationalLicenses
+                                SET ApplicationID = @ApplicationID, 
+                                   DriverID = @DriverID,
+                                   IssuedUsingLocalLicenseID = @IssuedUsingLocalLicenseID, 
+                                   IssueDate = @IssueDate,
+                                   ExpirationDate = @ExpirationDate,
+                                   IsActive = @IsActive,
+                                   CreatedByUserID = @CreatedByUserID
+                                WHERE InternationalLicenseID = @InternationalLicenseID";
+
+                using (SqlCommand cmd = new SqlCommand(query, connection))
+                {
+                    cmd.Parameters.AddWithValue("@InternationalLicenseID", InternationalLicenseID);
+                    cmd.Parameters.AddWithValue("@ApplicationID", ApplicationID);
+                    cmd.Parameters.AddWithValue("@DriverID", DriverID);
+                    cmd.Parameters.AddWithValue("@IssuedUsingLocalLicenseID", IssuedUsingLocalLicenseID);
+                    cmd.Parameters.AddWithValue("@IssueDate", IssueDate);
+                    cmd.Parameters.AddWithValue("@ExpirationDate", ExpirationDate);
+                    cmd.Parameters.AddWithValue("@IsActive", IsActive);
+                    cmd.Parameters.AddWithValue("@CreatedByUserID", CreatedByUserID);
+
+                    try
+                    {
+                        connection.Open();
+                        rowsAffected = cmd.ExecuteNonQuery();
+                    }
+                    catch (Exception ex)
+                    {
+                        rowsAffected = 0;
+                    }
+                }
+            }
+
+            return rowsAffected > 0;
+        }
+
+        public static int AddNewInternationalLicense(int ApplicationID, int DriverID, int IssuedUsingLocalLicenseID, DateTime IssueDate, DateTime ExpirationDate, bool IsActive, int CreatedByUserID)
+        {
+            int InternationalLicenseID = -1;
+
+            using (SqlConnection connection = new SqlConnection(clsDVLDAcessLayerSettings.connectionString))
+            {
+                string query = @"INSERT INTO InternationalLicenses
+                                 (ApplicationID, DriverID, IssuedUsingLocalLicenseID, IssueDate, ExpirationDate, IsActive, CreatedByUserID)
+                                 VALUES
+                                 (@ApplicationID, @DriverID, @IssuedUsingLocalLicenseID, @IssueDate, @ExpirationDate, @IsActive, @CreatedByUserID);
+                                 SELECT SCOPE_IDENTITY();";
+
+                using (SqlCommand cmd = new SqlCommand (query, connection))
+                {
+                    cmd.Parameters.AddWithValue("@ApplicationID", ApplicationID);
+                    cmd.Parameters.AddWithValue("@DriverID", DriverID);
+                    cmd.Parameters.AddWithValue("@IssuedUsingLocalLicenseID", IssuedUsingLocalLicenseID);
+                    cmd.Parameters.AddWithValue("@IssueDate", IssueDate);
+                    cmd.Parameters.AddWithValue("@ExpirationDate", ExpirationDate);
+                    cmd.Parameters.AddWithValue("@IsActive", IsActive);
+                    cmd.Parameters.AddWithValue("@CreatedByUserID", CreatedByUserID);
+
+                    try
+                    {
+                        connection.Open();
+                        object resutl = cmd.ExecuteScalar ();
+
+                        if( resutl != null && int.TryParse(resutl.ToString(), out int insertedInternationLicenseID))
+                        {
+                            InternationalLicenseID = insertedInternationLicenseID;
+                        }
+
+                    } catch (Exception ex)
+                    {
+                        InternationalLicenseID = -1;
+                    }
+                }
+            }
+
+            return InternationalLicenseID;
+        }
         public static int GetActiveInternationalLicenseIDByDriverID(int DriverID)
         {
             int InternationalLicenseID = -1;

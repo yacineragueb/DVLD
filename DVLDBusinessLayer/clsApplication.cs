@@ -22,9 +22,15 @@ namespace DVLDBusinessLayer
         public clsPerson Person;
         public clsUser User;
         public clsApplicationTypes ApplicationType;
+        
+        public int ApplicationID { get; set; }
+        public int ApplicationPersonID { get; set; }
+        public DateTime ApplicationDate { get; set; }
+        public int ApplicationTypeID { get; set; }
+        public enApplicationStatus ApplicationStatus { get; set; }
         public string GetApplicationStatusString()
         {
-            switch(this.ApplicationStatus)
+            switch (this.ApplicationStatus)
             {
                 case enApplicationStatus.New:
                     return "New";
@@ -37,28 +43,6 @@ namespace DVLDBusinessLayer
 
                 default:
                     return "Unknown Status";
-            }
-        }
-        public int ApplicationID { get; set; }
-        public int ApplicationPersonID { get; set; }
-        public DateTime ApplicationDate { get; set; }
-        public int ApplicationTypeID { get; set; }
-        public enApplicationStatus ApplicationStatus { get; set; }
-        public string GetApplicatinStatusString()
-        {
-            switch(ApplicationStatus)
-            {
-                case enApplicationStatus.New:
-                    return "New";
-                
-                case enApplicationStatus.Cancelled:
-                    return "Cancelled";
-
-                case enApplicationStatus.Completed:
-                    return "Completed";
-
-                default:
-                    return "Unkown";
             }
         }
         public DateTime LastStatusDate { get; set; }

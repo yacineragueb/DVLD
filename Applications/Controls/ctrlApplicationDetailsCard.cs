@@ -33,7 +33,7 @@ namespace DVLD_project.Applications.Controls
         private void _FillApplicationInformation()
         {
             lblApplicationID.Text = _Application.ApplicationID.ToString();
-            lblApplicationStatus.Text = _Application.GetApplicatinStatusString();
+            lblApplicationStatus.Text = _Application.GetApplicationStatusString();
             lblApplicationFees.Text = _Application.PaidFees.ToString();
             lblApplicationType.Text = _Application.ApplicationType.Title;
             lblApplicant.Text = _Application.Person.FullName();

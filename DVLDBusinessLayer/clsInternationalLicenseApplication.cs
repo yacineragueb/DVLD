@@ -94,6 +94,45 @@ namespace DVLDBusinessLayer
             return clsInternationalLicenseApplicationData.GetActiveInternationalLicenseIDByDriverID(DriverID);
         }
 
+        public bool _AddNewInternationalLicense()
+        {
+            this.InternationalLicenseID = clsInternationalLicenseApplicationData.AddNewInternationalLicense(this.ApplicationID, DriverID, IssuedUsingLocalLicenseID, IssueDate, ExpirationDate, IsActive, this.CreateByUserID);
 
+            return InternationalLicenseID != -1;
+        }
+
+        public bool _UpdateInternationalLicense()
+        {
+            return clsInternationalLicenseApplicationData.UpdateInternationalLicense(InternationalLicenseID, this.ApplicationID, DriverID, IssuedUsingLocalLicenseID, IssueDate, ExpirationDate, IsActive, this.CreateByUserID);
+        }
+
+        public bool Save()
+        {
+            base._Mode = (clsApplication.enMode)_Mode; // Casting
+            if (!base.Save())
+            {
+                return false;
+            }
+
+            switch (_Mode)
+                {
+                    case enMode.AddNew:
+                        if (_AddNewInternationalLicense())
+                        {
+                            _Mode = enMode.Update;
+
+                            return true;
+                        }
+                        else
+                        {
+                            return false;
+                        }
+
+                    case enMode.Update:
+                        return _UpdateInternationalLicense();
+                }
+
+            return false;
+        }
     }
 }
