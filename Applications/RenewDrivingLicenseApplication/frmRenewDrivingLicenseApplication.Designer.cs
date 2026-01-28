@@ -137,7 +137,7 @@
             // 
             // txtbNotes
             // 
-            this.txtbNotes.Location = new System.Drawing.Point(223, 228);
+            this.txtbNotes.Location = new System.Drawing.Point(228, 228);
             this.txtbNotes.Multiline = true;
             this.txtbNotes.Name = "txtbNotes";
             this.txtbNotes.Size = new System.Drawing.Size(511, 73);
@@ -146,7 +146,7 @@
             // pictureBox11
             // 
             this.pictureBox11.Image = global::DVLD_project.Properties.Resources.Notes;
-            this.pictureBox11.Location = new System.Drawing.Point(170, 228);
+            this.pictureBox11.Location = new System.Drawing.Point(175, 228);
             this.pictureBox11.Name = "pictureBox11";
             this.pictureBox11.Size = new System.Drawing.Size(32, 26);
             this.pictureBox11.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -195,7 +195,7 @@
             // lblLicenseFees
             // 
             this.lblLicenseFees.AutoSize = true;
-            this.lblLicenseFees.Location = new System.Drawing.Point(218, 190);
+            this.lblLicenseFees.Location = new System.Drawing.Point(223, 190);
             this.lblLicenseFees.Name = "lblLicenseFees";
             this.lblLicenseFees.Size = new System.Drawing.Size(40, 26);
             this.lblLicenseFees.TabIndex = 63;
@@ -204,7 +204,7 @@
             // pictureBox9
             // 
             this.pictureBox9.Image = global::DVLD_project.Properties.Resources.Money;
-            this.pictureBox9.Location = new System.Drawing.Point(170, 190);
+            this.pictureBox9.Location = new System.Drawing.Point(175, 190);
             this.pictureBox9.Name = "pictureBox9";
             this.pictureBox9.Size = new System.Drawing.Size(32, 26);
             this.pictureBox9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -340,7 +340,7 @@
             // lblApplicationFees
             // 
             this.lblApplicationFees.AutoSize = true;
-            this.lblApplicationFees.Location = new System.Drawing.Point(218, 151);
+            this.lblApplicationFees.Location = new System.Drawing.Point(223, 151);
             this.lblApplicationFees.Name = "lblApplicationFees";
             this.lblApplicationFees.Size = new System.Drawing.Size(40, 26);
             this.lblApplicationFees.TabIndex = 48;
@@ -349,7 +349,7 @@
             // pictureBox2
             // 
             this.pictureBox2.Image = global::DVLD_project.Properties.Resources.Money;
-            this.pictureBox2.Location = new System.Drawing.Point(170, 151);
+            this.pictureBox2.Location = new System.Drawing.Point(175, 151);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(32, 26);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -369,7 +369,7 @@
             // lblIssueDate
             // 
             this.lblIssueDate.AutoSize = true;
-            this.lblIssueDate.Location = new System.Drawing.Point(218, 113);
+            this.lblIssueDate.Location = new System.Drawing.Point(223, 113);
             this.lblIssueDate.Name = "lblIssueDate";
             this.lblIssueDate.Size = new System.Drawing.Size(40, 26);
             this.lblIssueDate.TabIndex = 45;
@@ -378,7 +378,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::DVLD_project.Properties.Resources.Date;
-            this.pictureBox1.Location = new System.Drawing.Point(170, 113);
+            this.pictureBox1.Location = new System.Drawing.Point(175, 113);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(32, 26);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -398,7 +398,7 @@
             // lblApplicationDate
             // 
             this.lblApplicationDate.AutoSize = true;
-            this.lblApplicationDate.Location = new System.Drawing.Point(218, 75);
+            this.lblApplicationDate.Location = new System.Drawing.Point(223, 75);
             this.lblApplicationDate.Name = "lblApplicationDate";
             this.lblApplicationDate.Size = new System.Drawing.Size(40, 26);
             this.lblApplicationDate.TabIndex = 42;
@@ -407,7 +407,7 @@
             // pictureBox7
             // 
             this.pictureBox7.Image = global::DVLD_project.Properties.Resources.Date;
-            this.pictureBox7.Location = new System.Drawing.Point(170, 75);
+            this.pictureBox7.Location = new System.Drawing.Point(175, 75);
             this.pictureBox7.Name = "pictureBox7";
             this.pictureBox7.Size = new System.Drawing.Size(32, 26);
             this.pictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -427,7 +427,7 @@
             // lblRenewLicenseApplicationID
             // 
             this.lblRenewLicenseApplicationID.AutoSize = true;
-            this.lblRenewLicenseApplicationID.Location = new System.Drawing.Point(218, 37);
+            this.lblRenewLicenseApplicationID.Location = new System.Drawing.Point(223, 37);
             this.lblRenewLicenseApplicationID.Name = "lblRenewLicenseApplicationID";
             this.lblRenewLicenseApplicationID.Size = new System.Drawing.Size(40, 26);
             this.lblRenewLicenseApplicationID.TabIndex = 32;
@@ -436,7 +436,7 @@
             // pictureBox4
             // 
             this.pictureBox4.Image = global::DVLD_project.Properties.Resources.ID_Card;
-            this.pictureBox4.Location = new System.Drawing.Point(170, 37);
+            this.pictureBox4.Location = new System.Drawing.Point(175, 37);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(32, 26);
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -449,9 +449,9 @@
             this.label1.Font = new System.Drawing.Font("Poppins Medium", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(6, 37);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(170, 26);
+            this.label1.Size = new System.Drawing.Size(165, 26);
             this.label1.TabIndex = 30;
-            this.label1.Text = "R.L Application. ID:";
+            this.label1.Text = "R.L Application ID:";
             // 
             // LlblShowNewLicenseInformation
             // 

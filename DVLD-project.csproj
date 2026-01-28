@@ -106,6 +106,12 @@
     <Compile Include="Applications\RenewDrivingLicenseApplication\frmRenewDrivingLicenseApplication.Designer.cs">
       <DependentUpon>frmRenewDrivingLicenseApplication.cs</DependentUpon>
     </Compile>
+    <Compile Include="Applications\ReplacementForDamageOrLostApplication\frmReplacementForDamageOrLostApplication.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Applications\ReplacementForDamageOrLostApplication\frmReplacementForDamageOrLostApplication.Designer.cs">
+      <DependentUpon>frmReplacementForDamageOrLostApplication.cs</DependentUpon>
+    </Compile>
     <Compile Include="Licenses\International Licenses\Controls\ctrlInternationalDriverDetailsCard.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -307,6 +313,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Applications\RenewDrivingLicenseApplication\frmRenewDrivingLicenseApplication.resx">
       <DependentUpon>frmRenewDrivingLicenseApplication.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Applications\ReplacementForDamageOrLostApplication\frmReplacementForDamageOrLostApplication.resx">
+      <DependentUpon>frmReplacementForDamageOrLostApplication.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Licenses\International Licenses\Controls\ctrlInternationalDriverDetailsCard.resx">
       <DependentUpon>ctrlInternationalDriverDetailsCard.cs</DependentUpon>

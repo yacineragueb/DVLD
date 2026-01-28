@@ -53,12 +53,11 @@ namespace DVLD_project.Applications.RenewDrivingLicenseApplication
                 return;
             }
 
-            //check the license is not Expired.
+            //check the license is Active.
             if (!ctrlDriverDetailsCardWithFilter.SelectedLicenseInfo.IsActive)
             {
                 MessageBox.Show("Selected License is not Active, choose an active license."
                     , "Not allowed", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                btnRenewLicense.Enabled = false;
                 return;
             }
 
