@@ -91,7 +91,7 @@ namespace DVLD_project.Applications.ReplacementForDamageOrLost
 
         private void btnIssueReplacement_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Are you sure you want to renew the license?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+            if (MessageBox.Show("Are you sure you want to replace the license?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
             {
                 return;
             }
@@ -115,7 +115,7 @@ namespace DVLD_project.Applications.ReplacementForDamageOrLost
             lblReplacedLicenseApplicationID.Text = ReplacedLicense.ApplicationID.ToString();
             lblReplacedLicenseID.Text = ReplacedLicense.LicenseID.ToString();
             _ReplacedLicenseID = ReplacedLicense.LicenseID;
-            MessageBox.Show("License Renewed Successfully with ID = " + _ReplacedLicenseID, "License Issued", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("License Replaced Successfully with ID = " + _ReplacedLicenseID, "License Issued", MessageBoxButtons.OK, MessageBoxIcon.Information);
             LlblShowNewLicenseInformation.Enabled = true;
             btnIssueReplacement.Enabled = false;
             ctrlDriverDetailsCardWithFilter.EnableFilter = false;

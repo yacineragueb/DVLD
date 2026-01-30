@@ -36,31 +36,31 @@ namespace DVLD_project.Applications.ReleaseDetainedLicenseApplication
             if (dgvDetainedLicensesApplicationsTable.Rows.Count > 0)
             {
                 dgvDetainedLicensesApplicationsTable.Columns[0].HeaderText = "Detain ID";
-                dgvDetainedLicensesApplicationsTable.Columns[0].Width = 110;
+                dgvDetainedLicensesApplicationsTable.Columns[0].Width = 80;
 
                 dgvDetainedLicensesApplicationsTable.Columns[1].HeaderText = "License ID";
-                dgvDetainedLicensesApplicationsTable.Columns[1].Width = 110;
+                dgvDetainedLicensesApplicationsTable.Columns[1].Width = 85;
 
                 dgvDetainedLicensesApplicationsTable.Columns[2].HeaderText = "Detain Date";
-                dgvDetainedLicensesApplicationsTable.Columns[2].Width = 140;
+                dgvDetainedLicensesApplicationsTable.Columns[2].Width = 110;
 
                 dgvDetainedLicensesApplicationsTable.Columns[3].HeaderText = "Is Released";
-                dgvDetainedLicensesApplicationsTable.Columns[3].Width = 100;
+                dgvDetainedLicensesApplicationsTable.Columns[3].Width = 90;
 
                 dgvDetainedLicensesApplicationsTable.Columns[4].HeaderText = "Fine Fees";
-                dgvDetainedLicensesApplicationsTable.Columns[4].Width = 100;
+                dgvDetainedLicensesApplicationsTable.Columns[4].Width = 90;
 
                 dgvDetainedLicensesApplicationsTable.Columns[5].HeaderText = "Released Date";
-                dgvDetainedLicensesApplicationsTable.Columns[5].Width = 140;
+                dgvDetainedLicensesApplicationsTable.Columns[5].Width = 110;
 
                 dgvDetainedLicensesApplicationsTable.Columns[6].HeaderText = "National No.";
-                dgvDetainedLicensesApplicationsTable.Columns[6].Width = 100;
+                dgvDetainedLicensesApplicationsTable.Columns[6].Width = 95;
 
                 dgvDetainedLicensesApplicationsTable.Columns[7].HeaderText = "Full Name";
-                dgvDetainedLicensesApplicationsTable.Columns[7].Width = 240;
+                dgvDetainedLicensesApplicationsTable.Columns[7].Width = 200;
 
                 dgvDetainedLicensesApplicationsTable.Columns[8].HeaderText = "Release Application ID";
-                dgvDetainedLicensesApplicationsTable.Columns[8].Width = 110;
+                dgvDetainedLicensesApplicationsTable.Columns[8].Width = 120;
             }
         }
 

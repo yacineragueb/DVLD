@@ -33,7 +33,7 @@ namespace DVLD_project.Drivers.Controller
 
         private void _FillDriverInformation()
         {
-            lblLicenseClass.Text = _License._LicenseClass.ClassName; // There is error here
+            lblLicenseClass.Text = _License._LicenseClass.ClassName;
             lblName.Text = _License._DriverInfo._PersonInfo.FullName();
             lblLicenseID.Text = _License.LicenseID.ToString();
             lblNationalNo.Text = _License._DriverInfo._PersonInfo.NationalNo;
@@ -69,7 +69,7 @@ namespace DVLD_project.Drivers.Controller
             lblIsAcitve.Text = _License.IsActive ? "Yes" : "No";
             lblDateOfBirth.Text = _License._DriverInfo._PersonInfo.DateOfBirth.ToShortDateString();
             lblDriverID.Text = _License._DriverInfo.DriverID.ToString();
-            lblIsDetained.Text = "This will add later";
+            lblIsDetained.Text = _License.IsDetained ? "Yes" : "No";
 
             string ImagePath = _License._DriverInfo._PersonInfo.ImagePath;
             if (! string.IsNullOrEmpty(ImagePath))

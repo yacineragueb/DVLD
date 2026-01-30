@@ -14,6 +14,7 @@ using DVLD_project.Applications.RenewDrivingLicenseApplication;
 using DVLD_project.Applications.ReplacementForDamageOrLost;
 using DVLD_project.ApplicationType;
 using DVLD_project.Drivers;
+using DVLD_project.Licenses.Detained_Licenses;
 using DVLD_project.TestType;
 using DVLD_project.Users;
 using DVLDBusinessLayer;
@@ -123,6 +124,12 @@ namespace DVLD_project
         private void manageDetainedLicensesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmListDetainedLicenses frm = new frmListDetainedLicenses();
+            frm.ShowDialog();
+        }
+
+        private void detainLicenseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmDetainLicense frm = new frmDetainLicense();
             frm.ShowDialog();
         }
     }

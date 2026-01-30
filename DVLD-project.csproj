@@ -118,6 +118,12 @@
     <Compile Include="Applications\ReplacementForDamageOrLostApplication\frmReplacementForDamageOrLostApplication.Designer.cs">
       <DependentUpon>frmReplacementForDamageOrLostApplication.cs</DependentUpon>
     </Compile>
+    <Compile Include="Licenses\Detained Licenses\frmDetainLicense.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Licenses\Detained Licenses\frmDetainLicense.Designer.cs">
+      <DependentUpon>frmDetainLicense.cs</DependentUpon>
+    </Compile>
     <Compile Include="Licenses\International Licenses\Controls\ctrlInternationalDriverDetailsCard.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -325,6 +331,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Applications\ReplacementForDamageOrLostApplication\frmReplacementForDamageOrLostApplication.resx">
       <DependentUpon>frmReplacementForDamageOrLostApplication.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Licenses\Detained Licenses\frmDetainLicense.resx">
+      <DependentUpon>frmDetainLicense.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Licenses\International Licenses\Controls\ctrlInternationalDriverDetailsCard.resx">
       <DependentUpon>ctrlInternationalDriverDetailsCard.cs</DependentUpon>
@@ -580,9 +589,7 @@
   <ItemGroup>
     <None Include="Resources\Hisotry.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Licenses\Detained Licenses\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="Resources\ReleaseDetainedLicense.png" />
   </ItemGroup>

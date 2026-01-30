@@ -40,6 +40,14 @@ namespace DVLDBusinessLayer
         public enIssueReason IssueReason { get; set; }
         public int CreatedByUserId {  get; set; }
 
+        public bool IsDetained
+        {
+            get
+            {
+                return clsDetainedLicense.IsLicenseDetained(this.LicenseID);
+            }
+        }
+
         public string GetIssueReasonString()
         {
             switch (IssueReason)
@@ -312,6 +320,22 @@ namespace DVLDBusinessLayer
             DeactivateCurrentLicense();
 
             return NewLicense;
+        }
+
+        public int Detain(decimal FineFees, int CreatedByUserID)
+        {
+            clsDetainedLicense detainedLicense = new clsDetainedLicense();
+            detainedLicense.FineFees = FineFees;
+            detainedLicense.CreatedByUserID = CreatedByUserID;
+            detainedLicense.DetainDate = DateTime.Now;
+            detainedLicense.LicenseID = this.LicenseID;
+
+            if(!detainedLicense.Save())
+            {
+                return -1;
+            } 
+
+            return detainedLicense.DetainID;
         }
     }
 }

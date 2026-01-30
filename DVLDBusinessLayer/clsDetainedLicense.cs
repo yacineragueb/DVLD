@@ -64,12 +64,14 @@ namespace DVLDBusinessLayer
 
         private bool _AddNewDetainedLicense()
         {
-            return false;
+            this.DetainID = clsDetainedLicenseData.AddNewDetainedLicense(this.LicenseID, this.DetainDate, this.FineFees, this.CreatedByUserID, this.IsReleased);
+
+            return this.DetainID != -1;
         }
 
         private bool _UpdateDetainedLicense()
         {
-            return false;
+            return clsDetainedLicenseData.UpdateDetainedLicense(this.DetainID, this.LicenseID, this.DetainDate, this.FineFees, this.CreatedByUserID);
         }
 
         public bool Save()
@@ -118,6 +120,11 @@ namespace DVLDBusinessLayer
         public static DataTable GetAllDetainedLicenses()
         {
             return clsDetainedLicenseData.GetAllDetainedLicenses();
+        }
+    
+        public static bool IsLicenseDetained(int LicenseID)
+        {
+            return clsDetainedLicenseData.IsLicenseDetained(LicenseID);
         }
     }
 }
