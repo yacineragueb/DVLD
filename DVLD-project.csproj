@@ -52,16 +52,16 @@
     <Compile Include="Applications\Controls\ctrlApplicationDetailsCard.Designer.cs">
       <DependentUpon>ctrlApplicationDetailsCard.cs</DependentUpon>
     </Compile>
-    <Compile Include="Applications\InternationalLicenceApplication\frmListInternationalLicenseApplication.cs">
+    <Compile Include="Applications\InternationalLicenseApplication\frmListInternationalLicenseApplication.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Applications\InternationalLicenceApplication\frmListInternationalLicenseApplication.Designer.cs">
+    <Compile Include="Applications\InternationalLicenseApplication\frmListInternationalLicenseApplication.Designer.cs">
       <DependentUpon>frmListInternationalLicenseApplication.cs</DependentUpon>
     </Compile>
-    <Compile Include="Applications\InternationalLicenceApplication\frmNewInternationalLicenseApplication.cs">
+    <Compile Include="Applications\InternationalLicenseApplication\frmNewInternationalLicenseApplication.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Applications\InternationalLicenceApplication\frmNewInternationalLicenseApplication.Designer.cs">
+    <Compile Include="Applications\InternationalLicenseApplication\frmNewInternationalLicenseApplication.Designer.cs">
       <DependentUpon>frmNewInternationalLicenseApplication.cs</DependentUpon>
     </Compile>
     <Compile Include="Applications\LocalDrivingLicenseApplication\Controls\ctrlLDLApplicationDetailsCard.cs">
@@ -99,6 +99,12 @@
     </Compile>
     <Compile Include="Applications\LocalDrivingLicenseApplication\frmShowLocalDrivingLicenseApplicationInformation.Designer.cs">
       <DependentUpon>frmShowLocalDrivingLicenseApplicationInformation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Applications\ReleaseDetainedLicenseApplication\frmListDetainedLicenses.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Applications\ReleaseDetainedLicenseApplication\frmListDetainedLicenses.Designer.cs">
+      <DependentUpon>frmListDetainedLicenses.cs</DependentUpon>
     </Compile>
     <Compile Include="Applications\RenewDrivingLicenseApplication\frmRenewDrivingLicenseApplication.cs">
       <SubType>Form</SubType>
@@ -287,10 +293,10 @@
     <EmbeddedResource Include="Applications\Controls\ctrlApplicationDetailsCard.resx">
       <DependentUpon>ctrlApplicationDetailsCard.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Applications\InternationalLicenceApplication\frmListInternationalLicenseApplication.resx">
+    <EmbeddedResource Include="Applications\InternationalLicenseApplication\frmListInternationalLicenseApplication.resx">
       <DependentUpon>frmListInternationalLicenseApplication.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Applications\InternationalLicenceApplication\frmNewInternationalLicenseApplication.resx">
+    <EmbeddedResource Include="Applications\InternationalLicenseApplication\frmNewInternationalLicenseApplication.resx">
       <DependentUpon>frmNewInternationalLicenseApplication.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Applications\LocalDrivingLicenseApplication\Controls\ctrlLDLApplicationDetailsCard.resx">
@@ -310,6 +316,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Applications\LocalDrivingLicenseApplication\frmShowLocalDrivingLicenseApplicationInformation.resx">
       <DependentUpon>frmShowLocalDrivingLicenseApplicationInformation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Applications\ReleaseDetainedLicenseApplication\frmListDetainedLicenses.resx">
+      <DependentUpon>frmListDetainedLicenses.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Applications\RenewDrivingLicenseApplication\frmRenewDrivingLicenseApplication.resx">
       <DependentUpon>frmRenewDrivingLicenseApplication.cs</DependentUpon>
@@ -571,6 +580,11 @@
   <ItemGroup>
     <None Include="Resources\Hisotry.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Licenses\Detained Licenses\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ReleaseDetainedLicense.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

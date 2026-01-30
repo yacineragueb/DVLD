@@ -403,6 +403,16 @@ namespace DVLD_project.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap ReleaseDetainedLicense {
+            get {
+                object obj = ResourceManager.GetObject("ReleaseDetainedLicense", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Renew {
             get {
                 object obj = ResourceManager.GetObject("Renew", resourceCulture);

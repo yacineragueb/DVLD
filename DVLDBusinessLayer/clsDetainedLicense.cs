@@ -4,6 +4,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DVLDAccessLayer;
 
 namespace DVLDBusinessLayer
 {
@@ -116,7 +117,7 @@ namespace DVLDBusinessLayer
 
         public static DataTable GetAllDetainedLicenses()
         {
-            return new DataTable();
+            return clsDetainedLicenseData.GetAllDetainedLicenses();
         }
     }
 }

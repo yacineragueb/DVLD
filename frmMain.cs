@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using DVLD_project.Applications;
 using DVLD_project.Applications.InternationalLicenceApplication;
+using DVLD_project.Applications.ReleaseDetainedLicenseApplication;
 using DVLD_project.Applications.RenewDrivingLicenseApplication;
 using DVLD_project.Applications.ReplacementForDamageOrLost;
 using DVLD_project.ApplicationType;
@@ -116,6 +117,12 @@ namespace DVLD_project
         private void replacementForLostOrDamagedLicenseToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmReplacementForDamageOrLostApplication frm = new frmReplacementForDamageOrLostApplication();
+            frm.ShowDialog();
+        }
+
+        private void manageDetainedLicensesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmListDetainedLicenses frm = new frmListDetainedLicenses();
             frm.ShowDialog();
         }
     }
