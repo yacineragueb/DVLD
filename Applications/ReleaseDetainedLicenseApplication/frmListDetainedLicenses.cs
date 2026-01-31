@@ -1,4 +1,7 @@
-﻿using DVLDBusinessLayer;
+﻿using DVLD_project.Drivers;
+using DVLD_project.Licenses;
+using DVLD_project.Licenses.Detained_Licenses;
+using DVLDBusinessLayer;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -25,7 +28,7 @@ namespace DVLD_project.Applications.ReleaseDetainedLicenseApplication
             this.Close();
         }
 
-        private void clsListDetainedLicenses_Load(object sender, EventArgs e)
+        private void frmListDetainedLicenses_Load(object sender, EventArgs e)
         {
             _dtAllDetainedLicensesApplications = clsDetainedLicense.GetAllDetainedLicenses();
 
@@ -60,7 +63,7 @@ namespace DVLD_project.Applications.ReleaseDetainedLicenseApplication
                 dgvDetainedLicensesApplicationsTable.Columns[7].Width = 200;
 
                 dgvDetainedLicensesApplicationsTable.Columns[8].HeaderText = "Release Application ID";
-                dgvDetainedLicensesApplicationsTable.Columns[8].Width = 120;
+                dgvDetainedLicensesApplicationsTable.Columns[8].Width = 125;
             }
         }
 
@@ -190,6 +193,62 @@ namespace DVLD_project.Applications.ReleaseDetainedLicenseApplication
 
                 lblRecords.Text = dgvDetainedLicensesApplicationsTable.Rows.Count.ToString();
             }
+        }
+
+        private void btnDetaineLicense_Click(object sender, EventArgs e)
+        {
+            frmDetainLicense frm = new frmDetainLicense();
+            frm.ShowDialog();
+            frmListDetainedLicenses_Load(null, null);
+        }
+
+        private void showPersonDetailsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int LicenseID = (int)dgvDetainedLicensesApplicationsTable.CurrentRow.Cells[1].Value;
+            int PersonID = clsLicense.Find(LicenseID)._DriverInfo.PersonID;
+
+            frmShowPersonDetails frm = new frmShowPersonDetails(PersonID);
+            frm.ShowDialog();
+            frmListDetainedLicenses_Load(null, null);
+        }
+
+        private void showLicenseDetailsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int LicenseID = (int)dgvDetainedLicensesApplicationsTable.CurrentRow.Cells[1].Value;
+
+            frmShowLicenseInformation frm = new frmShowLicenseInformation(LicenseID);
+            frm.ShowDialog();
+        }
+
+        private void showPersonLicenseHistoryToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int LicenseID = (int)dgvDetainedLicensesApplicationsTable.CurrentRow.Cells[1].Value;
+            int PersonID = clsLicense.Find(LicenseID)._DriverInfo.PersonID;
+
+            frmShowDriverLicensesHistory frm = new frmShowDriverLicensesHistory(PersonID);
+            frm.ShowDialog();
+            frmListDetainedLicenses_Load(null, null);
+        }
+
+        private void releaseDetainedLicenseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int LicenseID = (int)dgvDetainedLicensesApplicationsTable.CurrentRow.Cells[1].Value;
+
+            frmReleaseDetainedLicenseApplication frm = new frmReleaseDetainedLicenseApplication(LicenseID);
+            frm.ShowDialog();
+            frmListDetainedLicenses_Load(null, null);
+        }
+
+        private void contextMenuStrip1_Opening(object sender, CancelEventArgs e)
+        {
+            releaseDetainedLicenseToolStripMenuItem.Enabled = !(bool)dgvDetainedLicensesApplicationsTable.CurrentRow.Cells[3].Value;
+        }
+
+        private void btnReleaseDetainedLicense_Click(object sender, EventArgs e)
+        {
+            frmReleaseDetainedLicenseApplication frm = new frmReleaseDetainedLicenseApplication();
+            frm.ShowDialog();
+            frmListDetainedLicenses_Load(null, null);
         }
     }
 }

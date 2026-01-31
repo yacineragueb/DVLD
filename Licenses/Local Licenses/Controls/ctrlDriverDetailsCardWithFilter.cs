@@ -43,11 +43,18 @@ namespace DVLD_project.Licenses.Local_Licenses.Controls
             }
         }
 
+        private bool _EnableFilter = true;
+
         public bool EnableFilter
         {
+            get
+            {
+                return _EnableFilter;
+            }
             set
             {
-                gbFilter.Enabled = value;
+                _EnableFilter = value;
+                gbFilter.Enabled = _EnableFilter;
             }
         }
 
@@ -60,6 +67,11 @@ namespace DVLD_project.Licenses.Local_Licenses.Controls
         {
             _LicenseID = LicenseID;
             ctrlDriverDetailsCard.LoadData(_LicenseID);
+            if (OnLicenseSelected != null && EnableFilter)
+            {
+                // Raise the event with paramater
+                LicenseSelected(ctrlDriverDetailsCard.LicenseID);
+            }
         }
 
         private void txtbLicenseID_KeyPress(object sender, KeyPressEventArgs e)
@@ -81,12 +93,7 @@ namespace DVLD_project.Licenses.Local_Licenses.Controls
                 _LicenseID = Convert.ToInt32(txtbFilter.Text.Trim());
                 if (clsLicense.IsLicenseExistByID(_LicenseID))
                 {
-                    ctrlDriverDetailsCard.LoadData(_LicenseID);
-                    if(OnLicenseSelected != null)
-                    {
-                        // Raise the event with paramater
-                        LicenseSelected(ctrlDriverDetailsCard.LicenseID);
-                    }
+                    LoadData(_LicenseID);
                 }
                 else
                 {

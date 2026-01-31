@@ -100,7 +100,7 @@ namespace DVLD_project.Applications.RenewDrivingLicenseApplication
             lblRenewLicenseApplicationID.Text = RenewedLicense.ApplicationID.ToString();
             lblRenewedLicenseID.Text = RenewedLicense.LicenseID.ToString();
             _RenewedLicenseID = RenewedLicense.LicenseID;
-            MessageBox.Show("License Renewed Successfully with ID = " + RenewedLicense.LicenseID, "License Issued", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("License Renewed Successfully with ID = " + RenewedLicense.LicenseID, "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
             LlblShowNewLicenseInformation.Enabled = true;
             btnRenewLicense.Enabled = false;
             ctrlDriverDetailsCardWithFilter.EnableFilter = false;

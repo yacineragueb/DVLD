@@ -243,7 +243,7 @@
             // 
             // detainLicenseToolStripMenuItem
             // 
-            this.detainLicenseToolStripMenuItem.Image = global::DVLD_project.Properties.Resources.DetainLicense;
+            this.detainLicenseToolStripMenuItem.Image = global::DVLD_project.Properties.Resources.Release;
             this.detainLicenseToolStripMenuItem.Name = "detainLicenseToolStripMenuItem";
             this.detainLicenseToolStripMenuItem.Size = new System.Drawing.Size(329, 56);
             this.detainLicenseToolStripMenuItem.Text = "Detain License";
@@ -255,6 +255,7 @@
             this.releaseDetainedLicenseToolStripMenuItem.Name = "releaseDetainedLicenseToolStripMenuItem";
             this.releaseDetainedLicenseToolStripMenuItem.Size = new System.Drawing.Size(329, 56);
             this.releaseDetainedLicenseToolStripMenuItem.Text = "Release Detained License";
+            this.releaseDetainedLicenseToolStripMenuItem.Click += new System.EventHandler(this.releaseDetainedLicenseToolStripMenuItem_Click);
             // 
             // toolStripMenuItem3
             // 

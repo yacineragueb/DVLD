@@ -59,7 +59,7 @@ namespace DVLD_project.Licenses.Detained_Licenses
             //check if license is already detained.
             if (ctrlDriverDetailsCardWithFilter.SelectedLicenseInfo.IsDetained)
             {
-                MessageBox.Show("Selected License is already detained, choose an active license."
+                MessageBox.Show("Selected License is already detained, choose a non detained license."
                     , "Not allowed", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
@@ -95,7 +95,7 @@ namespace DVLD_project.Licenses.Detained_Licenses
             }
 
             lblDetainID.Text = DetainedID.ToString();
-            MessageBox.Show("License Detained Successfully with ID = " + DetainedID, "License Issued", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("License Detained Successfully with ID = " + DetainedID, "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
             LlblShowLicenseInformation.Enabled = true;
             btnDetainLicense.Enabled = false;
             ctrlDriverDetailsCardWithFilter.EnableFilter = false;

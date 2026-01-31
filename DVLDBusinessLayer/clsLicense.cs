@@ -48,6 +48,8 @@ namespace DVLDBusinessLayer
             }
         }
 
+        public clsDetainedLicense _DetainInfo {  get; set; }
+
         public string GetIssueReasonString()
         {
             switch (IssueReason)
@@ -100,9 +102,9 @@ namespace DVLDBusinessLayer
             this.PaidFees = PaidFees;
             this.CreatedByUserId = CreatedByUserID;
 
-            this._Application = clsApplication.Find(this.ApplicationID);
             this._LicenseClass = clsLicenseClasses.Find(this.LicenseClassID);
             this._DriverInfo = clsDriver.Find(this.DriverID);
+            this._DetainInfo = clsDetainedLicense.FindByLicenseID(this.LicenseID);
 
             _Mode = enMode.Update;
         }
@@ -320,6 +322,28 @@ namespace DVLDBusinessLayer
             DeactivateCurrentLicense();
 
             return NewLicense;
+        }
+
+        public bool ReleaseDetainedLicense(int ReleasedByUserID, ref int ApplicationID)
+        {
+            clsApplication Application = new clsApplication();
+
+            Application.ApplicationPersonID = this._DriverInfo.PersonID;
+            Application.ApplicationDate = DateTime.Now;
+            Application.ApplicationTypeID = (int)clsApplicationTypes.enApplicationTypes.RenewDrivingLicenseService;
+            Application.ApplicationStatus = clsApplication.enApplicationStatus.Completed;
+            Application.LastStatusDate = DateTime.Now;
+            Application.PaidFees = clsApplicationTypes.Find((int)clsApplicationTypes.enApplicationTypes.ReleaseDetainedDrivingLicsense).Fee;
+            Application.CreateByUserID = ReleasedByUserID;
+
+            if (!Application.Save())
+            {
+                return false;
+            }
+
+            ApplicationID = Application.ApplicationID;
+
+            return this._DetainInfo.ReleaseDetainedLicense(ReleasedByUserID, Application.ApplicationID);
         }
 
         public int Detain(decimal FineFees, int CreatedByUserID)

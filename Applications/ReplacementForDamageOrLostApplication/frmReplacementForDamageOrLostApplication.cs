@@ -115,7 +115,7 @@ namespace DVLD_project.Applications.ReplacementForDamageOrLost
             lblReplacedLicenseApplicationID.Text = ReplacedLicense.ApplicationID.ToString();
             lblReplacedLicenseID.Text = ReplacedLicense.LicenseID.ToString();
             _ReplacedLicenseID = ReplacedLicense.LicenseID;
-            MessageBox.Show("License Replaced Successfully with ID = " + _ReplacedLicenseID, "License Issued", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("License Replaced Successfully with ID = " + _ReplacedLicenseID, "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
             LlblShowNewLicenseInformation.Enabled = true;
             btnIssueReplacement.Enabled = false;
             ctrlDriverDetailsCardWithFilter.EnableFilter = false;

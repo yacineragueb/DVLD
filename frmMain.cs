@@ -24,7 +24,7 @@ namespace DVLD_project
     public partial class frmMain : Form
     {
         private frmLogin _frmLogin;
-        public frmMain( frmLogin LoginForm)
+        public frmMain(frmLogin LoginForm)
         {
             InitializeComponent();
             _frmLogin = LoginForm;
@@ -130,6 +130,12 @@ namespace DVLD_project
         private void detainLicenseToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmDetainLicense frm = new frmDetainLicense();
+            frm.ShowDialog();
+        }
+
+        private void releaseDetainedLicenseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmReleaseDetainedLicenseApplication frm = new frmReleaseDetainedLicenseApplication();
             frm.ShowDialog();
         }
     }

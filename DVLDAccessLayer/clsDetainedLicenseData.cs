@@ -11,6 +11,70 @@ namespace DVLDAccessLayer
 {
     public class clsDetainedLicenseData
     {
+        public static bool GetDetainedLicenseInfoByLicenseID(int LicenseID,
+         ref int DetainID, ref DateTime DetainDate,
+         ref decimal FineFees, ref int CreatedByUserID,
+         ref bool IsReleased, ref DateTime ReleaseDate,
+         ref int ReleasedByUserID, ref int ReleaseApplicationID)
+        {
+            bool isFound = false;
+
+            using (SqlConnection connection = new SqlConnection(clsDVLDAcessLayerSettings.connectionString))
+            {
+                string query = "SELECT top 1 * FROM DetainedLicenses WHERE LicenseID = @LicenseID order by DetainID desc";
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@LicenseID", LicenseID);
+
+                    try
+                    {
+                        connection.Open();
+                        SqlDataReader reader = command.ExecuteReader();
+
+                        if (reader.Read())
+                        {
+                            isFound = true;
+
+                            DetainID = (int)reader["DetainID"];
+                            DetainDate = (DateTime)reader["DetainDate"];
+                            FineFees = Convert.ToDecimal(reader["FineFees"]);
+                            CreatedByUserID = (int)reader["CreatedByUserID"];
+
+                            IsReleased = (bool)reader["IsReleased"];
+
+                            if (reader["ReleaseDate"] == DBNull.Value)
+
+                                ReleaseDate = DateTime.MaxValue;
+                            else
+                                ReleaseDate = (DateTime)reader["ReleaseDate"];
+
+
+                            if (reader["ReleasedByUserID"] == DBNull.Value)
+                                ReleasedByUserID = -1;
+                            else
+                                ReleasedByUserID = (int)reader["ReleasedByUserID"];
+
+                            if (reader["ReleaseApplicationID"] == DBNull.Value)
+                                ReleaseApplicationID = -1;
+                            else
+                                ReleaseApplicationID = (int)reader["ReleaseApplicationID"];
+                        }
+                        else
+                        {
+                            isFound = false;
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        isFound = false;
+                    }
+                }
+            }
+
+            return isFound;
+        }
+
         public static bool UpdateDetainedLicense(int DetainID,
             int LicenseID, DateTime DetainDate,
             decimal FineFees, int CreatedByUserID)
@@ -111,7 +175,7 @@ namespace DVLDAccessLayer
                               SET IsReleased = 1, 
                               ReleaseDate = @ReleaseDate, 
                               ReleaseApplicationID = @ReleaseApplicationID,
-                              ReleasedByUserID = @ReleasedByUserID,
+                              ReleasedByUserID = @ReleasedByUserID
                               WHERE DetainID = @DetainID;";
 
                 using (SqlCommand command = new SqlCommand(query, connection))

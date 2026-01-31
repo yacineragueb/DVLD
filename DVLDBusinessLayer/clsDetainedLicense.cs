@@ -19,7 +19,6 @@ namespace DVLDBusinessLayer
 
         public int DetainID { get; set; }
         public int LicenseID { get; set; }
-        public clsLicense _LicenseInfo;
         public DateTime DetainDate { get; set; }
         public decimal FineFees { get; set; }
         public int CreatedByUserID { get; set; }
@@ -57,7 +56,6 @@ namespace DVLDBusinessLayer
             this.ReleasedByUserID = ReleasedByUserID;
 
             _CreatedByUserInfo = clsUser.Find(this.CreatedByUserID);
-            _LicenseInfo = clsLicense.Find(this.LicenseID);
 
             _Mode = enMode.Update;
         }
@@ -96,7 +94,7 @@ namespace DVLDBusinessLayer
             return false;
         }
     
-        public clsDetainedLicense Find(int DetainID)
+        public static clsDetainedLicense Find(int DetainID)
         {
             int LicenseID = -1;
             DateTime DetainDate = DateTime.Now;
@@ -117,6 +115,31 @@ namespace DVLDBusinessLayer
             }
         }
 
+        public static clsDetainedLicense FindByLicenseID(int LicenseID)
+        {
+            int DetainID = -1;
+            DateTime DetainDate = DateTime.Now;
+            decimal FineFees = 0;
+            int CreatedByUserID = -1;
+            bool IsReleased = false;
+            DateTime ReleaseDate = DateTime.Now;
+            int ReleaseApplicationID = -1;
+            int ReleasedByUserID = -1;
+
+            if (clsDetainedLicenseData.GetDetainedLicenseInfoByLicenseID(LicenseID,
+            ref DetainID, ref DetainDate,
+            ref FineFees, ref CreatedByUserID,
+            ref IsReleased, ref ReleaseDate,
+            ref ReleasedByUserID, ref ReleaseApplicationID))
+            {
+                return new clsDetainedLicense(DetainID, LicenseID, DetainDate, FineFees, CreatedByUserID, IsReleased, ReleaseDate, ReleaseApplicationID, ReleasedByUserID);
+            }
+            else
+            {
+                return null;
+            }
+        }
+
         public static DataTable GetAllDetainedLicenses()
         {
             return clsDetainedLicenseData.GetAllDetainedLicenses();
@@ -125,6 +148,12 @@ namespace DVLDBusinessLayer
         public static bool IsLicenseDetained(int LicenseID)
         {
             return clsDetainedLicenseData.IsLicenseDetained(LicenseID);
+        }
+
+        public bool ReleaseDetainedLicense(int ReleasedByUserID, int ReleaseApplicationID)
+        {
+            return clsDetainedLicenseData.ReleaseDetainedLicense(this.DetainID,
+                   ReleasedByUserID, ReleaseApplicationID);
         }
     }
 }
