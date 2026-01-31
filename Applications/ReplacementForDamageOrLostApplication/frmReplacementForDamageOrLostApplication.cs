@@ -89,6 +89,18 @@ namespace DVLD_project.Applications.ReplacementForDamageOrLost
             btnIssueReplacement.Enabled = true;
         }
 
+        private clsLicense.enIssueReason _GetIssueReason()
+        {
+            if (rbDamagedLicense.Checked)
+            {
+                return clsLicense.enIssueReason.ReplacementForDamage;
+            }
+            else
+            {
+                return clsLicense.enIssueReason.ReplacementForLost;
+            }
+        }
+
         private void btnIssueReplacement_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("Are you sure you want to replace the license?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
@@ -98,13 +110,7 @@ namespace DVLD_project.Applications.ReplacementForDamageOrLost
 
             clsLicense ReplacedLicense;
 
-            if (rbDamagedLicense.Checked)
-            {
-                ReplacedLicense = ctrlDriverDetailsCardWithFilter.SelectedLicenseInfo.ReplaceDamagedLicense(clsGlobal.CurrentUser.UserID);
-            } else
-            {
-                ReplacedLicense = ctrlDriverDetailsCardWithFilter.SelectedLicenseInfo.ReplaceLostLicense(clsGlobal.CurrentUser.UserID);
-            }
+            ReplacedLicense = ctrlDriverDetailsCardWithFilter.SelectedLicenseInfo.ReplaceLicense(clsGlobal.CurrentUser.UserID, _GetIssueReason());
 
             if (ReplacedLicense == null)
             {

@@ -138,5 +138,17 @@ namespace DVLD_project
             frmReleaseDetainedLicenseApplication frm = new frmReleaseDetainedLicenseApplication();
             frm.ShowDialog();
         }
+
+        private void retakeTestToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmListLocalDrivingLicenseApplications frm = new frmListLocalDrivingLicenseApplications();
+            frm.ShowDialog();
+        }
+
+        private void releaseDetainedDrivingLicenseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmReleaseDetainedLicenseApplication frm = new frmReleaseDetainedLicenseApplication();
+            frm.ShowDialog();
+        }
     }
 }

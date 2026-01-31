@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.txtbFilter = new System.Windows.Forms.TextBox();
             this.cbFilter = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -35,9 +36,13 @@
             this.lblRecords = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.dgvDriversTable = new System.Windows.Forms.DataGridView();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.showPersonDetailsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.showPersonLicenseHistoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnClose = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDriversTable)).BeginInit();
+            this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -117,6 +122,7 @@
             this.dgvDriversTable.AllowUserToOrderColumns = true;
             this.dgvDriversTable.BackgroundColor = System.Drawing.Color.White;
             this.dgvDriversTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvDriversTable.ContextMenuStrip = this.contextMenuStrip1;
             this.dgvDriversTable.Location = new System.Drawing.Point(15, 180);
             this.dgvDriversTable.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dgvDriversTable.Name = "dgvDriversTable";
@@ -125,6 +131,30 @@
             this.dgvDriversTable.RowTemplate.Height = 24;
             this.dgvDriversTable.Size = new System.Drawing.Size(1142, 262);
             this.dgvDriversTable.TabIndex = 12;
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.showPersonDetailsToolStripMenuItem,
+            this.showPersonLicenseHistoryToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(296, 92);
+            // 
+            // showPersonDetailsToolStripMenuItem
+            // 
+            this.showPersonDetailsToolStripMenuItem.Name = "showPersonDetailsToolStripMenuItem";
+            this.showPersonDetailsToolStripMenuItem.Size = new System.Drawing.Size(295, 30);
+            this.showPersonDetailsToolStripMenuItem.Text = "Show Person Details";
+            this.showPersonDetailsToolStripMenuItem.Click += new System.EventHandler(this.showPersonDetailsToolStripMenuItem_Click);
+            // 
+            // showPersonLicenseHistoryToolStripMenuItem
+            // 
+            this.showPersonLicenseHistoryToolStripMenuItem.Name = "showPersonLicenseHistoryToolStripMenuItem";
+            this.showPersonLicenseHistoryToolStripMenuItem.Size = new System.Drawing.Size(295, 30);
+            this.showPersonLicenseHistoryToolStripMenuItem.Text = "Show Person License History";
+            this.showPersonLicenseHistoryToolStripMenuItem.Click += new System.EventHandler(this.showPersonLicenseHistoryToolStripMenuItem_Click);
             // 
             // btnClose
             // 
@@ -175,6 +205,7 @@
             this.Text = "Manage Drivers";
             this.Load += new System.EventHandler(this.frmListDrivers_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDriversTable)).EndInit();
+            this.contextMenuStrip1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -192,5 +223,8 @@
         private System.Windows.Forms.DataGridView dgvDriversTable;
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem showPersonDetailsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem showPersonLicenseHistoryToolStripMenuItem;
     }
 }

@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DVLD_project.Applications.InternationalLicenceApplication;
+using DVLD_project.Licenses;
 using DVLDBusinessLayer;
 
 namespace DVLD_project.Drivers
@@ -142,5 +144,24 @@ namespace DVLD_project.Drivers
 
             lblRecords.Text = dgvDriversTable.Rows.Count.ToString();
         }
+
+        private void showPersonDetailsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int PersonID = (int)dgvDriversTable.CurrentRow.Cells[1].Value;
+            frmShowPersonDetails frm = new frmShowPersonDetails(PersonID);
+            frm.ShowDialog();
+            //refresh
+            frmListDrivers_Load(null, null);
+        }
+
+        private void showPersonLicenseHistoryToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int PersonID = (int)dgvDriversTable.CurrentRow.Cells[1].Value;
+            frmShowDriverLicensesHistory frm = new frmShowDriverLicensesHistory(PersonID);
+            frm.ShowDialog();
+            //refresh
+            frmListDrivers_Load(null, null);
+        }
+
     }
 }
