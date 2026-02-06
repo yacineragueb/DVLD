@@ -1,7 +1,6 @@
 ﻿using Microsoft.Win32;
 using System;
 using System.IO;
-using System.Windows.Forms;
 
 namespace DVLDBusinessLayer
 {
@@ -27,6 +26,7 @@ namespace DVLDBusinessLayer
                 return true;
             } catch (Exception ex)
             {
+                clsLogger.LogError(ex, $"CreateFolderIfDoesNotExist: {FolderPath}");
                 return false;
             }
         }
@@ -57,6 +57,7 @@ namespace DVLDBusinessLayer
             }
             catch (Exception ex)
             {
+                clsLogger.LogError(ex, $"CopyImage failed: {sourceFile}");
                 return false;
             }
 
@@ -74,7 +75,7 @@ namespace DVLDBusinessLayer
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                clsLogger.LogError(ex, "SaveCredentials failed");
             }
         }
 
@@ -95,7 +96,7 @@ namespace DVLDBusinessLayer
 
             } catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                clsLogger.LogError(ex, "LoadCredentials failed");
                 return (null, null);
             }
         }
@@ -115,7 +116,7 @@ namespace DVLDBusinessLayer
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                clsLogger.LogError(ex, "DeleteCredentials failed");
             }
         }
     }

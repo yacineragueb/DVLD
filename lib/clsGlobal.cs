@@ -10,6 +10,6 @@ namespace DVLDBusinessLayer
     {
         public static clsUser CurrentUser;
 
-        public static string KeyPath = @"SOFTWARE\DVLD";
+        public static readonly string KeyPath = @"SOFTWARE\DVLD";
     }
 }
