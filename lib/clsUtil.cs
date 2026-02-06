@@ -1,10 +1,15 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.IO;
+using System.Windows.Forms;
 
 namespace DVLDBusinessLayer
 {
     public class clsUtil
     {
+        private static string _UsernameValueName = "Username";
+        private static string _PasswordValueName = "Password";
+
         public static string GenerateGUID()
         {
             return Guid.NewGuid().ToString();
@@ -59,27 +64,59 @@ namespace DVLDBusinessLayer
 
         public static void SaveCredentials(string Username, string Password)
         {
-            using (StreamWriter writer = new StreamWriter(clsGlobal.FilePath))
+            try
             {
-                writer.WriteLine(Username);
-                writer.WriteLine(Password);
+                using (RegistryKey key = Registry.CurrentUser.CreateSubKey(clsGlobal.KeyPath))
+                {
+                    key.SetValue(_UsernameValueName, Username, RegistryValueKind.String);
+                    key.SetValue(_PasswordValueName, Password, RegistryValueKind.String);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         public static (string Username, string Password) LoadCredentails()
         {
-            if(File.Exists(clsGlobal.FilePath))
+            try
             {
-                string[] lines = File.ReadAllLines(clsGlobal.FilePath);
-
-                if(lines.Length >= 2)
+                using (RegistryKey key = Registry.CurrentUser.OpenSubKey(clsGlobal.KeyPath))
                 {
-                    return (lines[0], lines[1]);
+                    if (key == null)
+                        return (null, null);
+
+                    string username = key.GetValue(_UsernameValueName) as string;
+                    string password = key.GetValue(_PasswordValueName) as string;
+
+                    return (username, password);
                 }
 
+            } catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return (null, null);
             }
+        }
 
-            return (null, null);
+        public static void DeleteCredentials()
+        {
+            try
+            {
+                using (RegistryKey key = Registry.CurrentUser.OpenSubKey(clsGlobal.KeyPath, true))
+                {
+                    if (key == null)
+                        return;
+
+                    key.DeleteValue(_UsernameValueName, false);
+                    key.DeleteValue(_PasswordValueName, false);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

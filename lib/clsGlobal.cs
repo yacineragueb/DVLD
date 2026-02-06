@@ -10,6 +10,6 @@ namespace DVLDBusinessLayer
     {
         public static clsUser CurrentUser;
 
-        public static string FilePath = "credentials.txt";
+        public static string KeyPath = @"SOFTWARE\DVLD";
     }
 }

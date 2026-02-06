@@ -49,14 +49,12 @@ namespace DVLD_project
             string Username = txtbUsername.Text;
             string Password = txtbPassword.Text;
 
-            if(ckbRememberMe.Checked)
+            if (ckbRememberMe.Checked)
             {
                 clsUtil.SaveCredentials(Username, Password);
             } else
             {
-                if(File.Exists(clsGlobal.FilePath)) {
-                    File.Delete(clsGlobal.FilePath);
-                }
+                clsUtil.DeleteCredentials();
             }
         }
 
