@@ -37,8 +37,10 @@
             this.PersonalInfo = new System.Windows.Forms.TabPage();
             this.btnNext = new System.Windows.Forms.Button();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
-            this.ctrlPersonDetailsWithFilter1 = new DVLD_project.People.Controls.ctrlPersonDetailsWithFilter();
             this.LoginInfo = new System.Windows.Forms.TabPage();
+            this.btnConfirmPasswordVisible = new System.Windows.Forms.Button();
+            this.imageList2 = new System.Windows.Forms.ImageList(this.components);
+            this.btnPasswordVisible = new System.Windows.Forms.Button();
             this.ckbIsActive = new System.Windows.Forms.CheckBox();
             this.lblUserID = new System.Windows.Forms.Label();
             this.txtbConfirmPassword = new System.Windows.Forms.TextBox();
@@ -49,13 +51,12 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
+            this.lblPassword = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.btnPasswordVisible = new System.Windows.Forms.Button();
-            this.btnConfirmPasswordVisible = new System.Windows.Forms.Button();
-            this.imageList2 = new System.Windows.Forms.ImageList(this.components);
+            this.ctrlPersonDetailsWithFilter1 = new DVLD_project.People.Controls.ctrlPersonDetailsWithFilter();
+            this.gbPasswordInformation = new System.Windows.Forms.GroupBox();
             this.tbUserInfo.SuspendLayout();
             this.PersonalInfo.SuspendLayout();
             this.LoginInfo.SuspendLayout();
@@ -64,6 +65,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
+            this.gbPasswordInformation.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblTitle
@@ -82,7 +84,7 @@
             this.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnClose.Font = new System.Drawing.Font("Poppins Medium", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClose.ForeColor = System.Drawing.Color.White;
-            this.btnClose.Location = new System.Drawing.Point(748, 660);
+            this.btnClose.Location = new System.Drawing.Point(748, 561);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(110, 58);
             this.btnClose.TabIndex = 7;
@@ -96,7 +98,7 @@
             this.btnSave.Enabled = false;
             this.btnSave.Font = new System.Drawing.Font("Poppins Medium", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSave.ForeColor = System.Drawing.Color.White;
-            this.btnSave.Location = new System.Drawing.Point(632, 660);
+            this.btnSave.Location = new System.Drawing.Point(632, 561);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(110, 58);
             this.btnSave.TabIndex = 6;
@@ -112,7 +114,7 @@
             this.tbUserInfo.Location = new System.Drawing.Point(12, 66);
             this.tbUserInfo.Name = "tbUserInfo";
             this.tbUserInfo.SelectedIndex = 0;
-            this.tbUserInfo.Size = new System.Drawing.Size(850, 588);
+            this.tbUserInfo.Size = new System.Drawing.Size(850, 480);
             this.tbUserInfo.TabIndex = 17;
             this.tbUserInfo.SelectedIndexChanged += new System.EventHandler(this.tbUserDetails_SelectedIndexChange);
             // 
@@ -145,193 +147,32 @@
             this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
             this.imageList1.Images.SetKeyName(0, "Arrow.png");
             // 
-            // ctrlPersonDetailsWithFilter1
-            // 
-            this.ctrlPersonDetailsWithFilter1.BackColor = System.Drawing.Color.White;
-            this.ctrlPersonDetailsWithFilter1.Location = new System.Drawing.Point(3, 5);
-            this.ctrlPersonDetailsWithFilter1.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
-            this.ctrlPersonDetailsWithFilter1.Name = "ctrlPersonDetailsWithFilter1";
-            this.ctrlPersonDetailsWithFilter1.Size = new System.Drawing.Size(833, 532);
-            this.ctrlPersonDetailsWithFilter1.TabIndex = 0;
-            // 
             // LoginInfo
             // 
-            this.LoginInfo.Controls.Add(this.btnConfirmPasswordVisible);
-            this.LoginInfo.Controls.Add(this.btnPasswordVisible);
+            this.LoginInfo.Controls.Add(this.gbPasswordInformation);
             this.LoginInfo.Controls.Add(this.ckbIsActive);
             this.LoginInfo.Controls.Add(this.lblUserID);
-            this.LoginInfo.Controls.Add(this.txtbConfirmPassword);
-            this.LoginInfo.Controls.Add(this.txtbPassword);
             this.LoginInfo.Controls.Add(this.txtbUsername);
-            this.LoginInfo.Controls.Add(this.pictureBox4);
-            this.LoginInfo.Controls.Add(this.pictureBox3);
             this.LoginInfo.Controls.Add(this.pictureBox2);
             this.LoginInfo.Controls.Add(this.pictureBox1);
-            this.LoginInfo.Controls.Add(this.label4);
-            this.LoginInfo.Controls.Add(this.label3);
             this.LoginInfo.Controls.Add(this.label2);
             this.LoginInfo.Controls.Add(this.label1);
             this.LoginInfo.Location = new System.Drawing.Point(4, 32);
             this.LoginInfo.Name = "LoginInfo";
             this.LoginInfo.Padding = new System.Windows.Forms.Padding(3);
-            this.LoginInfo.Size = new System.Drawing.Size(842, 552);
+            this.LoginInfo.Size = new System.Drawing.Size(842, 444);
             this.LoginInfo.TabIndex = 1;
             this.LoginInfo.Text = "Login Info";
             this.LoginInfo.UseVisualStyleBackColor = true;
-            // 
-            // ckbIsActive
-            // 
-            this.ckbIsActive.AutoSize = true;
-            this.ckbIsActive.Checked = true;
-            this.ckbIsActive.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.ckbIsActive.Location = new System.Drawing.Point(312, 344);
-            this.ckbIsActive.Name = "ckbIsActive";
-            this.ckbIsActive.Size = new System.Drawing.Size(85, 27);
-            this.ckbIsActive.TabIndex = 5;
-            this.ckbIsActive.Text = "Is Active";
-            this.ckbIsActive.UseVisualStyleBackColor = true;
-            // 
-            // lblUserID
-            // 
-            this.lblUserID.AutoSize = true;
-            this.lblUserID.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUserID.Location = new System.Drawing.Point(307, 94);
-            this.lblUserID.Name = "lblUserID";
-            this.lblUserID.Size = new System.Drawing.Size(40, 26);
-            this.lblUserID.TabIndex = 11;
-            this.lblUserID.Text = "N/A";
-            // 
-            // txtbConfirmPassword
-            // 
-            this.txtbConfirmPassword.Location = new System.Drawing.Point(311, 280);
-            this.txtbConfirmPassword.Name = "txtbConfirmPassword";
-            this.txtbConfirmPassword.PasswordChar = '*';
-            this.txtbConfirmPassword.Size = new System.Drawing.Size(220, 27);
-            this.txtbConfirmPassword.TabIndex = 3;
-            this.txtbConfirmPassword.Validating += new System.ComponentModel.CancelEventHandler(this.txtbConfirmPassword_Validating);
-            // 
-            // txtbPassword
-            // 
-            this.txtbPassword.Location = new System.Drawing.Point(311, 218);
-            this.txtbPassword.Name = "txtbPassword";
-            this.txtbPassword.PasswordChar = '*';
-            this.txtbPassword.Size = new System.Drawing.Size(220, 27);
-            this.txtbPassword.TabIndex = 1;
-            this.txtbPassword.Tag = "Password";
-            this.txtbPassword.Validating += new System.ComponentModel.CancelEventHandler(this.TextBox_Validating);
-            // 
-            // txtbUsername
-            // 
-            this.txtbUsername.Location = new System.Drawing.Point(311, 156);
-            this.txtbUsername.Name = "txtbUsername";
-            this.txtbUsername.Size = new System.Drawing.Size(220, 27);
-            this.txtbUsername.TabIndex = 0;
-            this.txtbUsername.Tag = "Username";
-            this.txtbUsername.Validating += new System.ComponentModel.CancelEventHandler(this.TextBox_Validating);
-            // 
-            // pictureBox4
-            // 
-            this.pictureBox4.Image = global::DVLD_project.Properties.Resources.Password;
-            this.pictureBox4.Location = new System.Drawing.Point(249, 276);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(40, 34);
-            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox4.TabIndex = 7;
-            this.pictureBox4.TabStop = false;
-            // 
-            // pictureBox3
-            // 
-            this.pictureBox3.Image = global::DVLD_project.Properties.Resources.Password;
-            this.pictureBox3.Location = new System.Drawing.Point(249, 214);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(40, 34);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox3.TabIndex = 6;
-            this.pictureBox3.TabStop = false;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Image = global::DVLD_project.Properties.Resources.User;
-            this.pictureBox2.Location = new System.Drawing.Point(249, 152);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(40, 34);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 5;
-            this.pictureBox2.TabStop = false;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::DVLD_project.Properties.Resources.ID_Card;
-            this.pictureBox1.Location = new System.Drawing.Point(247, 90);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(40, 34);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 4;
-            this.pictureBox1.TabStop = false;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Poppins Medium", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(54, 280);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(173, 26);
-            this.label4.TabIndex = 3;
-            this.label4.Text = "Confirm Password:";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Poppins Medium", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(129, 218);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(98, 26);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Password:";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Poppins Medium", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(119, 156);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(108, 26);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Username: ";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Poppins Medium", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(146, 94);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(81, 26);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "User ID: ";
-            // 
-            // errorProvider1
-            // 
-            this.errorProvider1.ContainerControl = this;
-            // 
-            // btnPasswordVisible
-            // 
-            this.btnPasswordVisible.ImageIndex = 0;
-            this.btnPasswordVisible.ImageList = this.imageList2;
-            this.btnPasswordVisible.Location = new System.Drawing.Point(555, 216);
-            this.btnPasswordVisible.Name = "btnPasswordVisible";
-            this.btnPasswordVisible.Size = new System.Drawing.Size(55, 31);
-            this.btnPasswordVisible.TabIndex = 2;
-            this.btnPasswordVisible.UseVisualStyleBackColor = true;
-            this.btnPasswordVisible.Click += new System.EventHandler(this.btnPasswordVisible_Click);
             // 
             // btnConfirmPasswordVisible
             // 
             this.btnConfirmPasswordVisible.ImageIndex = 0;
             this.btnConfirmPasswordVisible.ImageList = this.imageList2;
-            this.btnConfirmPasswordVisible.Location = new System.Drawing.Point(555, 278);
+            this.btnConfirmPasswordVisible.Location = new System.Drawing.Point(549, 109);
             this.btnConfirmPasswordVisible.Name = "btnConfirmPasswordVisible";
             this.btnConfirmPasswordVisible.Size = new System.Drawing.Size(55, 31);
-            this.btnConfirmPasswordVisible.TabIndex = 4;
+            this.btnConfirmPasswordVisible.TabIndex = 5;
             this.btnConfirmPasswordVisible.UseVisualStyleBackColor = true;
             this.btnConfirmPasswordVisible.Click += new System.EventHandler(this.btnConfirmPasswordVisible_Click);
             // 
@@ -342,6 +183,177 @@
             this.imageList2.Images.SetKeyName(0, "ClosedEye.png");
             this.imageList2.Images.SetKeyName(1, "OpenedEye.png");
             // 
+            // btnPasswordVisible
+            // 
+            this.btnPasswordVisible.ImageIndex = 0;
+            this.btnPasswordVisible.ImageList = this.imageList2;
+            this.btnPasswordVisible.Location = new System.Drawing.Point(549, 47);
+            this.btnPasswordVisible.Name = "btnPasswordVisible";
+            this.btnPasswordVisible.Size = new System.Drawing.Size(55, 31);
+            this.btnPasswordVisible.TabIndex = 3;
+            this.btnPasswordVisible.UseVisualStyleBackColor = true;
+            this.btnPasswordVisible.Click += new System.EventHandler(this.btnPasswordVisible_Click);
+            // 
+            // ckbIsActive
+            // 
+            this.ckbIsActive.AutoSize = true;
+            this.ckbIsActive.Checked = true;
+            this.ckbIsActive.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.ckbIsActive.Location = new System.Drawing.Point(312, 364);
+            this.ckbIsActive.Name = "ckbIsActive";
+            this.ckbIsActive.Size = new System.Drawing.Size(85, 27);
+            this.ckbIsActive.TabIndex = 6;
+            this.ckbIsActive.Text = "Is Active";
+            this.ckbIsActive.UseVisualStyleBackColor = true;
+            // 
+            // lblUserID
+            // 
+            this.lblUserID.AutoSize = true;
+            this.lblUserID.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUserID.Location = new System.Drawing.Point(307, 54);
+            this.lblUserID.Name = "lblUserID";
+            this.lblUserID.Size = new System.Drawing.Size(40, 26);
+            this.lblUserID.TabIndex = 11;
+            this.lblUserID.Text = "N/A";
+            // 
+            // txtbConfirmPassword
+            // 
+            this.txtbConfirmPassword.Location = new System.Drawing.Point(305, 111);
+            this.txtbConfirmPassword.Name = "txtbConfirmPassword";
+            this.txtbConfirmPassword.PasswordChar = '*';
+            this.txtbConfirmPassword.Size = new System.Drawing.Size(220, 27);
+            this.txtbConfirmPassword.TabIndex = 4;
+            this.txtbConfirmPassword.Validating += new System.ComponentModel.CancelEventHandler(this.txtbConfirmPassword_Validating);
+            // 
+            // txtbPassword
+            // 
+            this.txtbPassword.Location = new System.Drawing.Point(305, 49);
+            this.txtbPassword.Name = "txtbPassword";
+            this.txtbPassword.PasswordChar = '*';
+            this.txtbPassword.Size = new System.Drawing.Size(220, 27);
+            this.txtbPassword.TabIndex = 2;
+            this.txtbPassword.Tag = "Password";
+            this.txtbPassword.Validating += new System.ComponentModel.CancelEventHandler(this.TextBox_Validating);
+            // 
+            // txtbUsername
+            // 
+            this.txtbUsername.Location = new System.Drawing.Point(311, 116);
+            this.txtbUsername.Name = "txtbUsername";
+            this.txtbUsername.Size = new System.Drawing.Size(220, 27);
+            this.txtbUsername.TabIndex = 0;
+            this.txtbUsername.Tag = "Username";
+            this.txtbUsername.Validating += new System.ComponentModel.CancelEventHandler(this.TextBox_Validating);
+            // 
+            // pictureBox4
+            // 
+            this.pictureBox4.Image = global::DVLD_project.Properties.Resources.Password;
+            this.pictureBox4.Location = new System.Drawing.Point(243, 107);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(40, 34);
+            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox4.TabIndex = 7;
+            this.pictureBox4.TabStop = false;
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Image = global::DVLD_project.Properties.Resources.Password;
+            this.pictureBox3.Location = new System.Drawing.Point(243, 45);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(40, 34);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox3.TabIndex = 6;
+            this.pictureBox3.TabStop = false;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::DVLD_project.Properties.Resources.User;
+            this.pictureBox2.Location = new System.Drawing.Point(249, 112);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(40, 34);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 5;
+            this.pictureBox2.TabStop = false;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::DVLD_project.Properties.Resources.ID_Card;
+            this.pictureBox1.Location = new System.Drawing.Point(247, 50);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(40, 34);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 4;
+            this.pictureBox1.TabStop = false;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Poppins Medium", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(48, 111);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(173, 26);
+            this.label4.TabIndex = 3;
+            this.label4.Text = "Confirm Password:";
+            // 
+            // lblPassword
+            // 
+            this.lblPassword.AutoSize = true;
+            this.lblPassword.Font = new System.Drawing.Font("Poppins Medium", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPassword.Location = new System.Drawing.Point(123, 49);
+            this.lblPassword.Name = "lblPassword";
+            this.lblPassword.Size = new System.Drawing.Size(98, 26);
+            this.lblPassword.TabIndex = 2;
+            this.lblPassword.Text = "Password:";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Poppins Medium", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(119, 116);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(108, 26);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "Username: ";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Poppins Medium", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(146, 54);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(81, 26);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "User ID: ";
+            // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
+            // ctrlPersonDetailsWithFilter1
+            // 
+            this.ctrlPersonDetailsWithFilter1.BackColor = System.Drawing.Color.White;
+            this.ctrlPersonDetailsWithFilter1.Location = new System.Drawing.Point(3, 5);
+            this.ctrlPersonDetailsWithFilter1.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.ctrlPersonDetailsWithFilter1.Name = "ctrlPersonDetailsWithFilter1";
+            this.ctrlPersonDetailsWithFilter1.Size = new System.Drawing.Size(833, 532);
+            this.ctrlPersonDetailsWithFilter1.TabIndex = 0;
+            // 
+            // gbPasswordInformation
+            // 
+            this.gbPasswordInformation.Controls.Add(this.txtbConfirmPassword);
+            this.gbPasswordInformation.Controls.Add(this.btnConfirmPasswordVisible);
+            this.gbPasswordInformation.Controls.Add(this.lblPassword);
+            this.gbPasswordInformation.Controls.Add(this.btnPasswordVisible);
+            this.gbPasswordInformation.Controls.Add(this.label4);
+            this.gbPasswordInformation.Controls.Add(this.pictureBox3);
+            this.gbPasswordInformation.Controls.Add(this.pictureBox4);
+            this.gbPasswordInformation.Controls.Add(this.txtbPassword);
+            this.gbPasswordInformation.Location = new System.Drawing.Point(5, 163);
+            this.gbPasswordInformation.Name = "gbPasswordInformation";
+            this.gbPasswordInformation.Size = new System.Drawing.Size(832, 174);
+            this.gbPasswordInformation.TabIndex = 1;
+            this.gbPasswordInformation.TabStop = false;
+            this.gbPasswordInformation.Text = "Password Information";
+            // 
             // frmAddEditUser
             // 
             this.AcceptButton = this.btnSave;
@@ -349,7 +361,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.CancelButton = this.btnClose;
-            this.ClientSize = new System.Drawing.Size(870, 727);
+            this.ClientSize = new System.Drawing.Size(870, 632);
             this.Controls.Add(this.tbUserInfo);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnClose);
@@ -368,6 +380,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
+            this.gbPasswordInformation.ResumeLayout(false);
+            this.gbPasswordInformation.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -384,7 +398,7 @@
         private People.Controls.ctrlPersonDetailsWithFilter ctrlPersonDetailsWithFilter1;
         private System.Windows.Forms.Button btnNext;
         private System.Windows.Forms.ImageList imageList1;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lblPassword;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label4;
@@ -401,5 +415,6 @@
         private System.Windows.Forms.Button btnPasswordVisible;
         private System.Windows.Forms.Button btnConfirmPasswordVisible;
         private System.Windows.Forms.ImageList imageList2;
+        private System.Windows.Forms.GroupBox gbPasswordInformation;
     }
 }

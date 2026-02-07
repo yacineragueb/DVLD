@@ -1,16 +1,7 @@
-﻿using ContactsBusinessLayer;
-using DVLD_project.Properties;
-using DVLDBusinessLayer;
+﻿using DVLDBusinessLayer;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using static DVLDBusinessLayer.clsPerson;
 
 namespace DVLD_project.Users
 {
@@ -90,8 +81,9 @@ namespace DVLD_project.Users
             lblUserID.Text = _UserID.ToString();
             ctrlPersonDetailsWithFilter1.LoadData(_User.PersonID);
             txtbUsername.Text = _User.UserName;
+            gbPasswordInformation.Visible = false;
             txtbPassword.Text = _User.Password;
-            txtbConfirmPassword.Text = txtbPassword.Text;
+            txtbConfirmPassword.Text = _User.Password;
             ckbIsActive.Checked = _User.IsActive;
         }
 
@@ -156,7 +148,7 @@ namespace DVLD_project.Users
                 }
                 else
                 {
-                    MessageBox.Show("Selected person already has a user, choose another one.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Selected person is already a user, choose another one.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     tbUserInfo.SelectedIndex = 0;
                 }
             }
@@ -183,7 +175,13 @@ namespace DVLD_project.Users
             int PersonID = ctrlPersonDetailsWithFilter1.GetSelectedPersonID();
 
             _User.UserName = txtbUsername.Text.Trim();
-            _User.Password = txtbPassword.Text.Trim();
+
+            if(_Mode == enMode.AddNew)
+            {
+                string Password = txtbPassword.Text.Trim();
+                _User.Password = clsUtil.ComputeHash(Password);
+            }
+
             _User.IsActive = ckbIsActive.Checked;
             _User.PersonID = PersonID;
             
@@ -193,6 +191,7 @@ namespace DVLD_project.Users
                 _Mode = enMode.Edit;
                 lblTitle.Text = "Edit User";
                 lblUserID.Text = _User.UserID.ToString();
+                gbPasswordInformation.Enabled = false;
 
                 MessageBox.Show("Data Saved Successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }

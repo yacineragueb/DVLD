@@ -1,13 +1,5 @@
 ﻿using DVLDBusinessLayer;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace DVLD_project
@@ -60,7 +52,7 @@ namespace DVLD_project
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            _User = clsUser.FindUserByUserNameAndPassword(txtbUsername.Text, txtbPassword.Text);
+            _User = clsUser.FindUserByUserNameAndPassword(txtbUsername.Text, clsUtil.ComputeHash(txtbPassword.Text));
 
             if(_User == null)
             {

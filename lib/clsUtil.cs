@@ -1,6 +1,8 @@
 ﻿using Microsoft.Win32;
 using System;
 using System.IO;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace DVLDBusinessLayer
 {
@@ -117,6 +119,16 @@ namespace DVLDBusinessLayer
             catch (Exception ex)
             {
                 clsLogger.LogError(ex, "DeleteCredentials failed");
+            }
+        }
+
+        public static string ComputeHash(string Input)
+        {
+            using (SHA256 sha256 = SHA256.Create())
+            {
+                byte[] hashBytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(Input));
+
+                return BitConverter.ToString(hashBytes).Replace("-", "").ToLower();
             }
         }
     }

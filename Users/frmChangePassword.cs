@@ -41,7 +41,9 @@ namespace DVLD_project.Users
                 return;
             }
 
-            _User.Password = txtbNewPassword.Text;
+            string Password = txtbNewPassword.Text;
+
+            _User.Password = clsUtil.ComputeHash(Password);
 
             if (_User.Save())
             {
@@ -53,7 +55,7 @@ namespace DVLD_project.Users
 
         private void ValidateCurrentPassword(object sender, CancelEventArgs e)
         {
-            if(txtbCurrentPassword.Text != _User.Password)
+            if(clsUtil.ComputeHash(txtbCurrentPassword.Text) != _User.Password)
             {
                 e.Cancel = true;
                 errorProvider1.SetError(txtbCurrentPassword, "Current password is incorrect!");
