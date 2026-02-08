@@ -37,6 +37,7 @@ namespace ContactsDataAccessLayer
                     }
                     catch (Exception ex)
                     {
+                        Logger.LogError(ex, "GetCountryInfoByName failed");
                         IsFound = false;
                     }
                 }
@@ -74,6 +75,7 @@ namespace ContactsDataAccessLayer
                     }
                     catch (Exception ex)
                     {
+                        Logger.LogError(ex, "GetCountryInfoByID failed");
                         IsFound = false;
                     }
                 }
@@ -101,9 +103,9 @@ namespace ContactsDataAccessLayer
                             }
                         }
                     } 
-                    catch
+                    catch (Exception ex) 
                     {
-
+                        Logger.LogError(ex, "GetAllCountries failed");
                     }
                 }
             }
@@ -129,7 +131,7 @@ namespace ContactsDataAccessLayer
                     }
                     catch (Exception ex)
                     {
-                        // Console.WriteLine("Error: " + ex.Message);
+                        Logger.LogError(ex, "IsCountryExistByID failed");
                         IsFound = false;
                     }
                 }
@@ -156,7 +158,7 @@ namespace ContactsDataAccessLayer
                     }
                     catch (Exception ex)
                     {
-                        // Console.WriteLine("Error: " + ex.Message);
+                        Logger.LogError(ex, "IsCountryExistByName failed");
                         IsFound = false;
                     }
                 }

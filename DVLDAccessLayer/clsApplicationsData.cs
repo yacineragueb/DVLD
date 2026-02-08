@@ -1,8 +1,5 @@
 ﻿using System;
-using System.CodeDom;
-using System.Data;
 using System.Data.SqlClient;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace DVLDAccessLayer
 {
@@ -42,6 +39,7 @@ namespace DVLDAccessLayer
                     }
                     catch (Exception ex)
                     {
+                        Logger.LogError(ex, "FindApplicationByID failed");
                         IsFound = false;
                     }
                 }
@@ -79,6 +77,7 @@ namespace DVLDAccessLayer
                         }
                     } catch (Exception ex)
                     {
+                        Logger.LogError(ex, "AddNewApplication failed");
                         ApplicationID = -1;
                     }
                 }
@@ -120,6 +119,7 @@ namespace DVLDAccessLayer
                     }
                     catch (Exception ex)
                     {
+                        Logger.LogError(ex, "UpdateApplication failed");
                         rowsAffected = 0;
                     }
                 }
@@ -162,7 +162,7 @@ namespace DVLDAccessLayer
                     }
                     catch (Exception ex)
                     {
-                        //Console.WriteLine("Error: " + ex.Message);
+                        Logger.LogError(ex, "GetActiveApplicationIDForLicenseClass failed");
                         return ActiveApplicationID;
                     }
                 }
@@ -191,6 +191,7 @@ namespace DVLDAccessLayer
                         rowsAffected = cmd.ExecuteNonQuery();
                     } catch (Exception ex)
                     {
+                        Logger.LogError(ex, "CancelApplication failed");
                         rowsAffected = -1;
                     }
                 }
@@ -219,6 +220,7 @@ namespace DVLDAccessLayer
                         rowsAffected = cmd.ExecuteNonQuery();
                     } catch (Exception ex)
                     {
+                        Logger.LogError(ex, "DeleteApplication failed");
                         rowsAffected = -1;
                     }
                 }

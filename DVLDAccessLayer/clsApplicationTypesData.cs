@@ -35,6 +35,7 @@ namespace DVLDAccessLayer
 
                     } catch (Exception ex)
                     {
+                        Logger.LogError(ex, "GetApplicationTypeByID failed");
                         IsFound = false;
                     }
                 }
@@ -72,6 +73,7 @@ namespace DVLDAccessLayer
 
                     } catch (Exception ex)
                     {
+                        Logger.LogError(ex, "UpdateApplicationType failed");
                         rowsAffected = 0;
                     }
                 }
@@ -105,7 +107,7 @@ namespace DVLDAccessLayer
                     }
                     catch (Exception ex)
                     {
-                        // Error!!!
+                        Logger.LogError(ex, "GetAllApplicationTypes failed");
                     }
                 }
 

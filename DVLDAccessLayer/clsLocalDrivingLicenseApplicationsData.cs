@@ -6,7 +6,6 @@ namespace DVLDAccessLayer
 {
     public class clsLocalDrivingLicenseApplicationsData
     {
-
         public static byte TotalTrialsPerTest(int LocalDrivingLicenseApplicationID, int TestTypeID)
         {
             byte TotalTrialsPerTest = 0;
@@ -40,6 +39,7 @@ namespace DVLDAccessLayer
 
                     catch (Exception ex)
                     {
+                        Logger.LogError(ex, "TotalTrialsPerTest failed");
                         TotalTrialsPerTest = 0;
                     }
                 }
@@ -82,6 +82,7 @@ namespace DVLDAccessLayer
 
                     catch (Exception ex)
                     {
+                        Logger.LogError(ex, "DoesAttendTestType failed");
                         IsFound = false;
                     }
                 }
@@ -120,6 +121,7 @@ namespace DVLDAccessLayer
 
                     } catch (Exception ex)
                     {
+                        Logger.LogError(ex, "HasAnActiveAppointment failed");
                         resutl = false;
                     }
                 }
@@ -158,6 +160,7 @@ namespace DVLDAccessLayer
 
                     } catch (Exception ex)
                     {
+                        Logger.LogError(ex, "DoesPassTestType failed");
                         result = false;
                     }
                 }
@@ -184,6 +187,7 @@ namespace DVLDAccessLayer
                         rowsAffected = cmd.ExecuteNonQuery();
                     } catch (Exception ex) 
                     {
+                        Logger.LogError(ex, "DeleteLocalDriverLicenseApplication failed");
                         rowsAffected = -1;
                     }
                 }
@@ -220,6 +224,7 @@ namespace DVLDAccessLayer
 
                     } catch (Exception ex)
                     {
+                        Logger.LogError(ex, "FindLDLApplicationByID failed");
                         IsFound = false;
                     }
                 }
@@ -252,6 +257,7 @@ namespace DVLDAccessLayer
 
                     } catch (Exception ex)
                     {
+                        Logger.LogError(ex, "AddNewLDLApplication failed");
                         LDLApplicationID = -1;
                     }
                 }
@@ -283,6 +289,7 @@ namespace DVLDAccessLayer
                         rowsAffected = cmd.ExecuteNonQuery();
                     } catch (Exception ex)
                     {
+                        Logger.LogError(ex, "UpdateLocalDrivingLicenseApplication failed");
                         rowsAffected = 0;
                     }
                 }
@@ -325,11 +332,10 @@ namespace DVLDAccessLayer
 
                     } catch (Exception ex)
                     {
-
+                        Logger.LogError(ex, "GetAllLocalDrivingLicenseApplication failed");
                     }
                 }
             }
-
 
             return dt;
         }
@@ -354,12 +360,13 @@ namespace DVLDAccessLayer
                         NumberOfPassedTest = (int)cmd.ExecuteScalar();
                     } catch (Exception ex)
                     {
+                        Logger.LogError(ex, "GetTheNumberOfPassedTest failed");
                         NumberOfPassedTest = 0;
                     }
                 } 
             }
 
-                return NumberOfPassedTest;
+            return NumberOfPassedTest;
         }
     }
 }

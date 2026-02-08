@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DVLDAccessLayer
 {
@@ -67,6 +62,7 @@ namespace DVLDAccessLayer
                     }
                     catch (Exception ex)
                     {
+                        Logger.LogError(ex, "GetDetainedLicenseInfoByLicenseID failed");
                         isFound = false;
                     }
                 }
@@ -106,6 +102,7 @@ namespace DVLDAccessLayer
                     }
                     catch (Exception ex)
                     {
+                        Logger.LogError(ex, "UpdateDetainedLicense failed");
                         return false;
                     }
                 }
@@ -157,6 +154,7 @@ namespace DVLDAccessLayer
 
                     catch (Exception ex)
                     {
+                        Logger.LogError(ex, "AddNewDetainedLicense failed");
                         DetainID = -1;
                     }
                 }
@@ -192,6 +190,7 @@ namespace DVLDAccessLayer
                     }
                     catch (Exception ex)
                     {
+                        Logger.LogError(ex, "ReleaseDetainedLicense failed");
                         return false;
                     }
                 }
@@ -228,6 +227,7 @@ namespace DVLDAccessLayer
 
                     catch (Exception ex)
                     {
+                        Logger.LogError(ex, "IsLicenseDetained failed");
                         IsDetained = false;
                     }
                 }
@@ -259,7 +259,7 @@ namespace DVLDAccessLayer
 
                     } catch (Exception ex)
                     {
-                        // Error!!
+                        Logger.LogError(ex, "GetAllDetainedLicenses failed");
                     }
                 }
             }

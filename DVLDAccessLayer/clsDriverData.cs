@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DVLDAccessLayer
 {
@@ -38,6 +34,7 @@ namespace DVLDAccessLayer
                     }
                     catch (Exception ex)
                     {
+                        Logger.LogError(ex, "UpdateDriver failed");
                         rowsAffected = -1;
                     }
                 }
@@ -74,6 +71,7 @@ namespace DVLDAccessLayer
 
                     } catch (Exception ex)
                     {
+                        Logger.LogError(ex, "AddNewDriver failed");
                         DriverID = -1;
                     }
                 }
@@ -115,6 +113,7 @@ namespace DVLDAccessLayer
                         }
                     } catch (Exception ex)
                     {
+                        Logger.LogError(ex, "GetDriverByPersonID failed");
                         IsFound = false;
                     }
                 }
@@ -156,6 +155,7 @@ namespace DVLDAccessLayer
 
                     } catch (Exception ex)
                     {
+                        Logger.LogError(ex, "GetDriverByDriverID failed");
                         IsFound = false;
                     }
                 }
@@ -194,7 +194,7 @@ namespace DVLDAccessLayer
 
                     } catch (Exception ex)
                     {
-                        // ERROR !!
+                        Logger.LogError(ex, "GetAllDrivers failed");
                     }
                 }
             }

@@ -40,6 +40,7 @@ namespace DVLDAccessLayer
                     }
                     catch (Exception ex)
                     {
+                        Logger.LogError(ex, "GetLicenseClassInfoByClassName failed");
                         IsFound = false;
                     }
                 }
@@ -81,6 +82,7 @@ namespace DVLDAccessLayer
                     }
                     catch (Exception ex)
                     {
+                        Logger.LogError(ex, "GetLicenseClassInfoByID failed");
                         IsFound = false;
                     }
                 }
@@ -108,9 +110,9 @@ namespace DVLDAccessLayer
                             }
                         }
                     }
-                    catch
+                    catch (Exception ex)
                     {
-
+                        Logger.LogError(ex, "GetAllLicenseClasses failed");
                     }
                 }
             }
@@ -136,7 +138,7 @@ namespace DVLDAccessLayer
                     }
                     catch (Exception ex)
                     {
-                        // Console.WriteLine("Error: " + ex.Message);
+                        Logger.LogError(ex, "IsLicenseClassExistByID failed");
                         IsFound = false;
                     }
                 }
@@ -163,7 +165,7 @@ namespace DVLDAccessLayer
                     }
                     catch (Exception ex)
                     {
-                        // Console.WriteLine("Error: " + ex.Message);
+                        Logger.LogError(ex, "IsLicenseClassExistByClassName failed");
                         IsFound = false;
                     }
                 }

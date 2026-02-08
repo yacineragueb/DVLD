@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace DVLDAccessLayer
 {
@@ -45,6 +40,7 @@ namespace DVLDAccessLayer
                     }
                     catch (Exception ex)
                     {
+                        Logger.LogError(ex, "UpdateInternationalLicense failed");
                         rowsAffected = 0;
                     }
                 }
@@ -52,7 +48,6 @@ namespace DVLDAccessLayer
 
             return rowsAffected > 0;
         }
-
         public static int AddNewInternationalLicense(int ApplicationID, int DriverID, int IssuedUsingLocalLicenseID, DateTime IssueDate, DateTime ExpirationDate, bool IsActive, int CreatedByUserID)
         {
             int InternationalLicenseID = -1;
@@ -87,6 +82,7 @@ namespace DVLDAccessLayer
 
                     } catch (Exception ex)
                     {
+                        Logger.LogError(ex, "AddNewInternationalLicense failed");
                         InternationalLicenseID = -1;
                     }
                 }
@@ -124,6 +120,7 @@ namespace DVLDAccessLayer
 
                     catch (Exception ex)
                     {
+                        Logger.LogError(ex, "GetActiveInternationalLicenseIDByDriverID failed");
                         InternationalLicenseID = -1;
                     }
                 }
@@ -169,6 +166,7 @@ namespace DVLDAccessLayer
 
                     } catch (Exception ex)
                     {
+                        Logger.LogError(ex, "GetInternationalLicenseApplicationByID failed");
                         IsFound = false;
                     }
                 }
@@ -201,7 +199,7 @@ namespace DVLDAccessLayer
 
                     } catch (Exception ex)
                     {
-                        // Error!!
+                        Logger.LogError(ex, "GetAllInternationalLicenseApplications failed");
                     }
                 }
             }

@@ -1,17 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace DVLDAccessLayer
 {
     public class clsLicenseData
     {
-
         public static bool DeactivateLicense(int LicenseID)
         {
             int rowsAffected = 0;
@@ -31,6 +25,7 @@ namespace DVLDAccessLayer
                     }
                     catch (Exception ex)
                     {
+                        Logger.LogError(ex, "DeactivateLicense failed");
                         return false;
                     }
                 }
@@ -38,7 +33,6 @@ namespace DVLDAccessLayer
 
             return (rowsAffected > 0);
         }
-
         public static bool IsLicenseExistByID(int LicenseID)
         {
             bool IsFound = false;
@@ -60,6 +54,7 @@ namespace DVLDAccessLayer
 
                     } catch (Exception ex)
                     {
+                        Logger.LogError(ex, "IsLicenseExistByID failed");
                         IsFound = false;
                     }
                 }
@@ -95,16 +90,15 @@ namespace DVLDAccessLayer
                         }
 
                     }
-                    catch
+                    catch (Exception ex) 
                     {
-                        // Error!!
+                        Logger.LogError(ex, "GetDriverInternationalLicensesByPersonID failed");
                     }
                 }
             }
 
             return dataTable;
         }
-
         public static DataTable GetDriverLicensesByPersonID(int PersonID)
         {
             DataTable dataTable = new DataTable();
@@ -133,9 +127,9 @@ namespace DVLDAccessLayer
                             }
                         }
 
-                    } catch
+                    } catch (Exception ex)
                     {
-                        // Error!!
+                        Logger.LogError(ex, "GetDriverLicensesByPersonID failed");
                     }
                 }
             }
@@ -183,6 +177,7 @@ namespace DVLDAccessLayer
                     }
                     catch (Exception ex)
                     {
+                        Logger.LogError(ex, "UpdateLicense failed");
                         rowsAffected = 0;
                     }
                 }
@@ -238,6 +233,7 @@ namespace DVLDAccessLayer
                     }
                     catch (Exception ex)
                     {
+                        Logger.LogError(ex, "AddNewLicense failed");
                         LicenseID = -1;
                     }
 
@@ -294,6 +290,7 @@ namespace DVLDAccessLayer
 
                     } catch (Exception ex)
                     {
+                        Logger.LogError(ex, "GetLicenseInfoByID failed");
                         IsFound = false;
                     }
                 }
@@ -331,6 +328,7 @@ namespace DVLDAccessLayer
 
                     } catch (Exception ex)
                     {
+                        Logger.LogError(ex, "GetActiveLicesenByPersonID failed");
                         ActiveLicenseID = -1;
                     }
                 }
