@@ -2,7 +2,6 @@
 using System.Data;
 using System.Data.SqlClient;
 
-
 namespace DVLDAccessLayer
 {
     public class clsPersonData
@@ -53,6 +52,7 @@ namespace DVLDAccessLayer
                         }
                     } catch (Exception ex)
                     {
+                        Logger.LogError(ex, "GetPersonInfoById failed");
                         IsFound = false;
                     }
                 }
@@ -107,6 +107,7 @@ namespace DVLDAccessLayer
                     }
                     catch (Exception ex)
                     {
+                        Logger.LogError(ex, "GetPersonInfoByNationalNo failed");
                         IsFound = false;
                     }
                 }
@@ -156,6 +157,7 @@ namespace DVLDAccessLayer
                     }
                     catch (Exception ex)
                     {
+                        Logger.LogError(ex, "AddNewPerson failed");
                         PersonID = -1;
                     }
                 }
@@ -214,7 +216,7 @@ namespace DVLDAccessLayer
                     }
                     catch (Exception ex)
                     {
-                        // Error !
+                        Logger.LogError(ex, "UpdatePerson failed");
                         rowsAffected = 0;
                     }
                 }
@@ -244,7 +246,7 @@ namespace DVLDAccessLayer
                         }
                     } catch (Exception ex) 
                     {
-                        // ERROR!!
+                        Logger.LogError(ex, "GetAllPeople failed");
                     }
                 }
             }
@@ -270,7 +272,7 @@ namespace DVLDAccessLayer
                     }
                     catch (Exception ex)
                     {
-                        // Console.WriteLine("Error: " + ex.Message);
+                        Logger.LogError(ex, "DeletePerson failed");
                         rowsAffected = 0;
                     }
                 }
@@ -298,7 +300,7 @@ namespace DVLDAccessLayer
                     }
                     catch (Exception ex)
                     {
-                        // Console.WriteLine("Error: " + ex.Message);
+                        Logger.LogError(ex, "IsPersonExistByID failed");
                         IsFound = false;
                     }
                 }
@@ -326,7 +328,7 @@ namespace DVLDAccessLayer
                     }
                     catch (Exception ex)
                     {
-                        // Console.WriteLine("Error: " + ex.Message);
+                        Logger.LogError(ex, "IsPersonExistByNationalNo failed");
                         IsFound = false;
                     }
                 }

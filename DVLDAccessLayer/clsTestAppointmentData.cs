@@ -1,16 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DVLDAccessLayer
 {
     public class clsTestAppointmentData
     {
-
         public static int GetTestID(int TestAppointmentID)
         {
             int TestID = -1;
@@ -35,6 +30,7 @@ namespace DVLDAccessLayer
                     }
                     catch (Exception ex)
                     {
+                        Logger.LogError(ex, "GetTestID failed");
                         TestID = -1;
                     }
                 }
@@ -74,7 +70,7 @@ namespace DVLDAccessLayer
 
                     } catch (Exception ex)
                     {
-
+                        Logger.LogError(ex, "GetAllTestAppointmentsByTestType failed");
                     }
                 }
             }
@@ -123,6 +119,7 @@ namespace DVLDAccessLayer
 
                     catch (Exception ex)
                     {
+                        Logger.LogError(ex, "AddNewTestAppointment failed");
                         TestAppointmentID = -1;
                     }
                 }
@@ -172,6 +169,7 @@ namespace DVLDAccessLayer
                     }
                     catch (Exception ex)
                     {
+                        Logger.LogError(ex, "UpdateTestAppointment failed");
                         rowsAffected = 0;
                     }
                 }
@@ -223,6 +221,7 @@ namespace DVLDAccessLayer
                     }
                     catch (Exception ex)
                     {
+                        Logger.LogError(ex, "GetTestAppointmentInfoByID failed");
                         isFound = false;
                     }
                 }

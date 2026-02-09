@@ -37,6 +37,7 @@ namespace DVLDAccessLayer
                     }
                     catch (Exception ex)
                     {
+                        Logger.LogError(ex, "GetTestTypeByID failed");
                         IsFound = false;
                     }
                 }
@@ -77,6 +78,7 @@ namespace DVLDAccessLayer
                     }
                     catch (Exception ex)
                     {
+                        Logger.LogError(ex, "UpdateTestType failed");
                         rowsAffected = 0;
                     }
                 }
@@ -110,7 +112,7 @@ namespace DVLDAccessLayer
                     }
                     catch (Exception ex)
                     {
-                        // Error!!!
+                        Logger.LogError(ex, "GetAllTestTypes failed");
                     }
                 }
 
@@ -134,6 +136,7 @@ namespace DVLDAccessLayer
                         totalNumberOfTests = (int)cmd.ExecuteScalar();
                     } catch (Exception ex)
                     {
+                        Logger.LogError(ex, "GetTotalNumberOfTests failed");
                         totalNumberOfTests = 0;
                     }
                 }

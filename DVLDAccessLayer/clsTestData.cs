@@ -1,15 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DVLDAccessLayer
 {
     public class clsTestData
     {
-
         public static bool GetTestInfoByID(int TestID,
             ref int TestAppointmentID, ref bool TestResult,
             ref string Notes, ref int CreatedByUserID)
@@ -51,6 +46,7 @@ namespace DVLDAccessLayer
                     }
                     catch (Exception ex)
                     {
+                        Logger.LogError(ex, "GetTestInfoByID failed");
                         isFound = false;
                     }
                 }
@@ -100,6 +96,7 @@ namespace DVLDAccessLayer
 
                     catch (Exception ex)
                     {
+                        Logger.LogError(ex, "AddNewTest failed");
                         TestID = -1;
                     }
                 }
@@ -107,7 +104,6 @@ namespace DVLDAccessLayer
 
             return TestID;
         }
-
         public static bool UpdateTest(int TestID, int TestAppointmentID, bool TestResult, string Notes, int CreatedByUserID) {
             int rowsAffected = 0;
             using (SqlConnection connection = new SqlConnection(clsDVLDAcessLayerSettings.connectionString))
@@ -135,6 +131,7 @@ namespace DVLDAccessLayer
                     }
                     catch (Exception ex)
                     {
+                        Logger.LogError(ex, "UpdateTest failed");
                         rowsAffected = 0;
                     }
                 }
@@ -142,7 +139,6 @@ namespace DVLDAccessLayer
 
             return (rowsAffected > 0);
         }
-
         public static bool GetLastTestByPersonAndTestTypeAndLicenseClass(int PersonID, int LicenseClassID, int TestTypeID, ref int TestID, ref int TestAppointmentID, ref bool TestResult, ref string Notes, ref int CreatedByUserID)
         {
             bool IsFound = false;
@@ -195,6 +191,7 @@ namespace DVLDAccessLayer
                     }
                     catch (Exception ex)
                     {
+                        Logger.LogError(ex, "GetLastTestByPersonAndTestTypeAndLicenseClass failed");
                         IsFound = false;
                     }
                 }

@@ -35,6 +35,7 @@ namespace DVLDAccessLayer
 
                     } catch(Exception ex)
                     {
+                        Logger.LogError(ex, "GetUserInfoById failed");
                         IsFound = false;
                     }
                 }
@@ -73,6 +74,7 @@ namespace DVLDAccessLayer
                     }
                     catch (Exception ex)
                     {
+                        Logger.LogError(ex, "GetUserInfoByUsernameAndPassword failed");
                         IsFound = false;
                     }
                 }
@@ -105,7 +107,9 @@ namespace DVLDAccessLayer
                             UserID = insertedUser;
                         }
                     }
-                    catch {
+                    catch (Exception ex)
+                    {
+                        Logger.LogError(ex, "AddNewUser failed");
                         UserID = -1;
                     }
                 }
@@ -139,6 +143,7 @@ namespace DVLDAccessLayer
 
                     } catch (Exception ex)
                     {
+                        Logger.LogError(ex, "UpdateUser failed");
                         rowsAffected = 0;
                     }
                     
@@ -171,7 +176,7 @@ namespace DVLDAccessLayer
                         }
                     } catch (Exception ex)
                     {
-                        // Error!
+                        Logger.LogError(ex, "GetAllUsers failed");
                     }
                 }
             }
@@ -197,6 +202,7 @@ namespace DVLDAccessLayer
                         rowsAffected = command.ExecuteNonQuery();
                     } catch (Exception ex)
                     {
+                        Logger.LogError(ex, "DeleteUser failed");
                         rowsAffected = 0;
                     }
                 }
@@ -224,7 +230,7 @@ namespace DVLDAccessLayer
                     }
                     catch (Exception ex)
                     {
-                        // Console.WriteLine("Error: " + ex.Message);
+                        Logger.LogError(ex, "IsUserExist failed");
                         IsFound = false;
                     }
                 }

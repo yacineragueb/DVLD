@@ -2,18 +2,10 @@
 using DVLD_project.Properties;
 using DVLDBusinessLayer;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Diagnostics.Contracts;
-using System.Drawing;
 using System.IO;
-using System.Linq;
 using System.Net.Mail;
-using System.Security.Cryptography;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 
@@ -194,8 +186,7 @@ namespace DVLD_project
                         File.Delete(_Person.ImagePath);
                     } catch (Exception ex)
                     {
-                        // We could not delete the file
-                        // Log it later
+                        clsLogger.LogError(ex, "_HandlePersonImage failed");
                     }
                 }
 
@@ -336,6 +327,7 @@ namespace DVLD_project
             }
             catch (Exception ex)
             {
+                clsLogger.LogError(ex, "txtbEmail_TextChanged failed");
                 errorProvider1.SetError(txtbEmail, "Enter a valide email");
                 txtbEmail.Focus();
             }
